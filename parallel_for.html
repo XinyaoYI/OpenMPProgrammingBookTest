@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Content in Jupyter Book &#8212; Parallel Programming and Performance Optimization With OpenMP</title>
+    <title>&lt;no title&gt; &#8212; Parallel Programming and Performance Optimization With OpenMP</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,10 +50,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="parallel_for.html" />
-    <link rel="prev" title="Introduction" href="intro.html" />
+    <link rel="prev" title="Content in Jupyter Book" href="content.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -113,9 +114,9 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="content.html">
    Content in Jupyter Book
   </a>
  </li>
@@ -209,7 +210,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/passlab/OpenMPProgrammingBook/issues/new?title=Issue%20on%20page%20%2Fcontent.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/passlab/OpenMPProgrammingBook/issues/new?title=Issue%20on%20page%20%2Fparallel_for.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -237,7 +238,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/content.md"
+        <a href="_sources/parallel_for.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -274,23 +275,50 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Content in Jupyter Book</h1>
+                <h1><no title></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -298,11 +326,216 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="content-in-jupyter-book">
-<h1>Content in Jupyter Book<a class="headerlink" href="#content-in-jupyter-book" title="Permalink to this headline">#</a></h1>
-<p>There are many ways to write content in Jupyter Book. This short section
-covers a few tips for how to do so.</p>
-</section>
+  <p>{
+“cells”: [
+{
+“cell_type”: “markdown”,
+“id”: “increased-working”,
+“metadata”: {},
+“source”: [
+“# <code class="docutils literal notranslate"><span class="pre">parallel</span> <span class="pre">for</span></code>”
+]
+},
+{
+“cell_type”: “markdown”,
+“id”: “plastic-innocent”,
+“metadata”: {},
+“source”: [
+“A simple example using OpenMP <code class="docutils literal notranslate"><span class="pre">parallel</span> <span class="pre">for</span></code> directive:”
+]
+},
+{
+“cell_type”: “code”,
+“execution_count”: 2,
+“id”: “beginning-exhibition”,
+“metadata”: {},
+“outputs”: [
+{
+“name”: “stdout”,
+“output_type”: “stream”,
+“text”: [
+“Thread: 0, i = 0\n”,
+“Thread: 3, i = 6\n”,
+“Thread: 1, i = 2\n”,
+“Thread: 0, i = 1\n”,
+“Thread: 1, i = 3\n”,
+“Thread: 3, i = 7\n”,
+“Thread: 4, i = 8\n”,
+“Thread: 4, i = 9\n”,
+“Thread: 2, i = 4\n”,
+“Thread: 2, i = 5\n”,
+“Thread: 5, i = 10\n”,
+“Thread: 5, i = 11\n”
+]
+}
+],
+“source”: [
+“//%compiler: clang\n”,
+“//%cflags: -fopenmp\n”,
+“\n”,
+“#include &lt;stdio.h&gt;\n”,
+“#include &lt;stdlib.h&gt;\n”,
+“#include &lt;omp.h&gt;\n”,
+“\n”,
+“int main (int argc, char** argv) {\n”,
+”    int i;\n”,
+”    #pragma omp parallel for num_threads(6)\n”,
+”    for (i = 0; i &lt; 12; i++)\n”,
+”        printf(“Thread: %d, i = %d\n”, omp_get_thread_num(), i);\n”,
+”    \n”,
+”    return 0;\n”,
+”    \n”,
+”    \n”,
+“}”
+]
+},
+{
+“cell_type”: “code”,
+“execution_count”: 1,
+“id”: “2cbe28a5-303a-4218-a8e2-28140a0a2bf2”,
+“metadata”: {},
+“outputs”: [
+{
+“ename”: “SyntaxError”,
+“evalue”: “invalid syntax (<a class="reference external" href="http://4041655708.py">4041655708.py</a>, line 1)”,
+“output_type”: “error”,
+“traceback”: [
+“\u001b[0;36m  Input \u001b[0;32mIn [1]\u001b[0;36m\u001b[0m\n\u001b[0;31m    //%load <a class="reference external" href="https://passlab.github.io/ITSC3181/exercises/sum/sum_full.c%5Cu001b">https://passlab.github.io/ITSC3181/exercises/sum/sum_full.c\u001b</a>[0m\n\u001b[0m    ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid syntax\n”
+]
+}
+],
+“source”: [
+“//%load <a class="reference external" href="https://passlab.github.io/ITSC3181/exercises/sum/sum_full.c%5Cn">https://passlab.github.io/ITSC3181/exercises/sum/sum_full.c\n</a>”,
+“/<em>\n”,
+” * Sum of a</em>X[N]\n”,
+” <em>/\n”,
+“#include &lt;stdio.h&gt;\n”,
+“#include &lt;stdlib.h&gt;\n”,
+“#include &lt;math.h&gt;\n”,
+“#include &lt;string.h&gt;\n”,
+“#include &lt;sys/timeb.h&gt;\n”,
+“\n”,
+“/</em> read timer in second <em>/\n”,
+“double read_timer() {\n”,
+”    struct timeb tm;\n”,
+”    ftime(&amp;tm);\n”,
+”    return (double) tm.time + (double) tm.millitm / 1000.0;\n”,
+“}\n”,
+“\n”,
+“/</em> read timer in ms <em>/\n”,
+“double read_timer_ms() {\n”,
+”    struct timeb tm;\n”,
+”    ftime(&amp;tm);\n”,
+”    return (double) tm.time * 1000.0 + (double) tm.millitm;\n”,
+“}\n”,
+“\n”,
+“#define REAL float\n”,
+“#define VECTOR_LENGTH 102400\n”,
+“\n”,
+“/</em> initialize a vector with random floating point numbers */\n”,
+“void init(REAL A[], int N) {\n”,
+”    int i;\n”,
+”    for (i = 0; i &lt; N; i++) {\n”,
+”        A[i] = (double) drand48();\n”,
+”    }\n”,
+“}\n”,
+“\n”,
+“REAL sum(int N, REAL X[], REAL a) {\n”,
+”    int i;\n”,
+”    REAL result = 0.0;\n”,
+”    for (i = 0; i &lt; N; ++i)\n”,
+”        result += a * X[i];\n”,
+”    return result;\n”,
+“}\n”,
+“\n”,
+“int main(int argc, char <em>argv[]) {\n”,
+”    int N = VECTOR_LENGTH;\n”,
+”    double elapsed; /</em> for timing */\n”,
+”    if (argc &lt; 2) {\n”,
+”        fprintf(stderr, “Usage: sum <n> (default %d)\n”, N);\n”,
+”    } else N = atoi(argv[1]);\n”,
+”    REAL <em>X = (REAL</em>)malloc(sizeof(REAL)*N);\n”,
+”    REAL <em>Y = (REAL</em>)malloc(sizeof(REAL)<em>N);\n”,
+“\n”,
+”    srand48((1 &lt;&lt; 12));\n”,
+”    init(X, N);\n”,
+”    init(Y, N);\n”,
+”    REAL a = 0.1234;\n”,
+”    /</em> example run <em>/\n”,
+”    elapsed = read_timer();\n”,
+”    REAL result = sum(N, X, a);\n”,
+”    elapsed = (read_timer() - elapsed);\n”,
+”    printf(“======================================================================================================\n”);\n”,
+”    printf(“\tSum %d numbers\n”, N);\n”,
+”    printf(”——————————————————————————————————\n”);\n”,
+”    printf(“Performance:\t\tRuntime (ms)\t MFLOPS \n”);\n”,
+”    printf(”——————————————————————————————————\n”);\n”,
+”    printf(“Sum:\t\t\t%4f\t%4f\n”, elapsed * 1.0e3, 2</em>N / (1.0e6 * elapsed));\n”,
+”    return 0;\n”,
+“}\n”
+]
+},
+{
+“cell_type”: “code”,
+“execution_count”: 4,
+“id”: “a2404bb2-27e3-4290-99d8-87a656d485a2”,
+“metadata”: {},
+“outputs”: [
+{
+“name”: “stdout”,
+“output_type”: “stream”,
+“text”: [
+” Hello from process:            2\n”,
+” Hello from process:            7\n”,
+” Hello from process:            3\n”,
+” Hello from process:            6\n”,
+” Hello from process:            0\n”,
+” Hello from process:            5\n”,
+” Hello from process:            4\n”,
+” Hello from process:            1\n”
+]
+}
+],
+“source”: [
+“!!%compiler: gfortran\n”,
+“!!%cflags: -fopenmp\n”,
+“\n”,
+“PROGRAM Parallel_Hello_World\n”,
+“USE OMP_LIB\n”,
+“\n”,
+“!<span class="math notranslate nohighlight">\(OMP PARALLEL\n&quot;,
+    &quot;\n&quot;,
+    &quot;  PRINT *, \&quot;Hello from process: \&quot;, OMP_GET_THREAD_NUM()\n&quot;,
+    &quot;\n&quot;,
+    &quot;!\)</span>OMP END PARALLEL\n”,
+“\n”,
+“END”
+]
+},
+{
+“cell_type”: “code”,
+“execution_count”: null,
+“id”: “70810ace-4201-4540-bb28-21aa74b74bf4”,
+“metadata”: {},
+“outputs”: [],
+“source”: []
+}
+],
+“metadata”: {
+“kernelspec”: {
+“display_name”: “Native”,
+“language”: “native”,
+“name”: “native”
+},
+“language_info”: {
+“file_extension”: “.c”,
+“mimetype”: “text/plain”,
+“name”: “c”
+}
+},
+“nbformat”: 4,
+“nbformat_minor”: 5
+}</p>
 
     <script type="text/x-thebe-config">
     {
@@ -331,19 +564,12 @@ covers a few tips for how to do so.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="content.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title">Content in Jupyter Book</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="parallel_for.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
