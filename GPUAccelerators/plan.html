@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2-1 Intro to Multicore and Multi-CPU Machines &#8212; Parallel Programming and Performance Optimization With OpenMP</title>
+    <title>Parallel Programming for GPU Accelerators &#8212; Parallel Programming and Performance Optimization With OpenMP</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -88,11 +88,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Parallel Programming and Performance Optimization With OpenMP</h1>
@@ -117,14 +112,9 @@ const thebe_selector_output = ".output, .cell_output"
    Content in Jupyter Book
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../openmp_c/1_IntroductionOfOpenMP.html">
-   What is OpenMP?
-  </a>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../MulticoreMultiCPU.html">
-   Parallel Programming for Multicore and Multi-CPU Machines
+  <a class="reference internal" href="../openmpIntro.html">
+   OpenMP
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -133,27 +123,44 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="1_MIMDArchitecture.html">
+    <a class="reference internal" href="../openmp_c/1_IntroductionOfOpenMP.html">
+     What is OpenMP?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../MulticoreMultiCPU.html">
+   Parallel Programming for Multicore and Multi-CPU Machines
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../MultiCoreMultiCPU/1_MIMDArchitecture.html">
      Multicore and Multi-CPU shared memory systems
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2_UsingOpenMP.html">
+    <a class="reference internal" href="../MultiCoreMultiCPU/2_UsingOpenMP.html">
      Creating SPMD parallelism using OpenMP parallel and teams directive
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="3_SynchronizationThreads.html">
+    <a class="reference internal" href="../MultiCoreMultiCPU/3_SynchronizationThreads.html">
      Synchronization of threads using barrier and order directive
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="4_AsynchronousTasking.html">
+    <a class="reference internal" href="../MultiCoreMultiCPU/4_AsynchronousTasking.html">
      Asynchronous tasking
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="5_ExplicitDistribution.html">
+    <a class="reference internal" href="../MultiCoreMultiCPU/5_ExplicitDistribution.html">
      Explicit distribution of work using single, sections, workshring-loop, and distribute construct
     </a>
    </li>
@@ -168,19 +175,19 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../GPUAccel.html">
    Parallel Programming for GPU Accelerators
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../GPUAccelerators/1_DataMapping.html">
+    <a class="reference internal" href="1_DataMapping.html">
      Data Mapping
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../GPUAccelerators/2_Metadirective.html">
+    <a class="reference internal" href="2_Metadirective.html">
      Metadirective (possible separate section)
     </a>
    </li>
@@ -237,35 +244,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/XinyaoYI/OpenMPProgrammingBookTest/main?urlpath=lab/tree/src/MultiCoreMultiCPU/2-1MultiCoreMultiCPU.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -305,7 +283,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/XinyaoYI/OpenMPProgrammingBookTest/issues/new?title=Issue%20on%20page%20%2FMultiCoreMultiCPU/2-1MultiCoreMultiCPU.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/XinyaoYI/OpenMPProgrammingBookTest/issues/new?title=Issue%20on%20page%20%2FGPUAccelerators/plan.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -333,7 +311,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/MultiCoreMultiCPU/2-1MultiCoreMultiCPU.ipynb"
+        <a href="../_sources/GPUAccelerators/plan.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -344,7 +322,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -370,60 +348,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#intro-to-openmp">
-   2-1-1 Intro to OpenMP
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>2-1 Intro to Multicore and Multi-CPU Machines</h1>
+                <h1>Parallel Programming for GPU Accelerators</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#intro-to-openmp">
-   2-1-1 Intro to OpenMP
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -431,51 +372,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="intro-to-multicore-and-multi-cpu-machines">
-<h1>2-1 Intro to Multicore and Multi-CPU Machines<a class="headerlink" href="#intro-to-multicore-and-multi-cpu-machines" title="Permalink to this headline">#</a></h1>
-<p>As previously mentioned in this book we will be discussing the applications of OpenMP on MultiCore and MultiCPU machines. Before we understand the need for OpenMP we first must understand the need for MultiCore and MutliCPU machines. As most of you may recall Moores’s Law states CPUs double in frequency every two years. Which was possible by increasing the transistor density. As time has gone on this has proven to be more difficult because with more transistors more heat is produced. As this problem became more apparent Computer Architects turned to another solution, a cheaper yet effective solution. Which was the implementation of multiple cores within a CPU. IBM was the first to release a Multi-core CPU back in 2001. Intel’s attempt to release processors of this caliber came in 2002 with the Intel Pentium 4. This processor didn’t implement parallel computing more or less just hyperthreading. This allowed it to switch between programs really fast so it gave the appearance of doing multiple processes at once. Since then multicore machines have taken over the consumer and corprate market, with most computers and even phone coming standard with mutliple cores.</p>
-<section id="intro-to-openmp">
-<h2>2-1-1 Intro to OpenMP<a class="headerlink" href="#intro-to-openmp" title="Permalink to this headline">#</a></h2>
-<p>OpenMP is a standard API for defining multi-threaded shared memory-programs. Which means that each thread or proccess can have access to all available memory. This doesn’t mean that this is necessarily true but we will get into different memory protocols later. OpenMP is a portale, threaded, shared-memory programming specification with “light” syntax. OpenMP behavoir is directly dependent on the OpenMP implementation. Capabilties of this implementation can enable the programmer to seperate program into serial and parallel reigons rather than just concurrently running threads, hides stack managemend, and provides synchronization of constructs. That being said OpenMP will not garuntee speedup, parallelize dependencies, or prevent data racing. Data racing, keeping track of dependencies, and working towards a speedup are all up to the programmer.</p>
-<p>The following is a example of a simple OpenMP program:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang++</span>
-<span class="c1">//%cflags: -fopenmp</span>
-
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
-
-<span class="n">using</span><span class="w"> </span><span class="n">namespace</span><span class="w"> </span><span class="n">std</span><span class="p">;</span><span class="w"></span>
-
-<span class="kt">char</span><span class="w"> </span><span class="n">message</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">hello</span><span class="p">(){</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]){</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">threads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="cp">#pragma omp parallel num_threads(threads)</span>
-<span class="w">    </span><span class="n">hello</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>clang: warning: treating &#39;c&#39; input as &#39;c++&#39; when in C++ mode, this behavior is deprecated [-Wdeprecated]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World
-Hello World
-Hello World
-Hello World
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="parallel-programming-for-gpu-accelerators">
+<h1>Parallel Programming for GPU Accelerators<a class="headerlink" href="#parallel-programming-for-gpu-accelerators" title="Permalink to this headline">#</a></h1>
+<p>Temporary page indicating start of a section</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -487,16 +386,16 @@ Hello World
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "native"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "native",
-            path: "./MultiCoreMultiCPU"
+            kernelName: "python3",
+            path: "./GPUAccelerators"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'native'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               

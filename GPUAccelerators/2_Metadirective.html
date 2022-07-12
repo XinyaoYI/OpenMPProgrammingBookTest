@@ -89,11 +89,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Parallel Programming and Performance Optimization With OpenMP</h1>
@@ -118,17 +113,29 @@ const thebe_selector_output = ".output, .cell_output"
    Content in Jupyter Book
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../openmp_c/1_IntroductionOfOpenMP.html">
-   What is OpenMP?
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../openmpIntro.html">
+   OpenMP
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../openmp_c/1_IntroductionOfOpenMP.html">
+     What is OpenMP?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../MulticoreMultiCPU.html">
    Parallel Programming for Multicore and Multi-CPU Machines
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -169,8 +176,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../GPUAccel.html">
    Parallel Programming for GPU Accelerators
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
