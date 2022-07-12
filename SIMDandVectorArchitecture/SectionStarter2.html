@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Explicit distribution of work using single, sections, workshring-loop, and distribute construct &#8212; Parallel Programming and Performance Optimization With OpenMP</title>
+    <title>Parallel Programming for SIMD and Vector Architecture &#8212; Parallel Programming and Performance Optimization With OpenMP</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -118,8 +118,15 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../MultiCoreMultiCPU.html">
-   Multicore and Multi-CPU Machines
+  <a class="reference internal" href="../openmp_c/parallel_for.html">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     parallel
+    </span>
+    <span class="pre">
+     for
+    </span>
+   </code>
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -128,8 +135,52 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="1_MIMDArchitecture.html">
-     Multicore and Multi-CPU shared memory systems
+    <a class="reference internal" href="../build_rex.html">
+     Building REX
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../MulticoreMultiCPU.html">
+   Parallel Programming for Multicore and Multi-CPU Machines
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SIMDVector.html">
+   Parallel Programming for SIMD and Vector Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../GPUAccel.html">
+   Parallel Programming for GPU Accelerators
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../decision_tree/decision_tree.html">
+     Decision Tree
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks.html">
+     Content with notebooks
     </a>
    </li>
   </ul>
@@ -185,35 +236,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/passlab/OpenMPProgrammingBook/main?urlpath=lab/tree/src/MultiCoreMultiCPU/5_ExplicitDistribution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -253,7 +275,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/passlab/OpenMPProgrammingBook/issues/new?title=Issue%20on%20page%20%2FMultiCoreMultiCPU/5_ExplicitDistribution.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/passlab/OpenMPProgrammingBook/issues/new?title=Issue%20on%20page%20%2FSIMDandVectorArchitecture/SectionStarter2.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -281,7 +303,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/MultiCoreMultiCPU/5_ExplicitDistribution.ipynb"
+        <a href="../_sources/SIMDandVectorArchitecture/SectionStarter2.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -292,7 +314,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -330,7 +352,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Explicit distribution of work using single, sections, workshring-loop, and distribute construct</h1>
+                <h1>Parallel Programming for SIMD and Vector Architecture</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -342,8 +364,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="explicit-distribution-of-work-using-single-sections-workshring-loop-and-distribute-construct">
-<h1>Explicit distribution of work using single, sections, workshring-loop, and distribute construct<a class="headerlink" href="#explicit-distribution-of-work-using-single-sections-workshring-loop-and-distribute-construct" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="parallel-programming-for-simd-and-vector-architecture">
+<h1>Parallel Programming for SIMD and Vector Architecture<a class="headerlink" href="#parallel-programming-for-simd-and-vector-architecture" title="Permalink to this headline">#</a></h1>
+<p>Temporary page indicating start of a section</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -359,7 +382,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./MultiCoreMultiCPU"
+            path: "./SIMDandVectorArchitecture"
         },
         predefinedOutput: true
     }
