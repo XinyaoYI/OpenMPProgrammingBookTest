@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Creating a Parallel Program with OpenMP &#8212; Parallel Programming and Performance Optimization With OpenMP</title>
+    <title>Vector Architectures &#8212; Parallel Programming and Performance Optimization With OpenMP</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Parallel Programming for Multicore and Multi-CPU Machines" href="../MulticoreMultiCPU.html" />
-    <link rel="prev" title="Introduction of OpenMP" href="1_IntroductionOfOpenMP.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -108,29 +106,29 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../content.html">
    Content in Jupyter Book
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../openmpIntro.html">
    OpenMP
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="1_IntroductionOfOpenMP.html">
+    <a class="reference internal" href="../openmp_c/1_IntroductionOfOpenMP.html">
      Introduction of OpenMP
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../openmp_c/2_Syntax.html">
      Creating a Parallel Program with OpenMP
     </a>
    </li>
@@ -189,12 +187,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../GPUAccelerators/1_DataMapping.html">
+    <a class="reference internal" href="1_DataMapping.html">
      Data Mapping
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../GPUAccelerators/2_Metadirective.html">
+    <a class="reference internal" href="2_Metadirective.html">
      Metadirective (possible separate section)
     </a>
    </li>
@@ -259,7 +257,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/XinyaoYI/OpenMPProgrammingBookTest/main?urlpath=lab/tree/src/openmp_c/2_Syntax.ipynb"
+        <a href="https://mybinder.org/v2/gh/XinyaoYI/OpenMPProgrammingBookTest/main?urlpath=lab/tree/src/GPUAccelerators/1_architecture.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -319,7 +317,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/XinyaoYI/OpenMPProgrammingBookTest/issues/new?title=Issue%20on%20page%20%2Fopenmp_c/2_Syntax.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/XinyaoYI/OpenMPProgrammingBookTest/issues/new?title=Issue%20on%20page%20%2FGPUAccelerators/1_architecture.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -347,7 +345,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/openmp_c/2_Syntax.ipynb"
+        <a href="../_sources/GPUAccelerators/1_architecture.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -384,80 +382,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#openmp-directives-and-syntax">
-   OpenMP Directives and Syntax
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-to-compile-openmp-programs">
-   How to compile OpenMP programs?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-a-simple-openmp-program">
-   Creating a simple OpenMP Program
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Creating a Parallel Program with OpenMP</h1>
+                <h1>Vector Architectures</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#openmp-directives-and-syntax">
-   OpenMP Directives and Syntax
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-to-compile-openmp-programs">
-   How to compile OpenMP programs?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-a-simple-openmp-program">
-   Creating a simple OpenMP Program
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -465,69 +406,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="creating-a-parallel-program-with-openmp">
-<h1>Creating a Parallel Program with OpenMP<a class="headerlink" href="#creating-a-parallel-program-with-openmp" title="Permalink to this headline">#</a></h1>
-<p>In this section, we will introduce the syntax of OpenMP, how to compile OpenMP programs, and give the readers an overall picture of OpenMP programs through two simple examples.</p>
-<section id="openmp-directives-and-syntax">
-<h2>OpenMP Directives and Syntax<a class="headerlink" href="#openmp-directives-and-syntax" title="Permalink to this headline">#</a></h2>
-<p>A series of directives and clauses in OpenMP identify code blocks as parallel regions. Programmers only need to insert these directives into the code, so OpenMP is defined as a kind of directive_based language.
-In C/C++, the directive is based on the #pragma omp construct. In Fortran, instructions begin with ! $omp. This is a regular language pragma (in C/C++) or a regular comment (in Fortran) for Compilers. So special option is need when the compiler is required to generate OpenMP code. Otherwise the compiler won’t recognize it and simply ignore it.</p>
-</section>
-<section id="how-to-compile-openmp-programs">
-<h2>How to compile OpenMP programs?<a class="headerlink" href="#how-to-compile-openmp-programs" title="Permalink to this headline">#</a></h2>
-<p>In this book, all our examples are compiled using LLVM/Clang on Ubuntu 20.04. LLVM/Clang has the advantages of fast compilation speed, less memory usage, and modular design.
-To execute OpenMP code, you need to add -fopenmp when compiling. The full command to compile is</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">clang</span><span class="w"> </span><span class="o">-</span><span class="nx">fopenmp</span><span class="w"> </span><span class="nx">filename</span><span class="p">.</span><span class="nx">c</span><span class="w"> </span><span class="o">-</span><span class="nx">o</span><span class="w"> </span><span class="nx">filename</span><span class="p">.</span><span class="nx">o</span><span class="w"></span>
-</pre></div>
-</div>
-</section>
-<section id="creating-a-simple-openmp-program">
-<h2>Creating a simple OpenMP Program<a class="headerlink" href="#creating-a-simple-openmp-program" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">//%</span><span class="k">compiler</span>: clang
-<span class="o">//%</span><span class="k">cflags</span>: -fopenmp
-
-<span class="c1">#include &lt;stdio.h&gt;</span>
-<span class="c1">#include &lt;stdlib.h&gt;</span>
-<span class="c1">#include &lt;omp.h&gt;</span>
-
-<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
-    <span class="nb">int</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="c1">#pragma omp parallel num_threads(threads)</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">//%</span><span class="k">compiler</span>: clang
-<span class="o">//%</span><span class="k">cflags</span>: -fopenmp
-
-<span class="c1">#include &lt;stdio.h&gt;</span>
-<span class="c1">#include &lt;stdlib.h&gt;</span>
-<span class="c1">#include &lt;omp.h&gt;</span>
-
-<span class="n">char</span> <span class="n">message</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">;</span>
-<span class="n">void</span> <span class="n">hello</span><span class="p">(){</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
-    <span class="nb">int</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="c1">#pragma omp parallel num_threads(threads)</span>
-    <span class="n">hello</span><span class="p">();</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="vector-architectures">
+<h1>Vector Architectures<a class="headerlink" href="#vector-architectures" title="Permalink to this headline">#</a></h1>
+<p>The SIMD model is shown in the following figure and usually consists of two parts, a front-end computer, and a processor array.</p>
+<p>A processor array is a collection of identical synchronous processing elements, each processor in the array has a small local memory in which distributed data resides during parallel processing.
+The front end performs the application program in the usual serial method, but the problem commands the processor array to carry out SIMD operations in parallel.</p>
+<p>Vector architectures have advanced and changed significantly in the last decade, particularly from dedicated vector architecture machines to general-purpose CPUs with vector extensions. In 2011, Intel shipped general-purpose CPUs with the second version of the Advanced Vector Extensions (AVX2), followed by the AVX-512 extensions in 2013. The AVX2 extensions contain 256-bit lane widths and are very common in consumer CPUs. The AVX-512 extensions bring 512-bit lane widths into a few high-end consumer CPUs and high-performance CPU product lines. Beyond increasing lane width to 512 bits, AVX-512 brings many advanced features, most notably masking, an ideal solution for stridden loads and stores. The Arm architecture is another notable example of extending general-purpose CPUs to support SIMD. In 2016, Arm announced its Scalable Vector Extension (SVE) vector architecture for its high-end Arm CPUs to extend the aging NEON SIMD extensions.
+The recent Fukagu supercomputer (ranked #1 in the November 2021 Top500 list and uses Fujitsu’s Arm A64FX CPU with 512-bit vector length) represents the adoption of the Arm SVE architecture in production.
+Arm SVE takes a unique approach to support SIMD architecture of different vector lane widths. Rather than creating a new set of extensions for higher lane widths as Intel does, SVE provides a vector length agnostic model, which allows the same code to run on different hardware with varying vector lengths. In other words, vendors can create vectors as long or short as needed, and the same machine code will run on any hardware.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -543,7 +429,7 @@ To execute OpenMP code, you need to add -fopenmp when compiling. The full comman
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./openmp_c"
+            path: "./GPUAccelerators"
         },
         predefinedOutput: true
     }
@@ -557,20 +443,6 @@ To execute OpenMP code, you need to add -fopenmp when compiling. The full comman
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="1_IntroductionOfOpenMP.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction of OpenMP</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../MulticoreMultiCPU.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Parallel Programming for Multicore and Multi-CPU Machines</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
