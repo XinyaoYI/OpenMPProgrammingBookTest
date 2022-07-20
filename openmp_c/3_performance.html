@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Synchronization of threads using barrier and order directive &#8212; Parallel Programming and Performance Optimization With OpenMP</title>
+    <title>Performance Analysis &#8212; Parallel Programming and Performance Optimization With OpenMP</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Asynchronous tasking" href="4_AsynchronousTasking.html" />
-    <link rel="prev" title="Creating SPMD parallelism using OpenMP parallel and teams directive" href="2_UsingOpenMP.html" />
+    <link rel="next" title="Parallel Programming for Multicore and Multi-CPU Machines" href="../MulticoreMultiCPU.html" />
+    <link rel="prev" title="Creating a Parallel Program with OpenMP" href="2_Syntax.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,65 +114,65 @@ const thebe_selector_output = ".output, .cell_output"
    Content in Jupyter Book
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../openmpIntro.html">
    OpenMP
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../openmp_c/1_IntroductionOfOpenMP.html">
-     Introduction of OpenMP
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../openmp_c/2_Syntax.html">
-     Creating a Parallel Program with OpenMP
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../openmp_c/3_performance.html">
-     Performance Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../MulticoreMultiCPU.html">
-   Parallel Programming for Multicore and Multi-CPU Machines
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="1_MIMDArchitecture.html">
-     Multicore and Multi-CPU shared memory systems
+    <a class="reference internal" href="1_IntroductionOfOpenMP.html">
+     Introduction of OpenMP
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2_UsingOpenMP.html">
-     Creating SPMD parallelism using OpenMP parallel and teams directive
+    <a class="reference internal" href="2_Syntax.html">
+     Creating a Parallel Program with OpenMP
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
+     Performance Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../MulticoreMultiCPU.html">
+   Parallel Programming for Multicore and Multi-CPU Machines
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../MultiCoreMultiCPU/1_MIMDArchitecture.html">
+     Multicore and Multi-CPU shared memory systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../MultiCoreMultiCPU/2_UsingOpenMP.html">
+     Creating SPMD parallelism using OpenMP parallel and teams directive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../MultiCoreMultiCPU/3_SynchronizationThreads.html">
      Synchronization of threads using barrier and order directive
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="4_AsynchronousTasking.html">
+    <a class="reference internal" href="../MultiCoreMultiCPU/4_AsynchronousTasking.html">
      Asynchronous tasking
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="5_ExplicitDistribution.html">
+    <a class="reference internal" href="../MultiCoreMultiCPU/5_ExplicitDistribution.html">
      Explicit distribution of work using single, sections, workshring-loop, and distribute construct
     </a>
    </li>
@@ -264,7 +264,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/XinyaoYI/OpenMPProgrammingBookTest/main?urlpath=lab/tree/src/MultiCoreMultiCPU/3_SynchronizationThreads.ipynb"
+        <a href="https://mybinder.org/v2/gh/XinyaoYI/OpenMPProgrammingBookTest/main?urlpath=lab/tree/src/openmp_c/3_performance.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -324,7 +324,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/XinyaoYI/OpenMPProgrammingBookTest/issues/new?title=Issue%20on%20page%20%2FMultiCoreMultiCPU/3_SynchronizationThreads.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/XinyaoYI/OpenMPProgrammingBookTest/issues/new?title=Issue%20on%20page%20%2Fopenmp_c/3_performance.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -352,7 +352,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/MultiCoreMultiCPU/3_SynchronizationThreads.ipynb"
+        <a href="../_sources/openmp_c/3_performance.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -389,23 +389,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#factors-which-affect-the-performance">
+   Factors which affect the performance
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Synchronization of threads using barrier and order directive</h1>
+                <h1>Performance Analysis</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#factors-which-affect-the-performance">
+   Factors which affect the performance
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -413,8 +450,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="synchronization-of-threads-using-barrier-and-order-directive">
-<h1>Synchronization of threads using barrier and order directive<a class="headerlink" href="#synchronization-of-threads-using-barrier-and-order-directive" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="performance-analysis">
+<h1>Performance Analysis<a class="headerlink" href="#performance-analysis" title="Permalink to this headline">#</a></h1>
+<p>For parallel programs, performance is the primary concern. In this section, we briefly introduce some factors that affect performance when programming, and some ways to improve performance.</p>
+<section id="factors-which-affect-the-performance">
+<h2>Factors which affect the performance<a class="headerlink" href="#factors-which-affect-the-performance" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -430,7 +471,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./MultiCoreMultiCPU"
+            path: "./openmp_c"
         },
         predefinedOutput: true
     }
@@ -444,17 +485,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="2_UsingOpenMP.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="2_Syntax.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Creating SPMD parallelism using OpenMP parallel and teams directive</p>
+            <p class="prev-next-title">Creating a Parallel Program with OpenMP</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="4_AsynchronousTasking.html" title="next page">
+    <a class='right-next' id="next-link" href="../MulticoreMultiCPU.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Asynchronous tasking</p>
+        <p class="prev-next-title">Parallel Programming for Multicore and Multi-CPU Machines</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
