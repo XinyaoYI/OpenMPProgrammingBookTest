@@ -407,13 +407,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#openmp-directives-and-syntax">
-   OpenMP Directives and Syntax
+  <a class="reference internal nav-link" href="#how-to-compile-openmp-programs">
+   How to compile OpenMP programs?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-to-compile-openmp-programs">
-   How to compile OpenMP programs?
+  <a class="reference internal nav-link" href="#openmp-directives-and-syntax">
+   OpenMP Directives and Syntax
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -441,13 +441,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#openmp-directives-and-syntax">
-   OpenMP Directives and Syntax
+  <a class="reference internal nav-link" href="#how-to-compile-openmp-programs">
+   How to compile OpenMP programs?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-to-compile-openmp-programs">
-   How to compile OpenMP programs?
+  <a class="reference internal nav-link" href="#openmp-directives-and-syntax">
+   OpenMP Directives and Syntax
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -468,11 +468,6 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="creating-a-parallel-program-with-openmp">
 <h1>Creating a Parallel Program with OpenMP<a class="headerlink" href="#creating-a-parallel-program-with-openmp" title="Permalink to this headline">#</a></h1>
 <p>In this section, we will introduce the syntax of OpenMP, how to compile OpenMP programs, and give the readers an overall picture of OpenMP programs through two simple examples.</p>
-<section id="openmp-directives-and-syntax">
-<h2>OpenMP Directives and Syntax<a class="headerlink" href="#openmp-directives-and-syntax" title="Permalink to this headline">#</a></h2>
-<p>A series of directives and clauses in OpenMP identify code blocks as parallel regions. Programmers only need to insert these directives into the code, so OpenMP is defined as a kind of directive_based language.
-In C/C++, the directive is based on the #pragma omp construct. In Fortran, instructions begin with ! $omp. This is a regular language pragma (in C/C++) or a regular comment (in Fortran) for Compilers. So special option is need when the compiler is required to generate OpenMP code. Otherwise the compiler won’t recognize it and simply ignore it.</p>
-</section>
 <section id="how-to-compile-openmp-programs">
 <h2>How to compile OpenMP programs?<a class="headerlink" href="#how-to-compile-openmp-programs" title="Permalink to this headline">#</a></h2>
 <p>In this book, all our examples are compiled using LLVM/Clang on Ubuntu 20.04. LLVM/Clang has the advantages of fast compilation speed, less memory usage, and modular design.
@@ -480,53 +475,91 @@ To execute OpenMP code, you need to add -fopenmp when compiling. The full comman
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">clang</span><span class="w"> </span><span class="o">-</span><span class="nx">fopenmp</span><span class="w"> </span><span class="nx">filename</span><span class="p">.</span><span class="nx">c</span><span class="w"> </span><span class="o">-</span><span class="nx">o</span><span class="w"> </span><span class="nx">filename</span><span class="p">.</span><span class="nx">o</span><span class="w"></span>
 </pre></div>
 </div>
+<p>It is also worth mentioning that when writing OpenMP programs, you need to include the &lt;omp.h&gt; header file.</p>
+</section>
+<section id="openmp-directives-and-syntax">
+<h2>OpenMP Directives and Syntax<a class="headerlink" href="#openmp-directives-and-syntax" title="Permalink to this headline">#</a></h2>
+<p>A series of directives and clauses in OpenMP identify code blocks as parallel regions. Programmers only need to insert these directives into the code, so OpenMP is defined as a kind of directive_based language.
+In C/C++, the directive is based on the #pragma omp construct. In Fortran, instructions begin with ! $omp. This is a regular language pragma (in C/C++) or a regular comment (in Fortran) for Compilers. So special option is need when the compiler is required to generate OpenMP code. Otherwise the compiler won’t recognize it and simply ignore it.</p>
+<p>The basic format of OpenMP directive in C/C++ is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#pragma omp directive-name [clause[ [,] clause]...]</span>
+</pre></div>
+</div>
+<p>and in fortran：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!$omp directive-name [clause[ [,] clause]...]
+</pre></div>
+</div>
+<p>Where ‘[]’ means optional. A directive acts on the statement immediately following it or a block of statements enclosed by ‘{}’. Common diretcives are parallel, for, sections, single, atomic, barrier, simd, target, etc.
+Clause is equivalent to the modification of directive, which can be used to further specify the behavior.</p>
+<p>Some OpenMP directives specify a paired end directive, where the directive-name of the paired end directives is:</p>
+<p>• If directive-name starts with begin, the end-directive-name replaces begin with end</p>
+<p>• otherwise it is end directive-name unless otherwise specified.</p>
 </section>
 <section id="creating-a-simple-openmp-program">
 <h2>Creating a simple OpenMP Program<a class="headerlink" href="#creating-a-simple-openmp-program" title="Permalink to this headline">#</a></h2>
+<p>This simple OpenMP program execute in parallel using multiple threads, and each thread outputs a ‘Hello World’.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">//%</span><span class="k">compiler</span>: clang
-<span class="o">//%</span><span class="k">cflags</span>: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-<span class="c1">#include &lt;stdio.h&gt;</span>
-<span class="c1">#include &lt;stdlib.h&gt;</span>
-<span class="c1">#include &lt;omp.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
 
-<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
-    <span class="nb">int</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="c1">#pragma omp parallel num_threads(threads)</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]){</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#pragma omp parallel</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World
+Hello World
+Hello World
+Hello World
+Hello World
+Hello World
+Hello World
+Hello World
 </pre></div>
 </div>
 </div>
 </div>
+<p>“#pragma omp parallel” indicates that the subsequent statement will be executed by multiple threads in parallel, and the number of threads is preset by the system (generally equal to the number of logical processors, for example, i5 4-core 8-thread CPU has 8 logical processors),</p>
+<p>If we want to specify the number of threads, we can add optional clauses to this directive, such as “#pragma omp parallel num_threads(4)” still means that the subsequent statement will be executed by multiple threads in parallel, but the number of threads is 4 .</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">//%</span><span class="k">compiler</span>: clang
-<span class="o">//%</span><span class="k">cflags</span>: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-<span class="c1">#include &lt;stdio.h&gt;</span>
-<span class="c1">#include &lt;stdlib.h&gt;</span>
-<span class="c1">#include &lt;omp.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
 
-<span class="n">char</span> <span class="n">message</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">;</span>
-<span class="n">void</span> <span class="n">hello</span><span class="p">(){</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
-    <span class="nb">int</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="c1">#pragma omp parallel num_threads(threads)</span>
-    <span class="n">hello</span><span class="p">();</span>
-    
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]){</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#pragma omp parallel num_threads(4)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World
+Hello World
+Hello World
+Hello World
 </pre></div>
 </div>
 </div>
 </div>
+<p>通过这两个简单的例子，相信读者已经了解了一个OpenMP程序的基本构成，接下来我们将会接受哦阿
+基于三个不同的结构来讲解OpenMP的具体用法，一些常见的性能问题，以及</p>
 </section>
 </section>
 
@@ -539,16 +572,16 @@ To execute OpenMP code, you need to add -fopenmp when compiling. The full comman
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "native"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "native",
             path: "./openmp_c"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'native'</script>
 
               </div>
               
