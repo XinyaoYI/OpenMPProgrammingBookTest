@@ -389,12 +389,51 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multi-cpu-systems">
+   Multi-CPU systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multicore-systems">
+   Multicore systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparation-of-multi-cpu-systems-and-multicore-systems">
+   Comparation of Multi-CPU systems and Multicore systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multithreading">
+   Multithreading
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -406,6 +445,34 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multi-cpu-systems">
+   Multi-CPU systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multicore-systems">
+   Multicore systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparation-of-multi-cpu-systems-and-multicore-systems">
+   Comparation of Multi-CPU systems and Multicore systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multithreading">
+   Multithreading
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -415,7 +482,67 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="multicore-and-multi-cpu-shared-memory-systems">
 <h1>Multicore and Multi-CPU shared memory systems<a class="headerlink" href="#multicore-and-multi-cpu-shared-memory-systems" title="Permalink to this headline">#</a></h1>
-<p>As previously mentioned in this book we will be discussing the applications of OpenMP on MultiCore and MultiCPU machines. Before we understand the need for OpenMP we first must understand the need for MultiCore and MutliCPU machines. As most of you may recall Moores’s Law states CPUs double in frequency every two years. Which was possible by increasing the transistor density. As time has gone on this has proven to be more difficult because with more transistors more heat is produced. As this problem became more apparent Computer Architects turned to another solution, a cheaper yet effective solution. Which was the implementation of multiple cores within a CPU. IBM was the first to release a Multi-core CPU back in 2001. Intel’s attempt to release processors of this caliber came in 2002 with the Intel Pentium 4. This processor didn’t implement parallel computing more or less just hyperthreading. This allowed it to switch between programs really fast so it gave the appearance of doing multiple processes at once. Since then multicore machines have taken over the consumer and corprate market, with most computers and even phone coming standard with mutliple cores.</p>
+<p>A multiple CPU machine is made up of two or more CPUs, sharing system bus, memory and I/O.
+Multiple CPU machines were the original attempt at increasing computational power but since the birth of Multicore machines, most consumer computers have adopted that approach. That being said there is still a purpose for Multiple CPU machines, you will find them in supercomputers, servers, and other nonconsumer equipment that need raw computing power.</p>
+<p>Multicore machines just mean that the computer has “n” number of central processing units. Although these processors have multiple cores they still fit in one CPU slot on a motherboard all using the same power, cooling, and other hardware. Multiple core processors have a series of different approaches that we will go over in this book.</p>
+<section id="multi-cpu-systems">
+<h2>Multi-CPU systems<a class="headerlink" href="#multi-cpu-systems" title="Permalink to this headline">#</a></h2>
+<p>Multi-CPU systems can be divided into two types according to different memory systems, one uses a shared memory system, and the other uses a distributed memory system. As shown below:</p>
+<p><img alt="Multi_CPU_systems_model1" src="../_images/2.png" /></p>
+<p>On the left is a diagram of a multi-core CPU, where each core has a small local cache, but all cores have direct access to large shared memory. The diagram on the right shows a distributed memory system where multiple CPUs, each with their own local memory, are connected via a high-speed network. Distributed memory systems are common in distributed clusters and can communicate using MPI. Since OpenMP only supports shared memory systems, we won’t discuss distributed memory systems here.</p>
+</section>
+<section id="multicore-systems">
+<h2>Multicore systems<a class="headerlink" href="#multicore-systems" title="Permalink to this headline">#</a></h2>
+<p>Let’s look at a multi-core example as shown below:
+<img alt="Multi_CPU_systems_model1" src="../_images/CPU_architecture.png" /></p>
+<p>Only two cores are shown in this diagram, but real multi-core processors tend to use more cores. Multiple threads can be loaded onto a core for execution.
+Each core has L1 and L2 caches that only it can access, but they share the same memory system. For multi-core systems, the difference from multi-CPU systems is that all processors are on the same chip. The operating system treats each core as a separate processor, and each core can work independently.</p>
+</section>
+<section id="comparation-of-multi-cpu-systems-and-multicore-systems">
+<h2>Comparation of Multi-CPU systems and Multicore systems<a class="headerlink" href="#comparation-of-multi-cpu-systems-and-multicore-systems" title="Permalink to this headline">#</a></h2>
+<p>Both systems have their own advantages and disadvantages.</p>
+<p><strong>For multi-CPU systems:</strong></p>
+<p><em>Advantages</em>:</p>
+<ul class="simple">
+<li><p>Multiple processors can work at the same time, and the throughput will be greatly increased.</p></li>
+<li><p>When a processor stops working, other processors can help to complete the work, which greatly improves the reliability of the entire system.</p></li>
+</ul>
+<p><em>Disadvantages</em>:</p>
+<ul class="simple">
+<li><p>Multiple processors work at the same time, and the coordination between them becomes very complicated.</p></li>
+<li><p>Buses, memory and I/O devices are shared. So if some processor is using some I/O, the other processor has to wait for its turn, which will result in lower throughput.</p></li>
+<li><p>Increased requirements for memory devices. In order to make all processors work efficiently at the same time, we need to have a large main memory, which increases the cost.</p></li>
+</ul>
+<p><strong>For multi-core systems:</strong></p>
+<p><em>Advantages</em>:</p>
+<ul class="simple">
+<li><p>Multiple cores are on the same die, which results in higher cache coherence.</p></li>
+<li><p>The core is very energy efficient, so it can get more performance with less power consumption.</p></li>
+</ul>
+<p><em>Disadvantages</em>:</p>
+<ul class="simple">
+<li><p>We don’t get as good performance as a multi-CPU system. For example, if we have two cores on our CPU, we can theoretically get twice the speedup compared to a single core, but in practice we can only get 70-80% of the ideal speedup.</p></li>
+<li><p>Some operating systems do not provide good support for multi-core systems.</p></li>
+</ul>
+<p>But the readers may have noticed that although the two approaches are slightly different in how fast the processors work together and how they access memory, their design is very similar. And the important thing is that the working logic of OpenMP is the same, which is to create multiple threads and allocate them on different cores. Therefore, we treat them as the same.</p>
+</section>
+<section id="multithreading">
+<h2>Multithreading<a class="headerlink" href="#multithreading" title="Permalink to this headline">#</a></h2>
+<p>Next we will introduce a concept that is very important to OpenMP programming - multithreading.
+Multithreading is a technology that implements concurrent execution of multiple threads on software or hardware. Thread is usually a concept at the software level and is the actual operating unit in the operating system process.
+We can divide one huge task into multiple small tasks at the software level and load these tasks on different threads for execution.</p>
+<p>The multi-threaded concurrency is a pseudo-concurrency in a single-core CPU, which is just a quick switch between multiple tasks through the scheduling strategy.
+Implementing multithreading on a single-core CPU is essentially an efficient use of CPU core, and try the best to make the CPU core always running at full capacity. The interaction with the memory is dragging down the program’s execution speed. Moreover, multithreading can hide part of the interaction time through thread scheduling.
+The hyper-threading technology essentially simulates multiple logical units in one CPU core. It is an optimization of threads based on the premise that each thread in multithreading is not efficiently used to improve efficiency further.
+It is used on Intel’s top CPUs to pursue the ultimate efficiency.</p>
+<p>The multi-threading in the multi-core CPU is the actual parallel execution of threads. Even if a core is fully occupied, other cores are not affected and can handle thread scheduling.
+When the number of threads is less than the number of CPU cores, only some of the cores will work concurrently. When the number of threads is more than the number of cores, they will be loaded on the cores for execution according to a particular scheduling strategy.</p>
+<p><img alt="Multi_CPU_systems_model1" src="../_images/CPU_architecture.png" />
+We still use this figure as an example to show the architecture of a multi-core CPU that supports hyper-threading technology，Suppose there are 12 cores in the CPU, and we create 24 threads. Since the CPU shown in the figure supports hyper-threading technology, two threads are loaded into one core for execution, so 24 threads can be executed simultaneously. If we have 48 threads, 24 will be executed first and the others will be queued. Whenever a core completes its current task, the first two threads in the queue are loaded onto that core for execution.
+The cache in the CPU is an essential part of ensuring that threads can access data at high speed.
+There are two types of L1 caches which are L1i, which stores instructions, and L1d, which stores data.
+Different threads in the same core share the L1 and L2 cache, and different cores communicate through the L3 cache. The same thread can only run on one CPU core at one time.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
