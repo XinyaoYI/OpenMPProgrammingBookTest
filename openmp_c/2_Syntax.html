@@ -512,7 +512,7 @@ C$OMP directive-name [clause[ [,] clause]...]
 </pre></div>
 </div>
 <p>Where ‘[]’ means optional. A directive acts on the statement immediately following it or a block of statements enclosed by ‘{}’. Common diretcives are parallel, for, sections, single, atomic, barrier, simd, target, etc.
-Clause is equivalent to the modification of directive, which can be used to further specify the behavior.</p>
+Clause is equivalent to the modification of directive, which can be used to specify additional information with the directive. The specific clause(s) that can be used, depends on the directive.</p>
 <p>In Fortran, OpenMP directives specify a paired end directive, where the directive-name of the paired end directives is:</p>
 <p>• If directive-name starts with begin, the end-directive-name replaces begin with end</p>
 <p>• otherwise it is end directive-name unless otherwise specified.</p>

@@ -412,18 +412,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mimd-architecture">
+   MIMD Architecture
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multi-cpu-systems">
-   Multi-CPU systems
+   Multi-CPU Systems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multicore-systems">
-   Multicore systems
+   Multicore Systems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparation-of-multi-cpu-systems-and-multicore-systems">
-   Comparation of Multi-CPU systems and Multicore systems
+   Comparation of Multi-CPU Systems and Multicore Systems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -451,18 +456,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mimd-architecture">
+   MIMD Architecture
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multi-cpu-systems">
-   Multi-CPU systems
+   Multi-CPU Systems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multicore-systems">
-   Multicore systems
+   Multicore Systems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparation-of-multi-cpu-systems-and-multicore-systems">
-   Comparation of Multi-CPU systems and Multicore systems
+   Comparation of Multi-CPU Systems and Multicore Systems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -482,24 +492,31 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="multicore-and-multi-cpu-shared-memory-systems">
 <h1>Multicore and Multi-CPU shared memory systems<a class="headerlink" href="#multicore-and-multi-cpu-shared-memory-systems" title="Permalink to this headline">#</a></h1>
+<p>In this section, we will introduce the MIMD architecture, multi-CPU systems, multi-core systems, and multithreading. Through this section, the readers will understand the structure of computers for parallel computing. To lay the foundation for the  introduction to OpenMP programming.</p>
+<section id="mimd-architecture">
+<h2>MIMD Architecture<a class="headerlink" href="#mimd-architecture" title="Permalink to this headline">#</a></h2>
+<p>Multiple Instruction Multiple Data(MIMD) architecture consists of processors that operate independently and asynchronously from one another. MIMD architecture systems consist of many processors that can have much common memory or memory that is exclusive to one. These terms mean many processes can execute instructions at any time with any piece or segment of data. MIMD architecture consists of two different types of architecture: Shared Memory MIMD architecture and Distributed Memory MIMD architecture.</p>
+<p>Shared Memory MIMD systems have the following characteristics. Shared Memory MIMD groups processors and memory. Any processor can access that memory through a communication channel designated by the programmer. Finally, the memory addresses are shared between processors. On the other hand, Distributed Memory MIMD systems have their own set of characteristics. First, memory and processors are grouped together in pairs known as processing elements. Which is linked to other PEs through the use of communication channels. Second, each PE communicates with each other by sending messages, communication isn’t as open like that of a Shared Memory MIMD system.</p>
+<p>The multi-CPU systems and multicore systems we introduce next both belong to the MIMD Architectures.</p>
+</section>
+<section id="multi-cpu-systems">
+<h2>Multi-CPU Systems<a class="headerlink" href="#multi-cpu-systems" title="Permalink to this headline">#</a></h2>
 <p>A multiple CPU machine is made up of two or more CPUs, sharing system bus, memory and I/O.
 Multiple CPU machines were the original attempt at increasing computational power but since the birth of Multicore machines, most consumer computers have adopted that approach. That being said there is still a purpose for Multiple CPU machines, you will find them in supercomputers, servers, and other nonconsumer equipment that need raw computing power.</p>
-<p>Multicore machines just mean that the computer has “n” number of central processing units. Although these processors have multiple cores they still fit in one CPU slot on a motherboard all using the same power, cooling, and other hardware. Multiple core processors have a series of different approaches that we will go over in this book.</p>
-<section id="multi-cpu-systems">
-<h2>Multi-CPU systems<a class="headerlink" href="#multi-cpu-systems" title="Permalink to this headline">#</a></h2>
 <p>Multi-CPU systems can be divided into two types according to different memory systems, one uses a shared memory system, and the other uses a distributed memory system. As shown below:</p>
 <p><img alt="Multi_CPU_systems_model1" src="../_images/2.png" /></p>
 <p>On the left is a diagram of a multi-core CPU, where each core has a small local cache, but all cores have direct access to large shared memory. The diagram on the right shows a distributed memory system where multiple CPUs, each with their own local memory, are connected via a high-speed network. Distributed memory systems are common in distributed clusters and can communicate using MPI. Since OpenMP only supports shared memory systems, we won’t discuss distributed memory systems here.</p>
 </section>
 <section id="multicore-systems">
-<h2>Multicore systems<a class="headerlink" href="#multicore-systems" title="Permalink to this headline">#</a></h2>
+<h2>Multicore Systems<a class="headerlink" href="#multicore-systems" title="Permalink to this headline">#</a></h2>
+<p>Multicore machines just mean that the computer has “n” number of central processing units. Although these processors have multiple cores they still fit in one CPU slot on a motherboard all using the same power, cooling, and other hardware.</p>
 <p>Let’s look at a multi-core example as shown below:
 <img alt="Multi_CPU_systems_model1" src="../_images/CPU_architecture.png" /></p>
 <p>Only two cores are shown in this diagram, but real multi-core processors tend to use more cores. Multiple threads can be loaded onto a core for execution.
 Each core has L1 and L2 caches that only it can access, but they share the same memory system. For multi-core systems, the difference from multi-CPU systems is that all processors are on the same chip. The operating system treats each core as a separate processor, and each core can work independently.</p>
 </section>
 <section id="comparation-of-multi-cpu-systems-and-multicore-systems">
-<h2>Comparation of Multi-CPU systems and Multicore systems<a class="headerlink" href="#comparation-of-multi-cpu-systems-and-multicore-systems" title="Permalink to this headline">#</a></h2>
+<h2>Comparation of Multi-CPU Systems and Multicore Systems<a class="headerlink" href="#comparation-of-multi-cpu-systems-and-multicore-systems" title="Permalink to this headline">#</a></h2>
 <p>Both systems have their own advantages and disadvantages.</p>
 <p><strong>For multi-CPU systems:</strong></p>
 <p><em>Advantages</em>:</p>
