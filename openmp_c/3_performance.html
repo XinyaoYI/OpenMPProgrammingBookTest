@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Parallel Programming for Multicore and Multi-CPU Machines" href="../MulticoreMultiCPU.html" />
@@ -412,8 +414,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#factors-which-affect-the-performance">
-   Factors which affect the performance
+  <a class="reference internal nav-link" href="#factors-impacting-performance">
+   Factors Impacting Performance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ideas-for-improving-the-performance">
+   Ideas for Improving the performance
   </a>
  </li>
 </ul>
@@ -436,8 +443,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#factors-which-affect-the-performance">
-   Factors which affect the performance
+  <a class="reference internal nav-link" href="#factors-impacting-performance">
+   Factors Impacting Performance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ideas-for-improving-the-performance">
+   Ideas for Improving the performance
   </a>
  </li>
 </ul>
@@ -452,9 +464,38 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="performance-analysis">
 <h1>Performance Analysis<a class="headerlink" href="#performance-analysis" title="Permalink to this headline">#</a></h1>
-<p>For parallel programs, performance is the primary concern. In this section, we briefly introduce some factors that affect performance when programming, and some ways to improve performance.</p>
-<section id="factors-which-affect-the-performance">
-<h2>Factors which affect the performance<a class="headerlink" href="#factors-which-affect-the-performance" title="Permalink to this headline">#</a></h2>
+<p>For parallel programs, performance is the primary concern.
+The relative ease of using OpenMP is a mixed blessing.
+We can quickly write a correct OpenMP program, but without the desired level of performance.
+Even though there are certain “best practices” to avoid common performance problems, extra work is needed to program with a large thread count.
+In this section, we briefly introduce some factors that affect performance when programming, and some “best practices” to improve performance.</p>
+<section id="factors-impacting-performance">
+<h2>Factors Impacting Performance<a class="headerlink" href="#factors-impacting-performance" title="Permalink to this headline">#</a></h2>
+<p>The OpenMP program includes serial regions and parallel regions, firstly, and the performance of the serial regions will affect the performance of the whole program. There are many optimization methods for serial programs, such as eliminating data dependencies, constant folding, copy propagation, removing dead code, etc. Although the compiler has made some optimization efforts for serial programs, in fact, for current compilers the effect of this optimization is minimal. A simpler and more effective method is to parallelize and vectorize the parts that can be parallelized or vectorized. For the purposes of this book, we won’t go into too much detail about the optimization of the serial parts.</p>
+<p>The second factor is the proportion of the serial parts and the parallel parts. It is well understood that the more parts that can be parallelized in a program, the greater the room for program performance improvement.
+Amdahl’s law(or Amdahl’s argument) gives the theoretical speedup in latency of the execution of a task at a fixed workload that can be expected of a system whose resources are improved. This formula is often applied to parallel processing systems.
+For the speedup S describing the effect of parallel processing under a fixed load, Amdahl gave the following formula:</p>
+<div class="math notranslate nohighlight">
+\[ S=1/((1-a)+a/n) \]</div>
+<p>where <strong>a</strong> is the proportion of the parallel computing part, and <strong>n</strong> is the number of parallel processing nodes. In this way, when <strong>1-a=0</strong>, (ie, no serial, only parallel), the maximum speedup ratio <strong>s=n</strong>; when <strong>a=0</strong> (ie, only serial, no parallelism), the minimum speedup ratio <strong>s=1</strong>; when <strong>n→∞</strong>, the limit acceleration ratio <strong>s→1/(1-a)</strong>, which is also the upper limit of the acceleration ratio. For example, 90% of the code of a program is parallel, but there is still 10% of the serial code, the maximum speedup that can be achieved even by an infinite number of processors in the system is still 9. This formula has been accepted by academia， and it can indicate that the maximum speedup that a program can achieve is limited by the serial portion of the program.</p>
+<p>Next, let’s analyze what factors can affect performance in the parallel regions. To analyze this problem, we can consider where the overhead of parallelism is, and then reduce the overhead or balance the overhead and benefits to obtain ideal performance.
+Common parallel overheads are mainly concentrated in two aspects. The first is the overhead of thread management. Thread management usually includes creating, resuming, managing, suspending, destroying and synchronizing. The management overhead of threads is often large compared to computation, especially synchronization. Multiple threads waiting for synchronization cause a lot of computing resources to be wasted. The idea to solve this problem is to distribute tasks as evenly as possible, making the thread load as evenly as possible.</p>
+<p>The second aspect is memory access, usually, memory is the main limiting factor in the performance of shared memory programs. Problems such as memory access conflicts will seriously affect the performance of the program. The access location of data is the key to the latency and bandwidth of memory access. The most commonly used method is to optimize data locality. We can improve this problem by explicitly managing the data which will be introduced in detail in the following chapters.</p>
+</section>
+<section id="ideas-for-improving-the-performance">
+<h2>Ideas for Improving the performance<a class="headerlink" href="#ideas-for-improving-the-performance" title="Permalink to this headline">#</a></h2>
+<p>Based on the factors which affect the performance, there are several performance-enhancing efforts that can be considered:</p>
+<ul class="simple">
+<li><p>Thread load balancing</p></li>
+<li><p>Minimizing synchronization.</p></li>
+<li><p>Using more efficient directives. For example, using PARALLEL DO/FOR instead of worksharing DO/FOR directives in parallel regions.</p></li>
+<li><p>Expansion or merging of parallel regions</p></li>
+<li><p>Improving cache hit rate</p></li>
+<li><p>Optimization of round-robin scheduling</p></li>
+<li><p>Variable property optimization</p></li>
+<li><p>Optimization to reduce false sharing problem</p></li>
+</ul>
+<p>在本书接下来的章节，我们将基于三种不同的架构介绍如何使用OpenMP编写并行程序，并基于三讲解如何优化性能。</p>
 </section>
 </section>
 

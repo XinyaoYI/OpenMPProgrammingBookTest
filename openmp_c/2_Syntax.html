@@ -422,6 +422,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#openmp-parallel-regions">
+   OpenMP Parallel Regions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#creating-a-simple-openmp-program">
    Creating a simple OpenMP Program
   </a>
@@ -456,6 +461,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#openmp-parallel-regions">
+   OpenMP Parallel Regions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#creating-a-simple-openmp-program">
    Creating a simple OpenMP Program
   </a>
@@ -475,6 +485,7 @@ title="Print to PDF"
 <p>In this section, we will introduce the syntax of OpenMP, how to compile OpenMP programs, and give the readers an overall picture of OpenMP programs through two simple examples.</p>
 <section id="how-to-compile-openmp-programs">
 <h2>How to compile OpenMP programs?<a class="headerlink" href="#how-to-compile-openmp-programs" title="Permalink to this headline">#</a></h2>
+<p>When compiling OpenMP programs, you need to use comiler flags to enable OpenMP, such as –openmp, -xopenmp, -fopenmp, -mp</p>
 <p>In this book, all our examples are compiled using LLVM/Clang on Ubuntu 20.04. LLVM/Clang has the advantages of fast compilation speed, less memory usage, and modular design.
 To execute OpenMP code, you need to add -fopenmp when compiling. The full command to compile is</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">clang</span><span class="w"> </span><span class="o">-</span><span class="nx">fopenmp</span><span class="w"> </span><span class="nx">filename</span><span class="p">.</span><span class="nx">c</span><span class="w"> </span><span class="o">-</span><span class="nx">o</span><span class="w"> </span><span class="nx">filename</span><span class="p">.</span><span class="nx">o</span><span class="w"></span>
@@ -490,15 +501,60 @@ In C/C++, the directive is based on the #pragma omp construct. In Fortran, instr
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#pragma omp directive-name [clause[ [,] clause]...]</span>
 </pre></div>
 </div>
-<p>and in fortran：</p>
+<p>In fortran, the directives take one of the forms:</p>
+<p>Fixed forms:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>*$OMP directive-name [clause[ [,] clause]...]
+C$OMP directive-name [clause[ [,] clause]...]
+</pre></div>
+</div>
+<p>Free form (but works for fixed form too):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!$omp directive-name [clause[ [,] clause]...]
 </pre></div>
 </div>
 <p>Where ‘[]’ means optional. A directive acts on the statement immediately following it or a block of statements enclosed by ‘{}’. Common diretcives are parallel, for, sections, single, atomic, barrier, simd, target, etc.
 Clause is equivalent to the modification of directive, which can be used to further specify the behavior.</p>
-<p>Some OpenMP directives specify a paired end directive, where the directive-name of the paired end directives is:</p>
+<p>In Fortran, OpenMP directives specify a paired end directive, where the directive-name of the paired end directives is:</p>
 <p>• If directive-name starts with begin, the end-directive-name replaces begin with end</p>
 <p>• otherwise it is end directive-name unless otherwise specified.</p>
+</section>
+<section id="openmp-parallel-regions">
+<h2>OpenMP Parallel Regions<a class="headerlink" href="#openmp-parallel-regions" title="Permalink to this headline">#</a></h2>
+<p>As we have mentioned in the previous section, parallel region is a block of code executed by all threads in a team simultaneously. A block is a logically connected group of program statements considered as a unit. Next, let’s take a look at how code blocks are defined in C/C++ and fortran.
+In C/C++, a block is a single statement or a group of statement between opening and closing curly braces. for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#pragma omp parallel</span>
+<span class="p">{</span>
+      <span class="nb">id</span> <span class="o">=</span> <span class="n">omp_get_thread_num</span><span class="p">();</span>
+      <span class="n">res</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">lots_of_work</span><span class="p">(</span><span class="nb">id</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The two statements between the curly braces are a logical unit where one statement cannot be executed without the other being executed. They form a code block.</p>
+<p>Another example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#pragma omp parallel for</span>
+<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">big_calc</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+       <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>Same with the above example, the two statements between the curly braces are a code block.</p>
+<p>In Fortran, a block is a single statement or a group of statements between directive/end-directive pairs. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!$OMP PARALLEL
+10    wrk(id) = garbage(id)
+      res(id) = wrk(id)**2
+      if(.not.conv(res(id)) goto 10
+!$OMP END PARALLEL
+</pre></div>
+</div>
+<p>Another example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!$OMP PARALLEL DO
+    do i=1,N
+        res(i)=bigComp(i)
+    end do 
+!$OMP END PARALLEL DO
+</pre></div>
+</div>
+<p>In fortran, OpenMP directives specify a paired end directive. Therefore, in the above two examples, the statements between the OpenMP directive and the corresponding end directive form a code block, which is also a parallel region.</p>
 </section>
 <section id="creating-a-simple-openmp-program">
 <h2>Creating a simple OpenMP Program<a class="headerlink" href="#creating-a-simple-openmp-program" title="Permalink to this headline">#</a></h2>

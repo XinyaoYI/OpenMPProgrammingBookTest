@@ -422,8 +422,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#openmp-excution-model">
-   OpenMP Excution Model
+  <a class="reference internal nav-link" href="#openmp-fork-join-excution-model">
+   OpenMP Fork-Join Excution Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spmd-program-models">
+   SPMD Program Models
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -461,8 +466,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#openmp-excution-model">
-   OpenMP Excution Model
+  <a class="reference internal nav-link" href="#openmp-fork-join-excution-model">
+   OpenMP Fork-Join Excution Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spmd-program-models">
+   SPMD Program Models
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -497,27 +507,40 @@ It consists of a set of compiler directives with a “lightweight” syntax, lib
 <p>Thirdly, using OpenMP to create threads is considered to be convenient and relatively easy because it does not require an entry function, the code within the same function can be decomposed into multiple threads for execution, and a for loop can be decomposed into multiple threads for execution. If OpenMP is not used, when the operating system API creates a thread, the code in a function needs to be manually disassembled into multiple thread entry functions.</p>
 <p>To sum up, OpenMP has irreplaceable advantages in parallel programming. More and more new directives are being added to achieve more functions, and they are playing an important role on many different platforms.</p>
 </section>
-<section id="openmp-excution-model">
-<h2>OpenMP Excution Model<a class="headerlink" href="#openmp-excution-model" title="Permalink to this headline">#</a></h2>
+<section id="openmp-fork-join-excution-model">
+<h2>OpenMP Fork-Join Excution Model<a class="headerlink" href="#openmp-fork-join-excution-model" title="Permalink to this headline">#</a></h2>
 <p>The parallel model used by OpenMP is called the fork-join model, as shown in the following figure:
 <img alt="fork-join_model1" src="../_images/20190720101130709.png" />
 <img alt="fork-join_model1" src="../_images/0_13209261094r4F.png" /></p>
 <p><font color="#000066"> Drwa a new figure, merge these 2 figures and shown the barrier in the new figure</font><br />
-All OpenMP programs start with a single thread which is the master thread. The master thread executes serially until it encounters the first parallel region.
-When the master thread encounters a parallel region, i.e. when it encounters an OpenMP parallel instruction, it creates a thread group consisting of itself and some additional (possibly zero) worker threads. This process called fork.
+All OpenMP programs start with a single thread which is the master thread. The master thread executes serially until it encounters the first parallel region. Parallel region is a block of code executed by all threads in a team simultaneously.</p>
+<p>When the master thread encounters a parallel region, i.e. when it encounters an OpenMP parallel instruction, it creates a thread group consisting of itself and some additional (possibly zero) worker threads. This process called fork.
 These threads can execute tasks in parallel and are uniformly dispatched by the master thread. There is an implicit barrier at the end of the parallel region. When the thread has finished executing its task, it will wait at the barrier. When all threads have completed their tasks, the threads can leave the barrier. The master thread is left and continues to execute the serial code after the parallel region. This process called join.</p>
 <p>Thread management is done by the runtime library, which maintains a pool of worker threads that can be used to work on parallel regions. It will allocate or reclaim the threads based on the OpenMP instructions and sometimes adjust the number of threads to allocate based on the availability of threads.</p>
 </section>
+<section id="spmd-program-models">
+<h2>SPMD Program Models<a class="headerlink" href="#spmd-program-models" title="Permalink to this headline">#</a></h2>
+<p>The program model in the parallel region is Single Program, Multiple Data (SPMD). Processor Elements (PE) execute the same program in parallel, but has its own data. Each PE uses a unique ID to access its portion of data and different PEs can follow different paths through the same code.
+Each PE knows its own ID, and while programming, we can use conditional statements to control one or more threads.
+The commonly used format to follow is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">my_id</span> <span class="o">==</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">else</span><span class="p">{}</span>
+</pre></div>
+</div>
+<p>SPMD is by far the most commonly used pattern for structuring parallel programs. In addition to openmp, other common parallel programming languages, such as MPI that can be applied to distributed memory systems, and CUDA that can be applied to CPU+GPU heterogeneous systems, all adopt this model.</p>
+</section>
 <section id="openmp-memory-model">
 <h2>OpenMP Memory Model<a class="headerlink" href="#openmp-memory-model" title="Permalink to this headline">#</a></h2>
-<p>At the beginning of this section, we briefly introduce two common memory models, namely shared memory and distributed memory. Shared memory means that multiple cores share a single memory, while distributed memory means that each computing node (possibly one or more cores) has its own memory. General large computers combine distributed memory and shared memory models, that is, shared memory within each computing node and distributed memory between nodes.</p>
+<p>At the beginning of this part, we briefly introduce two common memory models, namely shared memory and distributed memory. Shared memory means that multiple cores share a single memory, while distributed memory means that each computing node (possibly one or more cores) has its own memory. General large computers combine distributed memory and shared memory models, that is, shared memory within each computing node and distributed memory between nodes.</p>
 <p>OpenMP supports the shared memory model that reduces execution time by creating multithreading to distribute parallelizable loads to multiple physical computing cores.
 Before the support for heterogeneous computing in OpenMP 4.0, there was only one address space.</p>
-<p>OpenMP programs have two different basic types of memory: private and shared. Variables can also be divided into private variables and public variables. The type of the variable can be defined using an explicit private clause, or it can be defined according to default rules. Although the default rules are clear, we still recommend programmers explicitly define the types of variables, because using default rules does not always meet our expectations, and many errors may occur because of the subtlety of default rules.
-The following figure shows the OpenMP memory model.</p>
+<p>The following figure shows the OpenMP memory model.</p>
 <p><img alt="memory_model" src="../_images/1.png" /></p>
+<p>Let’s introduce some features of this model. First, all threads have access to the same, globally shared memory.</p>
+<p>Second,OpenMP programs have two different basic types of memory: private and shared. Variables can also be divided into private variables and public variables. The type of the variable can be defined using an explicit private clause, or it can be defined according to default rules. Although the default rules are clear, we still recommend programmers explicitly define the types of variables, because using default rules does not always meet our expectations, and many errors may occur because of the subtlety of default rules.</p>
 <p>Private variables are stored in private memory that is specially allocated to each thread, and other threads cannot access or modify private variables. Access conflicts will never happen when accessing the private variables. Even if there are other variables with the same name in the program or variables with the same name for multiple threads, these variables will be stored in different locations and will not be confused. The specific mechanism will be explained in detail when introducing the private clause.</p>
 <p>There are two differences between shared variables and private variables. The first is that shared variables are not allowed to share one name. Each variable is unique. Secondly, shared variables are stored in memory that all threads can access, and any thread can access shared variables at any time. The control of access conflicts is the responsibility of the user.</p>
+<p>The other two features of this memory model are that data transfer is transparent to the programmer and synchronization takes olace, but it is mostly implicit.</p>
 </section>
 </section>
 
