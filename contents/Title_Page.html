@@ -114,6 +114,11 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="Foreword_Chapt.html">
+   Foreword
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Chap_directives.html">
    OpenMP Directive Syntax
   </a>
@@ -209,6 +214,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Title_Page.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -364,7 +398,17 @@ title="Print to PDF"
                 
               <div>
                 
-  
+  <p><img alt="image" src="../_images/openmp-logo.png" /></p>
+<div align='center' ><font size='70'>OpenMP Application Programming Interface</font></div>
+<div align='center' ><font size='70'>Examples</font></div>
+<div align='center' ><font size='5'>Version 5.2 - April 2022</font></div><p>Source codes for OpenMP 5.2 Examples are available at <a class="reference external" href="https://github.com/OpenMP/Examples/tree/v5.2">github
+(https://github.com/OpenMP/Examples/tree/v5.2)</a>.</p>
+<p>Copyright © 1997-2022 OpenMP Architecture Review Board.
+Permission to copy without fee all or part of this material is granted,
+provided the OpenMP Architecture Review Board copyright notice and the
+title of this document appear. Notice is given that copying is by
+permission of OpenMP Architecture Review Board.</p>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -374,16 +418,16 @@ title="Print to PDF"
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "native"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "native",
             path: "./contents"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'native'</script>
 
               </div>
               
