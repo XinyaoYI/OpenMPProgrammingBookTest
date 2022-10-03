@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Parallel Programming for Multicore and Multi-CPU Machines &#8212; Parallel Programming and Performance Optimization With OpenMP</title>
+    <title>Parallel Programming for Multicore and Multi-CPU Machines &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -89,9 +89,14 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
       
       
-      <h1 class="site-logo" id="site-title">Parallel Programming and Performance Optimization With OpenMP</h1>
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">OpenMP Application Programming Interface Examples</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -102,127 +107,56 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../cover.html">
-                    OpenMP Programming Book
+                <a class="reference internal" href="../intro.html">
+                    Welcome to OMP Jupyter Book
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../copyright.html">
-   copyright
+  <a class="reference internal" href="../contents/Chap_directives.html">
+   OpenMP Directive Syntax
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../foreword.html">
-   foreword
+  <a class="reference internal" href="../contents/Chap_parallel_execution.html">
+   Parallel Execution
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../preface.html">
-   preface
+  <a class="reference internal" href="../contents/Chap_affinity.html">
+   OpenMP Affinity
   </a>
  </li>
-</ul>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Ch1_openmpIntro.html">
-   1. Overview of OpenMP Programming
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contents/Chap_tasking.html">
+   Tasking
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../openmp_c/1_IntroductionOfOpenMP.html">
-     1.1. Introduction of OpenMP
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../openmp_c/2_Syntax.html">
-     1.2. Creating a Parallel Program with OpenMP
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../openmp_c/3_performance.html">
-     1.3. Performance Analysis
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Ch2_MulticoreMultiCPU.html">
-   2. Parallel Programming for Multicore and Multi-CPU Machines
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contents/Chap_SIMD.html">
+   SIMD
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="1_MIMDArchitecture.html">
-     2.1. Multicore and Multi-CPU shared memory systems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="2_UsingOpenMP.html">
-     2.2. Creating SPMD parallelism using OpenMP
-     <strong>
-      parallel
-     </strong>
-     and
-     <strong>
-      teams
-     </strong>
-     directive
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="3_SynchronizationThreads.html">
-     2.3. Synchronization of threads using barrier and order directive
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="4_AsynchronousTasking.html">
-     2.4. Asynchronous tasking
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="5_ExplicitDistribution.html">
-     2.5. Explicit distribution of work using single, sections, workshring-loop, and distribute construct
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Ch3_SIMDVector.html">
-     2.6. Parallel Programming for SIMD and Vector Architecture
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Ch4_GPUAccel.html">
-   3. Parallel Programming for GPU Accelerators
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contents/Chap_synchronization.html">
+   Synchronization
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../GPUAccelerators/1_DataMapping.html">
-     3.1. Data Mapping
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../GPUAccelerators/2_Metadirective.html">
-     3.2. Metadirective (possible separate section)
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contents/Chap_data_environment.html">
+   Data Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contents/Chap_memory_model.html">
+   Memory Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contents/Chap_program_control.html">
+   Program Control
+  </a>
  </li>
 </ul>
 
@@ -297,7 +231,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/passlab/OpenMPProgrammingBook"
+        <a href="https://github.com/passlab/Examples"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -314,7 +248,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/passlab/OpenMPProgrammingBook/issues/new?title=Issue%20on%20page%20%2FMultiCoreMultiCPU/plan.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2FMultiCoreMultiCPU/plan.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -667,7 +601,7 @@ Divide into paragraphs and identify the content for each paragraph</p>
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By Michael Womack, Anjia Wang, Patrick Flynn, Xinyao Yi, Yonghong Yan<br/>
+    By The OpenMP Community<br/>
   
       &copy; <a href="../copyright.html">Copyright</a> 2022.<br/>
 </p>
