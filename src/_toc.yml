@@ -1,6 +1,7 @@
 format: jb-article
 root: intro
 sections:
+- file: contents/Title_Page
 - file: contents/Foreword_Chapt
 - file: contents/Chap_introduction
 - file: contents/Chap_directives
