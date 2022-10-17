@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>Introduction &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -114,10 +114,15 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Foreword_Chapt.html">
    Foreword
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction
   </a>
  </li>
  <li class="toctree-l1">
@@ -216,6 +221,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_introduction.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -341,7 +375,12 @@ title="Print to PDF"
         <i class="fas fa-list"></i> Contents
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="simple visible nav section-nav flex-column">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-organization">
+   Examples Organization
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -351,7 +390,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>Introduction</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -360,7 +399,12 @@ title="Print to PDF"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-organization">
+   Examples Organization
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -371,7 +415,36 @@ title="Print to PDF"
                 
               <div>
                 
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+<p>This collection of programming examples supplements the OpenMP API for Shared Memory Parallelization specifications, and is not part of the formal specifications. It assumes familiarity with the OpenMP specifications, and shares the typographical conventions used in that document.</p>
+<p>The OpenMP API specification provides a model for parallel programming that is portable across shared memory architectures from different vendors. Compilers from numerous vendors support the OpenMP API.</p>
+<p>The directives, library routines, and environment variables demonstrated in this document allow users to create and manage parallel programs while permitting portability. The directives extend the C, C++ and Fortran base languages with single program multiple data (SPMD) constructs, tasking constructs, device constructs, worksharing constructs, and synchronization constructs, and they provide support for sharing and privatizing data. The functionality to control the runtime environment is provided by library routines and environment variables. Compilers that support the OpenMP API often include a command line option to the compiler that activates and allows interpretation of all OpenMP directives.</p>
+<p>The documents and source codes for OpenMP Examples can be downloaded from <a class="reference external" href="https://github.com/OpenMP/Examples">https://github.com/OpenMP/Examples</a>. Each directory holds the contents of a chapter and has a  <em>sources</em>  subdirectory of its codes.</p>
+<p>Complete information about the OpenMP API and a list of the compilers that support the OpenMP API can be found at the <a class="reference external" href="http://OpenMP.org">OpenMP.org</a> web site</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://www.openmp.org</span></code></p>
+<section id="examples-organization">
+<h2>Examples Organization<a class="headerlink" href="#examples-organization" title="Permalink to this headline">#</a></h2>
+<p><strong>example label</strong> **example label!omp_verno <code class="docutils literal notranslate"><span class="pre">omp_</span></code> <em>verno</em> ** **omp_verno <code class="docutils literal notranslate"><span class="pre">omp_</span></code> <em>verno</em> **</p>
+<p>This document includes examples of the OpenMP API directives, constructs, and routines.</p>
+<p>Each example is labeled as  <em>ename.seqno.ext</em> , where  <em>ename</em>  is  the example name,  <em>seqno</em>  is the sequence number in a section, and   <em>ext</em>  is the source file extension to indicate the code type and  source form.   <em>ext</em>  is one of the following: [noitemsep,labelindent=5mm,widest=f90]</p>
+<ul class="simple">
+<li><p>[ <em>c</em> ] –  C code,</p></li>
+</ul>
+<ul class="simple">
+<li><p>[ <em>cpp</em> ] –  C++ code,</p></li>
+</ul>
+<ul class="simple">
+<li><p>[ <em>f</em> ] –  Fortran code in fixed form, and</p></li>
+</ul>
+<ul class="simple">
+<li><p>[ <em>f90</em> ] –  Fortran code in free form.</p></li>
+</ul>
+<p>Some of the example labels may include version information  (<code class="docutils literal notranslate"><span class="pre">omp_</span> <span class="pre">_verno_</span> </code>) to indicate features that are illustrated by an example for a specific OpenMP version, such as ” <em>scan.1.c</em>   (<code class="docutils literal notranslate"><span class="pre">omp_5.0</span></code>).’’</p>
+<p>A statement following a directive is compound only when necessary, and a  non-compound statement is indented with respect to a directive preceding it.  ../../introduction/Examples.tex</p>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -381,16 +454,16 @@ title="Print to PDF"
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "native"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "native",
             path: "./contents"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'native'</script>
 
               </div>
               
