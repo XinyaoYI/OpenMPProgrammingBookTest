@@ -490,6 +490,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-virtual-functions">
+   C++ Virtual Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#array-shaping">
    Array Shaping
   </a>
@@ -992,6 +997,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#array-sections-in-device-constructs">
    Array Sections in Device Constructs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-virtual-functions">
+   C++ Virtual Functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -3206,13 +3216,110 @@ end subroutine
 </div>
 </div>
 </section>
+<section id="c-virtual-functions">
+<h2>C++ Virtual Functions<a class="headerlink" href="#c-virtual-functions" title="Permalink to this headline">#</a></h2>
+<p>The 5.2 OpenMP Specification clarified restrictions on the use
+of polymorphic classes and virtual functions when used within
+<strong>target</strong> regions.  The following example identifies
+problem cases in which the restrictions are not followed
+(for Unified Shared Memory, as prescribed by the <strong>requires</strong>
+directive).</p>
+<p>The first section illustrates the restriction
+that when mapping an object for the first time,
+the static and dynamic types must match.</p>
+<p>For the first target region the behavior of the implicit map of <em>ar</em>
+is not specified - its static type (A) doesn’t match its dynamic type (D).<br />
+Hence access to the virtual functions is undefined.
+However, the second target region can access <em>D::vf()</em>
+since the object to which <em>ap</em> points is not mapped and
+therefore the restriction does not apply.</p>
+<p>The second section illustrates the restriction:</p>
+<p><em>“Invoking a virtual member function of an object on a device other than the device on which the
+object was constructed results in unspecified behavior, unless the object is accessible and was
+constructed on the host device.”</em></p>
+<p>An instantiation of a polymorphic class (<em>A</em>) occurs in the
+<strong>target</strong> region, and access of its virtual function
+is incorrectly attempted on the host (another device).
+However, once the object is deleted on
+the target device and instantiated on the host, access within
+the next <strong>target</strong> region is permitted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
+//%cflags: -fopenmp
+
+/*
+* @@name:       virtual_functions.1
+* @@type:       C++
+* @@compilable: yes
+* @@linkable:   no
+* @@expect:     success
+* @@version:	omp_5.2
+*/
+#include &lt;iostream&gt;
+#pragma omp requires unified_shared_memory
+
+#pragma omp begin declare target
+class A {  
+  public:
+   virtual void vf()  { std::cout &lt;&lt; &quot;In A\n&quot;; }
+};
+
+class D: public A {
+  public:
+   void vf() override { std::cout &lt;&lt; &quot;In D\n&quot;; }
+};
+#pragma omp end declare target
+
+int main(){
+
+   // Section 1 --------------------------------------------------------
+   D d;               // D derives from A, and A::vf() is virtual
+   A &amp;ar = d;         // reference to Derived object d
+
+   #pragma omp target // implicit map of ar is illegal here
+   {
+      ar.vf();        // unspecified whether A::vf() or D::vf() is called
+   }
+   
+   A *ap = &amp;d;        // pointer to derived object d
+   #pragma omp target // No need for mapping with Unified Share Memory
+   {                  // implicit ap[:0] map is fine 
+      ap-&gt;vf();       // calls D::vf()
+   }
+
+   // Section 2 --------------------------------------------------------
+   ap = nullptr;
+   #pragma omp target map(ap)
+   {
+        ap = new A();
+   }
+   
+   ap-&gt;vf();     // illegal
+
+   #pragma omp target
+   {
+      delete ap;
+   }
+   ap = new A();
+   #pragma omp target  // No need for mapping with Unified Share Memory
+   {
+      ap-&gt;vf();  // ok
+   }
+
+   return 0;
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="array-shaping">
 <h2>Array Shaping<a class="headerlink" href="#array-shaping" title="Permalink to this headline">#</a></h2>
-<p>**array shaping!in motion-clause in  <em>motion-clause</em> ** <strong>constructs!target update <strong>target</strong> <strong>update</strong></strong> <strong>target update construct <strong>target</strong> <strong>update</strong> construct!to clause <strong>to</strong> clause</strong> <strong>target update construct <strong>target</strong> <strong>update</strong> construct!from clause <strong>from</strong> clause</strong></p>
-<p><strong>directives!declare target <strong>declare</strong> <strong>target</strong></strong> <strong>declare target directive <strong>declare</strong> <strong>target</strong> directive</strong></p>
-<p><strong>directives!begin declare target <strong>begin</strong> <strong>declare</strong> <strong>target</strong></strong> <strong>begin declare target directive <strong>begin</strong> <strong>declare</strong> <strong>target</strong> directive</strong></p>
-<p>A pointer variable can be shaped to a multi-dimensional array to facilitate data access. This is achieved by a  <em>shape-operator</em>  casted in front of  a pointer (lvalue expression):  <strong>([ s_1 ][ s_2 ]…[ s_n ])</strong> <em>pointer</em>   where each  s_i  is an integral-type expression of positive value. The shape-operator can appear in either the  <em>motion-clause</em>  of the <strong>target</strong> <strong>update</strong> directive or the <strong>depend</strong> clause.</p>
-<p>The following example shows the use of the shape-operator in the  <strong>target</strong> <strong>update</strong> directive. The shape-operator <strong>([nx][ny+2])</strong> casts pointer variable  a  to a 2-dimentional array of size  <em>nx</em>  x  <em>(ny+2)</em> .  The resulting array is then accessed as array sections (such as <strong>[0:nx][1]</strong> and <strong>[0:nx][ny]</strong>)  in the <strong>from</strong> or <strong>to</strong> clause for transferring two columns of  noncontiguous boundary data from or to the device.   Note the use of additional parentheses around the shape-operator and  a  to ensure the correct precedence  over array-section operations.</p>
+<p>A pointer variable can be shaped to a multi-dimensional array to facilitate data access. This is achieved by a  <em>shape-operator</em>  casted in front of  a pointer (lvalue expression):<br />
+<strong>([ s<sub>1</sub>][ s<sub>2</sub>]…[ s<sub>n</sub>])</strong> <em>pointer</em><br />
+where each  s<sub>i</sub>  is an integral-type expression of positive value. The shape-operator can appear in either the  <em>motion-clause</em>  of the <strong>target</strong> <strong>update</strong> directive or the <strong>depend</strong> clause.</p>
+<p>The following example shows the use of the shape-operator in the  <strong>target</strong> <strong>update</strong> directive. The shape-operator <strong>([nx][ny+2])</strong> casts pointer variable <em>a</em> to a 2-dimentional array of size  <em>nx</em>  x  <em>(ny+2)</em> .  The resulting array is then accessed as array sections (such as <strong>[0:nx][1]</strong> and <strong>[0:nx][ny]</strong>)  in the <strong>from</strong> or <strong>to</strong> clause for transferring two columns of  noncontiguous boundary data from or to the device.   Note the use of additional parentheses around the shape-operator and <em>a</em> to ensure the correct precedence  over array-section operations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
@@ -3257,7 +3364,6 @@ void array_shaping(double *a, int nx, int ny)
       other_work(a, nx, ny);
    }
 }
-
 </pre></div>
 </div>
 </div>
@@ -3265,7 +3371,9 @@ void array_shaping(double *a, int nx, int ny)
 <p>The shape operator is not defined for Fortran.  Explicit array shaping of procedure arguments can be used instead to achieve a similar goal. Below is the Fortran-equivalent of the above example that illustrates the support of transferring two rows of noncontiguous boundary data in the <strong>target</strong> <strong>update</strong> directive.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: array_shaping.1
 ! type: F-free
 ! version: omp_5.2
@@ -3324,16 +3432,13 @@ subroutine array_shaping(a, nx, ny)
    !$omp end target data
 
 end subroutine
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../devices/array_shaping.tex</p>
 </section>
 <section id="declare-mapper-directive">
 <h2><strong>declare mapper</strong> Directive<a class="headerlink" href="#declare-mapper-directive" title="Permalink to this headline">#</a></h2>
-<p><strong>directives!declare mapper <strong>declare</strong> <strong>mapper</strong></strong> <strong>declare mapper directive <strong>declare</strong> <strong>mapper</strong> directive</strong></p>
 <p>The following examples show how to use the <strong>declare mapper</strong> directive to prescribe a map for later use. It is also quite useful for pre-defining partitioned and nested  structure elements.</p>
 <p>In the first example the <strong>declare mapper</strong> directive specifies  that any structure of type  <em>myvec_t</em>  for which implicit data-mapping rules apply will be mapped according to its <strong>map</strong> clause. The variable  <em>v</em>  is used for referencing the structure and its  elements within the <strong>map</strong> clause.  Within the <strong>map</strong> clause the  <em>v</em>  variable specifies that all elements of the structure are to be mapped.  Additionally, the array section  <em>v.data[0:v.len]</em>  specifies that the dynamic  storage for data is to be mapped.</p>
 <p>Within the main program the  <em>s</em>  variable is typed as  <em>myvec_t</em> . Since the variable is found within the target region and the type has a mapping prescribed by a <strong>declare mapper</strong> directive, it will be automatically mapped according to its prescription:  full structure, plus the dynamic storage of the  <em>data</em>  element.</p>
@@ -3374,14 +3479,15 @@ int main(){
 
 void init(myvec_t *s)
 { for(int i=0; i&lt;s-&gt;len; i++) s-&gt;data[i]=i; }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name:       target_mapper.1
 ! type:       F-free
 ! version:    omp_5.0
@@ -3419,12 +3525,11 @@ subroutine init(s)
 
   s%data = [ (i, i=1,s%len) ]
 end subroutine
-
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>mapping!deep copy</strong> <strong>map clause <strong>map</strong> clause!mapper modifier <strong>mapper</strong> modifier</strong> <strong>mapper modifier <strong>mapper</strong> modifier</strong> The next example illustrates the use of the  <em>mapper-identifier</em>  and deep copy within a structure.  The structure,  <em>dzmat_t</em> ,  represents a complex matrix,  with separate real ( <em>r_m</em> ) and imaginary ( <em>i_m</em> ) elements. Two map identifiers are created for partitioning the  <em>dzmat_t</em>  structure.</p>
+<p>The next example illustrates the use of the  <em>mapper-identifier</em>  and deep copy within a structure.  The structure,  <em>dzmat_t</em> ,  represents a complex matrix,  with separate real ( <em>r_m</em> ) and imaginary ( <em>i_m</em> ) elements. Two map identifiers are created for partitioning the  <em>dzmat_t</em>  structure.</p>
 <p>For the C/C++ code the first identifier is named  <em>top_id</em>  and maps the top half of two matrices of type  <em>dzmat_t</em> ; while the second identifier,  <em>bottom_id</em> , maps the lower half of two matrices.  Each identifier is applied to a different <strong>target</strong> construct, as  <strong>map(mapper(top_id), tofrom: a,b)</strong>  and <strong>map(mapper(bottom_id), tofrom: a,b)</strong>. Each target offload is allowed to execute concurrently on two different devices  ( <em>0</em>  and  <em>1</em> ) through the <strong>nowait</strong> clause.</p>
 <p>The Fortran code uses the  <em>left_id</em>  and  <em>right_id</em>  map identifiers in the <strong>map(mapper(left_id),tofrom: a,b)</strong> and <strong>map(mapper(right_id),tofrom: a,b)</strong> map clauses.   The array sections for these left and right contiguous portions of the matrices  were defined previously in the <strong>declare mapper</strong> directive.</p>
 <p>Note, the  <em>is</em>  and  <em>ie</em>  scalars are firstprivate  by default for a target region, but are declared firstprivate anyway to remind the user of important firstprivate data-sharing properties required here.</p>
@@ -3486,14 +3591,15 @@ int main()
 
   host_add(&amp;a,&amp;b,&amp;c,N);
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name:       target_mapper.2
 ! type:       F-free
 ! version:    omp_5.0
@@ -3540,12 +3646,11 @@ program main
   call host_add(a,b,c)
 
 end program main
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>In the third example  <em>myvec</em>  structures are nested within a  <em>mypoints</em>  structure. The  <em>myvec_t</em>  type is mapped as in the first example.  Following the  <em>mypoints</em>  structure declaration,  the  <em>mypoints_t</em>  type is mapped by a <strong>declare mapper</strong> directive.  For this structure the  <em>hostonly_data</em>  element will not be mapped; also the array section of  <em>x</em>  ( <em>v.x[:1]</em> ) and  <em>x</em>  will be mapped; and  <em>scratch</em>  will be allocated and used as scratch storage on the device. The default map-type mapping, <strong>tofrom</strong>, applies to the  <em>x</em>  array section, but not to  <em>scratch</em>  which is explicitly mapped with the <strong>alloc</strong> map-type.  Note: the variable  <em>v</em>  is not included in the map list (otherwise the  <em>hostonly_data</em>  would be mapped)– just the elements  to be mapped are listed.</p>
+<p>In the third example  <em>myvec</em>  structures are nested within a  <em>mypoints</em>  structure. The  <em>myvec_t</em>  type is mapped as in the first example.  Following the  <em>mypoints</em>  structure declaration,  the  <em>mypoints_t</em>  type is mapped by a <strong>declare mapper</strong> directive.  For this structure the  <em>hostonly_data</em>  element will not be mapped; also the array section of  <em>x</em>  ( <em>v.x[:1]</em> ) and  <em>x</em>  will be mapped; and  <em>scratch</em>  will be allocated and used as scratch storage on the device. The default map-type mapping, <strong>tofrom</strong>, applies to the  <em>x</em>  array section, but not to  <em>scratch</em>  which is explicitly mapped with the <strong>alloc</strong> map-type.  Note: the variable  <em>v</em>  is not included in the map list (otherwise the  <em>hostonly_data</em>  would be mapped) - just the elements  to be mapped are listed.</p>
 <p>The two mappers are combined when a  <em>mypoints_t</em>  structure type is mapped, because the mapper  <em>myvec_t</em>  structure type is used within a  <em>mypoints_t</em>  type structure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3593,14 +3698,15 @@ int main(){
    eval_mypts_array(&amp;P, N);
 
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name:       target_mapper.3
 ! type:       F-free
 ! version:    omp_5.0
@@ -3636,19 +3742,15 @@ program main
    call eval_mypts_array(P)
 
 end program
-
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../devices/target_mapper.tex</p>
 </section>
 <section id="target-data-construct">
 <h2><strong>target</strong> <strong>data</strong> Construct<a class="headerlink" href="#target-data-construct" title="Permalink to this headline">#</a></h2>
 <section id="simple-target-data-construct">
 <h3>Simple <strong>target</strong> <strong>data</strong> Construct<a class="headerlink" href="#simple-target-data-construct" title="Permalink to this headline">#</a></h3>
-<p><strong>constructs!target data <strong>target</strong> <strong>data</strong></strong> <strong>target data construct <strong>target</strong> <strong>data</strong> construct</strong></p>
 <p>This example shows how the <strong>target</strong> <strong>data</strong> construct maps variables  to a device data environment. The <strong>target</strong> <strong>data</strong> construct creates  a new device data environment and maps the variables  <em>v1</em> ,  <em>v2</em> , and  <em>p</em>  to the new device  data environment. The <strong>target</strong> construct enclosed in the <strong>target</strong>  <strong>data</strong> region creates a new device data environment, which inherits the  variables  <em>v1</em> ,  <em>v2</em> , and  <em>p</em>  from the enclosing device data environment. The variable   <em>N</em>  is mapped into the new device data environment from the encountering task’s data  environment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3675,7 +3777,6 @@ void vec_mult(float *p, float *v1, float *v2, int N)
    }
    output(p, N);
 }
-
 </pre></div>
 </div>
 </div>
@@ -3683,7 +3784,9 @@ void vec_mult(float *p, float *v1, float *v2, int N)
 <p>The Fortran code passes a reference and specifies the extent of the arrays in the  declaration. No length information is necessary in the map clause, as is required  with C/C++ pointers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: target_data.1
 ! type: F-free
 ! version:    omp_4.0
@@ -3701,7 +3804,6 @@ subroutine vec_mult(p, v1, v2, N)
    !$omp end target data
    call output(p, N)
 end subroutine
-
 </pre></div>
 </div>
 </div>
@@ -3742,7 +3844,6 @@ void vec_mult(float *p, float *v1, float *v2, int N)
    }
    output(p, N);
 }
-
 </pre></div>
 </div>
 </div>
@@ -3750,7 +3851,9 @@ void vec_mult(float *p, float *v1, float *v2, int N)
 <p>The Fortran code uses reference and specifies the extent of the  <em>p</em> ,  <em>v1</em>  and  <em>v2</em>  arrays.  No length information is necessary in the <strong>map</strong> clause, as is required with  C/C++ pointers. The arrays  <em>v1</em>  and  <em>v2</em>  are mapped at each <strong>target</strong> construct.  Instead of mapping the array  <em>p</em>  twice, once at each target construct,  <em>p</em>  is mapped  once by the <strong>target</strong> <strong>data</strong> construct.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: target_data.2
 ! type: F-free
 ! version:    omp_4.0
@@ -3775,12 +3878,11 @@ subroutine vec_mult(p, v1, v2, N)
    !$omp end target data
    call output(p, N)
 end subroutine
-
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>target data construct <strong>target</strong> <strong>data</strong> construct!map clause <strong>map</strong> clause</strong> <strong>target construct <strong>target</strong> construct!map clause <strong>map</strong> clause</strong> <strong>target construct <strong>target</strong> construct!implicit mapping</strong> <strong>map clause <strong>map</strong> clause!tofrom map-type <strong>tofrom</strong> map-type</strong> In the following example, the array  <em>Q</em>  is mapped once at the enclosing  <strong>target</strong> <strong>data</strong> region instead of at each <strong>target</strong> construct.  In OpenMP 4.0, a scalar variable is implicitly mapped with the <strong>tofrom</strong> map-type. But since OpenMP 4.5, a scalar variable, such as the  <em>tmp</em>  variable, has to be explicitly mapped with  the <strong>tofrom</strong> map-type at the first <strong>target</strong> construct in order to return  its reduced value from the parallel loop construct to the host. The variable defaults to firstprivate at the second <strong>target</strong> construct.</p>
+<p>In the following example, the array  <em>Q</em>  is mapped once at the enclosing  <strong>target</strong> <strong>data</strong> region instead of at each <strong>target</strong> construct.  In OpenMP 4.0, a scalar variable is implicitly mapped with the <strong>tofrom</strong> map-type. But since OpenMP 4.5, a scalar variable, such as the  <em>tmp</em>  variable, has to be explicitly mapped with  the <strong>tofrom</strong> map-type at the first <strong>target</strong> construct in order to return  its reduced value from the parallel loop construct to the host. The variable defaults to firstprivate at the second <strong>target</strong> construct.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
@@ -3821,14 +3923,15 @@ void gramSchmidt(float Q[][COLS], const int rows)
           execution with 4.5 (and pre-4.5) compliant compilers.
           See Devices Intro.
  */
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: target_data.3
 ! type: F-free
 ! version:    omp_4.0
@@ -3859,7 +3962,6 @@ end subroutine
 
 ! Note:  The variable tmp is now mapped with tofrom, for correct
 ! execution with 4.5 (and pre-4.5) compliant compilers. See Devices Intro.
-
 </pre></div>
 </div>
 </div>
@@ -3868,7 +3970,7 @@ end subroutine
 <section id="target-data-construct-with-orphaned-call">
 <h3><strong>target</strong> <strong>data</strong> Construct with Orphaned Call<a class="headerlink" href="#target-data-construct-with-orphaned-call" title="Permalink to this headline">#</a></h3>
 <p>The following two examples show how the <strong>target</strong> <strong>data</strong> construct  maps variables to a device data environment. The <strong>target</strong> <strong>data</strong>  construct’s device data environment encloses the <strong>target</strong> construct’s device  data environment in the function <strong>vec_mult()</strong>.</p>
-<p><strong>map clause <strong>map</strong> clause!alloc map-type <strong>alloc</strong> map-type</strong> When the type of the variable appearing in an array section is pointer, the pointer  variable and the storage location of the corresponding array section are mapped  to the device data environment. The pointer variable is treated as if it had appeared  in a <strong>map</strong> clause with a map-type of <strong>alloc</strong>. The array section’s  storage location is mapped according to the map-type in the <strong>map</strong> clause  (the default map-type is <strong>tofrom</strong>).</p>
+<p>When the type of the variable appearing in an array section is pointer, the pointer  variable and the storage location of the corresponding array section are mapped  to the device data environment. The pointer variable is treated as if it had appeared  in a <strong>map</strong> clause with a map-type of <strong>alloc</strong>. The array section’s  storage location is mapped according to the map-type in the <strong>map</strong> clause  (the default map-type is <strong>tofrom</strong>).</p>
 <p>The <strong>target</strong> construct’s device data environment inherits the storage locations  of the array sections  <em>v1[0:N]</em> ,  <em>v2[:n]</em> , and  <em>p0[0:N]</em>  from the enclosing <strong>target</strong> <strong>data</strong> construct’s device data environment. Neither initialization nor assignment is performed  for the array sections in the new device data environment.</p>
 <p>The pointer variables  <em>p1</em> ,  <em>v3</em> , and  <em>v4</em>  are mapped into the <strong>target</strong> construct’s device  data environment with an implicit map-type of alloc and they are assigned the address  of the storage location associated with their corresponding array sections. Note  that the following pairs of array section storage locations are equivalent ( <em>p0[:N]</em> ,   <em>p1[:N]</em> ), ( <em>v1[:N]</em> , <em>v3[:N]</em> ), and ( <em>v2[:N]</em> , <em>v4[:N]</em> ).</p>
 <div class="cell docutils container">
@@ -3910,7 +4012,6 @@ void vec_mult(float *p1, float *v3, float *v4, int N)
      p1[i] = v3[i] * v4[i];
    }
 }
-
 </pre></div>
 </div>
 </div>
@@ -3920,7 +4021,9 @@ void vec_mult(float *p1, float *v3, float *v4, int N)
 <p>The pointer variables  <em>p1</em> ,  <em>v3</em> , and  <em>v4</em>  are mapped into the <strong>target</strong> construct’s  device data environment with an implicit map-type of <strong>alloc</strong> and they are  assigned the address of the storage location associated with their corresponding  array sections. Note that the following pair of array storage locations are equivalent  ( <em>p0</em> , <em>p1</em> ), ( <em>v1</em> , <em>v3</em> ), and ( <em>v2</em> , <em>v4</em> ).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: target_data.4
 ! type: F-free
 ! version:    omp_4.0
@@ -3953,7 +4056,6 @@ integer                   :: N,i
 
 end subroutine
 end module
-
 </pre></div>
 </div>
 </div>
@@ -3989,7 +4091,6 @@ void vec_mult(float* &amp;p1, float* &amp;v3, float* &amp;v4, int &amp;N)
    for (i=0; i&lt;N; i++)
      p1[i] = v3[i] * v4[i];
 }
-
 </pre></div>
 </div>
 </div>
@@ -3997,7 +4098,9 @@ void vec_mult(float* &amp;p1, float* &amp;v3, float* &amp;v4, int &amp;N)
 <p>In the following example, the usual Fortran approach is used for dynamic memory.  The  <em>p0</em> ,  <em>v1</em> , and  <em>v2</em>  arrays are allocated in the main program and passed as references  from one routine to another. In <strong>vec_mult</strong>,  <em>p1</em> ,  <em>v3</em>  and  <em>v4</em>  are references to the   <em>p0</em> ,  <em>v1</em> , and  <em>v2</em>  arrays, respectively. The <strong>target</strong> construct’s device data  environment inherits the arrays  <em>p0</em> ,  <em>v1</em> , and  <em>v2</em>  from the enclosing target data construct’s  device data environment. Thus,  <em>p1</em> ,  <em>v3</em> , and  <em>v4</em>  are already present in the device  data environment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: target_data.5
 ! type: F-free
 ! version:    omp_4.0
@@ -4031,7 +4134,6 @@ real,allocatable, dimension(:) :: p, v1, v2
    call foo(p,v1,v2,N)
    deallocate( p, v1, v2 )
 end program
-
 </pre></div>
 </div>
 </div>
@@ -4039,7 +4141,6 @@ end program
 </section>
 <section id="target-data-construct-with-if-clause">
 <h3><strong>target</strong> <strong>data</strong> Construct with <strong>if</strong> Clause<a class="headerlink" href="#target-data-construct-with-if-clause" title="Permalink to this headline">#</a></h3>
-<p><strong>target data construct <strong>target</strong> <strong>data</strong> construct!if clause <strong>if</strong> clause</strong> <strong>clauses!if <strong>if</strong></strong> <strong>if clause <strong>if</strong> clause</strong></p>
 <p>The following two examples show how the <strong>target</strong> <strong>data</strong> construct  maps variables to a device data environment.</p>
 <p>In the following example, the if clause on the <strong>target</strong> <strong>data</strong> construct  indicates that if the variable  <em>N</em>  is smaller than a given threshold, then the <strong>target</strong>  <strong>data</strong> construct will not create a device data environment.</p>
 <p>The <strong>target</strong> constructs enclosed in the <strong>target</strong> <strong>data</strong> region  must also use an <strong>if</strong> clause on the same condition, otherwise the pointer  variable  <em>p</em>  is implicitly mapped with a map-type of <strong>tofrom</strong>, but the storage  location for the array section  <em>p[0:N]</em>  will not be mapped in the device data environments  of the <strong>target</strong> constructs.</p>
@@ -4075,7 +4176,6 @@ void vec_mult(float *p, float *v1, float *v2, int N)
    }
    output(p, N);
 }
-
 </pre></div>
 </div>
 </div>
@@ -4083,7 +4183,9 @@ void vec_mult(float *p, float *v1, float *v2, int N)
 <p>The <strong>if</strong> clauses work the same way for the following Fortran code. The <strong>target</strong>  constructs enclosed in the <strong>target</strong> <strong>data</strong> region should also use  an <strong>if</strong> clause with the same condition, so that the <strong>target</strong> <strong>data</strong>  region and the <strong>target</strong> region are either both created for the device, or  are both ignored.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: target_data.6
 ! type: F-free
 ! version:    omp_4.0
@@ -4112,7 +4214,6 @@ subroutine vec_mult(p, v1, v2, N)
    !$omp end target data
    call output(p, N)
 end subroutine
-
 </pre></div>
 </div>
 </div>
@@ -4144,7 +4245,6 @@ void vec_mult(float *p, float *v1, float *v2, int N)
    } /* UNDEFINED behavior if N&lt;=THRESHOLD */
    output(p, N);
 }
-
 </pre></div>
 </div>
 </div>
@@ -4152,7 +4252,9 @@ void vec_mult(float *p, float *v1, float *v2, int N)
 <p>The <strong>if</strong> clauses work the same way for the following Fortran code. When  the <strong>if</strong> clause conditional expression on the <strong>target</strong> construct  evaluates to  <em>false</em> , the <strong>target</strong> region will execute on the host  device. However, the <strong>target</strong> <strong>data</strong> construct created an enclosing  device data environment that mapped the  <em>p</em>  array (and  <em>v1</em>  and  <em>v2</em> ) to a device data  environment on the default target device. At the end of the <strong>target</strong> <strong>data</strong>  region the  <em>p</em>  array will be assigned from the device data environment to the corresponding  variable in the data environment of the task that encountered the <strong>target</strong>  <strong>data</strong> construct, resulting in undefined values in  <em>p</em> .</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: target_data.7
 ! type: F-free
 ! version:    omp_4.0
@@ -4174,20 +4276,17 @@ subroutine vec_mult(p, v1, v2, N)
    !$omp end target data
    call output(p, N)  !*** UNDEFINED behavior if N&lt;=THRESHOLD
 end subroutine
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../devices/target_data.tex</p>
 </section>
 </section>
 <section id="target-enter-data-and-target-exit-data-constructs">
 <h2><strong>target</strong> <strong>enter</strong> <strong>data</strong> and <strong>target</strong> <strong>exit</strong> <strong>data</strong> Constructs<a class="headerlink" href="#target-enter-data-and-target-exit-data-constructs" title="Permalink to this headline">#</a></h2>
-<p><strong>constructs!target enter data <strong>target</strong> <strong>enter</strong> <strong>data</strong></strong> <strong>constructs!target exit data <strong>target</strong> <strong>exit</strong> <strong>data</strong></strong> <strong>target enter data construct <strong>target</strong> <strong>enter</strong> <strong>data</strong> construct</strong> <strong>target exit data construct <strong>target</strong> <strong>exit</strong> <strong>data</strong> construct</strong></p>
 <p>The structured data construct (<strong>target</strong> <strong>data</strong>) provides persistent data on a device for subsequent <strong>target</strong> constructs as shown in the  <strong>target</strong> <strong>data</strong> examples above. This is accomplished by creating a single <strong>target</strong> <strong>data</strong> region containing <strong>target</strong> constructs.</p>
 <p>The unstructured data constructs allow the creation and deletion of data on the device at any appropriate point within the host code, as shown below  with the <strong>target</strong> <strong>enter</strong> <strong>data</strong> and <strong>target</strong> <strong>exit</strong> <strong>data</strong> constructs.</p>
-<p><strong>map clause <strong>map</strong> clause!alloc map-type <strong>alloc</strong> map-type</strong> <strong>map clause <strong>map</strong> clause!delete map-type <strong>delete</strong> map-type</strong> <strong>alloc map-type <strong>alloc</strong> map-type</strong> <strong>delete map-type <strong>delete</strong> map-type</strong> The following C++ code creates/deletes a vector in a constructor/destructor  of a class. The constructor creates a vector with <strong>target</strong> <strong>enter</strong> <strong>data</strong> and uses an <strong>alloc</strong> modifier in the <strong>map</strong> clause to avoid copying values to the device. The destructor deletes the data (<strong>target</strong> <strong>exit</strong> <strong>data</strong>) and uses the <strong>delete</strong> modifier in the <strong>map</strong> clause to avoid copying data back to the host. Note, the stand-alone <strong>target</strong> <strong>enter</strong> <strong>data</strong> occurs  after the host vector is created, and the <strong>target</strong> <strong>exit</strong> <strong>data</strong> construct occurs before the host data is deleted.</p>
+<p>The following C++ code creates/deletes a vector in a constructor/destructor  of a class. The constructor creates a vector with <strong>target</strong> <strong>enter</strong> <strong>data</strong> and uses an <strong>alloc</strong> modifier in the <strong>map</strong> clause to avoid copying values to the device. The destructor deletes the data (<strong>target</strong> <strong>exit</strong> <strong>data</strong>) and uses the <strong>delete</strong> modifier in the <strong>map</strong> clause to avoid copying data back to the host. Note, the stand-alone <strong>target</strong> <strong>enter</strong> <strong>data</strong> occurs  after the host vector is created, and the <strong>target</strong> <strong>exit</strong> <strong>data</strong> construct occurs before the host data is deleted.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
@@ -4220,7 +4319,6 @@ class Matrix
   int len;
 
 };
-
 </pre></div>
 </div>
 </div>
@@ -4256,7 +4354,6 @@ void free_matrix(Matrix *mat)
   free(mat-&gt;A);
   mat-&gt;A = NULL;
 }
-
 </pre></div>
 </div>
 </div>
@@ -4264,7 +4361,9 @@ void free_matrix(Matrix *mat)
 <p>The following Fortran code allocates and deallocates a module array.  The <strong>initialize</strong> subroutine allocates the module array and uses the <strong>target</strong> <strong>enter</strong> <strong>data</strong> directive to map it to the target device. The <strong>finalize</strong> subroutine removes the mapped array from the target device and then deallocates the array on the host.  Note, the stand-alone  <strong>target</strong> <strong>enter</strong> <strong>data</strong> occurs after the host memory is allocated, and the  <strong>target</strong> <strong>exit</strong> <strong>data</strong> construct occurs before the host data is deallocated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name:        target_unstructured_data.1
 ! type:        F-free
 ! version:     omp_4.5
@@ -4287,18 +4386,15 @@ module example
 
     end subroutine finalize
 end module example
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../devices/target_unstructured_data.tex</p>
 </section>
 <section id="target-update-construct">
 <h2><strong>target</strong> <strong>update</strong> Construct<a class="headerlink" href="#target-update-construct" title="Permalink to this headline">#</a></h2>
 <section id="simple-target-data-and-target-update-constructs">
 <h3>Simple <strong>target</strong> <strong>data</strong> and <strong>target</strong> <strong>update</strong> Constructs<a class="headerlink" href="#simple-target-data-and-target-update-constructs" title="Permalink to this headline">#</a></h3>
-<p><strong>constructs!target data <strong>target</strong> <strong>data</strong></strong> <strong>target data construct <strong>target</strong> <strong>data</strong> construct</strong> <strong>constructs!target update <strong>target</strong> <strong>update</strong></strong> <strong>target update construct <strong>target</strong> <strong>update</strong> construct</strong> <strong>target update construct <strong>target</strong> <strong>update</strong> construct!to clause <strong>to</strong> clause</strong> <strong>target update construct <strong>target</strong> <strong>update</strong> construct!from clause <strong>from</strong> clause</strong> **target update construct <strong>target</strong> <strong>update</strong> construct!motion-clause  <em>motion-clause</em> ** **clauses!motion-clause  <em>motion-clause</em> ** <strong>clauses!to <strong>to</strong></strong> <strong>clauses!from <strong>from</strong></strong> <strong>motion-clause  <em>motion-clause</em> !to clause <strong>to</strong> clause</strong> <strong>motion-clause  <em>motion-clause</em> !from clause <strong>from</strong> clause</strong></p>
 <p>The following example shows how the <strong>target</strong> <strong>update</strong> construct updates  variables in a device data environment.</p>
 <p>The <strong>target</strong> <strong>data</strong> construct maps array sections  <em>v1[:N]</em>  and  <em>v2[:N]</em>   (arrays  <em>v1</em>  and  <em>v2</em>  in the Fortran code) into a device data environment.</p>
 <p>The task executing on the host device encounters the first <strong>target</strong> region  and waits for the completion of the region.</p>
@@ -4338,14 +4434,15 @@ void vec_mult(float *p, float *v1, float *v2, int N)
    }
    output(p, N);
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: target_update.1
 ! type: F-free
 ! version:     omp_4.0
@@ -4371,7 +4468,6 @@ subroutine vec_mult(p, v1, v2, N)
    !$omp end target data
    call output(p, N)
 end subroutine
-
 </pre></div>
 </div>
 </div>
@@ -4379,7 +4475,6 @@ end subroutine
 </section>
 <section id="target-update-construct-with-if-clause">
 <h3><strong>target</strong> <strong>update</strong> Construct with <strong>if</strong> Clause<a class="headerlink" href="#target-update-construct-with-if-clause" title="Permalink to this headline">#</a></h3>
-<p><strong>target update construct <strong>target</strong> <strong>update</strong> construct!if clause <strong>if</strong> clause</strong> <strong>clauses!if <strong>if</strong></strong> <strong>if clause <strong>if</strong> clause</strong></p>
 <p>The following example shows how the <strong>target</strong> <strong>update</strong> construct updates  variables in a device data environment.</p>
 <p>The <strong>target</strong> <strong>data</strong> construct maps array sections  <em>v1[:N]</em>  and  <em>v2[:N]</em>   (arrays  <em>v1</em>  and  <em>v2</em>  in the Fortran code) into a device data environment. In between  the two <strong>target</strong> regions, the task executing on the host device conditionally  assigns new values to  <em>v1</em>  and  <em>v2</em>  in the task’s data environment. The function <strong>maybe_init_again()</strong>  returns  <em>true</em>  if new data is written.</p>
 <p>When the conditional expression (the return value of <strong>maybe_init_again()</strong>) in the  <strong>if</strong> clause is  <em>true</em> , the <strong>target</strong> <strong>update</strong> construct  assigns the new values of  <em>v1</em>  and  <em>v2</em>  from the task’s data environment to the corresponding  mapped array sections in the <strong>target</strong> <strong>data</strong> construct’s device data  environment.</p>
@@ -4418,14 +4513,15 @@ void vec_mult(float *p, float *v1, float *v2, int N)
    }
    output(p, N);
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: target_update.2
 ! type: F-free
 ! version:     omp_4.0
@@ -4460,20 +4556,16 @@ subroutine vec_mult(p, v1, v2, N)
    !$omp end target data
    call output(p, N)
 end subroutine
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../devices/target_update.tex</p>
 </section>
 </section>
 <section id="declare-target-directive">
 <h2>Declare Target Directive<a class="headerlink" href="#declare-target-directive" title="Permalink to this headline">#</a></h2>
 <section id="declare-target-directive-for-a-procedure">
 <h3>Declare Target Directive for a Procedure<a class="headerlink" href="#declare-target-directive-for-a-procedure" title="Permalink to this headline">#</a></h3>
-<p><strong>directives!declare target <strong>declare</strong> <strong>target</strong></strong> <strong>declare target directive <strong>declare</strong> <strong>target</strong> directive</strong></p>
-<p><strong>directives!begin declare target <strong>begin</strong> <strong>declare</strong> <strong>target</strong></strong> <strong>begin declare target directive <strong>begin</strong> <strong>declare</strong> <strong>target</strong> directive</strong></p>
 <p>The following example shows how the declare target directive  is used to indicate that the corresponding call inside a <strong>target</strong> region  is to a <strong>fib</strong> function that can execute on the default target device.</p>
 <p>A version of the function is also available on the host device. When the <strong>if</strong>  clause conditional expression on the <strong>target</strong> construct evaluates to  <em>false</em> ,  the <strong>target</strong> region (thus <strong>fib</strong>) will execute on the host device.</p>
 <p>For the following C/C++ code the declaration of the function <strong>fib</strong> appears between the  <strong>begin</strong> <strong>declare</strong> <strong>target</strong> and <strong>end</strong> <strong>declare</strong> <strong>target</strong> directives.  In the corresponding Fortran code, the <strong>declare</strong> <strong>target</strong> directive appears at the end of the specification part of the subroutine.</p>
@@ -4499,7 +4591,6 @@ void fib_wrapper(int n)
       fib(n);
    }
 }
-
 </pre></div>
 </div>
 </div>
@@ -4508,7 +4599,9 @@ void fib_wrapper(int n)
 <p>The program uses the <strong>module_fib</strong> module, which presents an explicit interface to  the compiler with the <strong>declare</strong> <strong>target</strong> declarations for processing  the <strong>fib</strong> call.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: declare_target.1
 ! type: F-free
 ! version: omp_4.0
@@ -4530,7 +4623,6 @@ use module_fib
       call fib(N)
    !$omp end target
 end program
-
 </pre></div>
 </div>
 </div>
@@ -4538,7 +4630,9 @@ end program
 <p>The next Fortran example shows the use of an external subroutine. As the subroutine is neither use associated nor an internal procedure, the <strong>declare</strong> <strong>target</strong> declarations within a external subroutine are unknown to the main program unit;  therefore, a <strong>declare</strong> <strong>target</strong> must be provided within the program scope for the compiler to determine that a target binary should be available.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: declare_target.2
 ! type: F-free
 ! version: omp_4.0
@@ -4560,7 +4654,6 @@ integer :: N
      print*,&quot;hello from fib&quot;
      !...
 end subroutine
-
 </pre></div>
 </div>
 </div>
@@ -4568,7 +4661,6 @@ end subroutine
 </section>
 <section id="declare-target-directive-for-class-type">
 <h3>Declare Target Directive for Class Type<a class="headerlink" href="#declare-target-directive-for-class-type" title="Permalink to this headline">#</a></h3>
-<p><strong>directives!begin declare target <strong>begin</strong> <strong>declare</strong> <strong>target</strong></strong> <strong>begin declare target directive <strong>begin</strong> <strong>declare</strong> <strong>target</strong> directive</strong></p>
 <p>The following example shows the use of the <strong>begin</strong> <strong>declare</strong> <strong>target</strong> and <strong>end</strong> <strong>declare</strong> <strong>target</strong> pair to designate the beginning and end of the affected declarations, as introduced in OpenMP 5.1. The <strong>begin</strong> <strong>declare</strong> <strong>target</strong> directive was defined to symmetrically complement the terminating (“end’’) directive.</p>
 <p>The example also shows 3 different ways to use a declare target directive for a  class and an external member-function definition (for the  <em>XOR1</em> ,  <em>XOR2</em> ,  and  <em>XOR3</em>  classes and definitions for their corresponding  <em>foo</em>  member functions).</p>
 <p>For  <em>XOR1</em> , a <strong>begin</strong> <strong>declare</strong> <strong>target</strong> and  <strong>end</strong> <strong>declare</strong> <strong>target</strong> directive enclose both the class and its member function definition. The compiler immediately knows to create a device version of the function for execution in a <strong>target</strong> region.</p>
@@ -4639,7 +4731,6 @@ int main (){
     cout &lt;&lt; res2 &lt;&lt; endl;  // OUT2: 2
     cout &lt;&lt; res3 &lt;&lt; endl;  // OUT3: 2
 }
-
 </pre></div>
 </div>
 </div>
@@ -4651,14 +4742,34 @@ int main (){
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
 //%cflags: -fopenmp
 
+ #pragma omp begin declare target
+ class XOR1
+ {    
+     int a;
+   public:
+     XOR1(int arg): a(arg) {};
+     int foo();
+ };
+ #pragma omp end declare target
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
+//%cflags: -fopenmp
+
 /*
-* name:       declare_target.2b_functions
-* type:       C++
-* version:    omp_5.1
+* @@name:       declare_target.2b_functions
+* @@type:       C++
+* @@compilable: yes
+* @@linkable:   no
+* @@expect:     failure
+* @@version:    omp_5.1
 */
 #include &quot;classes.hpp&quot;
 int XOR1::foo() { return a^0x01;}
-
 </pre></div>
 </div>
 </div>
@@ -4729,7 +4840,6 @@ void foo()
       varY.foo(); // error foo() is not available on a target device
    }
 }
-
 </pre></div>
 </div>
 </div>
@@ -4737,8 +4847,6 @@ void foo()
 </section>
 <section id="declare-target-directive-for-variables">
 <h3>Declare Target Directive for Variables<a class="headerlink" href="#declare-target-directive-for-variables" title="Permalink to this headline">#</a></h3>
-<p><strong>directives!declare target <strong>declare</strong> <strong>target</strong></strong> <strong>declare target directive <strong>declare</strong> <strong>target</strong> directive</strong></p>
-<p><strong>directives!begin declare target <strong>begin</strong> <strong>declare</strong> <strong>target</strong></strong> <strong>begin declare target directive <strong>begin</strong> <strong>declare</strong> <strong>target</strong> directive</strong></p>
 <p>The following examples show how the declare target directive is used to indicate that global variables are mapped to the implicit device data environment of each target device.</p>
 <p>In the following example, the declarations of the variables  <em>p</em> ,  <em>v1</em> , and  <em>v2</em>  appear  between <strong>begin</strong> <strong>declare</strong> <strong>target</strong> and <strong>end</strong> <strong>declare</strong> <strong>target</strong>  directives indicating that the variables are mapped to the implicit device data  environment of each target device. The <strong>target</strong> <strong>update</strong> directive  is then used to manage the consistency of the variables  <em>p</em> ,  <em>v1</em> , and  <em>v2</em>  between the  data environment of the encountering host device task and the implicit device data  environment of the default target device.</p>
 <div class="cell docutils container">
@@ -4772,7 +4880,6 @@ void vec_mult()
    #pragma omp target update from(p)
    output(p, N);
 }
-
 </pre></div>
 </div>
 </div>
@@ -4780,7 +4887,9 @@ void vec_mult()
 <p>The Fortran version of the above C code uses a different syntax. Fortran modules  use a list syntax on the <strong>declare</strong> <strong>target</strong> directive to declare  mapped variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: declare_target.3
 ! type: F-free
 ! version: omp_4.0
@@ -4803,7 +4912,6 @@ use my_arrays
    !$omp target update from (p)
    call output(p, N)
 end subroutine
-
 </pre></div>
 </div>
 </div>
@@ -4842,7 +4950,6 @@ float accum(int k)
           execution with 4.5 (and pre-4.5) compliant compilers.
           See Devices Intro.
  */
-
 </pre></div>
 </div>
 </div>
@@ -4850,7 +4957,9 @@ float accum(int k)
 <p>The Fortran version of the above C code uses a different syntax. In Fortran modules  a list syntax on the <strong>declare</strong> <strong>target</strong> directive is used to declare  mapped variables and procedures. The  <em>N</em>  and  <em>Q</em>  variables are declared as a comma  separated list. When the <strong>declare</strong> <strong>target</strong> directive is used to  declare just the procedure, the procedure name need not be listed – it is implicitly  assumed, as illustrated in the  <em>Pfun()</em>  function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: declare_target.4
 ! type: F-free
 ! version: omp_4.0
@@ -4882,7 +4991,6 @@ end function
 
 ! Note:  The variable tmp is now mapped with tofrom, for correct
 ! execution with 4.5 (and pre-4.5) compliant compilers. See Devices Intro.
-
 </pre></div>
 </div>
 </div>
@@ -4890,9 +4998,6 @@ end function
 </section>
 <section id="declare-target-directive-with-declare-simd">
 <h3>Declare Target Directive with <strong>declare</strong> <strong>simd</strong><a class="headerlink" href="#declare-target-directive-with-declare-simd" title="Permalink to this headline">#</a></h3>
-<p><strong>directives!declare target <strong>declare</strong> <strong>target</strong></strong> <strong>declare target directive <strong>declare</strong> <strong>target</strong> directive</strong></p>
-<p><strong>directives!begin declare target <strong>begin</strong> <strong>declare</strong> <strong>target</strong></strong> <strong>begin declare target directive <strong>begin</strong> <strong>declare</strong> <strong>target</strong> directive</strong></p>
-<p><strong>directives!declare simd <strong>declare</strong> <strong>simd</strong></strong> <strong>declare simd directive <strong>declare</strong> <strong>simd</strong> directive</strong></p>
 <p>The following example shows how the <strong>begin</strong> <strong>declare</strong> <strong>target</strong> and  <strong>end</strong> <strong>declare</strong> <strong>target</strong> directives are used to indicate that a function  is available on a target device. The <strong>declare</strong> <strong>simd</strong> directive indicates  that there is a SIMD version of the function  <em>P()</em>  that is available on the target  device as well as one that is available on the host device.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4938,7 +5043,6 @@ float accum(void)
           execution with 4.5 (and pre-4.5) compliant compilers.
           See Devices Intro.
  */
-
 </pre></div>
 </div>
 </div>
@@ -4946,7 +5050,9 @@ float accum(void)
 <p>The Fortran version of the above C code uses a different syntax. Fortran modules  use a list syntax of the <strong>declare</strong> <strong>target</strong> declaration for the mapping.  Here the  <em>N</em>  and  <em>Q</em>  variables are declared in the list form as a comma separated list.  The function declaration does not use a list and implicitly assumes the function  name. In this Fortran example row and column indices are reversed relative to the  C/C++ example, as is usual for codes optimized for memory access.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: declare_target.5
 ! type: F-free
 ! version: omp_4.0
@@ -4984,7 +5090,6 @@ end function
 
 ! Note:  The variable tmp is now mapped with tofrom, for correct
 ! execution with 4.5 (and pre-4.5) compliant compilers. See Devices Intro.
-
 </pre></div>
 </div>
 </div>
@@ -4992,10 +5097,7 @@ end function
 </section>
 <section id="declare-target-directive-with-link-clause">
 <h3>Declare Target Directive with <strong>link</strong> Clause<a class="headerlink" href="#declare-target-directive-with-link-clause" title="Permalink to this headline">#</a></h3>
-<p><strong>directives!declare target <strong>declare</strong> <strong>target</strong></strong> <strong>declare target directive <strong>declare</strong> <strong>target</strong> directive</strong></p>
-<p><strong>directives!begin declare target <strong>begin</strong> <strong>declare</strong> <strong>target</strong></strong> <strong>begin declare target directive <strong>begin</strong> <strong>declare</strong> <strong>target</strong> directive</strong></p>
-<p><strong>clauses!link <strong>link</strong></strong> <strong>link clause <strong>link</strong> clause</strong></p>
-<p>In the OpenMP 4.5 standard the declare target directive was extended to allow static data to be mapped, <strong>when needed</strong>, through a <strong>link</strong> clause.</p>
+<p>In the OpenMP 4.5 standard the declare target directive was extended to allow static data to be mapped, <em>when needed</em>, through a <strong>link</strong> clause.</p>
 <p>Data storage for items listed in the <strong>link</strong> clause becomes available on the device when it is mapped implicitly or explicitly in a <strong>map</strong> clause, and it persists for the scope of the mapping (as specified by a <strong>target</strong> construct,  a <strong>target</strong> <strong>data</strong> construct, or  <strong>target</strong> <strong>enter/exit</strong> <strong>data</strong> constructs).</p>
 <p>Tip: When all the global data items will not fit on a device and are not needed simultaneously, use the <strong>link</strong> clause and map the data only when it is needed.</p>
 <p>The following C and Fortran examples show two sets of data (single precision and double precision) that are global on the host for the entire execution on the host; but are only used globally on the device for part of the program execution. The single precision data are allocated and persist only for the first <strong>target</strong> region. Similarly, the double precision data are in scope on the device only for the second <strong>target</strong> region.</p>
@@ -5056,14 +5158,15 @@ int main()
 
   return 0;
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: declare_target.6
 ! type: F-free
 ! version: omp_4.5
@@ -5115,22 +5218,19 @@ program prec_vec_mult
    call d_output(dp, N)
 
 end program
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../devices/declare_target.tex</p>
 </section>
 </section>
 <section id="lambda-expressions">
 <h2>Lambda Expressions<a class="headerlink" href="#lambda-expressions" title="Permalink to this headline">#</a></h2>
-<p><strong>lambda expressions</strong></p>
 <p>The following example illustrates the usage of lambda expressions and their corresponding closure objects within a <strong>target</strong> region.</p>
-<p>In CASE 1, a lambda expression is defined inside a <strong>target</strong> construct that implicitly maps the structure 	extit{s}. Inside the construct, the lambda captures (by reference) the corresponding 	extit{s}, and the resulting closure object is assigned to 	extit{lambda1}.  When the call operator is invoked on 	extit{lambda1}, the captured reference to 	extit{s} is used in the call.  The modified 	extit{s} is then copied back to the host device on exit from the <strong>target</strong> construct.</p>
-<p>In CASE 2, a lambda expression is instead defined before the <strong>target</strong> construct and captures (by copy) the pointer 	extit{sp}. A <strong>target</strong> <strong>data</strong> construct is used to first map the structure, and then the <strong>target</strong> construct implicitly maps the closure object referenced by 	extit{lambda2}, a zero-length array section based on the structure pointer 	extit{sp}, and a zero-length array section based on the captured pointer in the closure object. The implicit maps result in attached pointers to the corresponding structure. The call for 	extit{lambda2} inside the <strong>target</strong> construct will access 	extit{sp-&gt;a} and 	extit{sp-&gt;b} from the corresponding structure.</p>
-<p>CASE 3 is similar to CASE 2, except 	extit{s} is instead captured by reference by the lambda expression. As for CASE 2, the structure is first mapped by an enclosing <strong>target</strong> <strong>data</strong> construct, and then the <strong>target</strong> construct implicitly maps 	extit{s} and the closure object referenced by 	extit{lambda3}. The effect of the map is to make the the call for 	extit{lambda3} refer to the corresponding 	extit{s} inside the <strong>target</strong> construct rather than the original 	extit{s}.</p>
-<p>In CASE 4, the program defines a static variable 	extit{ss} of the same structure type as 	extit{s}. While the body of the lambda expression refers to 	extit{ss}, it is not captured. In order for 	extit{lambda4} to be callable in the <strong>target</strong> region, the reference to 	extit{ss} should be to a device copy of 	extit{ss} that also has static storage. This is achieved with the use of the <strong>declare</strong> <strong>target</strong> directive.  Inside the <strong>target</strong> construct, all references to 	extit{ss}, including in the 	extit{lambda4()} call, will refer to the corresponding 	extit{ss} that results from the <strong>declare</strong> <strong>target</strong> directive. The <strong>always</strong> modifier is used on the <strong>map</strong> clause to transfer the updated values for the structure back to the host device.</p>
+<p>In CASE 1, a lambda expression is defined inside a <strong>target</strong> construct that implicitly maps the structure 	extit{s}. Inside the construct, the lambda captures (by reference) the corresponding <em>s</em>, and the resulting closure object is assigned to <em>lambda1</em>.  When the call operator is invoked on <em>lambda1</em>, the captured reference to <em>s</em> is used in the call.  The modified <em>s</em> is then copied back to the host device on exit from the <strong>target</strong> construct.</p>
+<p>In CASE 2, a lambda expression is instead defined before the <strong>target</strong> construct and captures (by copy) the pointer <em>sp</em>. A <strong>target</strong> <strong>data</strong> construct is used to first map the structure, and then the <strong>target</strong> construct implicitly maps the closure object referenced by <em>lambda2</em>, a zero-length array section based on the structure pointer <em>sp</em>, and a zero-length array section based on the captured pointer in the closure object. The implicit maps result in attached pointers to the corresponding structure. The call for <em>lambda2</em> inside the <strong>target</strong> construct will access <em>sp-&gt;a</em> and <em>sp-&gt;b</em> from the corresponding structure.</p>
+<p>CASE 3 is similar to CASE 2, except <em>s</em> is instead captured by reference by the lambda expression. As for CASE 2, the structure is first mapped by an enclosing <strong>target</strong> <strong>data</strong> construct, and then the <strong>target</strong> construct implicitly maps <em>s</em> and the closure object referenced by <em>lambda3</em>. The effect of the map is to make the the call for <em>lambda3</em> refer to the corresponding <em>s</em> inside the <strong>target</strong> construct rather than the original <em>s</em>.</p>
+<p>In CASE 4, the program defines a static variable <em>ss</em> of the same structure type as <em>s</em>. While the body of the lambda expression refers to <em>ss</em>, it is not captured. In order for <em>lambda4</em> to be callable in the <strong>target</strong> region, the reference to <em>ss</em> should be to a device copy of <em>ss</em> that also has static storage. This is achieved with the use of the <strong>declare</strong> <strong>target</strong> directive.  Inside the <strong>target</strong> construct, all references to <em>ss</em>, including in the <em>lambda4()</em> call, will refer to the corresponding <em>ss</em> that results from the <strong>declare</strong> <strong>target</strong> directive. The <strong>always</strong> modifier is used on the <strong>map</strong> clause to transfer the updated values for the structure back to the host device.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
@@ -5207,18 +5307,15 @@ int main()
 
    return 0;
 }
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../devices/lambda_expressions.tex</p>
 </section>
 <section id="teams-construct-and-related-combined-constructs">
 <h2><strong>teams</strong> Construct and Related Combined Constructs<a class="headerlink" href="#teams-construct-and-related-combined-constructs" title="Permalink to this headline">#</a></h2>
 <section id="target-and-teams-constructs-with-omp-get-num-teams-and-omp-get-team-num-routines">
 <h3><strong>target</strong> and <strong>teams</strong> Constructs with <strong>omp_get_num_teams</strong> and <strong>omp_get_team_num</strong> Routines<a class="headerlink" href="#target-and-teams-constructs-with-omp-get-num-teams-and-omp-get-team-num-routines" title="Permalink to this headline">#</a></h3>
-<p><strong>constructs!target <strong>target</strong></strong> <strong>target construct <strong>target</strong> construct</strong> <strong>constructs!teams <strong>teams</strong></strong> <strong>teams construct <strong>teams</strong> construct</strong> <strong>combined constructs!target teams <strong>target</strong> <strong>teams</strong></strong> <strong>teams construct <strong>teams</strong> construct!num_teams clause <strong>num_teams</strong> clause</strong> <strong>clauses!num_teams <strong>num_teams</strong></strong> <strong>num_teams clause <strong>num_teams</strong> clause</strong> <strong>routines!omp_get_num_teams <strong>omp_get_num_teams</strong></strong> <strong>routines!omp_get_team_num <strong>omp_get_team_num</strong></strong> <strong>omp_get_num_teams routine <strong>omp_get_num_teams</strong> routine</strong> <strong>omp_get_team_num routine <strong>omp_get_team_num</strong> routine</strong></p>
 <p>The following example shows how the <strong>target</strong> and <strong>teams</strong> constructs  are used to create a league of thread teams that execute a region. The <strong>teams</strong>  construct creates a league of at most two teams where the primary thread of each  team executes the <strong>teams</strong> region.</p>
 <p>The <strong>omp_get_num_teams</strong> routine returns the number of teams executing in a <strong>teams</strong>  region. The <strong>omp_get_team_num</strong> routine returns the team number, which is an integer  between 0 and one less than the value returned by <strong>omp_get_num_teams</strong>. The following  example manually distributes a loop across two teams.</p>
 <div class="cell docutils container">
@@ -5263,14 +5360,15 @@ float dotprod(float B[], float C[], int N)
           correct execution with 4.5 (and pre-4.5) compliant compilers.
           See Devices Intro.
  */
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: teams.1
 ! type: F-free
 ! version:    omp_4.0
@@ -5301,7 +5399,6 @@ end function
 
 ! Note:  The variables sum0,sum1 are now mapped with tofrom, for correct
 ! execution with 4.5 (and pre-4.5) compliant compilers. See Devices Intro.
-
 </pre></div>
 </div>
 </div>
@@ -5309,7 +5406,6 @@ end function
 </section>
 <section id="target-teams-and-distribute-constructs">
 <h3><strong>target</strong>, <strong>teams</strong>, and <strong>distribute</strong> Constructs<a class="headerlink" href="#target-teams-and-distribute-constructs" title="Permalink to this headline">#</a></h3>
-<p><strong>constructs!distribute <strong>distribute</strong></strong> <strong>distribute construct <strong>distribute</strong> construct</strong></p>
 <p>The following example shows how the <strong>target</strong>, <strong>teams</strong>, and <strong>distribute</strong>  constructs are used to execute a loop nest in a <strong>target</strong> region. The <strong>teams</strong>  construct creates a league and the primary thread of each team executes the <strong>teams</strong>  region. The <strong>distribute</strong> construct schedules the subsequent loop iterations  across the primary threads of each team.</p>
 <p>The number of teams in the league is less than or equal to the variable  <em>num_blocks</em> .  Each team in the league has a number of threads less than or equal to the variable   <em>block_threads</em> . The iterations in the outer loop are distributed among the primary  threads of each team.</p>
 <p>When a team’s primary thread encounters the parallel loop construct before the inner  loop, the other threads in its team are activated. The team executes the <strong>parallel</strong>  region and then workshares the execution of the loop.</p>
@@ -5345,14 +5441,15 @@ float dotprod(float B[], float C[], int N, int block_size,
    execution with 4.5 (and pre-4.5) compliant compilers. See
    Devices Intro.
  */
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: teams.2
 ! type: F-free
 ! version: omp_4.0
@@ -5377,7 +5474,6 @@ end function
 
 ! Note:  The variable sum is now mapped with tofrom, for correct
 ! execution with 4.5 (and pre-4.5) compliant compilers. See Devices Intro.
-
 </pre></div>
 </div>
 </div>
@@ -5414,7 +5510,6 @@ float dotprod(float B[], float C[], int N)
           execution with 4.5 (and pre-4.5) compliant compilers.
           See Devices Intro.
  */
-
 </pre></div>
 </div>
 </div>
