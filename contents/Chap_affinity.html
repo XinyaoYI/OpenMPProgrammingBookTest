@@ -383,11 +383,9 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#proc-bind-clause">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     proc_bind
-    </span>
-   </code>
+   <strong>
+    proc_bind
+   </strong>
    Clause
   </a>
   <ul class="nav section-nav flex-column">
@@ -444,11 +442,9 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#proc-bind-clause">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     proc_bind
-    </span>
-   </code>
+   <strong>
+    proc_bind
+   </strong>
    Clause
   </a>
   <ul class="nav section-nav flex-column">
@@ -496,25 +492,27 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="openmp-affinity">
 <h1>OpenMP Affinity<a class="headerlink" href="#openmp-affinity" title="Permalink to this headline">#</a></h1>
-<p>{affinity}</p>
-<p>OpenMP Affinity consists of a <code class="docutils literal notranslate"><span class="pre">proc_bind</span></code> policy (thread affinity policy) and a specification of places ( <strong>“</strong> location units <strong>“</strong>  or  <em>processors</em>  that may be cores, hardware threads, sockets, etc.).   OpenMP Affinity enables users to bind computations on specific places. The placement will hold for the duration of the parallel region.  However, the runtime is free to migrate the OpenMP threads  to different cores (hardware threads, sockets, etc.) prescribed within a given place,  if two or more cores (hardware threads, sockets, etc.) have been assigned to a given place.</p>
-<p>Often the binding can be managed without resorting to explicitly setting places. Without the specification of places in the <code class="docutils literal notranslate"><span class="pre">OMP_PLACES</span></code> variable,  the OpenMP runtime will distribute and bind threads using the entire range of processors for  the OpenMP program, according to the <code class="docutils literal notranslate"><span class="pre">OMP_PROC_BIND</span></code> environment variable or the <code class="docutils literal notranslate"><span class="pre">proc_bind</span></code> clause.  When places are specified, the OMP runtime binds threads to the places according to a default distribution policy, or those specified in the <code class="docutils literal notranslate"><span class="pre">OMP_PROC_BIND</span></code> environment variable or the <code class="docutils literal notranslate"><span class="pre">proc_bind</span></code> clause.</p>
+<p>OpenMP Affinity consists of a <strong>proc_bind</strong> policy (thread affinity policy) and a specification of places ( <strong>“</strong> location units <strong>“</strong>  or  <em>processors</em>  that may be cores, hardware threads, sockets, etc.).   OpenMP Affinity enables users to bind computations on specific places. The placement will hold for the duration of the parallel region.  However, the runtime is free to migrate the OpenMP threads  to different cores (hardware threads, sockets, etc.) prescribed within a given place,  if two or more cores (hardware threads, sockets, etc.) have been assigned to a given place.</p>
+<p>Often the binding can be managed without resorting to explicitly setting places. Without the specification of places in the <strong>OMP_PLACES</strong> variable,  the OpenMP runtime will distribute and bind threads using the entire range of processors for  the OpenMP program, according to the <strong>OMP_PROC_BIND</strong> environment variable or the <strong>proc_bind</strong> clause.  When places are specified, the OMP runtime binds threads to the places according to a default distribution policy, or those specified in the <strong>OMP_PROC_BIND</strong> environment variable or the <strong>proc_bind</strong> clause.</p>
 <p>In the OpenMP Specifications document a processor refers to an execution unit that is enabled for an OpenMP thread to use.  A processor is a core when there is no SMT (Simultaneous Multi-Threading) support or SMT is disabled.  When  SMT is enabled, a processor is a hardware thread (HW-thread). (This is the usual case; but actually, the execution unit is implementation defined.) Processor numbers are numbered sequentially from 0 to the number of cores less one (without SMT), or 0 to the number HW-threads less one (with SMT). OpenMP places use the processor number to designate binding locations (unless an  <strong>“</strong> abstract name <strong>“</strong>  is used.)</p>
-<p>The processors available to a process may be a subset of the system’s processors.  This restriction may be the result of a  wrapper process controlling the execution (such as <code class="docutils literal notranslate"><span class="pre">numactl</span></code> on Linux systems),  compiler options, library-specific environment variables, or default kernel settings.  For instance, the execution of multiple MPI processes, launched on a single compute node, will each have a subset of processors as determined by the MPI launcher or set by MPI affinity environment  variables for the MPI library.</p>
-<p>Threads of a team are positioned onto places in a compact manner, a  scattered distribution, or onto the primary thread’s place, by setting the  <code class="docutils literal notranslate"><span class="pre">OMP_PROC_BIND</span></code> environment variable or the <code class="docutils literal notranslate"><span class="pre">proc_bind</span></code> clause  to  <code class="docutils literal notranslate"><span class="pre">close</span></code>, <code class="docutils literal notranslate"><span class="pre">spread</span></code>, or <code class="docutils literal notranslate"><span class="pre">primary</span></code> (<code class="docutils literal notranslate"><span class="pre">master</span></code> has been deprecated), respectively.  When  <code class="docutils literal notranslate"><span class="pre">OMP_PROC_BIND</span></code> is set to FALSE no binding is enforced; and  when the value is TRUE, the binding is implementation defined to  a set of places in the <code class="docutils literal notranslate"><span class="pre">OMP_PLACES</span></code> variable or to places  defined by the implementation if the <code class="docutils literal notranslate"><span class="pre">OMP_PLACES</span></code> variable  is not set.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">OMP_PLACES</span></code> variable can also be set to an abstract name  (<code class="docutils literal notranslate"><span class="pre">threads</span></code>, <code class="docutils literal notranslate"><span class="pre">cores</span></code>, <code class="docutils literal notranslate"><span class="pre">sockets</span></code>) to specify that a place is either a single hardware thread, a core, or a socket, respectively.  This description of the <code class="docutils literal notranslate"><span class="pre">OMP_PLACES</span></code> is most useful when the  number of threads is equal to the number of hardware thread, cores or sockets.  It can also be used with a <code class="docutils literal notranslate"><span class="pre">close</span></code> or <code class="docutils literal notranslate"><span class="pre">spread</span></code>  distribution policy when the equality doesn’t hold.</p>
+<p>The processors available to a process may be a subset of the system’s processors.  This restriction may be the result of a  wrapper process controlling the execution (such as <strong>numactl</strong> on Linux systems),  compiler options, library-specific environment variables, or default kernel settings.  For instance, the execution of multiple MPI processes, launched on a single compute node, will each have a subset of processors as determined by the MPI launcher or set by MPI affinity environment  variables for the MPI library.</p>
+<p>Threads of a team are positioned onto places in a compact manner, a  scattered distribution, or onto the primary thread’s place, by setting the  <strong>OMP_PROC_BIND</strong> environment variable or the <strong>proc_bind</strong> clause  to  <strong>close</strong>, <strong>spread</strong>, or <strong>primary</strong> (<strong>master</strong> has been deprecated), respectively.  When  <strong>OMP_PROC_BIND</strong> is set to FALSE no binding is enforced; and  when the value is TRUE, the binding is implementation defined to  a set of places in the <strong>OMP_PLACES</strong> variable or to places  defined by the implementation if the <strong>OMP_PLACES</strong> variable  is not set.</p>
+<p>The <strong>OMP_PLACES</strong> variable can also be set to an abstract name  (<strong>threads</strong>, <strong>cores</strong>, <strong>sockets</strong>) to specify that a place is either a single hardware thread, a core, or a socket, respectively.  This description of the <strong>OMP_PLACES</strong> is most useful when the  number of threads is equal to the number of hardware thread, cores or sockets.  It can also be used with a <strong>close</strong> or <strong>spread</strong>  distribution policy when the equality doesn’t hold.</p>
 <section id="proc-bind-clause">
-<h2><code class="docutils literal notranslate"><span class="pre">proc_bind</span></code> Clause<a class="headerlink" href="#proc-bind-clause" title="Permalink to this headline">#</a></h2>
-<p><strong>affinity!proc_bind clause <code class="docutils literal notranslate"><span class="pre">proc_bind</span></code> clause</strong> <strong>clauses!proc_bind <code class="docutils literal notranslate"><span class="pre">proc_bind</span></code></strong> <strong>proc_bind clause <code class="docutils literal notranslate"><span class="pre">proc_bind</span></code> clause</strong></p>
-<p>The following examples demonstrate how to use the <code class="docutils literal notranslate"><span class="pre">proc_bind</span></code> clause to  control the thread binding for a team of threads in a <code class="docutils literal notranslate"><span class="pre">parallel</span></code> region.  The machine architecture is depicted in Figure . It consists of two sockets,  each equipped with a quad-core processor and configured to execute two hardware  threads simultaneously on each core. These examples assume a contiguous core numbering  starting from 0, such that the hardware threads 0,1 form the first physical core.</p>
+<h2><strong>proc_bind</strong> Clause<a class="headerlink" href="#proc-bind-clause" title="Permalink to this headline">#</a></h2>
+<p><strong>affinity!proc_bind clause <strong>proc_bind</strong> clause</strong> <strong>clauses!proc_bind <strong>proc_bind</strong></strong> <strong>proc_bind clause <strong>proc_bind</strong> clause</strong></p>
+<p>The following examples demonstrate how to use the <strong>proc_bind</strong> clause to  control the thread binding for a team of threads in a <strong>parallel</strong> region.  The machine architecture is depicted in Figure 4.1. It consists of two sockets,  each equipped with a quad-core processor and configured to execute two hardware threads simultaneously on each core. These examples assume a contiguous core numbering  starting from 0, such that the hardware threads 0,1 form the first physical core.</p>
+<p><img alt="FIGURE 4.1: A machine architecture with two quad-core processors" src="../_images/proc_bind_fig.png" /></p>
+<p><strong>FIGURE 4.1:</strong>
+A machine architecture with two quad-core processors</p>
 <p>The following equivalent place list declarations consist of eight places (which  we designate as p0 to p7):</p>
-<p>{OMP_PLACES= <strong>“</strong> {0,1},{2,3},{4,5},{6,7},{8,9},{10,11},{12,13},{14,15} <strong>“</strong> }</p>
+<p><strong>OMP_PLACES= ” {0,1},{2,3},{4,5},{6,7},{8,9},{10,11},{12,13},{14,15} “</strong></p>
 <p>or</p>
-<p>{OMP_PLACES= <strong>“</strong> {0:2}:8:2 <strong>“</strong> }</p>
+<p><strong>OMP_PLACES= “{0:2}:8:2”</strong></p>
 <section id="spread-affinity-policy">
 <h3>Spread Affinity Policy<a class="headerlink" href="#spread-affinity-policy" title="Permalink to this headline">#</a></h3>
-<p><strong>affinity!spread policy <code class="docutils literal notranslate"><span class="pre">spread</span></code> policy</strong> <strong>spread policy <code class="docutils literal notranslate"><span class="pre">spread</span></code> policy</strong></p>
-<p>The following example shows the result of the <code class="docutils literal notranslate"><span class="pre">spread</span></code> affinity policy on  the partition list when the number of threads is less than or equal to the number  of places in the parent’s place partition, for the machine architecture depicted  above. Note that the threads are bound to the first place of each subpartition.</p>
+<p><strong>affinity!spread policy <strong>spread</strong> policy</strong> <strong>spread policy <strong>spread</strong> policy</strong></p>
+<p>The following example shows the result of the <strong>spread</strong> affinity policy on  the partition list when the number of threads is less than or equal to the number  of places in the parent’s place partition, for the machine architecture depicted  above. Note that the threads are bound to the first place of each subpartition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
@@ -539,14 +537,15 @@ int main()
    return 0;
 
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: affinity.1
 ! type: F-fixed
 ! version: omp_4.0
@@ -555,7 +554,6 @@ int main()
       CALL WORK()
 !$OMP END PARALLEL
       END PROGRAM EXAMPLE
-
 </pre></div>
 </div>
 </div>
@@ -563,30 +561,18 @@ int main()
 <p>It is unspecified on which place the primary thread is initially started. If the  primary thread is initially started on p0, the following placement of threads will  be applied in the parallel region:</p>
 <ul class="simple">
 <li><p>thread 0 executes on p0 with the place partition p0,p1</p></li>
-</ul>
-<ul class="simple">
 <li><p>thread 1 executes on p2 with the place partition p2,p3</p></li>
-</ul>
-<ul class="simple">
 <li><p>thread 2 executes on p4 with the place partition p4,p5</p></li>
-</ul>
-<ul class="simple">
 <li><p>thread 3 executes on p6 with the place partition p6,p7</p></li>
 </ul>
 <p>If the primary thread would initially be started on p2, the placement of threads  and distribution of the place partition would be as follows:</p>
 <ul class="simple">
 <li><p>thread 0 executes on p2 with the place partition p2,p3</p></li>
-</ul>
-<ul class="simple">
 <li><p>thread 1 executes on p4 with the place partition p4,p5</p></li>
-</ul>
-<ul class="simple">
 <li><p>thread 2 executes on p6 with the place partition p6,p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>thread 3 executes on p0 with the place partition p0,p1</p></li>
 </ul>
-<p>The following example illustrates the <code class="docutils literal notranslate"><span class="pre">spread</span></code> thread affinity policy when  the number of threads is greater than the number of places in the parent’s place  partition.</p>
+<p>The following example illustrates the <strong>spread</strong> thread affinity policy when  the number of threads is greater than the number of places in the parent’s place  partition.</p>
 <p>Let  <em>T</em>  be the number of threads in the team, and  <em>P</em>  be the number of places in the  parent’s place partition. The first  <em>T/P</em>  threads of the team (including the primary thread) execute on the parent’s place. The next  <em>T/P</em>  threads execute on the next  place in the place partition, and so on, with wrap around.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -606,14 +592,15 @@ void foo()
     work();
   }
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: affinity.2
 ! type: F-free
 ! version: omp_4.0
@@ -622,7 +609,6 @@ subroutine foo
       call work()
 !$omp end parallel
 end subroutine
-
 </pre></div>
 </div>
 </div>
@@ -630,58 +616,29 @@ end subroutine
 <p>It is unspecified on which place the primary thread is initially started. If the  primary thread is initially started on p0, the following placement of threads will  be applied in the parallel region:</p>
 <ul class="simple">
 <li><p>threads 0,1 execute on p0 with the place partition p0</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 2,3 execute on p1 with the place partition p1</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 4,5 execute on p2 with the place partition p2</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 6,7 execute on p3 with the place partition p3</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 8,9 execute on p4 with the place partition p4</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 10,11 execute on p5 with the place partition p5</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 12,13 execute on p6 with the place partition p6</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 14,15 execute on p7 with the place partition p7</p></li>
 </ul>
 <p>If the primary thread would initially be started on p2, the placement of threads  and distribution of the place partition would be as follows:</p>
 <ul class="simple">
 <li><p>threads 0,1 execute on p2 with the place partition p2</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 2,3 execute on p3 with the place partition p3</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 4,5 execute on p4 with the place partition p4</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 6,7 execute on p5 with the place partition p5</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 8,9 execute on p6 with the place partition p6</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 10,11 execute on p7 with the place partition p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 12,13 execute on p0 with the place partition p0</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 14,15 execute on p1 with the place partition p1</p></li>
 </ul>
 </section>
 <section id="close-affinity-policy">
 <h3>Close Affinity Policy<a class="headerlink" href="#close-affinity-policy" title="Permalink to this headline">#</a></h3>
-<p><strong>affinity!close policy <code class="docutils literal notranslate"><span class="pre">close</span></code> policy</strong> <strong>close policy <code class="docutils literal notranslate"><span class="pre">close</span></code> policy</strong></p>
-<p>The following example shows the result of the <code class="docutils literal notranslate"><span class="pre">close</span></code> affinity policy on  the partition list when the number of threads is less than or equal to the number  of places in parent’s place partition, for the machine architecture depicted above.  The place partition is not changed by the <code class="docutils literal notranslate"><span class="pre">close</span></code> policy.</p>
+<p>The following example shows the result of the <strong>close</strong> affinity policy on  the partition list when the number of threads is less than or equal to the number  of places in parent’s place partition, for the machine architecture depicted above.  The place partition is not changed by the <strong>close</strong> policy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
@@ -701,14 +658,15 @@ int main()
    }
    return 0;
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: affinity.3
 ! type: F-fixed
 ! version: omp_4.0
@@ -717,39 +675,26 @@ int main()
       CALL WORK()
 !$OMP END PARALLEL
       END PROGRAM EXAMPLE
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>It is unspecified on which place the primary thread is initially started. If the  primary thread is initially started on p0, the following placement of threads will  be applied in the <code class="docutils literal notranslate"><span class="pre">parallel</span></code> region:</p>
+<p>It is unspecified on which place the primary thread is initially started. If the  primary thread is initially started on p0, the following placement of threads will  be applied in the <strong>parallel</strong> region:</p>
 <ul class="simple">
 <li><p>thread 0 executes on p0 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>thread 1 executes on p1 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>thread 2 executes on p2 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>thread 3 executes on p3 with the place partition p0-p7</p></li>
 </ul>
 <p>If the primary thread would initially be started on p2, the placement of threads  and distribution of the place partition would be as follows:</p>
 <ul class="simple">
 <li><p>thread 0 executes on p2 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>thread 1 executes on p3 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>thread 2 executes on p4 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>thread 3 executes on p5 with the place partition p0-p7</p></li>
 </ul>
-<p>The following example illustrates the <code class="docutils literal notranslate"><span class="pre">close</span></code> thread affinity policy when  the number of threads is greater than the number of places in the parent’s place  partition.</p>
-<p>Let  <em>T</em>  be the number of threads in the team, and  <em>P</em>  be the number of places in the  parent’s place partition. The first  <em>T/P</em>  threads of the team (including the primary thread) execute on the parent’s place. The next  <em>T/P</em>  threads execute on the next  place in the place partition, and so on, with wrap around. The place partition  is not changed by the <code class="docutils literal notranslate"><span class="pre">close</span></code> policy.</p>
+<p>The following example illustrates the <strong>close</strong> thread affinity policy when  the number of threads is greater than the number of places in the parent’s place  partition.</p>
+<p>Let  <em>T</em>  be the number of threads in the team, and  <em>P</em>  be the number of places in the  parent’s place partition. The first  <em>T/P</em>  threads of the team (including the primary thread) execute on the parent’s place. The next  <em>T/P</em>  threads execute on the next  place in the place partition, and so on, with wrap around. The place partition  is not changed by the <strong>close</strong> policy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
@@ -768,14 +713,15 @@ void foo()
     work();
   }
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: affinity.4
 ! type: F-free
 ! version: omp_4.0
@@ -784,7 +730,6 @@ subroutine foo
       call work()
 !$omp end parallel
 end subroutine
-
 </pre></div>
 </div>
 </div>
@@ -792,58 +737,29 @@ end subroutine
 <p>It is unspecified on which place the primary thread is initially started. If the  primary thread is initially running on p0, the following placement of threads will  be applied in the parallel region:</p>
 <ul class="simple">
 <li><p>threads 0,1 execute on p0 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 2,3 execute on p1 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 4,5 execute on p2 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 6,7 execute on p3 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 8,9 execute on p4 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 10,11 execute on p5 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 12,13 execute on p6 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 14,15 execute on p7 with the place partition p0-p7</p></li>
 </ul>
 <p>If the primary thread would initially be started on p2, the placement of threads  and distribution of the place partition would be as follows:</p>
 <ul class="simple">
 <li><p>threads 0,1 execute on p2 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 2,3 execute on p3 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 4,5 execute on p4 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 6,7 execute on p5 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 8,9 execute on p6 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 10,11 execute on p7 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 12,13 execute on p0 with the place partition p0-p7</p></li>
-</ul>
-<ul class="simple">
 <li><p>threads 14,15 execute on p1 with the place partition p0-p7</p></li>
 </ul>
 </section>
 <section id="primary-affinity-policy">
 <h3>Primary Affinity Policy<a class="headerlink" href="#primary-affinity-policy" title="Permalink to this headline">#</a></h3>
-<p><strong>affinity!primary policy <code class="docutils literal notranslate"><span class="pre">primary</span></code> policy</strong> <strong>primary policy <code class="docutils literal notranslate"><span class="pre">primary</span></code> policy</strong></p>
-<p>The following example shows the result of the <code class="docutils literal notranslate"><span class="pre">primary</span></code> affinity policy on  the partition list for the machine architecture depicted above. The place partition  is not changed by the primary policy.</p>
+<p>The following example shows the result of the <strong>primary</strong> affinity policy on  the partition list for the machine architecture depicted above. The place partition  is not changed by the primary policy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
@@ -863,14 +779,15 @@ int main()
    }
    return 0;
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: affinity.5
 ! type: F-fixed
 ! version: omp_5.1
@@ -879,7 +796,6 @@ int main()
       CALL WORK()
 !$OMP END PARALLEL
       END PROGRAM EXAMPLE
-
 </pre></div>
 </div>
 </div>
@@ -892,15 +808,13 @@ int main()
 <ul class="simple">
 <li><p>threads 0-3 execute on p2 with the place partition p0-p7</p></li>
 </ul>
-<p>../../affinity/affinity.tex</p>
 </section>
 </section>
 <section id="task-affinity">
 <h2>Task Affinity<a class="headerlink" href="#task-affinity" title="Permalink to this headline">#</a></h2>
-<p><strong>affinity!task affinity</strong> <strong>affinity!affinity clause <code class="docutils literal notranslate"><span class="pre">affinity</span></code> clause</strong> <strong>clauses!affinity <code class="docutils literal notranslate"><span class="pre">affinity</span></code></strong> <strong>affinity clause <code class="docutils literal notranslate"><span class="pre">affinity</span></code> clause</strong></p>
-<p>The next example illustrates the use of the <code class="docutils literal notranslate"><span class="pre">affinity</span></code> clause with a <code class="docutils literal notranslate"><span class="pre">task</span></code> construct. The variables in the <code class="docutils literal notranslate"><span class="pre">affinity</span></code> clause provide a hint to the runtime that the task should execute “close” to the physical storage location of the variables. For example, on a two-socket platform with a local memory component close to each processor socket, the runtime will attempt to schedule the task execution on the socket where the storage is located.</p>
-<p>Because the C/C++ code employs a pointer, an array section is used in the <code class="docutils literal notranslate"><span class="pre">affinity</span></code> clause. Fortran code can use an array reference to specify the storage, as shown here.</p>
-<p>Note, in the second task of the C/C++ code the  <em>B</em>  pointer is declared shared.  Otherwise, by default, it would be firstprivate since it is a local variable, and would probably be saved for the second task before being assigned a storage address by the first task.  Also, one might think it reasonable to use the <code class="docutils literal notranslate"><span class="pre">affinity</span></code> clause  <em>affinity(B[:N])</em>  on the second <code class="docutils literal notranslate"><span class="pre">task</span></code> construct. However, the storage behind  <em>B</em>  is created in the first task, and the  array section reference may not be valid when the second task is generated. The use of the  <em>A</em>  array is sufficient for this case, because one would expect the storage for  <em>A</em>  and  <em>B</em>  would be physically “close” (as provided by the hint in the first task).</p>
+<p>The next example illustrates the use of the <strong>affinity</strong> clause with a <strong>task</strong> construct. The variables in the <strong>affinity</strong> clause provide a hint to the runtime that the task should execute “close” to the physical storage location of the variables. For example, on a two-socket platform with a local memory component close to each processor socket, the runtime will attempt to schedule the task execution on the socket where the storage is located.</p>
+<p>Because the C/C++ code employs a pointer, an array section is used in the <strong>affinity</strong> clause. Fortran code can use an array reference to specify the storage, as shown here.</p>
+<p>Note, in the second task of the C/C++ code the  <em>B</em>  pointer is declared shared.  Otherwise, by default, it would be firstprivate since it is a local variable, and would probably be saved for the second task before being assigned a storage address by the first task.  Also, one might think it reasonable to use the <strong>affinity</strong> clause  <em>affinity(B[:N])</em>  on the second <strong>task</strong> construct. However, the storage behind  <em>B</em>  is created in the first task, and the  array section reference may not be valid when the second task is generated. The use of the  <em>A</em>  array is sufficient for this case, because one would expect the storage for  <em>A</em>  and  <em>B</em>  would be physically “close” (as provided by the hint in the first task).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
@@ -929,15 +843,15 @@ void task_affinity(double *A, int N)
 
    #pragma omp taskwait
 }
-
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name:       affinity.6
 ! type:       F-free
 ! version: omp_5.0
@@ -958,20 +872,16 @@ subroutine task_affinity(A, N)
    !$omp taskwait
 
 end subroutine
-
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../affinity/task_affinity.tex</p>
 </section>
 <section id="affinity-display">
 <h2>Affinity Display<a class="headerlink" href="#affinity-display" title="Permalink to this headline">#</a></h2>
-<p><strong>affinity display!OMP_DISPLAY_AFFINITY <code class="docutils literal notranslate"><span class="pre">OMP_DISPLAY_AFFINITY</span></code></strong> <strong>environment variables!OMP_DISPLAY_AFFINITY <code class="docutils literal notranslate"><span class="pre">OMP_DISPLAY_AFFINITY</span></code></strong> <strong>OMP_DISPLAY_AFFINITY <code class="docutils literal notranslate"><span class="pre">OMP_DISPLAY_AFFINITY</span></code></strong> <strong>affinity display!OMP_AFFINITY_FORMAT <code class="docutils literal notranslate"><span class="pre">OMP_AFFINITY_FORMAT</span></code></strong> <strong>environment variables!OMP_AFFINITY_FORMAT <code class="docutils literal notranslate"><span class="pre">OMP_AFFINITY_FORMAT</span></code></strong> <strong>OMP_AFFINITY_FORMAT <code class="docutils literal notranslate"><span class="pre">OMP_AFFINITY_FORMAT</span></code></strong> <strong>affinity display!omp_display_affinity routine <code class="docutils literal notranslate"><span class="pre">omp_display_affinity</span></code> routine</strong> <strong>routines!omp_display_affinity <code class="docutils literal notranslate"><span class="pre">omp_display_affinity</span></code></strong> <strong>omp_display_affinity routine <code class="docutils literal notranslate"><span class="pre">omp_display_affinity</span></code> routine</strong></p>
-<p>The following examples illustrate ways to display thread affinity. Automatic display of affinity can be invoked by setting the <code class="docutils literal notranslate"><span class="pre">OMP_DISPLAY_AFFINITY</span></code> environment variable to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>.   The format of the output can be customized by setting the  <code class="docutils literal notranslate"><span class="pre">OMP_AFFINITY_FORMAT</span></code> environment variable to an appropriate string.   Also, there are API calls for the user to display thread affinity  at selected locations within code.</p>
-<p>For the first example the environment variable <code class="docutils literal notranslate"><span class="pre">OMP_DISPLAY_AFFINITY</span></code> has been set to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, and execution occurs on an 8-core system with <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code> set to 8.</p>
-<p>The affinity for the primary thread is reported through a call to the API <code class="docutils literal notranslate"><span class="pre">omp_display_affinity()</span></code> routine. For default affinity settings the report shows that the primary thread can execute on any of the cores.  In the following parallel region the affinity for each of the team threads is reported automatically since the <code class="docutils literal notranslate"><span class="pre">OMP_DISPLAY_AFFINITY</span></code> environment variable has been set to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>.</p>
+<p>The following examples illustrate ways to display thread affinity. Automatic display of affinity can be invoked by setting the <strong>OMP_DISPLAY_AFFINITY</strong> environment variable to <strong>TRUE</strong>.   The format of the output can be customized by setting the  <strong>OMP_AFFINITY_FORMAT</strong> environment variable to an appropriate string.   Also, there are API calls for the user to display thread affinity  at selected locations within code.</p>
+<p>For the first example the environment variable <strong>OMP_DISPLAY_AFFINITY</strong> has been set to <strong>TRUE</strong>, and execution occurs on an 8-core system with <strong>OMP_NUM_THREADS</strong> set to 8.</p>
+<p>The affinity for the primary thread is reported through a call to the API <strong>omp_display_affinity()</strong> routine. For default affinity settings the report shows that the primary thread can execute on any of the cores.  In the following parallel region the affinity for each of the team threads is reported automatically since the <strong>OMP_DISPLAY_AFFINITY</strong> environment variable has been set to <strong>TRUE</strong>.</p>
 <p>These two reports are often useful (as in hybrid codes using both MPI and OpenMP)  to observe the affinity (for an MPI task) before the parallel region, and during an OpenMP parallel region. Note: the next parallel region uses the  same number of threads as in the previous parallel region and affinities are  not changed, so affinity is NOT reported.</p>
 <p>In the last parallel region, the thread affinities are reported because the thread affinity has changed.</p>
 <div class="cell docutils container">
@@ -1040,14 +950,15 @@ int main(void){                  //MAX threads = 8, single socket system
 
    return 0;
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: affinity_display.1
 ! type: F-free
 ! version: omp_5.0
@@ -1119,7 +1030,6 @@ program affinity_display        ! MAX threads = 8, single socket system
    !$omp end parallel
 
 end program
-
 </pre></div>
 </div>
 </div>
@@ -1127,19 +1037,13 @@ end program
 <p>In the following example 2 threads are forked, and each executes on a socket. Next, a nested parallel region runs half of the available threads on each socket.</p>
 <p>These OpenMP environment variables have been set:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">OMP_PROC_BIND</span></code>=”TRUE”</p></li>
+<li><p><strong>OMP_PROC_BIND</strong>=”TRUE”</p></li>
+<li><p>OMP_NUM_THREADS=”2,4”</p></li>
+<li><p>OMP_PLACES=”{0,2,4,6},{1,3,5,7}”</p></li>
+<li><p>OMP_AFFINITY_FORMAT=”nest_level= L, parent_thrd_num= a, thrd_num= n, thrd_affinity= A”</p></li>
 </ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code>=”2,4”</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">OMP_PLACES</span></code>=”{0,2,4,6},{1,3,5,7}”</p></li>
-</ul>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">OMP_AFFINITY_FORMAT</span></code>=”nest_level= L, parent_thrd_num= a, thrd_num= n, thrd_affinity= A”</p></li>
-</ul>
-<p>where the numbers correspond to core ids for the system. Note, <code class="docutils literal notranslate"><span class="pre">OMP_DISPLAY_AFFINITY</span></code> is not set and is <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> by default.  This example shows how to use API routines to perform affinity display operations.</p>
-<p><strong>environment variables!OMP_PLACES <code class="docutils literal notranslate"><span class="pre">OMP_PLACES</span></code></strong> <strong>OMP_PLACES <code class="docutils literal notranslate"><span class="pre">OMP_PLACES</span></code></strong> For each of the two first-level threads the <code class="docutils literal notranslate"><span class="pre">OMP_PLACES</span></code> variable specifies a place with all the core-ids of the socket ({0,2,4,6} for one thread and {1,3,5,7} for the other). (As is sometimes the case in 2-socket systems, one socket may consist of the even id numbers, while the other may have the odd id numbers.)  The affinities are printed according to the <code class="docutils literal notranslate"><span class="pre">OMP_AFFINITY_FORMAT</span></code> format: providing the parallel nesting level (L), the ancestor thread number (a), the thread number (n) and the thread affinity (A). In the nested parallel region within the  <em>socket_work</em>  routine the affinities for the threads on each socket are printed according to this format.</p>
+<p>where the numbers correspond to core ids for the system. Note, <strong>OMP_DISPLAY_AFFINITY</strong> is not set and is <strong>FALSE</strong> by default.  This example shows how to use API routines to perform affinity display operations.</p>
+<p>For each of the two first-level threads the <strong>OMP_PLACES</strong> variable specifies a place with all the core-ids of the socket ({0,2,4,6} for one thread and {1,3,5,7} for the other). (As is sometimes the case in 2-socket systems, one socket may consist of the even id numbers, while the other may have the odd id numbers.)  The affinities are printed according to the <strong>OMP_AFFINITY_FORMAT</strong> format: providing the parallel nesting level (%L), the ancestor thread number (%a), the thread number (%n) and the thread affinity (%A). In the nested parallel region within the  <em>socket_work</em>  routine the affinities for the threads on each socket are printed according to this format.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
@@ -1220,14 +1124,15 @@ void socket_work(int socket_num, int n_thrds)
     // ... Do Some work on Socket
    }
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: affinity_display.2
 ! type: F-free
 ! version: omp_5.0
@@ -1308,16 +1213,14 @@ subroutine socket_work(socket_num, n_thrds)
    !$omp end parallel
 
 end subroutine
-
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>affinity display!omp_get_affinity_format routine <code class="docutils literal notranslate"><span class="pre">omp_get_affinity_format</span></code> routine</strong> <strong>routines!omp_get_affinity_format <code class="docutils literal notranslate"><span class="pre">omp_get_affinity_format</span></code></strong> <strong>omp_get_affinity_format routine <code class="docutils literal notranslate"><span class="pre">omp_get_affinity_format</span></code> routine</strong> <strong>affinity display!omp_set_affinity_format routine <code class="docutils literal notranslate"><span class="pre">omp_set_affinity_format</span></code> routine</strong> <strong>routines!omp_set_affinity_format <code class="docutils literal notranslate"><span class="pre">omp_set_affinity_format</span></code></strong> <strong>omp_set_affinity_format routine <code class="docutils literal notranslate"><span class="pre">omp_set_affinity_format</span></code> routine</strong> The next example illustrates more details about affinity formatting. First, the <code class="docutils literal notranslate"><span class="pre">omp_get_affinity_format()</span></code> API routine is used to  obtain the default format. The code checks to make sure the storage  provides enough space to hold the format.   Next, the <code class="docutils literal notranslate"><span class="pre">omp_set_affinity_format()</span></code> API routine sets a user-defined  format:  <em>host=20H thrd_num=0.4n binds_to=A</em> .</p>
-<p>The host, thread number and affinity fields are specified by  <em>20H</em> ,   <em>0.4n</em>  and  <em>A</em> :  <em>H</em> ,  <em>n</em>  and  <em>A</em>  are single character “short names”  for the host, thread_num and thread_affinity data to be printed, with format sizes of  <em>20</em> ,  <em>4</em> , and “size as needed”.  The period (.) indicates that the field is displayed right-justified (default is left-justified)  and the “0” indicates that any unused space is to be prefixed with zeros  (e.g. instead of “1”, “0001” is displayed for the field size of 4).</p>
-<p><strong>affinity display!omp_capture_affinity routine <code class="docutils literal notranslate"><span class="pre">omp_capture_affinity</span></code> routine</strong> <strong>routines!omp_capture_affinity <code class="docutils literal notranslate"><span class="pre">omp_capture_affinity</span></code></strong> <strong>omp_capture_affinity routine <code class="docutils literal notranslate"><span class="pre">omp_capture_affinity</span></code> routine</strong> Within the parallel region the affinity for each thread is captured by  <code class="docutils literal notranslate"><span class="pre">omp_capture_affinity()</span></code> into a buffer array with elements indexed  by the thread number ( <em>thrd_num</em> ). After the parallel region, the thread affinities are printed in thread-number order.</p>
-<p>If the storage area in buffer is inadequate for holding the affinity data, the stored affinity data is truncated.   The maximum value for the number of characters ( <em>nchars</em> ) returned by  <code class="docutils literal notranslate"><span class="pre">omp_capture_affinity</span></code> is captured by the <code class="docutils literal notranslate"><span class="pre">reduction(max:max_req_store)</span></code> clause and the  <em>if(nchars &gt;= max_req_store) max_req_store=nchars</em>  statement.  It is used to report possible truncation (if  <em>max_req_store</em>  &gt;  <em>buffer_store</em> ).</p>
-<p>ewpage</p>
+<p>The next example illustrates more details about affinity formatting. First, the <strong>omp_get_affinity_format()</strong> API routine is used to  obtain the default format. The code checks to make sure the storage  provides enough space to hold the format.   Next, the <strong>omp_set_affinity_format()</strong> API routine sets a user-defined  format:  <em>host=%20H thrd_num=%0.4n binds_to=%A</em> .</p>
+<p>The host, thread number and affinity fields are specified by  <em>%20H</em> ,   <em>%0.4n</em>  and  <em>%A</em> :  <em>H</em> ,  <em>n</em>  and  <em>A</em>  are single character “short names”  for the host, thread_num and thread_affinity data to be printed, with format sizes of  <em>20</em> ,  <em>4</em> , and “size as needed”.  The period (.) indicates that the field is displayed right-justified (default is left-justified)  and the “0” indicates that any unused space is to be prefixed with zeros  (e.g. instead of “1”, “0001” is displayed for the field size of 4).</p>
+<p>Within the parallel region the affinity for each thread is captured by  <strong>omp_capture_affinity()</strong> into a buffer array with elements indexed  by the thread number ( <em>thrd_num</em> ). After the parallel region, the thread affinities are printed in thread-number order.</p>
+<p>If the storage area in buffer is inadequate for holding the affinity data, the stored affinity data is truncated.   The maximum value for the number of characters ( <em>nchars</em> ) returned by  <strong>omp_capture_affinity</strong> is captured by the <strong>reduction(max:max_req_store)</strong> clause and the  <em>if(nchars &gt;= max_req_store) max_req_store=nchars</em>  statement.  It is used to report possible truncation (if  <em>max_req_store</em>  &gt;  <em>buffer_store</em> ).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
@@ -1414,14 +1317,15 @@ int main(void){
 
    return 0;
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: affinity_display.3
 ! type: F-free
 ! version: omp_5.0
@@ -1497,20 +1401,17 @@ program affinity_display
 
    deallocate(buffer)
 end program
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../affinity/affinity_display.tex</p>
 </section>
 <section id="affinity-query-functions">
 <h2>Affinity Query Functions<a class="headerlink" href="#affinity-query-functions" title="Permalink to this headline">#</a></h2>
-<p><strong>affinity query!omp_get_num_places routine <code class="docutils literal notranslate"><span class="pre">omp_get_num_places</span></code> routine</strong> <strong>routines!omp_get_num_places <code class="docutils literal notranslate"><span class="pre">omp_get_num_places</span></code></strong> <strong>omp_get_num_places routine <code class="docutils literal notranslate"><span class="pre">omp_get_num_places</span></code> routine</strong> <strong>affinity query!omp_get_place_num routine <code class="docutils literal notranslate"><span class="pre">omp_get_place_num</span></code> routine</strong> <strong>routines!omp_get_place_num <code class="docutils literal notranslate"><span class="pre">omp_get_place_num</span></code></strong> <strong>omp_get_place_num routine <code class="docutils literal notranslate"><span class="pre">omp_get_place_num</span></code> routine</strong> <strong>affinity query!omp_get_place_num_procs routine <code class="docutils literal notranslate"><span class="pre">omp_get_place_num_procs</span></code> routine</strong> <strong>routines!omp_get_place_num_procs <code class="docutils literal notranslate"><span class="pre">omp_get_place_num_procs</span></code></strong> <strong>omp_get_place_num_procs routine <code class="docutils literal notranslate"><span class="pre">omp_get_place_num_procs</span></code> routine</strong> <strong>affinity!spread policy <code class="docutils literal notranslate"><span class="pre">spread</span></code> policy</strong> <strong>spread policy <code class="docutils literal notranslate"><span class="pre">spread</span></code> policy</strong> <strong>environment variables!OMP_PLACES <code class="docutils literal notranslate"><span class="pre">OMP_PLACES</span></code></strong> <strong>OMP_PLACES <code class="docutils literal notranslate"><span class="pre">OMP_PLACES</span></code></strong></p>
 <p>In the example below a team of threads is generated on each socket of the system, using nested parallelism. Several query functions are used to gather information to support the creation of the teams and to obtain  socket and thread numbers.</p>
-<p>For proper execution of the code, the user must create a place partition, such that each place is a listing of the core numbers for a socket. For example, in a 2 socket system with 8 cores in each socket, and sequential numbering in the socket for the core numbers, the <code class="docutils literal notranslate"><span class="pre">OMP_PLACES</span></code> variable would be set to “{0:8},{8:8}”, using the place syntax { <em>lower_bound</em> : <em>length</em> : <em>stride</em> }, and the default stride of 1.</p>
-<p>The code determines the number of sockets ( <em>n_sockets</em> ) using the <code class="docutils literal notranslate"><span class="pre">omp_get_num_places()</span></code> query function. In this example each place is constructed with a list of  each socket’s core numbers, hence the number of places is equal to the number of sockets.</p>
-<p>The outer parallel region forms a team of threads, and each thread  executes on a socket (place) because the <code class="docutils literal notranslate"><span class="pre">proc_bind</span></code> clause uses  <code class="docutils literal notranslate"><span class="pre">spread</span></code> in the outer <code class="docutils literal notranslate"><span class="pre">parallel</span></code> construct. Next, in the  <em>socket_init</em>  function, an inner parallel region creates a team  of threads equal to the number of elements (core numbers) from the place of the parent thread. Because the outer <code class="docutils literal notranslate"><span class="pre">parallel</span></code> construct uses  a <code class="docutils literal notranslate"><span class="pre">spread</span></code> affinity policy, each of its threads inherits a subpartition of  the original partition.  Hence, the <code class="docutils literal notranslate"><span class="pre">omp_get_place_num_procs</span></code> query function returns the number of elements (here procs = cores) in the subpartition of the thread.   After each parent thread creates its nested parallel region on the section, the socket number and thread number are reported.</p>
+<p>For proper execution of the code, the user must create a place partition, such that each place is a listing of the core numbers for a socket. For example, in a 2 socket system with 8 cores in each socket, and sequential numbering in the socket for the core numbers, the <strong>OMP_PLACES</strong> variable would be set to “{0:8},{8:8}”, using the place syntax { <em>lower_bound</em> : <em>length</em> : <em>stride</em> }, and the default stride of 1.</p>
+<p>The code determines the number of sockets ( <em>n_sockets</em> ) using the <strong>omp_get_num_places()</strong> query function. In this example each place is constructed with a list of  each socket’s core numbers, hence the number of places is equal to the number of sockets.</p>
+<p>The outer parallel region forms a team of threads, and each thread  executes on a socket (place) because the <strong>proc_bind</strong> clause uses  <strong>spread</strong> in the outer <strong>parallel</strong> construct. Next, in the  <em>socket_init</em>  function, an inner parallel region creates a team  of threads equal to the number of elements (core numbers) from the place of the parent thread. Because the outer <strong>parallel</strong> construct uses  a <strong>spread</strong> affinity policy, each of its threads inherits a subpartition of  the original partition.  Hence, the <strong>omp_get_place_num_procs</strong> query function returns the number of elements (here procs = cores) in the subpartition of the thread.   After each parent thread creates its nested parallel region on the section, the socket number and thread number are reported.</p>
 <p>Note: Portable tools like hwloc (Portable HardWare LOCality package), which support many common operating systems, can be used to determine the configuration of a system.   On some systems there are utilities, files or user guides that provide configuration information.  For instance, the socket number and proc_id’s for a socket  can be found in the /proc/cpuinfo text file on Linux systems.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1554,14 +1455,15 @@ int main()
 
    return 0;
 }
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: affinity_query.1
 ! type: F-free
 ! version: omp_4.5
@@ -1593,12 +1495,10 @@ program numa_teams
 
    !$omp end parallel
 end program
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../affinity/affinity_query.tex</p>
 </section>
 </section>
 
