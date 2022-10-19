@@ -492,53 +492,53 @@ title="Print to PDF"
 <p>The example below illustrates the use of the OpenMP pragma form. The first pragma (PRAG 1) specifies a combined <strong>parallel for</strong> directive, with a <strong>num_threads</strong> clause, and a comment.  The second pragma (PRAG 2) shows the same directive split across two lines. The next nested pragmas (PRAG 3 and 4) show the previous combined directive as  two separate directives. The executable directives above all apply to the next  statement. The <strong>parallel</strong> directive can be applied to a  <em>structured</em>   <em>block</em>  as shown in PRAG 5.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name:       directive_syntax_pragma.1
-* type:       C
-*/
-#include   &lt;omp.h&gt;
-#include &lt;stdio.h&gt;
-#define NT 4
-#define thrd_no omp_get_thread_num
+<span class="cm">/*</span>
+<span class="cm">* name:       directive_syntax_pragma.1</span>
+<span class="cm">* type:       C</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w">   </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#define NT 4</span>
+<span class="cp">#define thrd_no omp_get_thread_num</span>
 
-int main(){
-    #pragma omp parallel for num_threads(NT)                 // PRAG 1
-    for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#pragma omp parallel for num_threads(NT)                 </span><span class="c1">// PRAG 1</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">NT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;thrd no %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">thrd_no</span><span class="p">());</span><span class="w"></span>
 
-    #pragma omp parallel for \
-                num_threads(NT)                              // PRAG 2
-    for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());
+<span class="w">    </span><span class="cp">#pragma omp parallel for \</span>
+<span class="cp">                num_threads(NT)                              </span><span class="c1">// PRAG 2</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">NT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;thrd no %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">thrd_no</span><span class="p">());</span><span class="w"></span>
 
-    #pragma omp parallel num_threads(NT)                     // PRAG 3-4
-    #pragma omp for
-    for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());
+<span class="w">    </span><span class="cp">#pragma omp parallel num_threads(NT)                     </span><span class="c1">// PRAG 3-4</span>
+<span class="w">    </span><span class="cp">#pragma omp for</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">NT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;thrd no %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">thrd_no</span><span class="p">());</span><span class="w"></span>
 
-    #pragma omp parallel num_threads(NT)                     // PRAG 5
-    {
-       int no = thrd_no();
-       if (no%2) { printf(&quot;thrd no %d is Odd \n&quot;,no);}
-       else      { printf(&quot;thrd no %d is Even\n&quot;,no);}
+<span class="w">    </span><span class="cp">#pragma omp parallel num_threads(NT)                     </span><span class="c1">// PRAG 5</span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thrd_no</span><span class="p">();</span><span class="w"></span>
+<span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">no</span><span class="o">%</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;thrd no %d is Odd </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">no</span><span class="p">);}</span><span class="w"></span>
+<span class="w">       </span><span class="k">else</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;thrd no %d is Even</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">no</span><span class="p">);}</span><span class="w"></span>
 
-       #pragma omp for
-       for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());
-    }
-}
-/*
-      repeated 4 times, any order
-      OUTPUT: thrd no 0
-      OUTPUT: thrd no 1
-      OUTPUT: thrd no 2
-      OUTPUT: thrd no 3
+<span class="w">       </span><span class="cp">#pragma omp for</span>
+<span class="w">       </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">NT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;thrd no %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">thrd_no</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="cm">/*</span>
+<span class="cm">      repeated 4 times, any order</span>
+<span class="cm">      OUTPUT: thrd no 0</span>
+<span class="cm">      OUTPUT: thrd no 1</span>
+<span class="cm">      OUTPUT: thrd no 2</span>
+<span class="cm">      OUTPUT: thrd no 3</span>
 
-      any order
-      OUTPUT: thrd no 0 is Even
-      OUTPUT: thrd no 2 is Even
-      OUTPUT: thrd no 1 is Odd
-      OUTPUT: thrd no 3 is Odd
-*/
+<span class="cm">      any order</span>
+<span class="cm">      OUTPUT: thrd no 0 is Even</span>
+<span class="cm">      OUTPUT: thrd no 2 is Even</span>
+<span class="cm">      OUTPUT: thrd no 1 is Odd</span>
+<span class="cm">      OUTPUT: thrd no 3 is Odd</span>
+<span class="cm">*/</span><span class="w"></span>
 
 </pre></div>
 </div>
@@ -558,88 +558,88 @@ int main(){
 <p>In section PRAG DECL 1-2, the two loops use different SIMD forms of the  <em>P</em>  function (one with <strong>simdlen(4)</strong> and the other with <strong>simdlen(8)</strong>),  as prescribed by the two different <strong>declare</strong> <strong>simd</strong> directives applied to the  <em>P</em>  function definitions (at the beginning of the code).  The directives use the pragma syntax, and order is not important.  For the next set of loops  (PRAG DECL 3-4) that use the  <em>Q</em>  function, the attribute syntax is  used for the <strong>declare</strong> <strong>simd</strong> directives.  The result is compliant code since directive order is irrelevant. Sections ATTR DECL 5-6 are included for completeness. Here, the attribute  form of the <strong>simd</strong> directive is used for loops calling the  <em>Q</em>  function,  in combination with the attribute form of the <strong>declare</strong> <strong>simd</strong>  directives declaring the variants for  <em>Q</em> .</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name:       directive_syntax_attribute.1
-* type:       C++
-* version:    omp_5.0
-*/
-#include &lt;stdio.h&gt;
-#include &lt;omp.h&gt;
-#define NT 4
-#define thrd_no omp_get_thread_num
+<span class="cm">/*</span>
+<span class="cm">* name:       directive_syntax_attribute.1</span>
+<span class="cm">* type:       C++</span>
+<span class="cm">* version:    omp_5.0</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
+<span class="cp">#define NT 4</span>
+<span class="cp">#define thrd_no omp_get_thread_num</span>
 
-#pragma omp declare simd linear(i) simdlen(4)
-#pragma omp declare simd linear(i) simdlen(8)
-double P(int i){ return (double)i * (double)i; }
+<span class="cp">#pragma omp declare simd linear(i) simdlen(4)</span>
+<span class="cp">#pragma omp declare simd linear(i) simdlen(8)</span>
+<span class="kt">double</span><span class="w"> </span><span class="nf">P</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-[[omp::directive(declare simd linear(i) simdlen(4))]]
-[[omp::directive(declare simd linear(i) simdlen(8))]]
-double Q(int i){ return (double)i * (double)i; }
+<span class="p">[[</span><span class="n">omp</span><span class="o">::</span><span class="n">directive</span><span class="p">(</span><span class="n">declare</span><span class="w"> </span><span class="n">simd</span><span class="w"> </span><span class="n">linear</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">simdlen</span><span class="p">(</span><span class="mi">4</span><span class="p">))]]</span><span class="w"></span>
+<span class="p">[[</span><span class="n">omp</span><span class="o">::</span><span class="n">directive</span><span class="p">(</span><span class="n">declare</span><span class="w"> </span><span class="n">simd</span><span class="w"> </span><span class="n">linear</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="n">simdlen</span><span class="p">(</span><span class="mi">8</span><span class="p">))]]</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">Q</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-int main() {
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-    #pragma omp parallel for num_threads(NT)                 // PRAG 1
-    for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());
+<span class="w">    </span><span class="cp">#pragma omp parallel for num_threads(NT)                 </span><span class="c1">// PRAG 1</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">NT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;thrd no %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">thrd_no</span><span class="p">());</span><span class="w"></span>
 
-    #pragma omp parallel num_threads(NT)                     // PRAG 2
-    #pragma omp for                                          // PRAG 3
-    for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());
+<span class="w">    </span><span class="cp">#pragma omp parallel num_threads(NT)                     </span><span class="c1">// PRAG 2</span>
+<span class="w">    </span><span class="cp">#pragma omp for                                          </span><span class="c1">// PRAG 3</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">NT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;thrd no %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">thrd_no</span><span class="p">());</span><span class="w"></span>
 
-                                                             // ATTR 1
-    [[omp::directive( parallel for num_threads(NT))]]
-    for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());
+<span class="w">                                                             </span><span class="c1">// ATTR 1</span>
+<span class="w">    </span><span class="p">[[</span><span class="n">omp</span><span class="o">::</span><span class="n">directive</span><span class="p">(</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="n">NT</span><span class="p">))]]</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">NT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;thrd no %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">thrd_no</span><span class="p">());</span><span class="w"></span>
 
-                                                             // ATTR 2
-    [[using omp : directive( parallel for num_threads(NT))]]
-    for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());
+<span class="w">                                                             </span><span class="c1">// ATTR 2</span>
+<span class="w">    </span><span class="p">[[</span><span class="n">using</span><span class="w"> </span><span class="n">omp</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">directive</span><span class="p">(</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="n">NT</span><span class="p">))]]</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">NT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;thrd no %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">thrd_no</span><span class="p">());</span><span class="w"></span>
 
- // INVALID-- attribute and non-attribute on same statement
- // [[ omp :: directive( parallel num_threads(NT) ) ]]          ATTR 3
- // #pragma omp for                                             PRAG 4
- // for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());
+<span class="w"> </span><span class="c1">// INVALID-- attribute and non-attribute on same statement</span>
+<span class="w"> </span><span class="c1">// [[ omp :: directive( parallel num_threads(NT) ) ]]          ATTR 3</span>
+<span class="w"> </span><span class="c1">// #pragma omp for                                             PRAG 4</span>
+<span class="w"> </span><span class="c1">// for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());</span>
 
 
- // INVALID-- directive order not guaranteed
- // [[ omp :: directive( parallel num_threads(NT) ) ]]          ATTR 4
- // [[ omp :: directive( for                      ) ]]          ATTR 5
- // for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());
+<span class="w"> </span><span class="c1">// INVALID-- directive order not guaranteed</span>
+<span class="w"> </span><span class="c1">// [[ omp :: directive( parallel num_threads(NT) ) ]]          ATTR 4</span>
+<span class="w"> </span><span class="c1">// [[ omp :: directive( for                      ) ]]          ATTR 5</span>
+<span class="w"> </span><span class="c1">// for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());</span>
 
-                                                             // ATTR 6
-    [[omp::sequence(directive(parallel num_threads(NT)),directive(for))]]
-    for(int i=0; i&lt;NT; i++) printf(&quot;thrd no %d\n&quot;,thrd_no());
+<span class="w">                                                             </span><span class="c1">// ATTR 6</span>
+<span class="w">    </span><span class="p">[[</span><span class="n">omp</span><span class="o">::</span><span class="n">sequence</span><span class="p">(</span><span class="n">directive</span><span class="p">(</span><span class="n">parallel</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="n">NT</span><span class="p">)),</span><span class="n">directive</span><span class="p">(</span><span class="k">for</span><span class="p">))]]</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">NT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;thrd no %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">thrd_no</span><span class="p">());</span><span class="w"></span>
 
-    double tmp=0.0f;
-    #pragma omp simd reduction(+:tmp) simdlen(4)
-    for(int i=0;i&lt;100;i++) tmp += P(i);                 // PRAG DECL 1
-    #pragma omp simd reduction(+:tmp) simdlen(8)
-    for(int i=0;i&lt;100;i++) tmp += P(i);                 // PRAG DECL 2
-    printf(&quot;%f\n&quot;,tmp);
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">tmp</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#pragma omp simd reduction(+:tmp) simdlen(4)</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">                 </span><span class="c1">// PRAG DECL 1</span>
+<span class="w">    </span><span class="cp">#pragma omp simd reduction(+:tmp) simdlen(8)</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">                 </span><span class="c1">// PRAG DECL 2</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">tmp</span><span class="p">);</span><span class="w"></span>
 
-    tmp=0.0f;
-    #pragma omp simd reduction(+:tmp) simdlen(4)
-    for(int i=0;i&lt;100;i++) tmp += Q(i);                 // ATTR DECL 3
-    #pragma omp simd reduction(+:tmp) simdlen(8)
-    for(int i=0;i&lt;100;i++) tmp += Q(i);                 // ATTR DECL 4
-    printf(&quot;%f\n&quot;,tmp);
+<span class="w">    </span><span class="n">tmp</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#pragma omp simd reduction(+:tmp) simdlen(4)</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Q</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">                 </span><span class="c1">// ATTR DECL 3</span>
+<span class="w">    </span><span class="cp">#pragma omp simd reduction(+:tmp) simdlen(8)</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Q</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">                 </span><span class="c1">// ATTR DECL 4</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">tmp</span><span class="p">);</span><span class="w"></span>
 
-    tmp=0.0f;
-    [[ omp :: directive(simd reduction(+:tmp) simdlen(4))]]
-    for(int i=0;i&lt;100;i++) tmp += Q(i);                 // ATTR DECL 5
-    [[ omp :: directive(simd reduction(+:tmp) simdlen(8))]]
-    for(int i=0;i&lt;100;i++) tmp += Q(i);                 // ATTR DECL 6
-    printf(&quot;%f\n&quot;,tmp);
-}
-//    repeated 5 times, any order:
-//    OUTPUT: thrd no  0
-//    OUTPUT: thrd no  1
-//    OUTPUT: thrd no  2
-//    OUTPUT: thrd no  3
+<span class="w">    </span><span class="n">tmp</span><span class="o">=</span><span class="mf">0.0f</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">[[</span><span class="w"> </span><span class="n">omp</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">directive</span><span class="p">(</span><span class="n">simd</span><span class="w"> </span><span class="n">reduction</span><span class="p">(</span><span class="o">+:</span><span class="n">tmp</span><span class="p">)</span><span class="w"> </span><span class="n">simdlen</span><span class="p">(</span><span class="mi">4</span><span class="p">))]]</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Q</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">                 </span><span class="c1">// ATTR DECL 5</span>
+<span class="w">    </span><span class="p">[[</span><span class="w"> </span><span class="n">omp</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">directive</span><span class="p">(</span><span class="n">simd</span><span class="w"> </span><span class="n">reduction</span><span class="p">(</span><span class="o">+:</span><span class="n">tmp</span><span class="p">)</span><span class="w"> </span><span class="n">simdlen</span><span class="p">(</span><span class="mi">8</span><span class="p">))]]</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Q</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">                 </span><span class="c1">// ATTR DECL 6</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">tmp</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="c1">//    repeated 5 times, any order:</span>
+<span class="c1">//    OUTPUT: thrd no  0</span>
+<span class="c1">//    OUTPUT: thrd no  1</span>
+<span class="c1">//    OUTPUT: thrd no  2</span>
+<span class="c1">//    OUTPUT: thrd no  3</span>
 
-//    repeated 3 time:
-//    OUTPUT: 656700.000000
+<span class="c1">//    repeated 3 time:</span>
+<span class="c1">//    OUTPUT: 656700.000000</span>
 
 
 </pre></div>
@@ -649,12 +649,11 @@ int main() {
 </section>
 <section id="fortran-comments-fixed-source-form">
 <h2><span class="section-number">2.3. </span>Fortran Comments (Fixed Source Form)<a class="headerlink" href="#fortran-comments-fixed-source-form" title="Permalink to this headline">#</a></h2>
-<p><strong>directive syntax!fixed form, Fortran</strong> <strong>fixed form syntax, Fortran</strong></p>
 <p>OpenMP directives in Fortran codes with fixed source form are specified as comments with one of the <strong>!\<span class="math notranslate nohighlight">\(omp__, __c\\\)</span>omp</strong>, and <strong>*\$omp</strong> sentinels, followed by a directive name, and required and optional clauses.  The sentinel must begin in column 1.</p>
 <p>In the example below the first directive (DIR 1) specifies the <strong>parallel</strong> <strong>do</strong> combined directive, with a <strong>num_threads</strong> clause, and a comment. The second directive (DIR 2) shows the same directive split across two lines. The next nested directives (DIR 3 and 4) show the previous combined directive as two separate directives.  Here, an <strong>end</strong> directive (<strong>end</strong> <strong>parallel</strong>) must be specified to demarcate the range (region) of the <strong>parallel</strong> directive.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
 !!%cflags: -fopenmp
 
 ! name: directive_syntax_F_fixed_comment.1
@@ -667,23 +666,23 @@ int main() {
 
 c     sentinel c\$omp or *\$omp can also be used
 
-c\$omp parallel do num_threads(NT) !comments allowed here   DIR 1
+c$omp parallel do num_threads(NT) !comments allowed here   DIR 1
       do i = 1,NT
         write(*,&#39;(&quot;thrd no&quot;, i2)&#39;) omp_get_thread_num()
       end do
 
-!\$omp parallel do
-!\$omp+ num_threads(NT)          !cont. w. char in col. 6   DIR 2
+!$omp parallel do
+!$omp+ num_threads(NT)          !cont. w. char in col. 6   DIR 2
       do i = 1,NT
         write(*,&#39;(&quot;thrd no&quot;, i2)&#39;) omp_get_thread_num()
       end do
 
-*\$omp parallel num_threads(NT)  !multi-directive form      DIR 3
-*\$omp do                        !                          DIR 4
+*$omp parallel num_threads(NT)  !multi-directive form      DIR 3
+*$omp do                        !                          DIR 4
       do i = 1,NT
          write(*,&#39;(&quot;thrd no&quot;, i2)&#39;) omp_get_thread_num()
       end do
-*\$omp end parallel
+*$omp end parallel
       end
 !     repeated 3 times, any order
 !     OUTPUT: thrd no  0
@@ -698,12 +697,11 @@ c\$omp parallel do num_threads(NT) !comments allowed here   DIR 1
 </section>
 <section id="fortran-comments-free-source-form">
 <h2><span class="section-number">2.4. </span>Fortran Comments (Free Source Form)<a class="headerlink" href="#fortran-comments-free-source-form" title="Permalink to this headline">#</a></h2>
-<p><strong>directive syntax!free form, Fortran</strong> <strong>free form syntax, Fortran</strong></p>
-<p>OpenMP directives in Fortran codes with free source form are specified as comments that use the <strong>!$omp</strong> sentinel, followed by the directive name, and required and optional clauses.  Lines are continued with an ending ampersand (<strong>&amp;</strong>), and the continued line begins with <strong>!$omp</strong> or <strong>!$omp&amp;</strong>. Comments may appear on the same line as the directive.  Directives are case insensitive.</p>
+<p>OpenMP directives in Fortran codes with free source form are specified as comments that use the <code class="docutils literal notranslate"><span class="pre">!$omp</span></code> sentinel, followed by the directive name, and required and optional clauses.  Lines are continued with an ending ampersand (<strong>&amp;</strong>), and the continued line begins with <code class="docutils literal notranslate"><span class="pre">!$omp</span></code> or <code class="docutils literal notranslate"><span class="pre">!$omp&amp;</span></code>. Comments may appear on the same line as the directive.  Directives are case insensitive.</p>
 <p>In the example below the first directive (DIR 1) specifies the <strong>parallel</strong> <strong>do</strong> combined directive, with a <strong>num_threads</strong> clause, and a comment. The second directive (DIR 2) shows the same directive split across two lines.  The next nested directives (DIR 3 and 4) show the previous combined directive as two separate directives.  Here, an <strong>end</strong> directive (<strong>end</strong> <strong>parallel</strong>) must be specified to demarcate the range (region) of the <strong>parallel</strong> directive.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
 !!%cflags: -fopenmp
 
 ! name:       directive_syntax_F_free_comment.1
@@ -712,23 +710,23 @@ c\$omp parallel do num_threads(NT) !comments allowed here   DIR 1
      use omp_lib
      integer,parameter :: NT = 4
 
-     !\$omp parallel do num_threads(NT)                !DIR 1
+     !$omp parallel do num_threads(NT)                !DIR 1
      do i = 1,NT
        write(*,&#39;(&quot;thrd no&quot;, i2)&#39;) omp_get_thread_num()
      end do
 
-     !\$omp  parallel do  &amp;     !continue line         !DIR 2
-     !\$omp num_threads(NT)     !or !\$omp&amp;
+     !$omp  parallel do  &amp;     !continue line         !DIR 2
+     !$omp num_threads(NT)     !or !$omp&amp;
      do i = 1,NT
        write(*,&#39;(&quot;thrd no&quot;, i2)&#39;) omp_get_thread_num()
      end do
 
-     !\$omp parallel num_threads(NT)                   !DIR 3
-     !\$omp do                                         !DIR 4
+     !$omp parallel num_threads(NT)                   !DIR 3
+     !$omp do                                         !DIR 4
      do i = 1,NT
         write(*,&#39;(&quot;thrd no&quot;, i2)&#39;) omp_get_thread_num()
      end do
-     !\$omp end parallel
+     !$omp end parallel
 
   end program
 
@@ -745,7 +743,7 @@ c\$omp parallel do num_threads(NT) !comments allowed here   DIR 1
 <p>As of OpenMP 5.1, <strong>block</strong> and <strong>end</strong> <strong>block</strong> statements can be used to designate  a structured block for an OpenMP region, and any paired OpenMP <strong>end</strong> directive becomes optional, as shown in the next example.  Note, the variables  <em>i</em>  and  <em>thrd_no</em>  are declared within the  block structure and are hence private. It was necessary to explicitly declare the  <em>i</em>  variable, due to the <strong>implicit none</strong> statement;  it could have also been declared outside the structured block.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
 !!%cflags: -fopenmp
 
 ! name:       directive_syntax_F_block.1
@@ -757,11 +755,11 @@ c\$omp parallel do num_threads(NT) !comments allowed here   DIR 1
      implicit none
      integer,parameter :: NT = 2, chunks=3
 
-    !\$omp parallel num_threads(NT)
+    !$omp parallel num_threads(NT)
      block                          ! Fortran 2008 OMP 5.1
        integer :: thrd_no,i
        thrd_no= omp_get_thread_num()
-        !\$omp do schedule(static,chunks)
+        !$omp do schedule(static,chunks)
         do i = 1,NT*chunks
            write(*,&#39;(&quot;ndx=&quot;,i0.2,&quot; thrd_no=&quot;, i0.2)&#39;) i,thrd_no
         end do
@@ -784,60 +782,60 @@ c\$omp parallel do num_threads(NT) !comments allowed here   DIR 1
 <p>The next two <strong>parallel</strong> directives form an enclosing outer <strong>parallel</strong> construct  and a nested inner <strong>parallel</strong> construct. The first <strong>end</strong> <strong>parallel</strong> directive that subsequently appears terminates the inner <strong>parallel</strong> construct,  because a paired <strong>end</strong> directive immediately following a BLOCK construct that is  a strictly structured block of an OpenMP construct is treated as the terminating end directive  of that construct.  The next <strong>end</strong> <strong>parallel</strong> directive is required to terminate the outer <strong>parallel</strong> construct.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
-!!%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-! name:       directive_syntax_F_block.2
-! type:       F-free
-! version:    omp_5.1
-program main
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w">       </span><span class="n">directive_syntax_F_block</span><span class="mf">.2</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w">       </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w">    </span><span class="n">omp_5</span><span class="mf">.1</span><span class="w"></span>
+<span class="n">program</span><span class="w"> </span><span class="n">main</span><span class="w"></span>
 
-   use omp_lib
-   implicit none
+<span class="w">   </span><span class="n">use</span><span class="w"> </span><span class="n">omp_lib</span><span class="w"></span>
+<span class="w">   </span><span class="n">implicit</span><span class="w"> </span><span class="n">none</span><span class="w"></span>
 
-  !$omp parallel num_threads(2)
-     if( omp_get_thread_num() == 0 ) &amp;
-         print*, &quot;Loosely  structured block  -- end required.&quot;
-     block                                ! BLOCK Fortran 2008
-       if( omp_get_thread_num() == 0 ) &amp;
-           print*, &quot;                           --&quot;
-     end block
-  !$omp end parallel
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="n">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Loosely  structured block  -- end required.&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="n">block</span><span class="w">                                </span><span class="o">!</span><span class="w"> </span><span class="n">BLOCK</span><span class="w"> </span><span class="n">Fortran</span><span class="w"> </span><span class="mi">2008</span><span class="w"></span>
+<span class="w">       </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="n">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;                           --&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="n">end</span><span class="w"> </span><span class="n">block</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
 
-  !$omp parallel num_threads(2)
-     block
-       if( omp_get_thread_num() == 0 ) &amp;
-           print*, &quot;Strictly structured block  -- end not required.&quot;
-     end block
- !!$omp end parallel !is optional for strictly structured block
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="n">block</span><span class="w"></span>
+<span class="w">       </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="n">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Strictly structured block  -- end not required.&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="n">end</span><span class="w"> </span><span class="n">block</span><span class="w"></span>
+<span class="w"> </span><span class="o">!!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="o">!</span><span class="n">is</span><span class="w"> </span><span class="n">optional</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">strictly</span><span class="w"> </span><span class="n">structured</span><span class="w"> </span><span class="n">block</span><span class="w"></span>
 
-  print*, &quot;Sequential part&quot;
+<span class="w">  </span><span class="n">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Sequential part&quot;</span><span class="w"></span>
 
-  !$omp parallel num_threads(2)                      !outer parallel
-     if( omp_get_thread_num() == 0 ) &amp;
-         print*, &quot;Outer, loosely  structured block.&quot;
-     !$omp parallel num_threads(2)                   !inner parallel
-        block
-          if( omp_get_thread_num() == 0 ) &amp;
-          print*, &quot;Inner, strictly structured block.&quot;
-        end block
-     !$omp end parallel
-  !$omp end parallel
-  ! Two end directives are required here.
-  ! A single &quot;!$omp end parallel&quot; terminator will fail.
-  ! 1st end directive is assumed to be for inner parallel construct.
-  ! 2nd end directive applies to outer parallel construct.
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">                      </span><span class="o">!</span><span class="n">outer</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="n">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Outer, loosely  structured block.&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">                   </span><span class="o">!</span><span class="n">inner</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="w">        </span><span class="n">block</span><span class="w"></span>
+<span class="w">          </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="n">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Inner, strictly structured block.&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="n">end</span><span class="w"> </span><span class="n">block</span><span class="w"></span>
+<span class="w">     </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="n">Two</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">directives</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="n">here</span><span class="p">.</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="s">&quot;!$omp end parallel&quot;</span><span class="w"> </span><span class="n">terminator</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">fail</span><span class="p">.</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="mi">1</span><span class="n">st</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">directive</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">assumed</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">inner</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">construct</span><span class="p">.</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="mi">2</span><span class="n">nd</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">directive</span><span class="w"> </span><span class="n">applies</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">outer</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">construct</span><span class="p">.</span><span class="w"></span>
 
-end program
+<span class="n">end</span><span class="w"> </span><span class="n">program</span><span class="w"></span>
 
-!OUTPUT, in order:
-! Loosely  structured block  -- end required.
-!                            --
-! Strictly structured block  -- end not required.
-! Sequential part
-! Outer, loosely  structured block.
-! Inner, strictly structured block.
-! Inner, strictly structured block.
+<span class="o">!</span><span class="n">OUTPUT</span><span class="p">,</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">order</span><span class="o">:</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">Loosely</span><span class="w">  </span><span class="n">structured</span><span class="w"> </span><span class="n">block</span><span class="w">  </span><span class="o">--</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">required</span><span class="p">.</span><span class="w"></span>
+<span class="o">!</span><span class="w">                            </span><span class="o">--</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">Strictly</span><span class="w"> </span><span class="n">structured</span><span class="w"> </span><span class="n">block</span><span class="w">  </span><span class="o">--</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">required</span><span class="p">.</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">Sequential</span><span class="w"> </span><span class="n">part</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">Outer</span><span class="p">,</span><span class="w"> </span><span class="n">loosely</span><span class="w">  </span><span class="n">structured</span><span class="w"> </span><span class="n">block</span><span class="p">.</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">Inner</span><span class="p">,</span><span class="w"> </span><span class="n">strictly</span><span class="w"> </span><span class="n">structured</span><span class="w"> </span><span class="n">block</span><span class="p">.</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">Inner</span><span class="p">,</span><span class="w"> </span><span class="n">strictly</span><span class="w"> </span><span class="n">structured</span><span class="w"> </span><span class="n">block</span><span class="p">.</span><span class="w"></span>
 
 </pre></div>
 </div>
