@@ -484,7 +484,7 @@ title="Print to PDF"
 <strong>)]]</strong></p>
 <p>Fortran comments<br />
     <strong>!$omp</strong>  <em>directive-specification</em></p>
-<p>where <strong>c\$omp</strong> and <strong>*$omp</strong> may be used in Fortran fixed form sources.</p>
+<p>where <code class="docutils literal notranslate"><span class="pre">c\$omp</span></code> and <code class="docutils literal notranslate"><span class="pre">*$omp</span></code> may be used in Fortran fixed form sources.</p>
 <p>Most OpenMP directives accept clauses that alter the semantics of the directive in some way,  and some directives also accept parenthesized arguments that follow the directive name.  A clause may just be a keyword (e.g., <strong>untied</strong>) or it may also accept argument lists  (e.g., <strong>shared(x,y,z)</strong>) and/or optional modifiers (e.g., <strong>tofrom</strong> in  <strong>map(tofrom: x,y,z)</strong>). Clause modifiers may be “simple” or “complex” – a complex modifier consists of a  keyword followed by one or more parameters, bracketed by parentheses, while a simple  modifier does not. An example of a complex modifier is the <strong>iterator</strong> modifier,  as in <strong>map(iterator(i=0:n),tofrom: p[i])</strong>, or the <strong>step</strong> modifier, as in <strong>linear(x:</strong> <strong>ref,</strong> <strong>step(4))</strong>.  In the preceding examples, <strong>tofrom</strong> and <strong>ref</strong> are simple modifiers.</p>
 <section id="c-c-pragmas">
 <h2><span class="section-number">2.1. </span>C/C++ Pragmas<a class="headerlink" href="#c-c-pragmas" title="Permalink to this headline">#</a></h2>
@@ -547,7 +547,6 @@ title="Print to PDF"
 </section>
 <section id="c-attributes">
 <h2><span class="section-number">2.2. </span>C++ Attributes<a class="headerlink" href="#c-attributes" title="Permalink to this headline">#</a></h2>
-<p><strong>directive syntax!attribute, C++</strong> <strong>attribute syntax, C++</strong></p>
 <p>OpenMP directives for C++ can also be specified with  the <strong>directive</strong> extension for the C++11 standard  <em>attributes</em> .</p>
 <p>The C++ example below shows two ways to parallelize a <strong>for</strong> loop using the <strong>#pragma</strong> syntax. The first pragma uses the combined <strong>parallel</strong> <strong>for</strong> directive, and the second applies the uncombined closely nested directives, <strong>parallel</strong> and <strong>for</strong>, directly to the same statement.  These are labeled PRAG 1-3.</p>
 <p>Using the attribute syntax, the same construct in PRAG 1 is applied two different ways in attribute form, as shown in the ATTR 1 and ATTR 2 sections. In ATTR 1 the attribute syntax is used with the <strong>omp ::</strong> namespace form. In ATTR 2 the attribute syntax is used with the <strong>using omp :</strong> namespace form.</p>
@@ -650,6 +649,8 @@ title="Print to PDF"
 <section id="fortran-comments-fixed-source-form">
 <h2><span class="section-number">2.3. </span>Fortran Comments (Fixed Source Form)<a class="headerlink" href="#fortran-comments-fixed-source-form" title="Permalink to this headline">#</a></h2>
 <p>OpenMP directives in Fortran codes with fixed source form are specified as comments with one of the <strong>!\<span class="math notranslate nohighlight">\(omp__, __c\\\)</span>omp</strong>, and <strong>*\$omp</strong> sentinels, followed by a directive name, and required and optional clauses.  The sentinel must begin in column 1.</p>
+<p><strong>!\<span class="math notranslate nohighlight">\(omp__, __c\\\)</span>omp</strong>, and <strong>*\$omp</strong></p>
+<p><strong>!\<span class="math notranslate nohighlight">\(omp__, __c\\\)</span>omp</strong>, and <strong>*\$omp</strong></p>
 <p>In the example below the first directive (DIR 1) specifies the <strong>parallel</strong> <strong>do</strong> combined directive, with a <strong>num_threads</strong> clause, and a comment. The second directive (DIR 2) shows the same directive split across two lines. The next nested directives (DIR 3 and 4) show the previous combined directive as two separate directives.  Here, an <strong>end</strong> directive (<strong>end</strong> <strong>parallel</strong>) must be specified to demarcate the range (region) of the <strong>parallel</strong> directive.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
