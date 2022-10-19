@@ -1,19 +1,24 @@
+# Table of content
+# Learn more at https://jupyterbook.org/customize/toc.html
+#
 format: jb-article
 root: intro
-sections:
+parts:
+  - chapters:
+    - file: contents/Title_Page
+    - file: contents/Foreword_Chapt
   - numbered: True
-  - file: contents/Title_Page
-  - file: contents/Foreword_Chapt
-  - file: contents/Chap_introduction
-  - file: contents/Chap_directives
-  - file: contents/Chap_parallel_execution
-  - file: contents/Chap_affinity
-  - file: contents/Chap_tasking
-  - file: contents/Chap_devices
-  - file: contents/Chap_SIMD
-  - file: contents/Chap_loop_transformations
-  - file: contents/Chap_synchronization
-  - file: contents/Chap_data_environment
-  - file: contents/Chap_memory_model
-  - file: contents/Chap_program_control
-  - file: contents/Chap_ompt_interface
+    chapters:
+    - file: contents/Chap_introduction
+    - file: contents/Chap_directives
+    - file: contents/Chap_parallel_execution
+    - file: contents/Chap_affinity
+    - file: contents/Chap_tasking
+    - file: contents/Chap_devices
+    - file: contents/Chap_SIMD
+    - file: contents/Chap_loop_transformations
+    - file: contents/Chap_synchronization
+    - file: contents/Chap_data_environment
+    - file: contents/Chap_memory_model
+    - file: contents/Chap_program_control
+    - file: contents/Chap_ompt_interface
