@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Devices &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>6. Devices &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="copyright" title="Copyright" href="../copyright.html" />
-    <link rel="next" title="SIMD" href="Chap_SIMD.html" />
-    <link rel="prev" title="Tasking" href="Chap_tasking.html" />
+    <link rel="next" title="7. SIMD" href="Chap_SIMD.html" />
+    <link rel="prev" title="5. Tasking" href="Chap_tasking.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,7 +114,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Title_Page.html">
    Cover
@@ -125,64 +125,66 @@ const thebe_selector_output = ".output, .cell_output"
    Foreword
   </a>
  </li>
+</ul>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_introduction.html">
-   Introduction
+   1. Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_directives.html">
-   OpenMP Directive Syntax
+   2. OpenMP Directive Syntax
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_parallel_execution.html">
-   Parallel Execution
+   3. Parallel Execution
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_affinity.html">
-   OpenMP Affinity
+   4. OpenMP Affinity
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_tasking.html">
-   Tasking
+   5. Tasking
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_SIMD.html">
-   SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_loop_transformations.html">
-   Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_synchronization.html">
-   Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_data_environment.html">
-   Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_memory_model.html">
-   Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_program_control.html">
-   Program Control
+   12. Program Control
   </a>
  </li>
 </ul>
@@ -393,6 +395,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-construct">
+   6.1.
    <strong>
     target
    </strong>
@@ -401,6 +404,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-construct-on-parallel-construct">
+     6.1.1.
      <strong>
       target
      </strong>
@@ -413,6 +417,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-construct-with-map-clause">
+     6.1.2.
      <strong>
       target
      </strong>
@@ -425,6 +430,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#map-clause-with-to-from-map-types">
+     6.1.3.
      <strong>
       map
      </strong>
@@ -441,6 +447,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#map-clause-with-array-sections">
+     6.1.4.
      <strong>
       map
      </strong>
@@ -449,6 +456,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-construct-with-if-clause">
+     6.1.5.
      <strong>
       target
      </strong>
@@ -461,13 +469,14 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-reverse-offload">
-     Target Reverse Offload
+     6.1.6. Target Reverse Offload
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defaultmap-clause">
+   6.2.
    <strong>
     defaultmap
    </strong>
@@ -476,36 +485,37 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pointer-mapping">
-   Pointer Mapping
+   6.3. Pointer Mapping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#structure-mapping">
-   Structure Mapping
+   6.4. Structure Mapping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fortran-allocatable-array-mapping">
-   Fortran Allocatable Array Mapping
+   6.5. Fortran Allocatable Array Mapping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#array-sections-in-device-constructs">
-   Array Sections in Device Constructs
+   6.6. Array Sections in Device Constructs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#c-virtual-functions">
-   C++ Virtual Functions
+   6.7. C++ Virtual Functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#array-shaping">
-   Array Shaping
+   6.8. Array Shaping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#declare-mapper-directive">
+   6.9.
    <strong>
     declare mapper
    </strong>
@@ -514,6 +524,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-data-construct">
+   6.10.
    <strong>
     target
    </strong>
@@ -525,7 +536,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#simple-target-data-construct">
-     Simple
+     6.10.1. Simple
      <strong>
       target
      </strong>
@@ -537,6 +548,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-data-region-enclosing-multiple-target-regions">
+     6.10.2.
      <strong>
       target
      </strong>
@@ -552,6 +564,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-data-construct-with-orphaned-call">
+     6.10.3.
      <strong>
       target
      </strong>
@@ -563,6 +576,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-data-construct-with-if-clause">
+     6.10.4.
      <strong>
       target
      </strong>
@@ -580,6 +594,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-enter-data-and-target-exit-data-constructs">
+   6.11.
    <strong>
     target
    </strong>
@@ -604,6 +619,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-update-construct">
+   6.12.
    <strong>
     target
    </strong>
@@ -615,7 +631,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#simple-target-data-and-target-update-constructs">
-     Simple
+     6.12.1. Simple
      <strong>
       target
      </strong>
@@ -634,6 +650,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-update-construct-with-if-clause">
+     6.12.2.
      <strong>
       target
      </strong>
@@ -651,27 +668,27 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#declare-target-directive">
-   Declare Target Directive
+   6.13. Declare Target Directive
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#declare-target-directive-for-a-procedure">
-     Declare Target Directive for a Procedure
+     6.13.1. Declare Target Directive for a Procedure
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#declare-target-directive-for-class-type">
-     Declare Target Directive for Class Type
+     6.13.2. Declare Target Directive for Class Type
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#declare-target-directive-for-variables">
-     Declare Target Directive for Variables
+     6.13.3. Declare Target Directive for Variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#declare-target-directive-with-declare-simd">
-     Declare Target Directive with
+     6.13.4. Declare Target Directive with
      <strong>
       declare
      </strong>
@@ -682,7 +699,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#declare-target-directive-with-link-clause">
-     Declare Target Directive with
+     6.13.5. Declare Target Directive with
      <strong>
       link
      </strong>
@@ -693,11 +710,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lambda-expressions">
-   Lambda Expressions
+   6.14. Lambda Expressions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#teams-construct-and-related-combined-constructs">
+   6.15.
    <strong>
     teams
    </strong>
@@ -706,6 +724,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-and-teams-constructs-with-omp-get-num-teams-and-omp-get-team-num-routines">
+     6.15.1.
      <strong>
       target
      </strong>
@@ -726,6 +745,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-teams-and-distribute-constructs">
+     6.15.2.
      <strong>
       target
      </strong>
@@ -742,6 +762,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-teams-and-distribute-parallel-loop-constructs">
+     6.15.3.
      <strong>
       target
      </strong>
@@ -753,6 +774,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-teams-and-distribute-parallel-loop-constructs-with-scheduling-clauses">
+     6.15.4.
      <strong>
       target
      </strong>
@@ -764,6 +786,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-teams-and-distribute-simd-constructs">
+     6.15.5.
      <strong>
       target
      </strong>
@@ -782,6 +805,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-teams-and-distribute-parallel-loop-simd-constructs">
+     6.15.6.
      <strong>
       target
      </strong>
@@ -795,7 +819,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#asynchronous-target-execution-and-dependences">
-   Asynchronous
+   6.16. Asynchronous
    <strong>
     target
    </strong>
@@ -804,7 +828,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#asynchronous-target-with-tasks">
-     Asynchronous
+     6.16.1. Asynchronous
      <strong>
       target
      </strong>
@@ -813,6 +837,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#nowait-clause-on-target-construct">
+     6.16.2.
      <strong>
       nowait
      </strong>
@@ -825,7 +850,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#asynchronous-target-with-nowait-and-depend-clauses">
-     Asynchronous
+     6.16.3. Asynchronous
      <strong>
       target
      </strong>
@@ -844,11 +869,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#device-routines">
-   Device Routines
+   6.17. Device Routines
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#omp-is-initial-device-routine">
+     6.17.1.
      <strong>
       omp_is_initial_device
      </strong>
@@ -857,6 +883,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#omp-get-num-devices-routine">
+     6.17.2.
      <strong>
       omp_get_num_devices
      </strong>
@@ -865,6 +892,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#omp-set-default-device-and-omp-get-default-device-routines">
+     6.17.3.
      <strong>
       omp_set_default_device
      </strong>
@@ -877,12 +905,12 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#device-and-host-memory-association">
-     Device and Host Memory Association
+     6.17.4. Device and Host Memory Association
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-memory-and-device-pointers-routines">
-     Target Memory and Device Pointers Routines
+     6.17.5. Target Memory and Device Pointers Routines
     </a>
    </li>
   </ul>
@@ -908,6 +936,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-construct">
+   6.1.
    <strong>
     target
    </strong>
@@ -916,6 +945,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-construct-on-parallel-construct">
+     6.1.1.
      <strong>
       target
      </strong>
@@ -928,6 +958,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-construct-with-map-clause">
+     6.1.2.
      <strong>
       target
      </strong>
@@ -940,6 +971,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#map-clause-with-to-from-map-types">
+     6.1.3.
      <strong>
       map
      </strong>
@@ -956,6 +988,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#map-clause-with-array-sections">
+     6.1.4.
      <strong>
       map
      </strong>
@@ -964,6 +997,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-construct-with-if-clause">
+     6.1.5.
      <strong>
       target
      </strong>
@@ -976,13 +1010,14 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-reverse-offload">
-     Target Reverse Offload
+     6.1.6. Target Reverse Offload
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defaultmap-clause">
+   6.2.
    <strong>
     defaultmap
    </strong>
@@ -991,36 +1026,37 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pointer-mapping">
-   Pointer Mapping
+   6.3. Pointer Mapping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#structure-mapping">
-   Structure Mapping
+   6.4. Structure Mapping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fortran-allocatable-array-mapping">
-   Fortran Allocatable Array Mapping
+   6.5. Fortran Allocatable Array Mapping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#array-sections-in-device-constructs">
-   Array Sections in Device Constructs
+   6.6. Array Sections in Device Constructs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#c-virtual-functions">
-   C++ Virtual Functions
+   6.7. C++ Virtual Functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#array-shaping">
-   Array Shaping
+   6.8. Array Shaping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#declare-mapper-directive">
+   6.9.
    <strong>
     declare mapper
    </strong>
@@ -1029,6 +1065,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-data-construct">
+   6.10.
    <strong>
     target
    </strong>
@@ -1040,7 +1077,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#simple-target-data-construct">
-     Simple
+     6.10.1. Simple
      <strong>
       target
      </strong>
@@ -1052,6 +1089,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-data-region-enclosing-multiple-target-regions">
+     6.10.2.
      <strong>
       target
      </strong>
@@ -1067,6 +1105,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-data-construct-with-orphaned-call">
+     6.10.3.
      <strong>
       target
      </strong>
@@ -1078,6 +1117,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-data-construct-with-if-clause">
+     6.10.4.
      <strong>
       target
      </strong>
@@ -1095,6 +1135,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-enter-data-and-target-exit-data-constructs">
+   6.11.
    <strong>
     target
    </strong>
@@ -1119,6 +1160,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-update-construct">
+   6.12.
    <strong>
     target
    </strong>
@@ -1130,7 +1172,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#simple-target-data-and-target-update-constructs">
-     Simple
+     6.12.1. Simple
      <strong>
       target
      </strong>
@@ -1149,6 +1191,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-update-construct-with-if-clause">
+     6.12.2.
      <strong>
       target
      </strong>
@@ -1166,27 +1209,27 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#declare-target-directive">
-   Declare Target Directive
+   6.13. Declare Target Directive
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#declare-target-directive-for-a-procedure">
-     Declare Target Directive for a Procedure
+     6.13.1. Declare Target Directive for a Procedure
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#declare-target-directive-for-class-type">
-     Declare Target Directive for Class Type
+     6.13.2. Declare Target Directive for Class Type
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#declare-target-directive-for-variables">
-     Declare Target Directive for Variables
+     6.13.3. Declare Target Directive for Variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#declare-target-directive-with-declare-simd">
-     Declare Target Directive with
+     6.13.4. Declare Target Directive with
      <strong>
       declare
      </strong>
@@ -1197,7 +1240,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#declare-target-directive-with-link-clause">
-     Declare Target Directive with
+     6.13.5. Declare Target Directive with
      <strong>
       link
      </strong>
@@ -1208,11 +1251,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lambda-expressions">
-   Lambda Expressions
+   6.14. Lambda Expressions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#teams-construct-and-related-combined-constructs">
+   6.15.
    <strong>
     teams
    </strong>
@@ -1221,6 +1265,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-and-teams-constructs-with-omp-get-num-teams-and-omp-get-team-num-routines">
+     6.15.1.
      <strong>
       target
      </strong>
@@ -1241,6 +1286,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-teams-and-distribute-constructs">
+     6.15.2.
      <strong>
       target
      </strong>
@@ -1257,6 +1303,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-teams-and-distribute-parallel-loop-constructs">
+     6.15.3.
      <strong>
       target
      </strong>
@@ -1268,6 +1315,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-teams-and-distribute-parallel-loop-constructs-with-scheduling-clauses">
+     6.15.4.
      <strong>
       target
      </strong>
@@ -1279,6 +1327,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-teams-and-distribute-simd-constructs">
+     6.15.5.
      <strong>
       target
      </strong>
@@ -1297,6 +1346,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-teams-and-distribute-parallel-loop-simd-constructs">
+     6.15.6.
      <strong>
       target
      </strong>
@@ -1310,7 +1360,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#asynchronous-target-execution-and-dependences">
-   Asynchronous
+   6.16. Asynchronous
    <strong>
     target
    </strong>
@@ -1319,7 +1369,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#asynchronous-target-with-tasks">
-     Asynchronous
+     6.16.1. Asynchronous
      <strong>
       target
      </strong>
@@ -1328,6 +1378,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#nowait-clause-on-target-construct">
+     6.16.2.
      <strong>
       nowait
      </strong>
@@ -1340,7 +1391,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#asynchronous-target-with-nowait-and-depend-clauses">
-     Asynchronous
+     6.16.3. Asynchronous
      <strong>
       target
      </strong>
@@ -1359,11 +1410,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#device-routines">
-   Device Routines
+   6.17. Device Routines
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#omp-is-initial-device-routine">
+     6.17.1.
      <strong>
       omp_is_initial_device
      </strong>
@@ -1372,6 +1424,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#omp-get-num-devices-routine">
+     6.17.2.
      <strong>
       omp_get_num_devices
      </strong>
@@ -1380,6 +1433,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#omp-set-default-device-and-omp-get-default-device-routines">
+     6.17.3.
      <strong>
       omp_set_default_device
      </strong>
@@ -1392,12 +1446,12 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#device-and-host-memory-association">
-     Device and Host Memory Association
+     6.17.4. Device and Host Memory Association
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#target-memory-and-device-pointers-routines">
-     Target Memory and Device Pointers Routines
+     6.17.5. Target Memory and Device Pointers Routines
     </a>
    </li>
   </ul>
@@ -1413,7 +1467,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="devices">
-<h1>Devices<a class="headerlink" href="#devices" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6. </span>Devices<a class="headerlink" href="#devices" title="Permalink to this headline">#</a></h1>
 <p>The <strong>target</strong> construct consists of a <strong>target</strong> directive  and an execution region. The <strong>target</strong> region is executed on the default device or the device specified in the <strong>device</strong>  clause.</p>
 <p>In OpenMP version 4.0, by default, all variables within the lexical scope of the construct are copied  <em>to</em>  and  <em>from</em>  the device, unless the device is the host, or the data exists on the device from a previously executed data-type construct that has created space on the device and possibly copied host data to the device storage.</p>
 <p>The constructs that explicitly create storage, transfer data, and free storage on the device are categorized as structured and unstructured. The <strong>target</strong> <strong>data</strong> construct is structured. It creates a data region around <strong>target</strong> constructs, and is convenient for providing persistent data throughout multiple <strong>target</strong> regions. The <strong>target</strong> <strong>enter</strong> <strong>data</strong> and  <strong>target</strong> <strong>exit</strong> <strong>data</strong> constructs are unstructured, because  they can occur anywhere and do not support a “structure”  (a region) for enclosing <strong>target</strong> constructs, as does the <strong>target</strong> <strong>data</strong> construct.</p>
@@ -1422,9 +1476,9 @@ title="Print to PDF"
 <p>In OpenMP version 4.5 the mechanism for target execution is specified as occurring through a  <em>target task</em> .  When the <strong>target</strong> construct is encountered a new   <em>target task</em>  is generated. The  <em>target task</em>   completes after the <strong>target</strong> region has executed and all data  transfers have finished.</p>
 <p>This new specification does not affect the execution of  pre-4.5 code; it is a necessary element for asynchronous  execution of the <strong>target</strong> region when using the new <strong>nowait</strong>  clause introduced in OpenMP 4.5.</p>
 <section id="target-construct">
-<h2><strong>target</strong> Construct<a class="headerlink" href="#target-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1. </span><strong>target</strong> Construct<a class="headerlink" href="#target-construct" title="Permalink to this headline">#</a></h2>
 <section id="target-construct-on-parallel-construct">
-<h3><strong>target</strong> Construct on <strong>parallel</strong> Construct<a class="headerlink" href="#target-construct-on-parallel-construct" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.1. </span><strong>target</strong> Construct on <strong>parallel</strong> Construct<a class="headerlink" href="#target-construct-on-parallel-construct" title="Permalink to this headline">#</a></h3>
 <p>This following example shows how the <strong>target</strong> construct offloads a code  region to a target device. The variables  <em>p</em> ,  <em>v1</em> ,  <em>v2</em> , and  <em>N</em>  are implicitly mapped  to the target device.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1479,7 +1533,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="target-construct-with-map-clause">
-<h3><strong>target</strong> Construct with <strong>map</strong> Clause<a class="headerlink" href="#target-construct-with-map-clause" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.2. </span><strong>target</strong> Construct with <strong>map</strong> Clause<a class="headerlink" href="#target-construct-with-map-clause" title="Permalink to this headline">#</a></h3>
 <p>This following example shows how the <strong>target</strong> construct offloads a code  region to a target device. The variables  <em>p</em> ,  <em>v1</em>  and  <em>v2</em>  are explicitly mapped to the  target device using the <strong>map</strong> clause. The variable  <em>N</em>  is implicitly mapped to  the target device.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1534,7 +1588,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="map-clause-with-to-from-map-types">
-<h3><strong>map</strong> Clause with <strong>to</strong>/<strong>from</strong> map-types<a class="headerlink" href="#map-clause-with-to-from-map-types" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.3. </span><strong>map</strong> Clause with <strong>to</strong>/<strong>from</strong> map-types<a class="headerlink" href="#map-clause-with-to-from-map-types" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>target</strong> construct offloads a code region  to a target device. In the <strong>map</strong> clause, the <strong>to</strong> and <strong>from</strong>  map-types define the mapping between the original (host) data and the target (device)  data. The <strong>to</strong> map-type specifies that the data will only be read on the  device, and the <strong>from</strong> map-type specifies that the data will only be written  to on the device. By specifying a guaranteed access on the device, data transfers  can be reduced for the <strong>target</strong> region.</p>
 <p>The <strong>to</strong> map-type indicates that at the start of the <strong>target</strong> region  the variables  <em>v1</em>  and  <em>v2</em>  are initialized with the values of the corresponding variables  on the host device, and at the end of the <strong>target</strong> region the variables   <em>v1</em>  and  <em>v2</em>  are not assigned to their corresponding variables on the host device.</p>
 <p>The <strong>from</strong> map-type indicates that at the start of the <strong>target</strong> region  the variable  <em>p</em>  is not initialized with the value of the corresponding variable  on the host device, and at the end of the <strong>target</strong> region the variable  <em>p</em>   is assigned to the corresponding variable on the host device.</p>
@@ -1592,7 +1646,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="map-clause-with-array-sections">
-<h3><strong>map</strong> Clause with Array Sections<a class="headerlink" href="#map-clause-with-array-sections" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.4. </span><strong>map</strong> Clause with Array Sections<a class="headerlink" href="#map-clause-with-array-sections" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>target</strong> construct offloads a code region  to a target device. In the <strong>map</strong> clause, map-types are used to optimize  the mapping of variables to the target device. Because variables  <em>p</em> ,  <em>v1</em>  and  <em>v2</em>  are  pointers, array section notation must be used to map the arrays. The notation <strong>:N</strong>  is equivalent to <strong>0:N</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1678,7 +1732,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="target-construct-with-if-clause">
-<h3><strong>target</strong> Construct with <strong>if</strong> Clause<a class="headerlink" href="#target-construct-with-if-clause" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.5. </span><strong>target</strong> Construct with <strong>if</strong> Clause<a class="headerlink" href="#target-construct-with-if-clause" title="Permalink to this headline">#</a></h3>
 <p><strong>target construct <strong>target</strong> construct!if clause <strong>if</strong> clause</strong> <strong>clauses!if <strong>if</strong></strong> <strong>if clause <strong>if</strong> clause</strong></p>
 <p>The following example shows how the <strong>target</strong> construct offloads a code region  to a target device.</p>
 <p>The <strong>if</strong> clause on the <strong>target</strong> construct indicates that if the variable   <em>N</em>  is smaller than a given threshold, then the <strong>target</strong> region will be executed  by the host device.</p>
@@ -1820,7 +1874,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="target-reverse-offload">
-<h3>Target Reverse Offload<a class="headerlink" href="#target-reverse-offload" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.1.6. </span>Target Reverse Offload<a class="headerlink" href="#target-reverse-offload" title="Permalink to this headline">#</a></h3>
 <p>Beginning with OpenMP 5.0, implementations are allowed to offload back to the host (reverse offload).</p>
 <p>In the example below the  <em>error_handler</em>  function is executed back on the host, if an erroneous value is detected in the  <em>A</em>  array on the device.</p>
 <p>This is accomplished by specifying the  <em>device-modifier</em>  <strong>ancestor</strong> modifier, along with a device number of <strong>1</strong>, to indicate that the execution is to be performed on the immediate parent ( <em>1st ancestor</em> )– the host.</p>
@@ -1927,7 +1981,7 @@ end program
 </section>
 </section>
 <section id="defaultmap-clause">
-<h2><strong>defaultmap</strong> Clause<a class="headerlink" href="#defaultmap-clause" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2. </span><strong>defaultmap</strong> Clause<a class="headerlink" href="#defaultmap-clause" title="Permalink to this headline">#</a></h2>
 <p>The implicitly-determined, data-mapping and data-sharing attribute rules of variables referenced in a <strong>target</strong> construct can be changed by the <strong>defaultmap</strong> clause introduced in OpenMP 5.0. The implicit behavior is specified as <strong>alloc</strong>, <strong>to</strong>, <strong>from</strong>, <strong>tofrom</strong>, <strong>firstprivate</strong>, <strong>none</strong>, <strong>default</strong> or <strong>present</strong>, and is applied to a variable-category, where <strong>scalar</strong>, <strong>aggregate</strong>, <strong>allocatable</strong>, and <strong>pointer</strong> are the variable categories.</p>
 <p>In OpenMP, a “category’’ has a common data-mapping and data-sharing  behavior for variable types within the category. In C/C++, <strong>scalar</strong> refers to base-language scalar variables, except pointers. In Fortran it refers to a scalar variable, as defined by the base language,  with intrinsic type, and excludes character type.</p>
 <p>Also, <strong>aggregate</strong> refers to arrays and structures (C/C++) and derived types (Fortran). Fortran has the additional category of <strong>allocatable</strong>.</p>
@@ -2153,7 +2207,7 @@ end program
 </div>
 </section>
 <section id="pointer-mapping">
-<h2>Pointer Mapping<a class="headerlink" href="#pointer-mapping" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.3. </span>Pointer Mapping<a class="headerlink" href="#pointer-mapping" title="Permalink to this headline">#</a></h2>
 <p>Pointers that contain host addresses require that those addresses are translated to device addresses for them to be useful in the context of a device data environment. Broadly speaking, there are two scenarios where this is important.</p>
 <p>The first scenario is where the pointer is mapped to the device data environment, such that references to the pointer inside a <strong>target</strong> region are to the corresponding pointer. Pointer attachment ensures that the corresponding pointer will contain a device address when all of the following conditions are true:</p>
 <ul class="simple">
@@ -2533,7 +2587,7 @@ end program
 </div>
 </section>
 <section id="structure-mapping">
-<h2>Structure Mapping<a class="headerlink" href="#structure-mapping" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.4. </span>Structure Mapping<a class="headerlink" href="#structure-mapping" title="Permalink to this headline">#</a></h2>
 <p>In the example below, only structure elements  <em>S.a</em> ,  <em>S.b</em>  and  <em>S.p</em>   of the  <em>S</em>  structure appear in <strong>map</strong> clauses of a <strong>target</strong> construct. Only these components have corresponding variables and storage on the device.   Hence, the large arrays,  <em>S.buffera</em>  and  <em>S.bufferb</em> , and the  <em>S.x</em>  component have no storage  on the device and cannot be accessed.</p>
 <p>Also, since the pointer member  <em>S.p</em>  is used in an array section of a  <strong>map</strong> clause, the array storage of the array section on the device,   <em>S.p[:N]</em> , is <em>attached</em> to the pointer member  <em>S.p</em>  on the device. Explicitly mapping the pointer member  <em>S.p</em>  is optional in this case.</p>
 <p>Note: The buffer arrays and the  <em>x</em>  variable have been grouped together, so that the components that will reside on the device are all together (without gaps). This allows the runtime to optimize the transfer and the storage footprint on the device.</p>
@@ -2830,7 +2884,7 @@ end program
 </div>
 </section>
 <section id="fortran-allocatable-array-mapping">
-<h2>Fortran Allocatable Array Mapping<a class="headerlink" href="#fortran-allocatable-array-mapping" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.5. </span>Fortran Allocatable Array Mapping<a class="headerlink" href="#fortran-allocatable-array-mapping" title="Permalink to this headline">#</a></h2>
 <p>The following examples illustrate the use of Fortran allocatable arrays in <strong>target</strong> regions.</p>
 <p>In the first example,  allocatable variables (<em>a</em> and <em>b</em>) are first allocated
 on the host, and then mapped onto a device in the Target 1 and 2 sections, respectively.
@@ -3017,7 +3071,7 @@ end program
 </div>
 </section>
 <section id="array-sections-in-device-constructs">
-<h2>Array Sections in Device Constructs<a class="headerlink" href="#array-sections-in-device-constructs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.6. </span>Array Sections in Device Constructs<a class="headerlink" href="#array-sections-in-device-constructs" title="Permalink to this headline">#</a></h2>
 <p>The following examples show the usage of array sections in <strong>map</strong> clauses  on <strong>target</strong> and <strong>target</strong> <strong>data</strong> constructs.</p>
 <p>This example shows the invalid usage of two separate sections of the same array  inside of a <strong>target</strong> construct.</p>
 <div class="cell docutils container">
@@ -3232,7 +3286,7 @@ end program
 </div>
 </section>
 <section id="c-virtual-functions">
-<h2>C++ Virtual Functions<a class="headerlink" href="#c-virtual-functions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.7. </span>C++ Virtual Functions<a class="headerlink" href="#c-virtual-functions" title="Permalink to this headline">#</a></h2>
 <p>The 5.2 OpenMP Specification clarified restrictions on the use
 of polymorphic classes and virtual functions when used within
 <strong>target</strong> regions.  The following example identifies
@@ -3330,7 +3384,7 @@ the next <strong>target</strong> region is permitted.</p>
 </div>
 </section>
 <section id="array-shaping">
-<h2>Array Shaping<a class="headerlink" href="#array-shaping" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.8. </span>Array Shaping<a class="headerlink" href="#array-shaping" title="Permalink to this headline">#</a></h2>
 <p>A pointer variable can be shaped to a multi-dimensional array to facilitate data access. This is achieved by a  <em>shape-operator</em>  casted in front of  a pointer (lvalue expression):<br />
 <strong>([ s<sub>1</sub>][ s<sub>2</sub>]…[ s<sub>n</sub>])</strong> <em>pointer</em><br />
 where each  s<sub>i</sub>  is an integral-type expression of positive value. The shape-operator can appear in either the  <em>motion-clause</em>  of the <strong>target</strong> <strong>update</strong> directive or the <strong>depend</strong> clause.</p>
@@ -3453,7 +3507,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="declare-mapper-directive">
-<h2><strong>declare mapper</strong> Directive<a class="headerlink" href="#declare-mapper-directive" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.9. </span><strong>declare mapper</strong> Directive<a class="headerlink" href="#declare-mapper-directive" title="Permalink to this headline">#</a></h2>
 <p>The following examples show how to use the <strong>declare mapper</strong> directive to prescribe a map for later use. It is also quite useful for pre-defining partitioned and nested  structure elements.</p>
 <p>In the first example the <strong>declare mapper</strong> directive specifies  that any structure of type  <em>myvec_t</em>  for which implicit data-mapping rules apply will be mapped according to its <strong>map</strong> clause. The variable  <em>v</em>  is used for referencing the structure and its  elements within the <strong>map</strong> clause.  Within the <strong>map</strong> clause the  <em>v</em>  variable specifies that all elements of the structure are to be mapped.  Additionally, the array section  <em>v.data[0:v.len]</em>  specifies that the dynamic  storage for data is to be mapped.</p>
 <p>Within the main program the  <em>s</em>  variable is typed as  <em>myvec_t</em> . Since the variable is found within the target region and the type has a mapping prescribed by a <strong>declare mapper</strong> directive, it will be automatically mapped according to its prescription:  full structure, plus the dynamic storage of the  <em>data</em>  element.</p>
@@ -3763,9 +3817,9 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="target-data-construct">
-<h2><strong>target</strong> <strong>data</strong> Construct<a class="headerlink" href="#target-data-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.10. </span><strong>target</strong> <strong>data</strong> Construct<a class="headerlink" href="#target-data-construct" title="Permalink to this headline">#</a></h2>
 <section id="simple-target-data-construct">
-<h3>Simple <strong>target</strong> <strong>data</strong> Construct<a class="headerlink" href="#simple-target-data-construct" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.10.1. </span>Simple <strong>target</strong> <strong>data</strong> Construct<a class="headerlink" href="#simple-target-data-construct" title="Permalink to this headline">#</a></h3>
 <p>This example shows how the <strong>target</strong> <strong>data</strong> construct maps variables  to a device data environment. The <strong>target</strong> <strong>data</strong> construct creates  a new device data environment and maps the variables  <em>v1</em> ,  <em>v2</em> , and  <em>p</em>  to the new device  data environment. The <strong>target</strong> construct enclosed in the <strong>target</strong>  <strong>data</strong> region creates a new device data environment, which inherits the  variables  <em>v1</em> ,  <em>v2</em> , and  <em>p</em>  from the enclosing device data environment. The variable   <em>N</em>  is mapped into the new device data environment from the encountering task’s data  environment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3825,7 +3879,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="target-data-region-enclosing-multiple-target-regions">
-<h3><strong>target</strong> <strong>data</strong> Region Enclosing Multiple <strong>target</strong> Regions<a class="headerlink" href="#target-data-region-enclosing-multiple-target-regions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.10.2. </span><strong>target</strong> <strong>data</strong> Region Enclosing Multiple <strong>target</strong> Regions<a class="headerlink" href="#target-data-region-enclosing-multiple-target-regions" title="Permalink to this headline">#</a></h3>
 <p>The following examples show how the <strong>target</strong> <strong>data</strong> construct maps  variables to a device data environment of a <strong>target</strong> region. The <strong>target</strong>  <strong>data</strong> construct creates a device data environment and encloses <strong>target</strong>  regions, which have their own device data environments. The device data environment  of the <strong>target</strong> <strong>data</strong> region is inherited by the device data environment  of an enclosed <strong>target</strong> region. The <strong>target</strong> <strong>data</strong> construct  is used to create variables that will persist throughout the <strong>target</strong> <strong>data</strong>  region.</p>
 <p>In the following example the variables  <em>v1</em>  and  <em>v2</em>  are mapped at each <strong>target</strong>  construct. Instead of mapping the variable  <em>p</em>  twice, once at each <strong>target</strong>  construct,  <em>p</em>  is mapped once by the <strong>target</strong> <strong>data</strong> construct.</p>
 <div class="cell docutils container">
@@ -3983,7 +4037,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="target-data-construct-with-orphaned-call">
-<h3><strong>target</strong> <strong>data</strong> Construct with Orphaned Call<a class="headerlink" href="#target-data-construct-with-orphaned-call" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.10.3. </span><strong>target</strong> <strong>data</strong> Construct with Orphaned Call<a class="headerlink" href="#target-data-construct-with-orphaned-call" title="Permalink to this headline">#</a></h3>
 <p>The following two examples show how the <strong>target</strong> <strong>data</strong> construct  maps variables to a device data environment. The <strong>target</strong> <strong>data</strong>  construct’s device data environment encloses the <strong>target</strong> construct’s device  data environment in the function <strong>vec_mult()</strong>.</p>
 <p>When the type of the variable appearing in an array section is pointer, the pointer  variable and the storage location of the corresponding array section are mapped  to the device data environment. The pointer variable is treated as if it had appeared  in a <strong>map</strong> clause with a map-type of <strong>alloc</strong>. The array section’s  storage location is mapped according to the map-type in the <strong>map</strong> clause  (the default map-type is <strong>tofrom</strong>).</p>
 <p>The <strong>target</strong> construct’s device data environment inherits the storage locations  of the array sections  <em>v1[0:N]</em> ,  <em>v2[:n]</em> , and  <em>p0[0:N]</em>  from the enclosing <strong>target</strong> <strong>data</strong> construct’s device data environment. Neither initialization nor assignment is performed  for the array sections in the new device data environment.</p>
@@ -4155,7 +4209,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="target-data-construct-with-if-clause">
-<h3><strong>target</strong> <strong>data</strong> Construct with <strong>if</strong> Clause<a class="headerlink" href="#target-data-construct-with-if-clause" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.10.4. </span><strong>target</strong> <strong>data</strong> Construct with <strong>if</strong> Clause<a class="headerlink" href="#target-data-construct-with-if-clause" title="Permalink to this headline">#</a></h3>
 <p>The following two examples show how the <strong>target</strong> <strong>data</strong> construct  maps variables to a device data environment.</p>
 <p>In the following example, the if clause on the <strong>target</strong> <strong>data</strong> construct  indicates that if the variable  <em>N</em>  is smaller than a given threshold, then the <strong>target</strong>  <strong>data</strong> construct will not create a device data environment.</p>
 <p>The <strong>target</strong> constructs enclosed in the <strong>target</strong> <strong>data</strong> region  must also use an <strong>if</strong> clause on the same condition, otherwise the pointer  variable  <em>p</em>  is implicitly mapped with a map-type of <strong>tofrom</strong>, but the storage  location for the array section  <em>p[0:N]</em>  will not be mapped in the device data environments  of the <strong>target</strong> constructs.</p>
@@ -4298,7 +4352,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </section>
 </section>
 <section id="target-enter-data-and-target-exit-data-constructs">
-<h2><strong>target</strong> <strong>enter</strong> <strong>data</strong> and <strong>target</strong> <strong>exit</strong> <strong>data</strong> Constructs<a class="headerlink" href="#target-enter-data-and-target-exit-data-constructs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.11. </span><strong>target</strong> <strong>enter</strong> <strong>data</strong> and <strong>target</strong> <strong>exit</strong> <strong>data</strong> Constructs<a class="headerlink" href="#target-enter-data-and-target-exit-data-constructs" title="Permalink to this headline">#</a></h2>
 <p>The structured data construct (<strong>target</strong> <strong>data</strong>) provides persistent data on a device for subsequent <strong>target</strong> constructs as shown in the  <strong>target</strong> <strong>data</strong> examples above. This is accomplished by creating a single <strong>target</strong> <strong>data</strong> region containing <strong>target</strong> constructs.</p>
 <p>The unstructured data constructs allow the creation and deletion of data on the device at any appropriate point within the host code, as shown below  with the <strong>target</strong> <strong>enter</strong> <strong>data</strong> and <strong>target</strong> <strong>exit</strong> <strong>data</strong> constructs.</p>
 <p>The following C++ code creates/deletes a vector in a constructor/destructor  of a class. The constructor creates a vector with <strong>target</strong> <strong>enter</strong> <strong>data</strong> and uses an <strong>alloc</strong> modifier in the <strong>map</strong> clause to avoid copying values to the device. The destructor deletes the data (<strong>target</strong> <strong>exit</strong> <strong>data</strong>) and uses the <strong>delete</strong> modifier in the <strong>map</strong> clause to avoid copying data back to the host. Note, the stand-alone <strong>target</strong> <strong>enter</strong> <strong>data</strong> occurs  after the host vector is created, and the <strong>target</strong> <strong>exit</strong> <strong>data</strong> construct occurs before the host data is deleted.</p>
@@ -4407,9 +4461,9 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="target-update-construct">
-<h2><strong>target</strong> <strong>update</strong> Construct<a class="headerlink" href="#target-update-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.12. </span><strong>target</strong> <strong>update</strong> Construct<a class="headerlink" href="#target-update-construct" title="Permalink to this headline">#</a></h2>
 <section id="simple-target-data-and-target-update-constructs">
-<h3>Simple <strong>target</strong> <strong>data</strong> and <strong>target</strong> <strong>update</strong> Constructs<a class="headerlink" href="#simple-target-data-and-target-update-constructs" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.12.1. </span>Simple <strong>target</strong> <strong>data</strong> and <strong>target</strong> <strong>update</strong> Constructs<a class="headerlink" href="#simple-target-data-and-target-update-constructs" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>target</strong> <strong>update</strong> construct updates  variables in a device data environment.</p>
 <p>The <strong>target</strong> <strong>data</strong> construct maps array sections  <em>v1[:N]</em>  and  <em>v2[:N]</em>   (arrays  <em>v1</em>  and  <em>v2</em>  in the Fortran code) into a device data environment.</p>
 <p>The task executing on the host device encounters the first <strong>target</strong> region  and waits for the completion of the region.</p>
@@ -4489,7 +4543,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="target-update-construct-with-if-clause">
-<h3><strong>target</strong> <strong>update</strong> Construct with <strong>if</strong> Clause<a class="headerlink" href="#target-update-construct-with-if-clause" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.12.2. </span><strong>target</strong> <strong>update</strong> Construct with <strong>if</strong> Clause<a class="headerlink" href="#target-update-construct-with-if-clause" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>target</strong> <strong>update</strong> construct updates  variables in a device data environment.</p>
 <p>The <strong>target</strong> <strong>data</strong> construct maps array sections  <em>v1[:N]</em>  and  <em>v2[:N]</em>   (arrays  <em>v1</em>  and  <em>v2</em>  in the Fortran code) into a device data environment. In between  the two <strong>target</strong> regions, the task executing on the host device conditionally  assigns new values to  <em>v1</em>  and  <em>v2</em>  in the task’s data environment. The function <strong>maybe_init_again()</strong>  returns  <em>true</em>  if new data is written.</p>
 <p>When the conditional expression (the return value of <strong>maybe_init_again()</strong>) in the  <strong>if</strong> clause is  <em>true</em> , the <strong>target</strong> <strong>update</strong> construct  assigns the new values of  <em>v1</em>  and  <em>v2</em>  from the task’s data environment to the corresponding  mapped array sections in the <strong>target</strong> <strong>data</strong> construct’s device data  environment.</p>
@@ -4578,9 +4632,9 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </section>
 </section>
 <section id="declare-target-directive">
-<h2>Declare Target Directive<a class="headerlink" href="#declare-target-directive" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.13. </span>Declare Target Directive<a class="headerlink" href="#declare-target-directive" title="Permalink to this headline">#</a></h2>
 <section id="declare-target-directive-for-a-procedure">
-<h3>Declare Target Directive for a Procedure<a class="headerlink" href="#declare-target-directive-for-a-procedure" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.13.1. </span>Declare Target Directive for a Procedure<a class="headerlink" href="#declare-target-directive-for-a-procedure" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the declare target directive  is used to indicate that the corresponding call inside a <strong>target</strong> region  is to a <strong>fib</strong> function that can execute on the default target device.</p>
 <p>A version of the function is also available on the host device. When the <strong>if</strong>  clause conditional expression on the <strong>target</strong> construct evaluates to  <em>false</em> ,  the <strong>target</strong> region (thus <strong>fib</strong>) will execute on the host device.</p>
 <p>For the following C/C++ code the declaration of the function <strong>fib</strong> appears between the  <strong>begin</strong> <strong>declare</strong> <strong>target</strong> and <strong>end</strong> <strong>declare</strong> <strong>target</strong> directives.  In the corresponding Fortran code, the <strong>declare</strong> <strong>target</strong> directive appears at the end of the specification part of the subroutine.</p>
@@ -4675,7 +4729,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="declare-target-directive-for-class-type">
-<h3>Declare Target Directive for Class Type<a class="headerlink" href="#declare-target-directive-for-class-type" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.13.2. </span>Declare Target Directive for Class Type<a class="headerlink" href="#declare-target-directive-for-class-type" title="Permalink to this headline">#</a></h3>
 <p>The following example shows the use of the <strong>begin</strong> <strong>declare</strong> <strong>target</strong> and <strong>end</strong> <strong>declare</strong> <strong>target</strong> pair to designate the beginning and end of the affected declarations, as introduced in OpenMP 5.1. The <strong>begin</strong> <strong>declare</strong> <strong>target</strong> directive was defined to symmetrically complement the terminating (“end’’) directive.</p>
 <p>The example also shows 3 different ways to use a declare target directive for a  class and an external member-function definition (for the  <em>XOR1</em> ,  <em>XOR2</em> ,  and  <em>XOR3</em>  classes and definitions for their corresponding  <em>foo</em>  member functions).</p>
 <p>For  <em>XOR1</em> , a <strong>begin</strong> <strong>declare</strong> <strong>target</strong> and  <strong>end</strong> <strong>declare</strong> <strong>target</strong> directive enclose both the class and its member function definition. The compiler immediately knows to create a device version of the function for execution in a <strong>target</strong> region.</p>
@@ -4861,7 +4915,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="declare-target-directive-for-variables">
-<h3>Declare Target Directive for Variables<a class="headerlink" href="#declare-target-directive-for-variables" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.13.3. </span>Declare Target Directive for Variables<a class="headerlink" href="#declare-target-directive-for-variables" title="Permalink to this headline">#</a></h3>
 <p>The following examples show how the declare target directive is used to indicate that global variables are mapped to the implicit device data environment of each target device.</p>
 <p>In the following example, the declarations of the variables  <em>p</em> ,  <em>v1</em> , and  <em>v2</em>  appear  between <strong>begin</strong> <strong>declare</strong> <strong>target</strong> and <strong>end</strong> <strong>declare</strong> <strong>target</strong>  directives indicating that the variables are mapped to the implicit device data  environment of each target device. The <strong>target</strong> <strong>update</strong> directive  is then used to manage the consistency of the variables  <em>p</em> ,  <em>v1</em> , and  <em>v2</em>  between the  data environment of the encountering host device task and the implicit device data  environment of the default target device.</p>
 <div class="cell docutils container">
@@ -5012,7 +5066,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="declare-target-directive-with-declare-simd">
-<h3>Declare Target Directive with <strong>declare</strong> <strong>simd</strong><a class="headerlink" href="#declare-target-directive-with-declare-simd" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.13.4. </span>Declare Target Directive with <strong>declare</strong> <strong>simd</strong><a class="headerlink" href="#declare-target-directive-with-declare-simd" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>begin</strong> <strong>declare</strong> <strong>target</strong> and  <strong>end</strong> <strong>declare</strong> <strong>target</strong> directives are used to indicate that a function  is available on a target device. The <strong>declare</strong> <strong>simd</strong> directive indicates  that there is a SIMD version of the function  <em>P()</em>  that is available on the target  device as well as one that is available on the host device.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5111,7 +5165,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="declare-target-directive-with-link-clause">
-<h3>Declare Target Directive with <strong>link</strong> Clause<a class="headerlink" href="#declare-target-directive-with-link-clause" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.13.5. </span>Declare Target Directive with <strong>link</strong> Clause<a class="headerlink" href="#declare-target-directive-with-link-clause" title="Permalink to this headline">#</a></h3>
 <p>In the OpenMP 4.5 standard the declare target directive was extended to allow static data to be mapped, <em>when needed</em>, through a <strong>link</strong> clause.</p>
 <p>Data storage for items listed in the <strong>link</strong> clause becomes available on the device when it is mapped implicitly or explicitly in a <strong>map</strong> clause, and it persists for the scope of the mapping (as specified by a <strong>target</strong> construct,  a <strong>target</strong> <strong>data</strong> construct, or  <strong>target</strong> <strong>enter/exit</strong> <strong>data</strong> constructs).</p>
 <p>Tip: When all the global data items will not fit on a device and are not needed simultaneously, use the <strong>link</strong> clause and map the data only when it is needed.</p>
@@ -5240,7 +5294,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </section>
 </section>
 <section id="lambda-expressions">
-<h2>Lambda Expressions<a class="headerlink" href="#lambda-expressions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.14. </span>Lambda Expressions<a class="headerlink" href="#lambda-expressions" title="Permalink to this headline">#</a></h2>
 <p>The following example illustrates the usage of lambda expressions and their corresponding closure objects within a <strong>target</strong> region.</p>
 <p>In CASE 1, a lambda expression is defined inside a <strong>target</strong> construct that implicitly maps the structure 	extit{s}. Inside the construct, the lambda captures (by reference) the corresponding <em>s</em>, and the resulting closure object is assigned to <em>lambda1</em>.  When the call operator is invoked on <em>lambda1</em>, the captured reference to <em>s</em> is used in the call.  The modified <em>s</em> is then copied back to the host device on exit from the <strong>target</strong> construct.</p>
 <p>In CASE 2, a lambda expression is instead defined before the <strong>target</strong> construct and captures (by copy) the pointer <em>sp</em>. A <strong>target</strong> <strong>data</strong> construct is used to first map the structure, and then the <strong>target</strong> construct implicitly maps the closure object referenced by <em>lambda2</em>, a zero-length array section based on the structure pointer <em>sp</em>, and a zero-length array section based on the captured pointer in the closure object. The implicit maps result in attached pointers to the corresponding structure. The call for <em>lambda2</em> inside the <strong>target</strong> construct will access <em>sp-&gt;a</em> and <em>sp-&gt;b</em> from the corresponding structure.</p>
@@ -5328,9 +5382,9 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="teams-construct-and-related-combined-constructs">
-<h2><strong>teams</strong> Construct and Related Combined Constructs<a class="headerlink" href="#teams-construct-and-related-combined-constructs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.15. </span><strong>teams</strong> Construct and Related Combined Constructs<a class="headerlink" href="#teams-construct-and-related-combined-constructs" title="Permalink to this headline">#</a></h2>
 <section id="target-and-teams-constructs-with-omp-get-num-teams-and-omp-get-team-num-routines">
-<h3><strong>target</strong> and <strong>teams</strong> Constructs with <strong>omp_get_num_teams</strong> and <strong>omp_get_team_num</strong> Routines<a class="headerlink" href="#target-and-teams-constructs-with-omp-get-num-teams-and-omp-get-team-num-routines" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.15.1. </span><strong>target</strong> and <strong>teams</strong> Constructs with <strong>omp_get_num_teams</strong> and <strong>omp_get_team_num</strong> Routines<a class="headerlink" href="#target-and-teams-constructs-with-omp-get-num-teams-and-omp-get-team-num-routines" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>target</strong> and <strong>teams</strong> constructs  are used to create a league of thread teams that execute a region. The <strong>teams</strong>  construct creates a league of at most two teams where the primary thread of each  team executes the <strong>teams</strong> region.</p>
 <p>The <strong>omp_get_num_teams</strong> routine returns the number of teams executing in a <strong>teams</strong>  region. The <strong>omp_get_team_num</strong> routine returns the team number, which is an integer  between 0 and one less than the value returned by <strong>omp_get_num_teams</strong>. The following  example manually distributes a loop across two teams.</p>
 <div class="cell docutils container">
@@ -5420,7 +5474,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="target-teams-and-distribute-constructs">
-<h3><strong>target</strong>, <strong>teams</strong>, and <strong>distribute</strong> Constructs<a class="headerlink" href="#target-teams-and-distribute-constructs" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.15.2. </span><strong>target</strong>, <strong>teams</strong>, and <strong>distribute</strong> Constructs<a class="headerlink" href="#target-teams-and-distribute-constructs" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>target</strong>, <strong>teams</strong>, and <strong>distribute</strong>  constructs are used to execute a loop nest in a <strong>target</strong> region. The <strong>teams</strong>  construct creates a league and the primary thread of each team executes the <strong>teams</strong>  region. The <strong>distribute</strong> construct schedules the subsequent loop iterations  across the primary threads of each team.</p>
 <p>The number of teams in the league is less than or equal to the variable  <em>num_blocks</em> .  Each team in the league has a number of threads less than or equal to the variable   <em>block_threads</em> . The iterations in the outer loop are distributed among the primary  threads of each team.</p>
 <p>When a team’s primary thread encounters the parallel loop construct before the inner  loop, the other threads in its team are activated. The team executes the <strong>parallel</strong>  region and then workshares the execution of the loop.</p>
@@ -5495,7 +5549,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="target-teams-and-distribute-parallel-loop-constructs">
-<h3><strong>target</strong> <strong>teams</strong>, and Distribute Parallel Loop Constructs<a class="headerlink" href="#target-teams-and-distribute-parallel-loop-constructs" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.15.3. </span><strong>target</strong> <strong>teams</strong>, and Distribute Parallel Loop Constructs<a class="headerlink" href="#target-teams-and-distribute-parallel-loop-constructs" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>target</strong> <strong>teams</strong> and distribute  parallel loop constructs are used to execute a <strong>target</strong> region. The <strong>target</strong>  <strong>teams</strong> construct creates a league of teams where the primary thread of each  team executes the <strong>teams</strong> region.</p>
 <p>The distribute parallel loop construct schedules the loop iterations across the  primary threads of each team and then across the threads of each team.</p>
 <div class="cell docutils container">
@@ -5560,7 +5614,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="target-teams-and-distribute-parallel-loop-constructs-with-scheduling-clauses">
-<h3><strong>target</strong> <strong>teams</strong> and Distribute Parallel Loop  Constructs with Scheduling Clauses<a class="headerlink" href="#target-teams-and-distribute-parallel-loop-constructs-with-scheduling-clauses" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.15.4. </span><strong>target</strong> <strong>teams</strong> and Distribute Parallel Loop  Constructs with Scheduling Clauses<a class="headerlink" href="#target-teams-and-distribute-parallel-loop-constructs-with-scheduling-clauses" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>target</strong> <strong>teams</strong> and distribute  parallel loop constructs are used to execute a <strong>target</strong> region. The <strong>teams</strong>  construct creates a league of at most eight teams where the primary thread of each  team executes the <strong>teams</strong> region. The number of threads in each team is  less than or equal to 16.</p>
 <p>The <strong>distribute</strong> parallel loop construct schedules the subsequent loop iterations  across the primary threads of each team and then across the threads of each team.</p>
 <p>The <strong>dist_schedule</strong> clause on the distribute parallel loop construct indicates  that loop iterations are distributed to the primary thread of each team in chunks  of 1024 iterations.</p>
@@ -5634,7 +5688,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="target-teams-and-distribute-simd-constructs">
-<h3><strong>target</strong> <strong>teams</strong> and <strong>distribute</strong> <strong>simd</strong> Constructs<a class="headerlink" href="#target-teams-and-distribute-simd-constructs" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.15.5. </span><strong>target</strong> <strong>teams</strong> and <strong>distribute</strong> <strong>simd</strong> Constructs<a class="headerlink" href="#target-teams-and-distribute-simd-constructs" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>target</strong> <strong>teams</strong> and <strong>distribute</strong>  <strong>simd</strong> constructs are used to execute a loop in a <strong>target</strong> region.  The <strong>target</strong> <strong>teams</strong> construct creates a league of teams where the  primary thread of each team executes the <strong>teams</strong> region.</p>
 <p>The <strong>distribute</strong> <strong>simd</strong> construct schedules the loop iterations across  the primary thread of each team and then uses SIMD parallelism to execute the iterations.</p>
 <div class="cell docutils container">
@@ -5689,7 +5743,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="target-teams-and-distribute-parallel-loop-simd-constructs">
-<h3><strong>target</strong> <strong>teams</strong> and Distribute Parallel Loop SIMD Constructs<a class="headerlink" href="#target-teams-and-distribute-parallel-loop-simd-constructs" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.15.6. </span><strong>target</strong> <strong>teams</strong> and Distribute Parallel Loop SIMD Constructs<a class="headerlink" href="#target-teams-and-distribute-parallel-loop-simd-constructs" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>target</strong> <strong>teams</strong> and the distribute  parallel loop SIMD constructs are used to execute a loop in a <strong>target</strong> <strong>teams</strong>  region. The <strong>target</strong> <strong>teams</strong> construct creates a league of teams  where the primary thread of each team executes the <strong>teams</strong> region.</p>
 <p>The distribute parallel loop SIMD construct schedules the loop iterations across  the primary thread of each team and then across the threads of each team where each  thread uses SIMD parallelism.</p>
 <div class="cell docutils container">
@@ -5745,12 +5799,12 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </section>
 </section>
 <section id="asynchronous-target-execution-and-dependences">
-<h2>Asynchronous <strong>target</strong> Execution and Dependences<a class="headerlink" href="#asynchronous-target-execution-and-dependences" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.16. </span>Asynchronous <strong>target</strong> Execution and Dependences<a class="headerlink" href="#asynchronous-target-execution-and-dependences" title="Permalink to this headline">#</a></h2>
 <p>Asynchronous execution of a <strong>target</strong> region can be accomplished by creating an explicit task around the <strong>target</strong> region. Examples with explicit tasks are shown at the beginning of this section.</p>
 <p>As of OpenMP 4.5 and beyond the <strong>nowait</strong> clause can be used on the <strong>target</strong> directive for asynchronous execution. Examples with  <strong>nowait</strong> clauses follow the explicit <strong>task</strong> examples.</p>
 <p>This section also shows the use of <strong>depend</strong> clauses to order  executions through dependences.</p>
 <section id="asynchronous-target-with-tasks">
-<h3>Asynchronous <strong>target</strong> with Tasks<a class="headerlink" href="#asynchronous-target-with-tasks" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.16.1. </span>Asynchronous <strong>target</strong> with Tasks<a class="headerlink" href="#asynchronous-target-with-tasks" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>task</strong> and <strong>target</strong> constructs  are used to execute multiple <strong>target</strong> regions asynchronously. The task that  encounters the <strong>task</strong> construct generates an explicit task that contains  a <strong>target</strong> region. The thread executing the explicit task encounters a task  scheduling point while waiting for the execution of the <strong>target</strong> region  to complete, allowing the thread to switch back to the execution of the encountering  task or one of the previously generated explicit tasks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5945,7 +5999,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="nowait-clause-on-target-construct">
-<h3><strong>nowait</strong> Clause on <strong>target</strong> Construct<a class="headerlink" href="#nowait-clause-on-target-construct" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.16.2. </span><strong>nowait</strong> Clause on <strong>target</strong> Construct<a class="headerlink" href="#nowait-clause-on-target-construct" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how to execute code asynchronously on a  device without an explicit task. The <strong>nowait</strong> clause on a <strong>target</strong>  construct allows the thread of the  <em>target task</em>  to perform other work while waiting for the <strong>target</strong> region execution to complete.  Hence, the <strong>target</strong> region can execute asynchronously on the  device (without requiring a host thread to idle while waiting for  the  <em>target task</em>  execution to complete).</p>
 <p>In this example the product of two vectors (arrays),  <em>v1</em>  and  <em>v2</em> , is formed. One half of the operations is performed on the device, and the last half on the host, concurrently.</p>
 <p>After a team of threads is formed the primary thread generates  the  <em>target task</em>  while the other threads can continue on, without a barrier, to the execution of the host portion of the vector product. The completion of the  <em>target task</em>  (asynchronous target execution) is  guaranteed by the synchronization in the implicit barrier at the end of the  host vector-product worksharing loop region. See the <strong>barrier</strong>  glossary entry in the OpenMP specification for details.</p>
@@ -6033,7 +6087,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="asynchronous-target-with-nowait-and-depend-clauses">
-<h3>Asynchronous <strong>target</strong> with <strong>nowait</strong> and <strong>depend</strong> Clauses<a class="headerlink" href="#asynchronous-target-with-nowait-and-depend-clauses" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.16.3. </span>Asynchronous <strong>target</strong> with <strong>nowait</strong> and <strong>depend</strong> Clauses<a class="headerlink" href="#asynchronous-target-with-nowait-and-depend-clauses" title="Permalink to this headline">#</a></h3>
 <p>More details on dependences can be found in  Section 5.3, Task  Dependences. In this example, there are three flow dependences.  In the first two dependences the target task does not execute until the preceding explicit tasks have finished.   These  dependences are produced by arrays  <em>v1</em>  and  <em>v2</em>   with the <strong>out</strong> dependence type in the first two tasks, and the <strong>in</strong> dependence type in the target task.</p>
 <p>The last dependence is produced by array  <em>p</em>   with the <strong>out</strong> dependence type in the target task, and the <strong>in</strong> dependence type in the last task.  The last task does not execute until the target task finishes.</p>
 <p>The <strong>nowait</strong> clause on the <strong>target</strong> construct creates a deferrable  <em>target task</em> , allowing the encountering task to continue execution without waiting for the completion of the  <em>target task</em> .</p>
@@ -6134,9 +6188,9 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </section>
 </section>
 <section id="device-routines">
-<h2>Device Routines<a class="headerlink" href="#device-routines" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.17. </span>Device Routines<a class="headerlink" href="#device-routines" title="Permalink to this headline">#</a></h2>
 <section id="omp-is-initial-device-routine">
-<h3><strong>omp_is_initial_device</strong> Routine<a class="headerlink" href="#omp-is-initial-device-routine" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.17.1. </span><strong>omp_is_initial_device</strong> Routine<a class="headerlink" href="#omp-is-initial-device-routine" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>omp_is_initial_device</strong> runtime library routine  can be used to query if a code is executing on the initial host device or on a  target device. The example then sets the number of threads in the <strong>parallel</strong>  region based on where the code is executing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6239,7 +6293,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="omp-get-num-devices-routine">
-<h3><strong>omp_get_num_devices</strong> Routine<a class="headerlink" href="#omp-get-num-devices-routine" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.17.2. </span><strong>omp_get_num_devices</strong> Routine<a class="headerlink" href="#omp-get-num-devices-routine" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>omp_get_num_devices</strong> runtime library routine  can be used to determine the number of devices.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6302,7 +6356,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="omp-set-default-device-and-omp-get-default-device-routines">
-<h3><strong>omp_set_default_device</strong> and  <strong>omp_get_default_device</strong> Routines<a class="headerlink" href="#omp-set-default-device-and-omp-get-default-device-routines" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.17.3. </span><strong>omp_set_default_device</strong> and  <strong>omp_get_default_device</strong> Routines<a class="headerlink" href="#omp-set-default-device-and-omp-get-default-device-routines" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how the <strong>omp_set_default_device</strong> and <strong>omp_get_default_device</strong>  runtime library routines can be used to set the default device and determine the  default device respectively.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6352,7 +6406,7 @@ where each  s<sub>i</sub>  is an integral-type expression of positive value. The
 </div>
 </section>
 <section id="device-and-host-memory-association">
-<h3>Device and Host Memory Association<a class="headerlink" href="#device-and-host-memory-association" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.17.4. </span>Device and Host Memory Association<a class="headerlink" href="#device-and-host-memory-association" title="Permalink to this headline">#</a></h3>
 <p>The association of device memory with host memory
 can be established by calling the <strong>omp_target_associate_ptr</strong>
 API routine as part of the mapping.
@@ -6534,7 +6588,7 @@ end
 </div>
 </section>
 <section id="target-memory-and-device-pointers-routines">
-<h3>Target Memory and Device Pointers Routines<a class="headerlink" href="#target-memory-and-device-pointers-routines" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.17.5. </span>Target Memory and Device Pointers Routines<a class="headerlink" href="#target-memory-and-device-pointers-routines" title="Permalink to this headline">#</a></h3>
 <p>The following example shows how to create space on a device, transfer data to and from that space, and free the space, using API calls. The API calls directly execute allocation, copy and free operations on the device, without invoking any mapping through a <strong>target</strong> directive. The <strong>omp_target_alloc</strong> routine allocates space and returns a device pointer for referencing the space in the <strong>omp_target_memcpy</strong> API routine on the host. The <strong>omp_target_free</strong> routine frees the space on the device.</p>
 <p>The example also illustrates how to access that space in a <strong>target</strong> region by exposing the device pointer in an <strong>is_device_ptr</strong> clause.</p>
 <p>The example creates an array of cosine values on the default device, to be used on the host device. The function fails if a default device is not available.</p>
@@ -6744,13 +6798,13 @@ end
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Tasking</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Tasking</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Chap_SIMD.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">SIMD</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>SIMD</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

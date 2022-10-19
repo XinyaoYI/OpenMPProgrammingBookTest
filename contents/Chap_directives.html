@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>OpenMP Directive Syntax &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>2. OpenMP Directive Syntax &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="copyright" title="Copyright" href="../copyright.html" />
-    <link rel="next" title="Parallel Execution" href="Chap_parallel_execution.html" />
-    <link rel="prev" title="Introduction" href="Chap_introduction.html" />
+    <link rel="next" title="3. Parallel Execution" href="Chap_parallel_execution.html" />
+    <link rel="prev" title="1. Introduction" href="Chap_introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -116,7 +116,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Title_Page.html">
    Cover
@@ -127,64 +127,66 @@ const thebe_selector_output = ".output, .cell_output"
    Foreword
   </a>
  </li>
+</ul>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_introduction.html">
-   Introduction
+   1. Introduction
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   OpenMP Directive Syntax
+   2. OpenMP Directive Syntax
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_parallel_execution.html">
-   Parallel Execution
+   3. Parallel Execution
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_affinity.html">
-   OpenMP Affinity
+   4. OpenMP Affinity
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_tasking.html">
-   Tasking
+   5. Tasking
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_devices.html">
-   Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_SIMD.html">
-   SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_loop_transformations.html">
-   Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_synchronization.html">
-   Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_data_environment.html">
-   Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_memory_model.html">
-   Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_program_control.html">
-   Program Control
+   12. Program Control
   </a>
  </li>
 </ul>
@@ -395,22 +397,22 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#c-c-pragmas">
-   C/C++ Pragmas
+   2.1. C/C++ Pragmas
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#c-attributes">
-   C++ Attributes
+   2.2. C++ Attributes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fortran-comments-fixed-source-form">
-   Fortran Comments (Fixed Source Form)
+   2.3. Fortran Comments (Fixed Source Form)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fortran-comments-free-source-form">
-   Fortran Comments (Free Source Form)
+   2.4. Fortran Comments (Free Source Form)
   </a>
  </li>
 </ul>
@@ -434,22 +436,22 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#c-c-pragmas">
-   C/C++ Pragmas
+   2.1. C/C++ Pragmas
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#c-attributes">
-   C++ Attributes
+   2.2. C++ Attributes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fortran-comments-fixed-source-form">
-   Fortran Comments (Fixed Source Form)
+   2.3. Fortran Comments (Fixed Source Form)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fortran-comments-free-source-form">
-   Fortran Comments (Free Source Form)
+   2.4. Fortran Comments (Free Source Form)
   </a>
  </li>
 </ul>
@@ -463,7 +465,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="openmp-directive-syntax">
-<h1>OpenMP Directive Syntax<a class="headerlink" href="#openmp-directive-syntax" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2. </span>OpenMP Directive Syntax<a class="headerlink" href="#openmp-directive-syntax" title="Permalink to this headline">#</a></h1>
 <p>OpenMP <em>directives</em> use base-language mechanisms to specify OpenMP program behavior. In C code, the directives are formed exclusively with pragmas, whereas in C++ code, directives are formed from either pragmas or attributes. Fortran directives are formed with comments in free form and fixed form sources (codes). All of these mechanisms allow the compilation to ignore the OpenMP directives if OpenMP is not supported or enabled.</p>
 <p>The OpenMP directive is a combination of the base-language mechanism and a  <em>directive-specification</em> , as shown below. The  <em>directive-specification</em>  consists of the  <em>directive-name</em>  which may seldomly have arguments,  followed by optional  <em>clauses</em> . Full details of the syntax can be found in the OpenMP Specification. Illustrations of the syntax is given in the examples.</p>
 <p>The formats for combining a base-language mechanism and a  <em>directive-specification</em>  are:</p>
@@ -485,7 +487,7 @@ title="Print to PDF"
 <p>where <strong>c\$omp</strong> and <strong>*$omp</strong> may be used in Fortran fixed form sources.</p>
 <p>Most OpenMP directives accept clauses that alter the semantics of the directive in some way,  and some directives also accept parenthesized arguments that follow the directive name.  A clause may just be a keyword (e.g., <strong>untied</strong>) or it may also accept argument lists  (e.g., <strong>shared(x,y,z)</strong>) and/or optional modifiers (e.g., <strong>tofrom</strong> in  <strong>map(tofrom: x,y,z)</strong>). Clause modifiers may be “simple” or “complex” – a complex modifier consists of a  keyword followed by one or more parameters, bracketed by parentheses, while a simple  modifier does not. An example of a complex modifier is the <strong>iterator</strong> modifier,  as in <strong>map(iterator(i=0:n),tofrom: p[i])</strong>, or the <strong>step</strong> modifier, as in <strong>linear(x:</strong> <strong>ref,</strong> <strong>step(4))</strong>.  In the preceding examples, <strong>tofrom</strong> and <strong>ref</strong> are simple modifiers.</p>
 <section id="c-c-pragmas">
-<h2>C/C++ Pragmas<a class="headerlink" href="#c-c-pragmas" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1. </span>C/C++ Pragmas<a class="headerlink" href="#c-c-pragmas" title="Permalink to this headline">#</a></h2>
 <p>OpenMP C and C++ directives can be specified with the C/C++ <strong>#pragma</strong> directive. An OpenMP directive begins with <strong>#pragma omp</strong> and is followed by the  OpenMP directive name, and required and optional clauses. Lines are continued in the  usual manner, and comments may be included at the end. Directives are case sensitive.</p>
 <p>The example below illustrates the use of the OpenMP pragma form. The first pragma (PRAG 1) specifies a combined <strong>parallel for</strong> directive, with a <strong>num_threads</strong> clause, and a comment.  The second pragma (PRAG 2) shows the same directive split across two lines. The next nested pragmas (PRAG 3 and 4) show the previous combined directive as  two separate directives. The executable directives above all apply to the next  statement. The <strong>parallel</strong> directive can be applied to a  <em>structured</em>   <em>block</em>  as shown in PRAG 5.</p>
 <div class="cell docutils container">
@@ -544,7 +546,7 @@ int main(){
 </div>
 </section>
 <section id="c-attributes">
-<h2>C++ Attributes<a class="headerlink" href="#c-attributes" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.2. </span>C++ Attributes<a class="headerlink" href="#c-attributes" title="Permalink to this headline">#</a></h2>
 <p><strong>directive syntax!attribute, C++</strong> <strong>attribute syntax, C++</strong></p>
 <p>OpenMP directives for C++ can also be specified with  the <strong>directive</strong> extension for the C++11 standard  <em>attributes</em> .</p>
 <p>The C++ example below shows two ways to parallelize a <strong>for</strong> loop using the <strong>#pragma</strong> syntax. The first pragma uses the combined <strong>parallel</strong> <strong>for</strong> directive, and the second applies the uncombined closely nested directives, <strong>parallel</strong> and <strong>for</strong>, directly to the same statement.  These are labeled PRAG 1-3.</p>
@@ -646,7 +648,7 @@ int main() {
 </div>
 </section>
 <section id="fortran-comments-fixed-source-form">
-<h2>Fortran Comments (Fixed Source Form)<a class="headerlink" href="#fortran-comments-fixed-source-form" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.3. </span>Fortran Comments (Fixed Source Form)<a class="headerlink" href="#fortran-comments-fixed-source-form" title="Permalink to this headline">#</a></h2>
 <p><strong>directive syntax!fixed form, Fortran</strong> <strong>fixed form syntax, Fortran</strong></p>
 <p>OpenMP directives in Fortran codes with fixed source form are specified as comments with one of the <strong>!\<span class="math notranslate nohighlight">\(omp__, __c\\\)</span>omp</strong>, and <strong>*\$omp</strong> sentinels, followed by a directive name, and required and optional clauses.  The sentinel must begin in column 1.</p>
 <p>In the example below the first directive (DIR 1) specifies the <strong>parallel</strong> <strong>do</strong> combined directive, with a <strong>num_threads</strong> clause, and a comment. The second directive (DIR 2) shows the same directive split across two lines. The next nested directives (DIR 3 and 4) show the previous combined directive as two separate directives.  Here, an <strong>end</strong> directive (<strong>end</strong> <strong>parallel</strong>) must be specified to demarcate the range (region) of the <strong>parallel</strong> directive.</p>
@@ -695,7 +697,7 @@ c\$omp parallel do num_threads(NT) !comments allowed here   DIR 1
 </div>
 </section>
 <section id="fortran-comments-free-source-form">
-<h2>Fortran Comments (Free Source Form)<a class="headerlink" href="#fortran-comments-free-source-form" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.4. </span>Fortran Comments (Free Source Form)<a class="headerlink" href="#fortran-comments-free-source-form" title="Permalink to this headline">#</a></h2>
 <p><strong>directive syntax!free form, Fortran</strong> <strong>free form syntax, Fortran</strong></p>
 <p>OpenMP directives in Fortran codes with free source form are specified as comments that use the <strong>!$omp</strong> sentinel, followed by the directive name, and required and optional clauses.  Lines are continued with an ending ampersand (<strong>&amp;</strong>), and the continued line begins with <strong>!$omp</strong> or <strong>!$omp&amp;</strong>. Comments may appear on the same line as the directive.  Directives are case insensitive.</p>
 <p>In the example below the first directive (DIR 1) specifies the <strong>parallel</strong> <strong>do</strong> combined directive, with a <strong>num_threads</strong> clause, and a comment. The second directive (DIR 2) shows the same directive split across two lines.  The next nested directives (DIR 3 and 4) show the previous combined directive as two separate directives.  Here, an <strong>end</strong> directive (<strong>end</strong> <strong>parallel</strong>) must be specified to demarcate the range (region) of the <strong>parallel</strong> directive.</p>
@@ -875,13 +877,13 @@ end program
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Introduction</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Chap_parallel_execution.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Parallel Execution</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Parallel Execution</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

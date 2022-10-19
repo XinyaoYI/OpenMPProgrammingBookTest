@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Program Control &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>12. Program Control &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../search.html" />
     <link rel="copyright" title="Copyright" href="../copyright.html" />
     <link rel="next" title="&lt;no title&gt;" href="Chap_ompt_interface.html" />
-    <link rel="prev" title="Memory Model" href="Chap_memory_model.html" />
+    <link rel="prev" title="11. Memory Model" href="Chap_memory_model.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,7 +114,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Title_Page.html">
    Cover
@@ -125,64 +125,66 @@ const thebe_selector_output = ".output, .cell_output"
    Foreword
   </a>
  </li>
+</ul>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_introduction.html">
-   Introduction
+   1. Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_directives.html">
-   OpenMP Directive Syntax
+   2. OpenMP Directive Syntax
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_parallel_execution.html">
-   Parallel Execution
+   3. Parallel Execution
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_affinity.html">
-   OpenMP Affinity
+   4. OpenMP Affinity
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_tasking.html">
-   Tasking
+   5. Tasking
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_devices.html">
-   Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_SIMD.html">
-   SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_loop_transformations.html">
-   Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_synchronization.html">
-   Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_data_environment.html">
-   Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_memory_model.html">
-   Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Program Control
+   12. Program Control
   </a>
  </li>
 </ul>
@@ -393,17 +395,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conditional-compilation">
-   Conditional Compilation
+   12.1. Conditional Compilation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#internal-control-variables-icvs">
-   Internal Control Variables (ICVs)
+   12.2. Internal Control Variables (ICVs)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#placement-of-flush-barrier-taskwait-and-taskyield-directives">
-   Placement of
+   12.3. Placement of
    <code class="docutils literal notranslate">
     <span class="pre">
      flush
@@ -432,11 +434,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cancellation-constructs">
-   Cancellation Constructs
+   12.4. Cancellation Constructs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#requires-directive">
+   12.5.
    <code class="docutils literal notranslate">
     <span class="pre">
      requires
@@ -447,6 +450,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#declare-variant-directive">
+   12.6.
    <code class="docutils literal notranslate">
     <span class="pre">
      declare
@@ -462,27 +466,27 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metadirectives">
-   Metadirectives
+   12.7. Metadirectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nested-loop-constructs">
-   Nested Loop Constructs
+   12.8. Nested Loop Constructs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#restrictions-on-nesting-of-regions">
-   Restrictions on Nesting of Regions
+   12.9. Restrictions on Nesting of Regions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-offload">
-   Target Offload
+   12.10. Target Offload
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#controlling-concurrency-and-reproducibility-with-the-order-clause">
-   Controlling Concurrency and Reproducibility with  the
+   12.11. Controlling Concurrency and Reproducibility with  the
    <code class="docutils literal notranslate">
     <span class="pre">
      order
@@ -493,6 +497,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interop-construct">
+   12.12.
    <code class="docutils literal notranslate">
     <span class="pre">
      interop
@@ -503,21 +508,22 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#utilities">
-   Utilities
+   12.13. Utilities
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#timing-routines">
-     Timing Routines
+     12.13.1. Timing Routines
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#environment-display">
-     Environment Display
+     12.13.2. Environment Display
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#error-directive">
+     12.13.3.
      <code class="docutils literal notranslate">
       <span class="pre">
        error
@@ -549,17 +555,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conditional-compilation">
-   Conditional Compilation
+   12.1. Conditional Compilation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#internal-control-variables-icvs">
-   Internal Control Variables (ICVs)
+   12.2. Internal Control Variables (ICVs)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#placement-of-flush-barrier-taskwait-and-taskyield-directives">
-   Placement of
+   12.3. Placement of
    <code class="docutils literal notranslate">
     <span class="pre">
      flush
@@ -588,11 +594,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cancellation-constructs">
-   Cancellation Constructs
+   12.4. Cancellation Constructs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#requires-directive">
+   12.5.
    <code class="docutils literal notranslate">
     <span class="pre">
      requires
@@ -603,6 +610,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#declare-variant-directive">
+   12.6.
    <code class="docutils literal notranslate">
     <span class="pre">
      declare
@@ -618,27 +626,27 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metadirectives">
-   Metadirectives
+   12.7. Metadirectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nested-loop-constructs">
-   Nested Loop Constructs
+   12.8. Nested Loop Constructs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#restrictions-on-nesting-of-regions">
-   Restrictions on Nesting of Regions
+   12.9. Restrictions on Nesting of Regions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-offload">
-   Target Offload
+   12.10. Target Offload
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#controlling-concurrency-and-reproducibility-with-the-order-clause">
-   Controlling Concurrency and Reproducibility with  the
+   12.11. Controlling Concurrency and Reproducibility with  the
    <code class="docutils literal notranslate">
     <span class="pre">
      order
@@ -649,6 +657,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interop-construct">
+   12.12.
    <code class="docutils literal notranslate">
     <span class="pre">
      interop
@@ -659,21 +668,22 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#utilities">
-   Utilities
+   12.13. Utilities
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#timing-routines">
-     Timing Routines
+     12.13.1. Timing Routines
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#environment-display">
-     Environment Display
+     12.13.2. Environment Display
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#error-directive">
+     12.13.3.
      <code class="docutils literal notranslate">
       <span class="pre">
        error
@@ -695,7 +705,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="program-control">
-<h1>Program Control<a class="headerlink" href="#program-control" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">12. </span>Program Control<a class="headerlink" href="#program-control" title="Permalink to this headline">#</a></h1>
 <p>{program_control}</p>
 <p>Basic concepts and mechanisms for directing and controlling a program compilation and execution are provided in this introduction and illustrated in subsequent examples.</p>
 <p>CONDITIONAL COMPILATION and EXECUTION</p>
@@ -713,7 +723,7 @@ title="Print to PDF"
 <p>The <code class="docutils literal notranslate"><span class="pre">parallel</span></code> construct can be nested, as well as the <code class="docutils literal notranslate"><span class="pre">task</span></code> construct.   The parallel execution in the nested parallel construct(s) is controlled by the  <code class="docutils literal notranslate"><span class="pre">OMP_MAX_ACTIVE_LEVELS</span></code> environment variable, and the <code class="docutils literal notranslate"><span class="pre">omp_set_max_active_levels</span></code> routine.  Use the <code class="docutils literal notranslate"><span class="pre">omp_get_max_active_levels</span></code> routine to determine the maximum levels provided by an implementation. As of OpenMP 5.0, use of the <code class="docutils literal notranslate"><span class="pre">OMP_NESTED</span></code> environment variable and the <code class="docutils literal notranslate"><span class="pre">omp_set_nested</span></code> routine  has been deprecated.</p>
 <p>More details on nesting can be found in the  <em>Nesting of Regions</em>  of the  <em>Directives</em>   chapter in the OpenMP Specifications document.</p>
 <section id="conditional-compilation">
-<h2>Conditional Compilation<a class="headerlink" href="#conditional-compilation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.1. </span>Conditional Compilation<a class="headerlink" href="#conditional-compilation" title="Permalink to this headline">#</a></h2>
 <p><strong>conditional compilation!_OPENMP macro <code class="docutils literal notranslate"><span class="pre">_OPENMP</span></code> macro</strong> <strong>conditional compilation!sentinel</strong></p>
 <p>The following example illustrates the use of conditional compilation using the  OpenMP macro <code class="docutils literal notranslate"><span class="pre">_OPENMP</span></code>. With OpenMP compilation, the <code class="docutils literal notranslate"><span class="pre">_OPENMP</span></code>  macro becomes defined.</p>
 <div class="cell docutils container">
@@ -761,7 +771,7 @@ C234567890
 <p>../../program_control/cond_comp.tex</p>
 </section>
 <section id="internal-control-variables-icvs">
-<h2>Internal Control Variables (ICVs)<a class="headerlink" href="#internal-control-variables-icvs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.2. </span>Internal Control Variables (ICVs)<a class="headerlink" href="#internal-control-variables-icvs" title="Permalink to this headline">#</a></h2>
 <p><strong>internal control variables</strong></p>
 <p>According to Section 2.3 of the OpenMP 4.0 specification, an OpenMP implementation must act as if there are ICVs that control  the behavior of the program.  This example illustrates two ICVs,  <em>nthreads-var</em>   and  <em>max-active-levels-var</em> . The  <em>nthreads-var</em>  ICV controls the  number of threads requested for encountered parallel regions; there is one copy  of this ICV per task. The  <em>max-active-levels-var</em>  ICV controls the maximum  number of nested active parallel regions; there is one copy of this ICV for the  whole program.</p>
 <p>In the following example, the  <em>nest-var</em> ,  <em>max-active-levels-var</em> ,   <em>dyn-var</em> , and  <em>nthreads-var</em>  ICVs are modified through calls to  the runtime library routines <code class="docutils literal notranslate"><span class="pre">omp_set_nested</span></code>, <code class="docutils literal notranslate"><span class="pre">omp_set_max_active_levels</span></code>,<code class="docutils literal notranslate">&#160; <span class="pre">omp_set_dynamic</span></code>, and <code class="docutils literal notranslate"><span class="pre">omp_set_num_threads</span></code> respectively. These ICVs  affect the operation of <code class="docutils literal notranslate"><span class="pre">parallel</span></code> regions. Each implicit task generated  by a <code class="docutils literal notranslate"><span class="pre">parallel</span></code> region has its own copy of the  <em>nest-var, dyn-var</em> ,  and  <em>nthreads-var</em>  ICVs.</p>
@@ -871,7 +881,7 @@ int main (void)
 <p>../../program_control/icv.tex</p>
 </section>
 <section id="placement-of-flush-barrier-taskwait-and-taskyield-directives">
-<h2>Placement of <code class="docutils literal notranslate"><span class="pre">flush</span></code>, <code class="docutils literal notranslate"><span class="pre">barrier</span></code>, <code class="docutils literal notranslate"><span class="pre">taskwait</span></code>  and <code class="docutils literal notranslate"><span class="pre">taskyield</span></code> Directives<a class="headerlink" href="#placement-of-flush-barrier-taskwait-and-taskyield-directives" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.3. </span>Placement of <code class="docutils literal notranslate"><span class="pre">flush</span></code>, <code class="docutils literal notranslate"><span class="pre">barrier</span></code>, <code class="docutils literal notranslate"><span class="pre">taskwait</span></code>  and <code class="docutils literal notranslate"><span class="pre">taskyield</span></code> Directives<a class="headerlink" href="#placement-of-flush-barrier-taskwait-and-taskyield-directives" title="Permalink to this headline">#</a></h2>
 <p><strong>standalone directive placement</strong> <strong>constructs!flush <code class="docutils literal notranslate"><span class="pre">flush</span></code></strong> <strong>constructs!barrier <code class="docutils literal notranslate"><span class="pre">barrier</span></code></strong> <strong>constructs!taskwait <code class="docutils literal notranslate"><span class="pre">taskwait</span></code></strong> <strong>constructs!taskyield <code class="docutils literal notranslate"><span class="pre">taskyield</span></code></strong> <strong>flush construct <code class="docutils literal notranslate"><span class="pre">flush</span></code> construct</strong> <strong>barrier construct <code class="docutils literal notranslate"><span class="pre">barrier</span></code> construct</strong> <strong>taskwait construct <code class="docutils literal notranslate"><span class="pre">taskwait</span></code> construct</strong> <strong>taskyield construct <code class="docutils literal notranslate"><span class="pre">taskyield</span></code> construct</strong></p>
 <p>The following example is non-conforming, because the <code class="docutils literal notranslate"><span class="pre">flush</span></code>, <code class="docutils literal notranslate"><span class="pre">barrier</span></code>,  <code class="docutils literal notranslate"><span class="pre">taskwait</span></code>, and <code class="docutils literal notranslate"><span class="pre">taskyield</span></code>  directives are stand-alone directives  and cannot be the immediate substatement of an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement.</p>
 <div class="cell docutils container">
@@ -1052,7 +1062,7 @@ END SUBROUTINE
 <p>../../program_control/standalone.tex</p>
 </section>
 <section id="cancellation-constructs">
-<h2>Cancellation Constructs<a class="headerlink" href="#cancellation-constructs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.4. </span>Cancellation Constructs<a class="headerlink" href="#cancellation-constructs" title="Permalink to this headline">#</a></h2>
 <p><strong>cancellation!cancel construct <code class="docutils literal notranslate"><span class="pre">cancel</span></code> construct</strong> <strong>constructs!cancel <code class="docutils literal notranslate"><span class="pre">cancel</span></code></strong> <strong>cancel construct <code class="docutils literal notranslate"><span class="pre">cancel</span></code> construct</strong></p>
 <p><strong>cancellation!for parallel region for <code class="docutils literal notranslate"><span class="pre">parallel</span></code> region</strong> <strong>cancellation!for worksharing region</strong> The following example shows how the <code class="docutils literal notranslate"><span class="pre">cancel</span></code> directive can be used to terminate  an OpenMP region. Although the <code class="docutils literal notranslate"><span class="pre">cancel</span></code> construct terminates the OpenMP  worksharing region, programmers must still track the exception through the pointer  ex and issue a cancellation for the <code class="docutils literal notranslate"><span class="pre">parallel</span></code> region if an exception has  been raised. The primary thread checks the exception pointer to make sure that the  exception is properly handled in the sequential part. If cancellation of the <code class="docutils literal notranslate"><span class="pre">parallel</span></code>  region has been requested, some threads might have executed <code class="docutils literal notranslate"><span class="pre">phase_1()</span></code>.  However, it is guaranteed that none of the threads executed <code class="docutils literal notranslate"><span class="pre">phase_2()</span></code>.</p>
 <div class="cell docutils container">
@@ -1294,7 +1304,7 @@ end module parallel_search
 <p>../../program_control/cancellation.tex</p>
 </section>
 <section id="requires-directive">
-<h2><code class="docutils literal notranslate"><span class="pre">requires</span></code> Directive<a class="headerlink" href="#requires-directive" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.5. </span><code class="docutils literal notranslate"><span class="pre">requires</span></code> Directive<a class="headerlink" href="#requires-directive" title="Permalink to this headline">#</a></h2>
 <p><strong>directives!requires <code class="docutils literal notranslate"><span class="pre">requires</span></code></strong> <strong>requires directive <code class="docutils literal notranslate"><span class="pre">requires</span></code> directive</strong></p>
 <p>The declarative <code class="docutils literal notranslate"><span class="pre">requires</span></code> directive can be used to  specify features that an implementation must provide to compile and  execute correctly.</p>
 <p><strong>requires directive <code class="docutils literal notranslate"><span class="pre">requires</span></code> directive!unified_shared_memory clause <code class="docutils literal notranslate"><span class="pre">unified_shared_memory</span></code> clause</strong> <strong>clauses!unified_shared_memory <code class="docutils literal notranslate"><span class="pre">unified_shared_memory</span></code></strong> <strong>unified_shared_memory clause <code class="docutils literal notranslate"><span class="pre">unified_shared_memory</span></code> clause</strong> In the following example the <code class="docutils literal notranslate"><span class="pre">unified_shared_memory</span></code> clause  of the <code class="docutils literal notranslate"><span class="pre">requires</span></code> directive ensures that the host and all  devices accessible through OpenMP provide a  <em>unified address</em>  space for memory that is shared by all devices.</p>
@@ -1395,7 +1405,7 @@ end subroutine
 <p>../../program_control/requires.tex</p>
 </section>
 <section id="declare-variant-directive">
-<h2><code class="docutils literal notranslate"><span class="pre">declare</span></code> <code class="docutils literal notranslate"><span class="pre">variant</span></code> Directive<a class="headerlink" href="#declare-variant-directive" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.6. </span><code class="docutils literal notranslate"><span class="pre">declare</span></code> <code class="docutils literal notranslate"><span class="pre">variant</span></code> Directive<a class="headerlink" href="#declare-variant-directive" title="Permalink to this headline">#</a></h2>
 <p><strong>directives!declare variant <code class="docutils literal notranslate"><span class="pre">declare</span></code> <code class="docutils literal notranslate"><span class="pre">variant</span></code></strong> <strong>declare variant directive <code class="docutils literal notranslate"><span class="pre">declare</span></code> <code class="docutils literal notranslate"><span class="pre">variant</span></code> directive</strong> <strong>declare variant directive <code class="docutils literal notranslate"><span class="pre">declare</span></code> <code class="docutils literal notranslate"><span class="pre">variant</span></code> directive!match clause <code class="docutils literal notranslate"><span class="pre">match</span></code> clause</strong> <strong>clauses!match <code class="docutils literal notranslate"><span class="pre">match</span></code></strong> <strong>match clause <code class="docutils literal notranslate"><span class="pre">match</span></code> clause</strong></p>
 <p><strong>directives!declare target <code class="docutils literal notranslate"><span class="pre">declare</span></code> <code class="docutils literal notranslate"><span class="pre">target</span></code></strong> <strong>declare target directive <code class="docutils literal notranslate"><span class="pre">declare</span></code> <code class="docutils literal notranslate"><span class="pre">target</span></code> directive</strong></p>
 <p><strong>directives!begin declare target <code class="docutils literal notranslate"><span class="pre">begin</span></code> <code class="docutils literal notranslate"><span class="pre">declare</span></code> <code class="docutils literal notranslate"><span class="pre">target</span></code></strong> <strong>begin declare target directive <code class="docutils literal notranslate"><span class="pre">begin</span></code> <code class="docutils literal notranslate"><span class="pre">declare</span></code> <code class="docutils literal notranslate"><span class="pre">target</span></code> directive</strong></p>
@@ -1679,7 +1689,7 @@ end program
 <p>../../program_control/variant.tex</p>
 </section>
 <section id="metadirectives">
-<h2>Metadirectives<a class="headerlink" href="#metadirectives" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.7. </span>Metadirectives<a class="headerlink" href="#metadirectives" title="Permalink to this headline">#</a></h2>
 <p><strong>directives!metadirective <code class="docutils literal notranslate"><span class="pre">metadirective</span></code></strong> <strong>metadirective directive <code class="docutils literal notranslate"><span class="pre">metadirective</span></code> directive</strong></p>
 <p><strong>metadirective directive <code class="docutils literal notranslate"><span class="pre">metadirective</span></code> directive!when clause <code class="docutils literal notranslate"><span class="pre">when</span></code> clause</strong> <strong>metadirective directive <code class="docutils literal notranslate"><span class="pre">metadirective</span></code> directive!otherwise clause <code class="docutils literal notranslate"><span class="pre">otherwise</span></code> clause</strong> <strong>clauses!when <code class="docutils literal notranslate"><span class="pre">when</span></code></strong> <strong>when clause <code class="docutils literal notranslate"><span class="pre">when</span></code> clause</strong> <strong>clauses!otherwise <code class="docutils literal notranslate"><span class="pre">otherwise</span></code></strong> <strong>otherwise clause <code class="docutils literal notranslate"><span class="pre">otherwise</span></code> clause</strong> A <code class="docutils literal notranslate"><span class="pre">metadirective</span></code> directive provides a mechanism to select a directive in a <code class="docutils literal notranslate"><span class="pre">when</span></code> clause to be used, depending upon one or more contexts:   implementation, available devices and the present enclosing construct.  The directive in an <code class="docutils literal notranslate"><span class="pre">otherwise</span></code> clause is used when a directive of the  <code class="docutils literal notranslate"><span class="pre">when</span></code> clause is not selected.</p>
 <p>**context selector!construct  <em>construct</em> ** In the <code class="docutils literal notranslate"><span class="pre">when</span></code> clause the  <em>context selector</em>  (or just  <em>selector</em> ) defines traits that are evaluated for selection of the directive that follows the selector.  This “selectable” directive is called a  <em>directive variant</em> . Traits are grouped by  <em>construct</em> ,  <em>implementation</em>  and   <em>device</em>   <em>sets</em>  to be used by a selector of the same name.</p>
@@ -2136,7 +2146,7 @@ int main(int argc, char** argv) {
 <p>../../program_control/metadirective.tex</p>
 </section>
 <section id="nested-loop-constructs">
-<h2>Nested Loop Constructs<a class="headerlink" href="#nested-loop-constructs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.8. </span>Nested Loop Constructs<a class="headerlink" href="#nested-loop-constructs" title="Permalink to this headline">#</a></h2>
 <p><strong>nested loop constructs</strong></p>
 <p>The following example of loop construct nesting is conforming because the inner  and outer loop regions bind to different <code class="docutils literal notranslate"><span class="pre">parallel</span></code> regions:</p>
 <div class="cell docutils container">
@@ -2277,7 +2287,7 @@ void good_nesting2(int n)
 <p>../../program_control/nested_loop.tex</p>
 </section>
 <section id="restrictions-on-nesting-of-regions">
-<h2>Restrictions on Nesting of Regions<a class="headerlink" href="#restrictions-on-nesting-of-regions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.9. </span>Restrictions on Nesting of Regions<a class="headerlink" href="#restrictions-on-nesting-of-regions" title="Permalink to this headline">#</a></h2>
 <p><strong>region nesting rules</strong> The examples in this section illustrate the region nesting rules.</p>
 <p>The following example is non-conforming because the inner and outer loop regions  are closely nested:</p>
 <div class="cell docutils container">
@@ -2619,7 +2629,7 @@ void wrong6(int n)
 <p>../../program_control/nesting_restrict.tex</p>
 </section>
 <section id="target-offload">
-<h2>Target Offload<a class="headerlink" href="#target-offload" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.10. </span>Target Offload<a class="headerlink" href="#target-offload" title="Permalink to this headline">#</a></h2>
 <p><strong>environment variables!OMP_TARGET_OFFLOAD <code class="docutils literal notranslate"><span class="pre">OMP_TARGET_OFFLOAD</span></code></strong> <strong>OMP_TARGET_OFFLOAD <code class="docutils literal notranslate"><span class="pre">OMP_TARGET_OFFLOAD</span></code></strong></p>
 <p>In the OpenMP 5.0 implementation the <code class="docutils literal notranslate"><span class="pre">OMP_TARGET_OFFLOAD</span></code> environment variable was defined to change  <em>default</em>  offload behavior.  By  <em>default</em>  the target code (region) is executed on the host if the target device  does not exist or the implementation does not support the target device.</p>
 <p>In an OpenMP 5.0 compliant implementation, setting the  <code class="docutils literal notranslate"><span class="pre">OMP_TARGET_OFFLOAD</span></code> variable to <code class="docutils literal notranslate"><span class="pre">MANDATORY</span></code> will  force the program to terminate execution when a <code class="docutils literal notranslate"><span class="pre">target</span></code>  construct is encountered and the target device is not supported or is not available. With a value <code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code> the target region will execute on a device if the  device exists and is supported by the implementation, otherwise it will execute on the host. Support for the <code class="docutils literal notranslate"><span class="pre">DISABLED</span></code> value is optional; when it is supported the behavior is as if only the  host device exists (other devices are considered non-existent to the runtime),  and target regions are executed on the host.</p>
@@ -2810,7 +2820,7 @@ end program policy_test
 <p>../../program_control/target_offload.tex</p>
 </section>
 <section id="controlling-concurrency-and-reproducibility-with-the-order-clause">
-<h2>Controlling Concurrency and Reproducibility with  the <code class="docutils literal notranslate"><span class="pre">order</span></code> Clause<a class="headerlink" href="#controlling-concurrency-and-reproducibility-with-the-order-clause" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.11. </span>Controlling Concurrency and Reproducibility with  the <code class="docutils literal notranslate"><span class="pre">order</span></code> Clause<a class="headerlink" href="#controlling-concurrency-and-reproducibility-with-the-order-clause" title="Permalink to this headline">#</a></h2>
 <p><strong>clauses!order(concurrent) <code class="docutils literal notranslate"><span class="pre">order(concurrent)</span></code></strong> <strong>order(concurrent) clause <code class="docutils literal notranslate"><span class="pre">order(concurrent)</span></code> clause</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">order</span></code> clause is used for controlling the parallel execution of  loop iterations for one or more loops that are associated with a directive.  It is specified with a clause argument and optional modifier.  The only supported argument, introduced in OpenMP 5.0, is the keyword  <code class="docutils literal notranslate"><span class="pre">concurrent</span></code> which indicates that the loop iterations may execute  concurrently, including iterations in the same chunk per the loop schedule.  Because of the relaxed execution permitted with an <code class="docutils literal notranslate"><span class="pre">order(concurrent)</span></code>  clause, codes must not assume that any cross-iteration data dependences  would be preserved or that any two iterations may execute on the same thread.</p>
 <p>The following example in this section demonstrates the use of  the <code class="docutils literal notranslate"><span class="pre">order(concurrent)</span></code> clause, without any modifiers, for controlling  the parallel execution of loop iterations. The <code class="docutils literal notranslate"><span class="pre">order(concurrent)</span></code> clause cannot be used for the second and third  <code class="docutils literal notranslate"><span class="pre">parallel</span></code> <code class="docutils literal notranslate"><span class="pre">for</span></code>/<code class="docutils literal notranslate"><span class="pre">do</span></code> constructs because of either having  data dependences or accessing threadprivate variables.</p>
@@ -3054,7 +3064,7 @@ end program
 <p>../../program_control/reproducible.tex</p>
 </section>
 <section id="interop-construct">
-<h2><code class="docutils literal notranslate"><span class="pre">interop</span></code> Construct<a class="headerlink" href="#interop-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.12. </span><code class="docutils literal notranslate"><span class="pre">interop</span></code> Construct<a class="headerlink" href="#interop-construct" title="Permalink to this headline">#</a></h2>
 <p><strong>constructs!interop <code class="docutils literal notranslate"><span class="pre">interop</span></code></strong> <strong>interop construct <code class="docutils literal notranslate"><span class="pre">interop</span></code> construct</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">interop</span></code> construct allows OpenMP to interoperate with foreign runtime environments. In the example below, asynchronous cuda memory copies and a  <em>cublasDaxpy</em>  routine are executed  in a cuda stream. Also, an asynchronous target task execution (having a <code class="docutils literal notranslate"><span class="pre">nowait</span></code> clause)  and two explicit tasks are executed through OpenMP directives.  Scheduling dependences (synchronization) are imposed on the foreign stream and the OpenMP tasks through <code class="docutils literal notranslate"><span class="pre">depend</span></code> clauses.</p>
 <p><strong>interop construct <code class="docutils literal notranslate"><span class="pre">interop</span></code> construct!init clause <code class="docutils literal notranslate"><span class="pre">init</span></code> clause</strong> <strong>init clause <code class="docutils literal notranslate"><span class="pre">init</span></code> clause</strong> <strong>clauses!init <code class="docutils literal notranslate"><span class="pre">init</span></code></strong> <strong>interop construct <code class="docutils literal notranslate"><span class="pre">interop</span></code> construct!depend clause <code class="docutils literal notranslate"><span class="pre">depend</span></code> clause</strong> <strong>depend clause <code class="docutils literal notranslate"><span class="pre">depend</span></code> clause</strong> <strong>clauses!depend <code class="docutils literal notranslate"><span class="pre">depend</span></code></strong> First, an interop object,  <em>obj</em> , is initialized for synchronization by including the <code class="docutils literal notranslate"><span class="pre">targetsync</span></code>  <em>interop-type</em>  in the interop <code class="docutils literal notranslate"><span class="pre">init</span></code> clause  (<code class="docutils literal notranslate"><span class="pre">init(</span></code> <code class="docutils literal notranslate"><span class="pre">targetsync,obj</span></code> <code class="docutils literal notranslate"><span class="pre">)</span></code>).   The object provides access to the foreign runtime. The <code class="docutils literal notranslate"><span class="pre">depend</span></code> clause provides a dependence behavior for foreign tasks associated with a valid object.</p>
@@ -3182,10 +3192,10 @@ int main(){
 <p>../../program_control/interop.tex</p>
 </section>
 <section id="utilities">
-<h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.13. </span>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">#</a></h2>
 <p>This section contains examples of utility routines and features.</p>
 <section id="timing-routines">
-<h3>Timing Routines<a class="headerlink" href="#timing-routines" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">12.13.1. </span>Timing Routines<a class="headerlink" href="#timing-routines" title="Permalink to this headline">#</a></h3>
 <p><strong>routines!omp_get_wtime <code class="docutils literal notranslate"><span class="pre">omp_get_wtime</span></code></strong> <strong>omp_get_wtime routine <code class="docutils literal notranslate"><span class="pre">omp_get_wtime</span></code> routine</strong> <strong>routines!omp_get_wtick <code class="docutils literal notranslate"><span class="pre">omp_get_wtick</span></code></strong> <strong>omp_get_wtick routine <code class="docutils literal notranslate"><span class="pre">omp_get_wtick</span></code> routine</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">omp_get_wtime</span></code> routine can be used to measure the elapsed wall clock time (in seconds) of code execution in a program. The routine is thread safe and can be executed by multiple threads concurrently. The precision of the timer can be obtained by a call to the <code class="docutils literal notranslate"><span class="pre">omp_get_wtick</span></code> routine. The following example shows a use case.</p>
 <div class="cell docutils container">
@@ -3258,7 +3268,7 @@ end program
 </div>
 </section>
 <section id="environment-display">
-<h3>Environment Display<a class="headerlink" href="#environment-display" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">12.13.2. </span>Environment Display<a class="headerlink" href="#environment-display" title="Permalink to this headline">#</a></h3>
 <p><strong>environment display!OMP_DISPLAY_ENV <code class="docutils literal notranslate"><span class="pre">OMP_DISPLAY_ENV</span></code></strong> <strong>environment variables!OMP_DISPLAY_ENV <code class="docutils literal notranslate"><span class="pre">OMP_DISPLAY_ENV</span></code></strong> <strong>OMP_DISPLAY_ENV <code class="docutils literal notranslate"><span class="pre">OMP_DISPLAY_ENV</span></code></strong> <strong>environment display!omp_display_env routine <code class="docutils literal notranslate"><span class="pre">omp_display_env</span></code> routine</strong> <strong>routines!omp_display_env <code class="docutils literal notranslate"><span class="pre">omp_display_env</span></code></strong> <strong>omp_display_env routine <code class="docutils literal notranslate"><span class="pre">omp_display_env</span></code> routine</strong></p>
 <p>The OpenMP version number and the values of ICVs associated with the relevant environment variables can be displayed at runtime by setting  the <code class="docutils literal notranslate"><span class="pre">OMP_DISPLAY_ENV</span></code> environment variable to either  <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> or <code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code>. The information is displayed once by the runtime.</p>
 <p>A more flexible or controllable approach is to call  the <code class="docutils literal notranslate"><span class="pre">omp_display_env</span></code> API routine at any desired point of a code to display the same information. This OpenMP 5.1 API routine takes a single  <em>verbose</em>  argument. A value of 0 or .false. (for C/C++ or Fortran) indicates the required OpenMP ICVs associated with environment variables be displayed, and a value of 1 or .true. (for C/C++ or Fortran) will include vendor-specific ICVs that can be modified by environment variables.</p>
@@ -3323,7 +3333,7 @@ end program
 <p>A sample output from the execution of the code might look like: {  OPENMP DISPLAY ENVIRONMENT BEGIN     _OPENMP=’202011’    [host] OMP_AFFINITY_FORMAT=’(null)’    [host] OMP_ALLOCATOR=’omp_default_mem_alloc’    [host] OMP_CANCELLATION=’FALSE’    [host] OMP_DEFAULT_DEVICE=’0’    [host] OMP_DISPLAY_AFFINITY=’FALSE’    [host] OMP_DISPLAY_ENV=’FALSE’    [host] OMP_DYNAMIC=’FALSE’    [host] OMP_MAX_ACTIVE_LEVELS=’1’    [host] OMP_MAX_TASK_PRIORITY=’0’    [host] OMP_NESTED: deprecated; max-active-levels-var=1    [host] OMP_NUM_THREADS: value is not defined    [host] OMP_PLACES: value is not defined    [host] OMP_PROC_BIND: value is not defined    [host] OMP_SCHEDULE=’static’    [host] OMP_STACKSIZE=’4M’    [host] OMP_TARGET_OFFLOAD=DEFAULT    [host] OMP_THREAD_LIMIT=’0’    [host] OMP_TOOL=’enabled’    [host] OMP_TOOL_LIBRARIES: value is not defined  OPENMP DISPLAY ENVIRONMENT END }</p>
 </section>
 <section id="error-directive">
-<h3><code class="docutils literal notranslate"><span class="pre">error</span></code> Directive<a class="headerlink" href="#error-directive" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">12.13.3. </span><code class="docutils literal notranslate"><span class="pre">error</span></code> Directive<a class="headerlink" href="#error-directive" title="Permalink to this headline">#</a></h3>
 <p><strong>directives!error <code class="docutils literal notranslate"><span class="pre">error</span></code></strong> <strong>error directive <code class="docutils literal notranslate"><span class="pre">error</span></code> directive</strong> <strong>error directive <code class="docutils literal notranslate"><span class="pre">error</span></code> directive!at clause <code class="docutils literal notranslate"><span class="pre">at</span></code> clause</strong> <strong>clauses!at <code class="docutils literal notranslate"><span class="pre">at</span></code></strong> <strong>at clause <code class="docutils literal notranslate"><span class="pre">at</span></code> clause</strong> <strong>error directive <code class="docutils literal notranslate"><span class="pre">error</span></code> directive!severity clause <code class="docutils literal notranslate"><span class="pre">severity</span></code> clause</strong> <strong>clauses!severity <code class="docutils literal notranslate"><span class="pre">severity</span></code></strong> <strong>severity clause <code class="docutils literal notranslate"><span class="pre">severity</span></code> clause</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">error</span></code> directive provides a consistent method for C, C++, and Fortran to emit a  <em>fatal</em>  or  <em>warning</em>  message at  <em>compilation</em>  or  <em>execution</em>  time, as determined by a <code class="docutils literal notranslate"><span class="pre">severity</span></code>  or an <code class="docutils literal notranslate"><span class="pre">at</span></code> clause, respectively. When <code class="docutils literal notranslate"><span class="pre">severity(fatal)</span></code> is present, the compilation  or execution is aborted. Without any clauses the default behavior is as if <code class="docutils literal notranslate"><span class="pre">at(compilation)</span></code>  and <code class="docutils literal notranslate"><span class="pre">severity(fatal)</span></code> were specified.</p>
 <p>The C, C++, and Fortran examples below show all the cases for reporting messages.</p>
@@ -3443,7 +3453,7 @@ end program
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Memory Model</p>
+            <p class="prev-next-title"><span class="section-number">11. </span>Memory Model</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Chap_ompt_interface.html" title="next page">

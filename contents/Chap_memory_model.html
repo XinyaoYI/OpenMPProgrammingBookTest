@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Memory Model &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>11. Memory Model &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="copyright" title="Copyright" href="../copyright.html" />
-    <link rel="next" title="Program Control" href="Chap_program_control.html" />
-    <link rel="prev" title="Data Environment" href="Chap_data_environment.html" />
+    <link rel="next" title="12. Program Control" href="Chap_program_control.html" />
+    <link rel="prev" title="10. Data Environment" href="Chap_data_environment.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,7 +114,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Title_Page.html">
    Cover
@@ -125,64 +125,66 @@ const thebe_selector_output = ".output, .cell_output"
    Foreword
   </a>
  </li>
+</ul>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_introduction.html">
-   Introduction
+   1. Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_directives.html">
-   OpenMP Directive Syntax
+   2. OpenMP Directive Syntax
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_parallel_execution.html">
-   Parallel Execution
+   3. Parallel Execution
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_affinity.html">
-   OpenMP Affinity
+   4. OpenMP Affinity
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_tasking.html">
-   Tasking
+   5. Tasking
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_devices.html">
-   Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_SIMD.html">
-   SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_loop_transformations.html">
-   Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_synchronization.html">
-   Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_data_environment.html">
-   Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_program_control.html">
-   Program Control
+   12. Program Control
   </a>
  </li>
 </ul>
@@ -393,17 +395,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#openmp-memory-model">
-   OpenMP Memory Model
+   11.1. OpenMP Memory Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#memory-allocators">
-   Memory Allocators
+   11.2. Memory Allocators
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#race-conditions-caused-by-implied-copies-of-shared-variables-in-fortran">
-   Race Conditions Caused by Implied Copies of Shared Variables in Fortran
+   11.3. Race Conditions Caused by Implied Copies of Shared Variables in Fortran
   </a>
  </li>
 </ul>
@@ -427,17 +429,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#openmp-memory-model">
-   OpenMP Memory Model
+   11.1. OpenMP Memory Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#memory-allocators">
-   Memory Allocators
+   11.2. Memory Allocators
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#race-conditions-caused-by-implied-copies-of-shared-variables-in-fortran">
-   Race Conditions Caused by Implied Copies of Shared Variables in Fortran
+   11.3. Race Conditions Caused by Implied Copies of Shared Variables in Fortran
   </a>
  </li>
 </ul>
@@ -451,7 +453,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="memory-model">
-<h1>Memory Model<a class="headerlink" href="#memory-model" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">11. </span>Memory Model<a class="headerlink" href="#memory-model" title="Permalink to this headline">#</a></h1>
 <p>{memory_model}</p>
 <p>OpenMP provides a shared-memory model that allows all threads on a given device shared access to <strong>memory</strong>. For a given OpenMP region that may be executed by more than one thread or SIMD lane, variables in memory may be <strong>shared</strong> or <strong>private</strong> with respect to those threads or SIMD lanes. A variable’s data-sharing attribute indicates whether it is shared (the <strong>shared</strong> attribute) or private (the <strong>private</strong>, <strong>firstprivate</strong>, <strong>lastprivate</strong>, <strong>linear</strong>, and <strong>reduction</strong> attributes) in the data environment of an OpenMP region. While private variables in an OpenMP region are new copies of the original variable (with same name) that may then be concurrently accessed or modified by their respective threads or SIMD lanes, a shared variable in an OpenMP region is the same as the variable of the same name in the enclosing region. Concurrent accesses or modifications to a shared variable may therefore require synchronization to avoid data races.</p>
 <p>OpenMP’s memory model also includes a <strong>temporary view</strong> of memory that is associated with each thread. Two different threads may see different values for a given variable in their respective temporary views. Threads may employ flush operations for the purposes of making their temporary view of a variable consistent with the value of the variable in memory. The effect of a given flush operation is characterized by its flush properties – some combination of <strong>strong</strong>, <strong>release</strong>, and <strong>acquire</strong> – and, for <strong>strong</strong> flushes, a <strong>flush-set</strong>.</p>
@@ -459,7 +461,7 @@ title="Print to PDF"
 <p>Flush operations arise from explicit <code class="docutils literal notranslate"><span class="pre">flush</span></code> directives, implicit <code class="docutils literal notranslate"><span class="pre">flush</span></code> directives, and also from the execution of <code class="docutils literal notranslate"><span class="pre">atomic</span></code> constructs. The <code class="docutils literal notranslate"><span class="pre">flush</span></code> directive forces a  consistent view of local variables of the thread executing the <code class="docutils literal notranslate"><span class="pre">flush</span></code>.  When a list is supplied on the directive, only the items (variables) in the list are guaranteed to be flushed.  Implied flushes exist at prescribed locations of certain constructs. For the complete list of these locations and associated constructs, please refer to the  <em>flush Construct</em>  section of the OpenMP Specifications document.</p>
 <p>In this chapter, examples illustrate how race conditions may arise for accesses to variables with a  <em>shared</em>  data-sharing attribute when flush operations are not properly employed.  A race condition can exist when two or more threads are involved in accessing a variable and at least one of the accesses modifies the variable.  In particular, a data race will arise when conflicting accesses do not have a well-defined <strong>completion order</strong>.  The existence of data races in OpenMP programs result in undefined behavior, and so they should generally be avoided for programs to be correct.  The completion order of accesses to a shared variable is guaranteed in OpenMP through a set of memory consistency rules that are described in the  <em>OpenMP Memory Consistency</em>  section of the OpenMP Specifications document.</p>
 <section id="openmp-memory-model">
-<h2>OpenMP Memory Model<a class="headerlink" href="#openmp-memory-model" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.1. </span>OpenMP Memory Model<a class="headerlink" href="#openmp-memory-model" title="Permalink to this headline">#</a></h2>
 <p>The following examples illustrate two major concerns for concurrent thread execution: ordering of thread execution and memory accesses that may or may not lead to race conditions.</p>
 <p>In the following example, at Print 1, the value of <code class="docutils literal notranslate"><span class="pre">xval</span></code> could be either 2 or 5, depending on the timing of the threads. The <code class="docutils literal notranslate"><span class="pre">atomic</span></code> directives are necessary for the accesses to <code class="docutils literal notranslate"><span class="pre">x</span></code> by threads 1 and 2 to avoid a data race. If the atomic write completes before the atomic read, thread 1 is guaranteed to see 5 in <code class="docutils literal notranslate"><span class="pre">xval</span></code>. Otherwise, thread 1 is guaranteed to see 2 in <code class="docutils literal notranslate"><span class="pre">xval</span></code>.</p>
 <p><strong>flushes!implicit</strong> <strong>atomic construct <code class="docutils literal notranslate"><span class="pre">atomic</span></code> construct</strong> <strong>constructs!atomic <code class="docutils literal notranslate"><span class="pre">atomic</span></code></strong> The barrier after Print 1 contains implicit flushes on all threads, as well as a thread synchronization, so the programmer is guaranteed that the value 5 will be printed by both Print 2 and Print 3. Since neither Print 2 or Print 3 are modifying <code class="docutils literal notranslate"><span class="pre">x</span></code>, they may concurrently access <code class="docutils literal notranslate"><span class="pre">x</span></code> without requiring <code class="docutils literal notranslate"><span class="pre">atomic</span></code> directives to avoid a data race.</p>
@@ -971,7 +973,7 @@ end subroutine
 <p>../../memory_model/mem_model.tex</p>
 </section>
 <section id="memory-allocators">
-<h2>Memory Allocators<a class="headerlink" href="#memory-allocators" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.2. </span>Memory Allocators<a class="headerlink" href="#memory-allocators" title="Permalink to this headline">#</a></h2>
 <p><strong>memory allocators!allocator traits</strong> <strong>memory allocators!memory space</strong> <strong>memory allocators!omp_alloc routine <code class="docutils literal notranslate"><span class="pre">omp_alloc</span></code> routine</strong> <strong>memory allocators!allocators directive <code class="docutils literal notranslate"><span class="pre">allocators</span></code> directive</strong></p>
 <p><strong>omp_alloc routine <code class="docutils literal notranslate"><span class="pre">omp_alloc</span></code> routine</strong> <strong>routines!omp_alloc <code class="docutils literal notranslate"><span class="pre">omp_alloc</span></code></strong></p>
 <p><strong>directives!allocators <code class="docutils literal notranslate"><span class="pre">allocators</span></code></strong> <strong>allocators directive <code class="docutils literal notranslate"><span class="pre">allocators</span></code> directive</strong> <strong>allocators directive <code class="docutils literal notranslate"><span class="pre">allocators</span></code> directive!allocator clause <code class="docutils literal notranslate"><span class="pre">allocator</span></code> clause</strong></p>
@@ -1281,7 +1283,7 @@ end subroutine test_allocate
 <p>../../memory_model/allocators.tex</p>
 </section>
 <section id="race-conditions-caused-by-implied-copies-of-shared-variables-in-fortran">
-<h2>Race Conditions Caused by Implied Copies of Shared Variables in Fortran<a class="headerlink" href="#race-conditions-caused-by-implied-copies-of-shared-variables-in-fortran" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.3. </span>Race Conditions Caused by Implied Copies of Shared Variables in Fortran<a class="headerlink" href="#race-conditions-caused-by-implied-copies-of-shared-variables-in-fortran" title="Permalink to this headline">#</a></h2>
 <p><strong>shared variables!race conditions</strong></p>
 <p>The following example contains a race condition, because the shared variable, which  is an array section, is passed as an actual argument to a routine that has an assumed-size  array as its dummy argument. The subroutine call passing an array section argument  may cause the compiler to copy the argument into a temporary location prior to  the call and copy from the temporary location into the original variable when the  subroutine returns. This copying would cause races in the <code class="docutils literal notranslate"><span class="pre">parallel</span></code> region.</p>
 <div class="cell docutils container">
@@ -1353,13 +1355,13 @@ END SUBROUTINE SUB
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Data Environment</p>
+            <p class="prev-next-title"><span class="section-number">10. </span>Data Environment</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Chap_program_control.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Program Control</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Program Control</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

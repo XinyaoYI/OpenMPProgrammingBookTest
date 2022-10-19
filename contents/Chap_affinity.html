@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>OpenMP Affinity &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>4. OpenMP Affinity &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="copyright" title="Copyright" href="../copyright.html" />
-    <link rel="next" title="Tasking" href="Chap_tasking.html" />
-    <link rel="prev" title="Parallel Execution" href="Chap_parallel_execution.html" />
+    <link rel="next" title="5. Tasking" href="Chap_tasking.html" />
+    <link rel="prev" title="3. Parallel Execution" href="Chap_parallel_execution.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,7 +114,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Title_Page.html">
    Cover
@@ -125,64 +125,66 @@ const thebe_selector_output = ".output, .cell_output"
    Foreword
   </a>
  </li>
+</ul>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_introduction.html">
-   Introduction
+   1. Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_directives.html">
-   OpenMP Directive Syntax
+   2. OpenMP Directive Syntax
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_parallel_execution.html">
-   Parallel Execution
+   3. Parallel Execution
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   OpenMP Affinity
+   4. OpenMP Affinity
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_tasking.html">
-   Tasking
+   5. Tasking
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_devices.html">
-   Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_SIMD.html">
-   SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_loop_transformations.html">
-   Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_synchronization.html">
-   Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_data_environment.html">
-   Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_memory_model.html">
-   Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_program_control.html">
-   Program Control
+   12. Program Control
   </a>
  </li>
 </ul>
@@ -393,6 +395,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#proc-bind-clause">
+   4.1.
    <strong>
     proc_bind
    </strong>
@@ -401,34 +404,34 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#spread-affinity-policy">
-     Spread Affinity Policy
+     4.1.1. Spread Affinity Policy
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#close-affinity-policy">
-     Close Affinity Policy
+     4.1.2. Close Affinity Policy
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#primary-affinity-policy">
-     Primary Affinity Policy
+     4.1.3. Primary Affinity Policy
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#task-affinity">
-   Task Affinity
+   4.2. Task Affinity
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#affinity-display">
-   Affinity Display
+   4.3. Affinity Display
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#affinity-query-functions">
-   Affinity Query Functions
+   4.4. Affinity Query Functions
   </a>
  </li>
 </ul>
@@ -452,6 +455,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#proc-bind-clause">
+   4.1.
    <strong>
     proc_bind
    </strong>
@@ -460,34 +464,34 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#spread-affinity-policy">
-     Spread Affinity Policy
+     4.1.1. Spread Affinity Policy
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#close-affinity-policy">
-     Close Affinity Policy
+     4.1.2. Close Affinity Policy
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#primary-affinity-policy">
-     Primary Affinity Policy
+     4.1.3. Primary Affinity Policy
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#task-affinity">
-   Task Affinity
+   4.2. Task Affinity
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#affinity-display">
-   Affinity Display
+   4.3. Affinity Display
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#affinity-query-functions">
-   Affinity Query Functions
+   4.4. Affinity Query Functions
   </a>
  </li>
 </ul>
@@ -501,7 +505,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="openmp-affinity">
-<h1>OpenMP Affinity<a class="headerlink" href="#openmp-affinity" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4. </span>OpenMP Affinity<a class="headerlink" href="#openmp-affinity" title="Permalink to this headline">#</a></h1>
 <p>OpenMP Affinity consists of a <strong>proc_bind</strong> policy (thread affinity policy) and a specification of places ( <strong>“</strong> location units <strong>“</strong>  or  <em>processors</em>  that may be cores, hardware threads, sockets, etc.).   OpenMP Affinity enables users to bind computations on specific places. The placement will hold for the duration of the parallel region.  However, the runtime is free to migrate the OpenMP threads  to different cores (hardware threads, sockets, etc.) prescribed within a given place,  if two or more cores (hardware threads, sockets, etc.) have been assigned to a given place.</p>
 <p>Often the binding can be managed without resorting to explicitly setting places. Without the specification of places in the <strong>OMP_PLACES</strong> variable,  the OpenMP runtime will distribute and bind threads using the entire range of processors for  the OpenMP program, according to the <strong>OMP_PROC_BIND</strong> environment variable or the <strong>proc_bind</strong> clause.  When places are specified, the OMP runtime binds threads to the places according to a default distribution policy, or those specified in the <strong>OMP_PROC_BIND</strong> environment variable or the <strong>proc_bind</strong> clause.</p>
 <p>In the OpenMP Specifications document a processor refers to an execution unit that is enabled for an OpenMP thread to use.  A processor is a core when there is no SMT (Simultaneous Multi-Threading) support or SMT is disabled.  When  SMT is enabled, a processor is a hardware thread (HW-thread). (This is the usual case; but actually, the execution unit is implementation defined.) Processor numbers are numbered sequentially from 0 to the number of cores less one (without SMT), or 0 to the number HW-threads less one (with SMT). OpenMP places use the processor number to designate binding locations (unless an  <strong>“</strong> abstract name <strong>“</strong>  is used.)</p>
@@ -509,7 +513,7 @@ title="Print to PDF"
 <p>Threads of a team are positioned onto places in a compact manner, a  scattered distribution, or onto the primary thread’s place, by setting the  <strong>OMP_PROC_BIND</strong> environment variable or the <strong>proc_bind</strong> clause  to  <strong>close</strong>, <strong>spread</strong>, or <strong>primary</strong> (<strong>master</strong> has been deprecated), respectively.  When  <strong>OMP_PROC_BIND</strong> is set to FALSE no binding is enforced; and  when the value is TRUE, the binding is implementation defined to  a set of places in the <strong>OMP_PLACES</strong> variable or to places  defined by the implementation if the <strong>OMP_PLACES</strong> variable  is not set.</p>
 <p>The <strong>OMP_PLACES</strong> variable can also be set to an abstract name  (<strong>threads</strong>, <strong>cores</strong>, <strong>sockets</strong>) to specify that a place is either a single hardware thread, a core, or a socket, respectively.  This description of the <strong>OMP_PLACES</strong> is most useful when the  number of threads is equal to the number of hardware thread, cores or sockets.  It can also be used with a <strong>close</strong> or <strong>spread</strong>  distribution policy when the equality doesn’t hold.</p>
 <section id="proc-bind-clause">
-<h2><strong>proc_bind</strong> Clause<a class="headerlink" href="#proc-bind-clause" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1. </span><strong>proc_bind</strong> Clause<a class="headerlink" href="#proc-bind-clause" title="Permalink to this headline">#</a></h2>
 <p><strong>affinity!proc_bind clause <strong>proc_bind</strong> clause</strong> <strong>clauses!proc_bind <strong>proc_bind</strong></strong> <strong>proc_bind clause <strong>proc_bind</strong> clause</strong></p>
 <p>The following examples demonstrate how to use the <strong>proc_bind</strong> clause to  control the thread binding for a team of threads in a <strong>parallel</strong> region.  The machine architecture is depicted in Figure 4.1. It consists of two sockets,  each equipped with a quad-core processor and configured to execute two hardware threads simultaneously on each core. These examples assume a contiguous core numbering  starting from 0, such that the hardware threads 0,1 form the first physical core.</p>
 <p><img alt="FIGURE 4.1: A machine architecture with two quad-core processors" src="../_images/proc_bind_fig.png" /></p>
@@ -520,7 +524,7 @@ A machine architecture with two quad-core processors</p>
 <p>or</p>
 <p><strong>OMP_PLACES= “{0:2}:8:2”</strong></p>
 <section id="spread-affinity-policy">
-<h3>Spread Affinity Policy<a class="headerlink" href="#spread-affinity-policy" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.1. </span>Spread Affinity Policy<a class="headerlink" href="#spread-affinity-policy" title="Permalink to this headline">#</a></h3>
 <p><strong>affinity!spread policy <strong>spread</strong> policy</strong> <strong>spread policy <strong>spread</strong> policy</strong></p>
 <p>The following example shows the result of the <strong>spread</strong> affinity policy on  the partition list when the number of threads is less than or equal to the number  of places in the parent’s place partition, for the machine architecture depicted  above. Note that the threads are bound to the first place of each subpartition.</p>
 <div class="cell docutils container">
@@ -647,7 +651,7 @@ end subroutine
 </ul>
 </section>
 <section id="close-affinity-policy">
-<h3>Close Affinity Policy<a class="headerlink" href="#close-affinity-policy" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.2. </span>Close Affinity Policy<a class="headerlink" href="#close-affinity-policy" title="Permalink to this headline">#</a></h3>
 <p>The following example shows the result of the <strong>close</strong> affinity policy on  the partition list when the number of threads is less than or equal to the number  of places in parent’s place partition, for the machine architecture depicted above.  The place partition is not changed by the <strong>close</strong> policy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -768,7 +772,7 @@ end subroutine
 </ul>
 </section>
 <section id="primary-affinity-policy">
-<h3>Primary Affinity Policy<a class="headerlink" href="#primary-affinity-policy" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.3. </span>Primary Affinity Policy<a class="headerlink" href="#primary-affinity-policy" title="Permalink to this headline">#</a></h3>
 <p>The following example shows the result of the <strong>primary</strong> affinity policy on  the partition list for the machine architecture depicted above. The place partition  is not changed by the primary policy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -821,7 +825,7 @@ int main()
 </section>
 </section>
 <section id="task-affinity">
-<h2>Task Affinity<a class="headerlink" href="#task-affinity" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2. </span>Task Affinity<a class="headerlink" href="#task-affinity" title="Permalink to this headline">#</a></h2>
 <p>The next example illustrates the use of the <strong>affinity</strong> clause with a <strong>task</strong> construct. The variables in the <strong>affinity</strong> clause provide a hint to the runtime that the task should execute “close” to the physical storage location of the variables. For example, on a two-socket platform with a local memory component close to each processor socket, the runtime will attempt to schedule the task execution on the socket where the storage is located.</p>
 <p>Because the C/C++ code employs a pointer, an array section is used in the <strong>affinity</strong> clause. Fortran code can use an array reference to specify the storage, as shown here.</p>
 <p>Note, in the second task of the C/C++ code the  <em>B</em>  pointer is declared shared.  Otherwise, by default, it would be firstprivate since it is a local variable, and would probably be saved for the second task before being assigned a storage address by the first task.  Also, one might think it reasonable to use the <strong>affinity</strong> clause  <em>affinity(B[:N])</em>  on the second <strong>task</strong> construct. However, the storage behind  <em>B</em>  is created in the first task, and the  array section reference may not be valid when the second task is generated. The use of the  <em>A</em>  array is sufficient for this case, because one would expect the storage for  <em>A</em>  and  <em>B</em>  would be physically “close” (as provided by the hint in the first task).</p>
@@ -888,7 +892,7 @@ end subroutine
 </div>
 </section>
 <section id="affinity-display">
-<h2>Affinity Display<a class="headerlink" href="#affinity-display" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3. </span>Affinity Display<a class="headerlink" href="#affinity-display" title="Permalink to this headline">#</a></h2>
 <p>The following examples illustrate ways to display thread affinity. Automatic display of affinity can be invoked by setting the <strong>OMP_DISPLAY_AFFINITY</strong> environment variable to <strong>TRUE</strong>.   The format of the output can be customized by setting the  <strong>OMP_AFFINITY_FORMAT</strong> environment variable to an appropriate string.   Also, there are API calls for the user to display thread affinity  at selected locations within code.</p>
 <p>For the first example the environment variable <strong>OMP_DISPLAY_AFFINITY</strong> has been set to <strong>TRUE</strong>, and execution occurs on an 8-core system with <strong>OMP_NUM_THREADS</strong> set to 8.</p>
 <p>The affinity for the primary thread is reported through a call to the API <strong>omp_display_affinity()</strong> routine. For default affinity settings the report shows that the primary thread can execute on any of the cores.  In the following parallel region the affinity for each of the team threads is reported automatically since the <strong>OMP_DISPLAY_AFFINITY</strong> environment variable has been set to <strong>TRUE</strong>.</p>
@@ -1417,7 +1421,7 @@ end program
 </div>
 </section>
 <section id="affinity-query-functions">
-<h2>Affinity Query Functions<a class="headerlink" href="#affinity-query-functions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.4. </span>Affinity Query Functions<a class="headerlink" href="#affinity-query-functions" title="Permalink to this headline">#</a></h2>
 <p>In the example below a team of threads is generated on each socket of the system, using nested parallelism. Several query functions are used to gather information to support the creation of the teams and to obtain  socket and thread numbers.</p>
 <p>For proper execution of the code, the user must create a place partition, such that each place is a listing of the core numbers for a socket. For example, in a 2 socket system with 8 cores in each socket, and sequential numbering in the socket for the core numbers, the <strong>OMP_PLACES</strong> variable would be set to “{0:8},{8:8}”, using the place syntax { <em>lower_bound</em> : <em>length</em> : <em>stride</em> }, and the default stride of 1.</p>
 <p>The code determines the number of sockets ( <em>n_sockets</em> ) using the <strong>omp_get_num_places()</strong> query function. In this example each place is constructed with a list of  each socket’s core numbers, hence the number of places is equal to the number of sockets.</p>
@@ -1543,13 +1547,13 @@ end program
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Parallel Execution</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Parallel Execution</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Chap_tasking.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tasking</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Tasking</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

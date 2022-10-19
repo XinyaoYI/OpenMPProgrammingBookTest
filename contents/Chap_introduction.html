@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>1. Introduction &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="copyright" title="Copyright" href="../copyright.html" />
-    <link rel="next" title="OpenMP Directive Syntax" href="Chap_directives.html" />
+    <link rel="next" title="2. OpenMP Directive Syntax" href="Chap_directives.html" />
     <link rel="prev" title="Foreword" href="Foreword_Chapt.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -114,7 +114,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Title_Page.html">
    Cover
@@ -125,64 +125,66 @@ const thebe_selector_output = ".output, .cell_output"
    Foreword
   </a>
  </li>
+</ul>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Introduction
+   1. Introduction
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_directives.html">
-   OpenMP Directive Syntax
+   2. OpenMP Directive Syntax
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_parallel_execution.html">
-   Parallel Execution
+   3. Parallel Execution
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_affinity.html">
-   OpenMP Affinity
+   4. OpenMP Affinity
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_tasking.html">
-   Tasking
+   5. Tasking
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_devices.html">
-   Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_SIMD.html">
-   SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_loop_transformations.html">
-   Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_synchronization.html">
-   Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_data_environment.html">
-   Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_memory_model.html">
-   Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Chap_program_control.html">
-   Program Control
+   12. Program Control
   </a>
  </li>
 </ul>
@@ -393,7 +395,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examples-organization">
-   Examples Organization
+   1.1. Examples Organization
   </a>
  </li>
 </ul>
@@ -417,7 +419,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examples-organization">
-   Examples Organization
+   1.1. Examples Organization
   </a>
  </li>
 </ul>
@@ -431,7 +433,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <p>This collection of programming examples supplements the OpenMP API for Shared Memory Parallelization specifications, and is not part of the formal specifications. It assumes familiarity with the OpenMP specifications, and shares the typographical conventions used in that document.</p>
 <p>The OpenMP API specification provides a model for parallel programming that is portable across shared memory architectures from different vendors. Compilers from numerous vendors support the OpenMP API.</p>
 <p>The directives, library routines, and environment variables demonstrated in this document allow users to create and manage parallel programs while permitting portability. The directives extend the C, C++ and Fortran base languages with single program multiple data (SPMD) constructs, tasking constructs, device constructs, worksharing constructs, and synchronization constructs, and they provide support for sharing and privatizing data. The functionality to control the runtime environment is provided by library routines and environment variables. Compilers that support the OpenMP API often include a command line option to the compiler that activates and allows interpretation of all OpenMP directives.</p>
@@ -439,7 +441,7 @@ title="Print to PDF"
 <p>Complete information about the OpenMP API and a list of the compilers that support the OpenMP API can be found at the <a class="reference external" href="http://OpenMP.org">OpenMP.org</a> web site</p>
 <p><code class="docutils literal notranslate"><span class="pre">https://www.openmp.org</span></code></p>
 <section id="examples-organization">
-<h2>Examples Organization<a class="headerlink" href="#examples-organization" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1. </span>Examples Organization<a class="headerlink" href="#examples-organization" title="Permalink to this headline">#</a></h2>
 <p>This document includes examples of the OpenMP API directives, constructs, and routines.</p>
 <p>Each example is labeled as  <em>ename.seqno.ext</em> , where  <em>ename</em>  is  the example name,  <em>seqno</em>  is the sequence number in a section, and   <em>ext</em>  is the source file extension to indicate the code type and  source form.   <em>ext</em>  is one of the following:</p>
 <ul class="simple">
@@ -499,7 +501,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="Chap_directives.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">OpenMP Directive Syntax</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>OpenMP Directive Syntax</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
