@@ -9,7 +9,9 @@ parts:
     - file: contents/Foreword_Chapt.ipynb
   - numbered: True
     chapters:
-      - file: contents/Chap_introduction.ipynb
+      - file: contents/Chap_introduction/Chap_introduction.ipynb
+        sections:
+        - file: contents/Chap_introduction/Examples Organization.ipynb
       - file: contents/Chap_directives.ipynb
       - file: contents/Chap_parallel_execution.ipynb
       - file: contents/Chap_affinity.ipynb
