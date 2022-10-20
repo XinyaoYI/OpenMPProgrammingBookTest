@@ -50,8 +50,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="copyright" title="Copyright" href="../copyright.html" />
@@ -650,9 +648,9 @@ and
 </section>
 <section id="fortran-comments-fixed-source-form">
 <h2><span class="section-number">2.3. </span>Fortran Comments (Fixed Source Form)<a class="headerlink" href="#fortran-comments-fixed-source-form" title="Permalink to this headline">#</a></h2>
-<p>OpenMP directives in Fortran codes with fixed source form are specified as comments with one of the <strong>!\<span class="math notranslate nohighlight">\(omp__, __c\\\)</span>omp</strong>, and <strong>*\$omp</strong> sentinels, followed by a directive name, and required and optional clauses.  The sentinel must begin in column 1.</p>
-<p><strong>!\<span class="math notranslate nohighlight">\(omp__, __c\\\)</span>omp</strong>, and <strong>*\$omp</strong></p>
-<p><strong>!\<span class="math notranslate nohighlight">\(omp__, __c\\\)</span>omp</strong>, and <strong>*\$omp</strong></p>
+<p>OpenMP directives in Fortran codes with fixed source form are specified as comments with one of the <strong>!$omp</strong>,
+<strong>c$omp</strong>, and
+<strong>*$omp</strong> sentinels, followed by a directive name, and required and optional clauses.  The sentinel must begin in column 1.</p>
 <p>In the example below the first directive (DIR 1) specifies the <strong>parallel</strong> <strong>do</strong> combined directive, with a <strong>num_threads</strong> clause, and a comment. The second directive (DIR 2) shows the same directive split across two lines. The next nested directives (DIR 3 and 4) show the previous combined directive as two separate directives.  Here, an <strong>end</strong> directive (<strong>end</strong> <strong>parallel</strong>) must be specified to demarcate the range (region) of the <strong>parallel</strong> directive.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -667,7 +665,7 @@ and
 
       NT =4
 
-c     sentinel c\$omp or *\$omp can also be used
+c     sentinel c$omp or *$omp can also be used
 
 c$omp parallel do num_threads(NT) !comments allowed here   DIR 1
       do i = 1,NT
@@ -700,7 +698,13 @@ c$omp parallel do num_threads(NT) !comments allowed here   DIR 1
 </section>
 <section id="fortran-comments-free-source-form">
 <h2><span class="section-number">2.4. </span>Fortran Comments (Free Source Form)<a class="headerlink" href="#fortran-comments-free-source-form" title="Permalink to this headline">#</a></h2>
-<p>OpenMP directives in Fortran codes with free source form are specified as comments that use the !\<span class="math notranslate nohighlight">\(omp sentinel, followed by the directive name, and required and optional clauses.  Lines are continued with an ending ampersand (__&amp;__), and the continued line begins with !\\\)</span>omp or !\$omp&amp;. Comments may appear on the same line as the directive.  Directives are case insensitive.</p>
+<p>OpenMP directives in Fortran codes with free source form are specified as comments that use the
+<strong>!$omp</strong>
+sentinel, followed by the directive name, and required and optional clauses.  Lines are continued with an ending ampersand (<strong>&amp;</strong>), and the continued line begins with
+<strong>!$omp</strong>
+or
+<strong>!$omp&amp;</strong>
+. Comments may appear on the same line as the directive.  Directives are case insensitive.</p>
 <p>In the example below the first directive (DIR 1) specifies the <strong>parallel</strong> <strong>do</strong> combined directive, with a <strong>num_threads</strong> clause, and a comment. The second directive (DIR 2) shows the same directive split across two lines.  The next nested directives (DIR 3 and 4) show the previous combined directive as two separate directives.  Here, an <strong>end</strong> directive (<strong>end</strong> <strong>parallel</strong>) must be specified to demarcate the range (region) of the <strong>parallel</strong> directive.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
