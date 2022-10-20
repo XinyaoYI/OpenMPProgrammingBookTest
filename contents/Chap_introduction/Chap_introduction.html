@@ -6,53 +6,55 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>1. Introduction &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="1.1. Examples Organization" href="Examples%20Organization.html" />
+    <link rel="prev" title="Foreword" href="../Foreword_Chapt.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -87,19 +89,19 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="bd-sidebar noprint" id="site-navigation">
     <div class="bd-sidebar__content">
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+    <a class="navbar-brand text-wrap" href="../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <img src="../../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">OpenMP Application Programming Interface Examples</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -107,98 +109,98 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../intro.html">
+                <a class="reference internal" href="../../intro.html">
                     Welcome to OMP Jupyter Book
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Title_Page.html">
+  <a class="reference internal" href="../Title_Page.html">
    Cover
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Foreword_Chapt.html">
+  <a class="reference internal" href="../Foreword_Chapt.html">
    Foreword
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Chap_introduction/Chap_introduction.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    1. Introduction
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="Chap_introduction/Examples%20Organization.html">
+    <a class="reference internal" href="Examples%20Organization.html">
      1.1. Examples Organization
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Chap_directives.html">
+  <a class="reference internal" href="../Chap_directives.html">
    2. OpenMP Directive Syntax
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Chap_parallel_execution.html">
+  <a class="reference internal" href="../Chap_parallel_execution.html">
    3. Parallel Execution
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Chap_affinity.html">
+  <a class="reference internal" href="../Chap_affinity.html">
    4. OpenMP Affinity
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Chap_tasking.html">
+  <a class="reference internal" href="../Chap_tasking.html">
    5. Tasking
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Chap_devices.html">
+  <a class="reference internal" href="../Chap_devices.html">
    6. Devices
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Chap_SIMD.html">
+  <a class="reference internal" href="../Chap_SIMD.html">
    7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Chap_loop_transformations.html">
+  <a class="reference internal" href="../Chap_loop_transformations.html">
    8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Chap_synchronization.html">
+  <a class="reference internal" href="../Chap_synchronization.html">
    9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Chap_data_environment.html">
+  <a class="reference internal" href="../Chap_data_environment.html">
    10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Chap_memory_model.html">
+  <a class="reference internal" href="../Chap_memory_model.html">
    11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Chap_program_control.html">
+  <a class="reference internal" href="../Chap_program_control.html">
    12. Program Control
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Chap_ompt_interface.html">
+  <a class="reference internal" href="../Chap_ompt_interface.html">
    13. OMPT Interface
   </a>
  </li>
@@ -261,7 +263,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Introduction_Chapt.ipynb"
+        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_introduction/Chap_introduction.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -271,7 +273,7 @@ title="Launch on Binder"
 
 <span class="headerbtn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img src="../../_static/images/logo_binder.svg">
   </span>
 <span class="headerbtn__text-container">Binder</span>
 </a>
@@ -321,7 +323,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Introduction_Chapt.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Chap_introduction/Chap_introduction.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -349,7 +351,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/contents/Introduction_Chapt.ipynb"
+        <a href="../../_sources/contents/Chap_introduction/Chap_introduction.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -411,13 +413,15 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <p>This collection of programming examples supplements the OpenMP API for Shared Memory Parallelization specifications, and is not part of the formal specifications. It assumes familiarity with the OpenMP specifications, and shares the typographical conventions used in that document.</p>
 <p>The OpenMP API specification provides a model for parallel programming that is portable across shared memory architectures from different vendors. Compilers from numerous vendors support the OpenMP API.</p>
 <p>The directives, library routines, and environment variables demonstrated in this document allow users to create and manage parallel programs while permitting portability. The directives extend the C, C++ and Fortran base languages with single program multiple data (SPMD) constructs, tasking constructs, device constructs, worksharing constructs, and synchronization constructs, and they provide support for sharing and privatizing data. The functionality to control the runtime environment is provided by library routines and environment variables. Compilers that support the OpenMP API often include a command line option to the compiler that activates and allows interpretation of all OpenMP directives.</p>
-<p>The latest source codes for OpenMP Examples can be downloaded from the <code class="docutils literal notranslate"><span class="pre">sources</span></code> directory at <a class="reference external" href="https://github.com/OpenMP/Examples">https://github.com/OpenMP/Examples</a>. The codes for this OpenMP 5.0.1 Examples document have the tag  <em>v5.0.1</em> .</p>
+<p>The documents and source codes for OpenMP Examples can be downloaded from <a class="reference external" href="https://github.com/OpenMP/Examples">https://github.com/OpenMP/Examples</a>. Each directory holds the contents of a chapter and has a  <em>sources</em>  subdirectory of its codes. The codes for this OpenMP 5.2 Examples document have the tag v5.2.</p>
 <p>Complete information about the OpenMP API and a list of the compilers that support the OpenMP API can be found at the <a class="reference external" href="http://OpenMP.org">OpenMP.org</a> web site</p>
-<p><code class="docutils literal notranslate"><span class="pre">http://www.openmp.org</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">https://www.openmp.org</span></code></p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -433,7 +437,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "native",
-            path: "./contents"
+            path: "./contents/Chap_introduction"
         },
         predefinedOutput: true
     }
@@ -447,6 +451,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../Foreword_Chapt.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Foreword</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Examples%20Organization.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.1. </span>Examples Organization</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
@@ -456,7 +474,7 @@ title="Print to PDF"
   
     By The OpenMP Community<br/>
   
-      &copy; <a href="../copyright.html">Copyright</a> 2022.<br/>
+      &copy; <a href="../../copyright.html">Copyright</a> 2022.<br/>
 </p>
         </footer>
     </div>
@@ -468,7 +486,7 @@ title="Print to PDF"
     </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
   </body>
