@@ -484,7 +484,9 @@ title="Print to PDF"
 <strong>)]]</strong></p>
 <p>Fortran comments<br />
     <strong>!$omp</strong>  <em>directive-specification</em></p>
-<p>where <code class="docutils literal notranslate"><span class="pre">c\$omp</span></code> and <code class="docutils literal notranslate"><span class="pre">*$omp</span></code> may be used in Fortran fixed form sources.</p>
+<p>where <strong>c$omp</strong>
+and
+<strong>*$omp</strong> may be used in Fortran fixed form sources.</p>
 <p>Most OpenMP directives accept clauses that alter the semantics of the directive in some way,  and some directives also accept parenthesized arguments that follow the directive name.  A clause may just be a keyword (e.g., <strong>untied</strong>) or it may also accept argument lists  (e.g., <strong>shared(x,y,z)</strong>) and/or optional modifiers (e.g., <strong>tofrom</strong> in  <strong>map(tofrom: x,y,z)</strong>). Clause modifiers may be “simple” or “complex” – a complex modifier consists of a  keyword followed by one or more parameters, bracketed by parentheses, while a simple  modifier does not. An example of a complex modifier is the <strong>iterator</strong> modifier,  as in <strong>map(iterator(i=0:n),tofrom: p[i])</strong>, or the <strong>step</strong> modifier, as in <strong>linear(x:</strong> <strong>ref,</strong> <strong>step(4))</strong>.  In the preceding examples, <strong>tofrom</strong> and <strong>ref</strong> are simple modifiers.</p>
 <section id="c-c-pragmas">
 <h2><span class="section-number">2.1. </span>C/C++ Pragmas<a class="headerlink" href="#c-c-pragmas" title="Permalink to this headline">#</a></h2>
