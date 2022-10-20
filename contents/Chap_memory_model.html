@@ -454,164 +454,164 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="memory-model">
 <h1><span class="section-number">11. </span>Memory Model<a class="headerlink" href="#memory-model" title="Permalink to this headline">#</a></h1>
-<p>{memory_model}</p>
-<p>OpenMP provides a shared-memory model that allows all threads on a given device shared access to <strong>memory</strong>. For a given OpenMP region that may be executed by more than one thread or SIMD lane, variables in memory may be <strong>shared</strong> or <strong>private</strong> with respect to those threads or SIMD lanes. A variable’s data-sharing attribute indicates whether it is shared (the <strong>shared</strong> attribute) or private (the <strong>private</strong>, <strong>firstprivate</strong>, <strong>lastprivate</strong>, <strong>linear</strong>, and <strong>reduction</strong> attributes) in the data environment of an OpenMP region. While private variables in an OpenMP region are new copies of the original variable (with same name) that may then be concurrently accessed or modified by their respective threads or SIMD lanes, a shared variable in an OpenMP region is the same as the variable of the same name in the enclosing region. Concurrent accesses or modifications to a shared variable may therefore require synchronization to avoid data races.</p>
-<p>OpenMP’s memory model also includes a <strong>temporary view</strong> of memory that is associated with each thread. Two different threads may see different values for a given variable in their respective temporary views. Threads may employ flush operations for the purposes of making their temporary view of a variable consistent with the value of the variable in memory. The effect of a given flush operation is characterized by its flush properties – some combination of <strong>strong</strong>, <strong>release</strong>, and <strong>acquire</strong> – and, for <strong>strong</strong> flushes, a <strong>flush-set</strong>.</p>
-<p>A <strong>strong</strong> flush will force consistency between the temporary view and the memory for all variables in its <strong>flush-set</strong>.  Furthermore, all strong flushes in a program that have intersecting flush-sets will execute in some total order, and within a thread strong flushes may not be reordered with respect to other memory operations on variables in its flush-set. <strong>Release</strong> and <strong>acquire</strong> flushes operate in pairs. A release flush may “synchronize’’ with an acquire flush, and when it does so the local memory operations that precede the release flush will appear to have been completed before the local memory operations on the same variables that follow the acquire flush.</p>
-<p>Flush operations arise from explicit <code class="docutils literal notranslate"><span class="pre">flush</span></code> directives, implicit <code class="docutils literal notranslate"><span class="pre">flush</span></code> directives, and also from the execution of <code class="docutils literal notranslate"><span class="pre">atomic</span></code> constructs. The <code class="docutils literal notranslate"><span class="pre">flush</span></code> directive forces a  consistent view of local variables of the thread executing the <code class="docutils literal notranslate"><span class="pre">flush</span></code>.  When a list is supplied on the directive, only the items (variables) in the list are guaranteed to be flushed.  Implied flushes exist at prescribed locations of certain constructs. For the complete list of these locations and associated constructs, please refer to the  <em>flush Construct</em>  section of the OpenMP Specifications document.</p>
-<p>In this chapter, examples illustrate how race conditions may arise for accesses to variables with a  <em>shared</em>  data-sharing attribute when flush operations are not properly employed.  A race condition can exist when two or more threads are involved in accessing a variable and at least one of the accesses modifies the variable.  In particular, a data race will arise when conflicting accesses do not have a well-defined <strong>completion order</strong>.  The existence of data races in OpenMP programs result in undefined behavior, and so they should generally be avoided for programs to be correct.  The completion order of accesses to a shared variable is guaranteed in OpenMP through a set of memory consistency rules that are described in the  <em>OpenMP Memory Consistency</em>  section of the OpenMP Specifications document.</p>
+<p>OpenMP provides a shared-memory model that allows all threads on a given device shared access to <em>memory</em>. For a given OpenMP region that may be executed by more than one thread or SIMD lane, variables in memory may be <em>shared</em> or <em>private</em> with respect to those threads or SIMD lanes. A variable’s data-sharing attribute indicates whether it is shared (the <em>shared</em> attribute) or private (the <em>private</em>, <em>firstprivate</em>, <em>lastprivate</em>, <em>linear</em>, and <em>reduction</em> attributes) in the data environment of an OpenMP region. While private variables in an OpenMP region are new copies of the original variable (with same name) that may then be concurrently accessed or modified by their respective threads or SIMD lanes, a shared variable in an OpenMP region is the same as the variable of the same name in the enclosing region. Concurrent accesses or modifications to a shared variable may therefore require synchronization to avoid data races.</p>
+<p>OpenMP’s memory model also includes a <em>temporary view</em> of memory that is associated with each thread. Two different threads may see different values for a given variable in their respective temporary views. Threads may employ flush operations for the purposes of making their temporary view of a variable consistent with the value of the variable in memory. The effect of a given flush operation is characterized by its flush properties - some combination of <em>strong</em>, <em>release</em>, and <em>acquire</em> - and, for <em>strong</em> flushes, a <em>flush-set</em>.</p>
+<p>A <em>strong</em> flush will force consistency between the temporary view and the memory for all variables in its <em>flush-set</em>.  Furthermore, all strong flushes in a program that have intersecting flush-sets will execute in some total order, and within a thread strong flushes may not be reordered with respect to other memory operations on variables in its flush-set. <em>Release</em> and <em>acquire</em> flushes operate in pairs. A release flush may “synchronize’’ with an acquire flush, and when it does so the local memory operations that precede the release flush will appear to have been completed before the local memory operations on the same variables that follow the acquire flush.</p>
+<p>Flush operations arise from explicit <strong>flush</strong> directives, implicit <strong>flush</strong> directives, and also from the execution of <strong>atomic</strong> constructs. The <strong>flush</strong> directive forces a  consistent view of local variables of the thread executing the <strong>flush</strong>.  When a list is supplied on the directive, only the items (variables) in the list are guaranteed to be flushed.  Implied flushes exist at prescribed locations of certain constructs. For the complete list of these locations and associated constructs, please refer to the  <em>flush Construct</em>  section of the OpenMP Specifications document.</p>
+<p>In this chapter, examples illustrate how race conditions may arise for accesses to variables with a  <em>shared</em>  data-sharing attribute when flush operations are not properly employed.  A race condition can exist when two or more threads are involved in accessing a variable and at least one of the accesses modifies the variable.  In particular, a data race will arise when conflicting accesses do not have a well-defined <em>completion order</em>.  The existence of data races in OpenMP programs result in undefined behavior, and so they should generally be avoided for programs to be correct.  The completion order of accesses to a shared variable is guaranteed in OpenMP through a set of memory consistency rules that are described in the  <em>OpenMP Memory Consistency</em>  section of the OpenMP Specifications document.</p>
 <section id="openmp-memory-model">
 <h2><span class="section-number">11.1. </span>OpenMP Memory Model<a class="headerlink" href="#openmp-memory-model" title="Permalink to this headline">#</a></h2>
 <p>The following examples illustrate two major concerns for concurrent thread execution: ordering of thread execution and memory accesses that may or may not lead to race conditions.</p>
-<p>In the following example, at Print 1, the value of <code class="docutils literal notranslate"><span class="pre">xval</span></code> could be either 2 or 5, depending on the timing of the threads. The <code class="docutils literal notranslate"><span class="pre">atomic</span></code> directives are necessary for the accesses to <code class="docutils literal notranslate"><span class="pre">x</span></code> by threads 1 and 2 to avoid a data race. If the atomic write completes before the atomic read, thread 1 is guaranteed to see 5 in <code class="docutils literal notranslate"><span class="pre">xval</span></code>. Otherwise, thread 1 is guaranteed to see 2 in <code class="docutils literal notranslate"><span class="pre">xval</span></code>.</p>
-<p><strong>flushes!implicit</strong> <strong>atomic construct <code class="docutils literal notranslate"><span class="pre">atomic</span></code> construct</strong> <strong>constructs!atomic <code class="docutils literal notranslate"><span class="pre">atomic</span></code></strong> The barrier after Print 1 contains implicit flushes on all threads, as well as a thread synchronization, so the programmer is guaranteed that the value 5 will be printed by both Print 2 and Print 3. Since neither Print 2 or Print 3 are modifying <code class="docutils literal notranslate"><span class="pre">x</span></code>, they may concurrently access <code class="docutils literal notranslate"><span class="pre">x</span></code> without requiring <code class="docutils literal notranslate"><span class="pre">atomic</span></code> directives to avoid a data race.</p>
+<p>In the following example, at Print 1, the value of <strong>xval</strong> could be either 2 or 5, depending on the timing of the threads. The <strong>atomic</strong> directives are necessary for the accesses to <strong>x</strong> by threads 1 and 2 to avoid a data race. If the atomic write completes before the atomic read, thread 1 is guaranteed to see 5 in <strong>xval</strong>. Otherwise, thread 1 is guaranteed to see 2 in <strong>xval</strong>.</p>
+<p><em>flushes!implicit</em> <em>atomic construct <strong>atomic</strong> construct</em> <em>constructs!atomic <strong>atomic</strong></em> The barrier after Print 1 contains implicit flushes on all threads, as well as a thread synchronization, so the programmer is guaranteed that the value 5 will be printed by both Print 2 and Print 3. Since neither Print 2 or Print 3 are modifying <strong>x</strong>, they may concurrently access <strong>x</strong> without requiring <strong>atomic</strong> directives to avoid a data race.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name: mem_model.1
-* type: C
-* version: omp_3.1
-*/
-#include &lt;stdio.h&gt;
-#include &lt;omp.h&gt;
+<span class="cm">/*</span>
+<span class="cm">* name: mem_model.1</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_3.1</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
 
-int main(){
-  int x;
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
 
-  x = 2;
-  #pragma omp parallel num_threads(2) shared(x)
-  {
+<span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma omp parallel num_threads(2) shared(x)</span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
 
-    if (omp_get_thread_num() == 0) {
-       #pragma omp atomic write
-       x = 5;
-    } else {
-      int xval;
-      #pragma omp atomic read
-      xval = x;
-    /* Print 1: xval can be 2 or 5 */
-      printf(&quot;1: Thread# %d: x = %d\n&quot;, omp_get_thread_num(), xval);
-    }
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="cp">#pragma omp atomic write</span>
+<span class="w">       </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">xval</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="cp">#pragma omp atomic read</span>
+<span class="w">      </span><span class="n">xval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* Print 1: xval can be 2 or 5 */</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;1: Thread# %d: x = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">(),</span><span class="w"> </span><span class="n">xval</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    #pragma omp barrier
+<span class="w">    </span><span class="cp">#pragma omp barrier</span>
 
-    if (omp_get_thread_num() == 0) {
-    /* Print 2 */
-      printf(&quot;2: Thread# %d: x = %d\n&quot;, omp_get_thread_num(), x);
-    } else {
-    /* Print 3 */
-      printf(&quot;3: Thread# %d: x = %d\n&quot;, omp_get_thread_num(), x);
-    }
-  }
-  return 0;
-}
-
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* Print 2 */</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;2: Thread# %d: x = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">(),</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* Print 3 */</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;3: Thread# %d: x = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">(),</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
-! name: mem_model.1
-! type: F-free
-! version: omp_3.1
-PROGRAM MEMMODEL
-  INCLUDE &quot;omp_lib.h&quot;      ! or USE OMP_LIB
-  INTEGER X, XVAL
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-  X = 2
-!$OMP PARALLEL NUM_THREADS(2) SHARED(X)
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">mem_model</span><span class="mf">.1</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_3</span><span class="mf">.1</span><span class="w"></span>
+<span class="n">PROGRAM</span><span class="w"> </span><span class="n">MEMMODEL</span><span class="w"></span>
+<span class="w">  </span><span class="n">INCLUDE</span><span class="w"> </span><span class="s">&quot;omp_lib.h&quot;</span><span class="w">      </span><span class="o">!</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">USE</span><span class="w"> </span><span class="n">OMP_LIB</span><span class="w"></span>
+<span class="w">  </span><span class="n">INTEGER</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">XVAL</span><span class="w"></span>
 
-    IF (OMP_GET_THREAD_NUM() .EQ. 0) THEN
-    !$OMP ATOMIC WRITE
-       X = 5
-    ELSE
-    !$OMP ATOMIC READ
-      XVAL = X
-    ! PRINT 1: XVAL can be 2 or 5
-      PRINT *,&quot;1: THREAD# &quot;, OMP_GET_THREAD_NUM(), &quot;X = &quot;, XVAL
-    ENDIF
+<span class="w">  </span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">PARALLEL</span><span class="w"> </span><span class="n">NUM_THREADS</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">SHARED</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"></span>
 
- !$OMP BARRIER
+<span class="w">    </span><span class="n">IF</span><span class="w"> </span><span class="p">(</span><span class="n">OMP_GET_THREAD_NUM</span><span class="p">()</span><span class="w"> </span><span class="p">.</span><span class="n">EQ</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">THEN</span><span class="w"></span>
+<span class="w">    </span><span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">ATOMIC</span><span class="w"> </span><span class="n">WRITE</span><span class="w"></span>
+<span class="w">       </span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<span class="w">    </span><span class="n">ELSE</span><span class="w"></span>
+<span class="w">    </span><span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">ATOMIC</span><span class="w"> </span><span class="n">READ</span><span class="w"></span>
+<span class="w">      </span><span class="n">XVAL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X</span><span class="w"></span>
+<span class="w">    </span><span class="o">!</span><span class="w"> </span><span class="n">PRINT</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">XVAL</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<span class="w">      </span><span class="n">PRINT</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s">&quot;1: THREAD# &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">OMP_GET_THREAD_NUM</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;X = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">XVAL</span><span class="w"></span>
+<span class="w">    </span><span class="n">ENDIF</span><span class="w"></span>
 
-    IF (OMP_GET_THREAD_NUM() .EQ. 0) THEN
-    ! PRINT 2
-      PRINT *,&quot;2: THREAD# &quot;, OMP_GET_THREAD_NUM(), &quot;X = &quot;, X
-    ELSE
-    ! PRINT 3
-      PRINT *,&quot;3: THREAD# &quot;, OMP_GET_THREAD_NUM(), &quot;X = &quot;, X
-    ENDIF
+<span class="w"> </span><span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">BARRIER</span><span class="w"></span>
 
-!$OMP END PARALLEL
+<span class="w">    </span><span class="n">IF</span><span class="w"> </span><span class="p">(</span><span class="n">OMP_GET_THREAD_NUM</span><span class="p">()</span><span class="w"> </span><span class="p">.</span><span class="n">EQ</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">THEN</span><span class="w"></span>
+<span class="w">    </span><span class="o">!</span><span class="w"> </span><span class="n">PRINT</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="w">      </span><span class="n">PRINT</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s">&quot;2: THREAD# &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">OMP_GET_THREAD_NUM</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;X = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">X</span><span class="w"></span>
+<span class="w">    </span><span class="n">ELSE</span><span class="w"></span>
+<span class="w">    </span><span class="o">!</span><span class="w"> </span><span class="n">PRINT</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="w">      </span><span class="n">PRINT</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s">&quot;3: THREAD# &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">OMP_GET_THREAD_NUM</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;X = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">X</span><span class="w"></span>
+<span class="w">    </span><span class="n">ENDIF</span><span class="w"></span>
 
-END PROGRAM MEMMODEL
+<span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">END</span><span class="w"> </span><span class="n">PARALLEL</span><span class="w"></span>
 
+<span class="n">END</span><span class="w"> </span><span class="n">PROGRAM</span><span class="w"> </span><span class="n">MEMMODEL</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>flushes!flush construct <code class="docutils literal notranslate"><span class="pre">flush</span></code> construct</strong> <strong>flush construct <code class="docutils literal notranslate"><span class="pre">flush</span></code> construct</strong> <strong>constructs!flush <code class="docutils literal notranslate"><span class="pre">flush</span></code></strong> The following example demonstrates why synchronization is difficult to perform correctly through variables. The write to <code class="docutils literal notranslate"><span class="pre">flag</span></code> on thread 0 and the read from <code class="docutils literal notranslate"><span class="pre">flag</span></code> in the loop on thread 1 must be atomic to avoid a data race. When thread 1 breaks out of the loop, <code class="docutils literal notranslate"><span class="pre">flag</span></code> will have the value of 1. However, <code class="docutils literal notranslate"><span class="pre">data</span></code> will still be undefined at the first print statement. Only after the flush of both <code class="docutils literal notranslate"><span class="pre">flag</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span></code> after the first print statement will <code class="docutils literal notranslate"><span class="pre">data</span></code> have the well-defined value of 42.</p>
+<p>The following example demonstrates why synchronization is difficult to perform correctly through variables. The write to <strong>flag</strong> on thread 0 and the read from <strong>flag</strong> in the loop on thread 1 must be atomic to avoid a data race. When thread 1 breaks out of the loop, <strong>flag</strong> will have the value of 1. However, <strong>data</strong> will still be undefined at the first print statement. Only after the flush of both <strong>flag</strong> and <strong>data</strong> after the first print statement will <strong>data</strong> have the well-defined value of 42.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name: mem_model.2
-* type: C
-* version: omp_3.1
-*/
-#include &lt;omp.h&gt;
-#include &lt;stdio.h&gt;
-int main()
-{
-    int data;
-    int flag=0;
-    #pragma omp parallel num_threads(2)
-    {
-      if (omp_get_thread_num()==0)
-      {
-      /* Write to the data buffer that will be
-       * read by thread */
-          data = 42;
-      /* Flush data to thread 1 and strictly order
-       * the write to data relative to the write to the flag */
-          #pragma omp flush(flag, data)
-      /* Set flag to release thread 1 */
-          #pragma omp atomic write
-          flag = 1;
-      }
-      else if(omp_get_thread_num()==1)
-      {
-      /* Loop until we see the update to the flag */
-          #pragma omp flush(flag, data)
-          int flag_val = 0;
-          while (flag_val &lt; 1)
-          {
-             #pragma omp atomic read
-             flag_val = flag;
-          }
-      /* Value of flag is 1; value of data is undefined */
-          printf(&quot;flag=%d data=%d\n&quot;, flag, data);
-          #pragma omp flush(flag, data)
-      /* Value of flag is 1; value of data is 42 */
-          printf(&quot;flag=%d data=%d\n&quot;, flag, data);
-      }
-    }
-    return 0;
-}
-
+<span class="cm">/*</span>
+<span class="cm">* name: mem_model.2</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_3.1</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="cp">#pragma omp parallel num_threads(2)</span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="cm">/* Write to the data buffer that will be</span>
+<span class="cm">       * read by thread */</span><span class="w"></span>
+<span class="w">          </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="cm">/* Flush data to thread 1 and strictly order</span>
+<span class="cm">       * the write to data relative to the write to the flag */</span><span class="w"></span>
+<span class="w">          </span><span class="cp">#pragma omp flush(flag, data)</span>
+<span class="w">      </span><span class="cm">/* Set flag to release thread 1 */</span><span class="w"></span>
+<span class="w">          </span><span class="cp">#pragma omp atomic write</span>
+<span class="w">          </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="cm">/* Loop until we see the update to the flag */</span><span class="w"></span>
+<span class="w">          </span><span class="cp">#pragma omp flush(flag, data)</span>
+<span class="w">          </span><span class="kt">int</span><span class="w"> </span><span class="n">flag_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">flag_val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="p">{</span><span class="w"></span>
+<span class="w">             </span><span class="cp">#pragma omp atomic read</span>
+<span class="w">             </span><span class="n">flag_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flag</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="cm">/* Value of flag is 1; value of data is undefined */</span><span class="w"></span>
+<span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;flag=%d data=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span><span class="w"></span>
+<span class="w">          </span><span class="cp">#pragma omp flush(flag, data)</span>
+<span class="w">      </span><span class="cm">/* Value of flag is 1; value of data is 42 */</span><span class="w"></span>
+<span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;flag=%d data=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: mem_model.2
 ! type: F-fixed
 ! version: omp_3.1
@@ -653,87 +653,87 @@ int main()
          ENDIF
 !$OMP  END PARALLEL
        END
-
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>flushes!flush with a list</strong> The next example demonstrates why synchronization is difficult to perform correctly through variables. As in the preceding example, the updates to <code class="docutils literal notranslate"><span class="pre">flag</span></code> and the reading of <code class="docutils literal notranslate"><span class="pre">flag</span></code> in the loops on threads 1 and 2 are performed atomically to avoid data races on <code class="docutils literal notranslate"><span class="pre">flag</span></code>. However, the code still contains data race due to the incorrect use of “flush with a list’’ after the assignment to <code class="docutils literal notranslate"><span class="pre">data1</span></code> on thread 1. By not including <code class="docutils literal notranslate"><span class="pre">flag</span></code> in the flush-set of that <code class="docutils literal notranslate"><span class="pre">flush</span></code> directive, the assignment can be reordered with respect to the subsequent atomic update to <code class="docutils literal notranslate"><span class="pre">flag</span></code>. Consequentially, <code class="docutils literal notranslate"><span class="pre">data1</span></code> is undefined at the print statement on thread 2.</p>
+<p>The next example demonstrates why synchronization is difficult to perform correctly through variables. As in the preceding example, the updates to <strong>flag</strong> and the reading of <strong>flag</strong> in the loops on threads 1 and 2 are performed atomically to avoid data races on <strong>flag</strong>. However, the code still contains data race due to the incorrect use of “flush with a list’’ after the assignment to <strong>data1</strong> on thread 1. By not including <strong>flag</strong> in the flush-set of that <strong>flush</strong> directive, the assignment can be reordered with respect to the subsequent atomic update to <strong>flag</strong>. Consequentially, <strong>data1</strong> is undefined at the print statement on thread 2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name: mem_model.3
-* type: C
-* version: omp_3.1
-*/
-#include &lt;omp.h&gt;
-#include &lt;stdio.h&gt;
+<span class="cm">/*</span>
+<span class="cm">* name: mem_model.3</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_3.1</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
-int data0 = 0, data1 = 0;
+<span class="kt">int</span><span class="w"> </span><span class="n">data0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">data1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
-int main()
-{
-   int flag=0;
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
-   #pragma omp parallel num_threads(3)
-   {
-      if(omp_get_thread_num()==0)
-      {
-         data0 = 17;
-         #pragma omp flush
-         /* Set flag to release thread 1 */
-         #pragma omp atomic update
-         flag++;
-         /* Flush of flag is implied by the atomic directive */
-      }
-      else if(omp_get_thread_num()==1)
-      {
-         int flag_val = 0;
-         /* Loop until we see that flag reaches 1*/
-         while(flag_val &lt; 0)
-         {
-            #pragma omp atomic read
-            flag_val = flag;
-         }
-         #pragma omp flush(data0)
-         /* data0 is 17 here */
-         printf(&quot;Thread 1 awoken (data0 = %d)\n&quot;, data0);
-         data1 = 42;
-         #pragma omp flush(data1)
-         /* Set flag to release thread 2 */
-         #pragma omp atomic update
-         flag++;
-         /* Flush of flag is implied by the atomic directive */
-      }
-      else if(omp_get_thread_num()==2)
-      {
-         int flag_val = 0;
-         /* Loop until we see that flag reaches 2 */
-         while(flag_val &lt; 2)
-         {
-            #pragma omp atomic read
-            flag_val = flag;
-         }
-         #pragma omp flush(data0,data1)
-         /* there is a data race here;
-            data0 is 17 and data1 is undefined */
-         printf(&quot;Thread 2 awoken (data0 = %d, data1 = %d)\n&quot;,
-               data0, data1);
-      }
-   }
-   return 0;
-}
-
+<span class="w">   </span><span class="cp">#pragma omp parallel num_threads(3)</span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="n">data0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">17</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="cp">#pragma omp flush</span>
+<span class="w">         </span><span class="cm">/* Set flag to release thread 1 */</span><span class="w"></span>
+<span class="w">         </span><span class="cp">#pragma omp atomic update</span>
+<span class="w">         </span><span class="n">flag</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="cm">/* Flush of flag is implied by the atomic directive */</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="kt">int</span><span class="w"> </span><span class="n">flag_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="cm">/* Loop until we see that flag reaches 1*/</span><span class="w"></span>
+<span class="w">         </span><span class="k">while</span><span class="p">(</span><span class="n">flag_val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="cp">#pragma omp atomic read</span>
+<span class="w">            </span><span class="n">flag_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flag</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">         </span><span class="cp">#pragma omp flush(data0)</span>
+<span class="w">         </span><span class="cm">/* data0 is 17 here */</span><span class="w"></span>
+<span class="w">         </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Thread 1 awoken (data0 = %d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data0</span><span class="p">);</span><span class="w"></span>
+<span class="w">         </span><span class="n">data1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="cp">#pragma omp flush(data1)</span>
+<span class="w">         </span><span class="cm">/* Set flag to release thread 2 */</span><span class="w"></span>
+<span class="w">         </span><span class="cp">#pragma omp atomic update</span>
+<span class="w">         </span><span class="n">flag</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="cm">/* Flush of flag is implied by the atomic directive */</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="kt">int</span><span class="w"> </span><span class="n">flag_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="cm">/* Loop until we see that flag reaches 2 */</span><span class="w"></span>
+<span class="w">         </span><span class="k">while</span><span class="p">(</span><span class="n">flag_val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="cp">#pragma omp atomic read</span>
+<span class="w">            </span><span class="n">flag_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flag</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">         </span><span class="cp">#pragma omp flush(data0,data1)</span>
+<span class="w">         </span><span class="cm">/* there is a data race here;</span>
+<span class="cm">            data0 is 17 and data1 is undefined */</span><span class="w"></span>
+<span class="w">         </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Thread 2 awoken (data0 = %d, data1 = %d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="n">data0</span><span class="p">,</span><span class="w"> </span><span class="n">data1</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: mem_model.3
 ! type: F-fixed
 ! version: omp_3.1
@@ -790,256 +790,251 @@ int main()
          ENDIF
 !$OMP  END PARALLEL
        END
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>The following two examples illustrate the ordering properties of  the  <em>flush</em>  operation. The  <em>flush</em>  operations are strong flushes  that are applied to the specified flush lists.  However, use of a <code class="docutils literal notranslate"><span class="pre">flush</span></code> construct with a list is extremely error  prone and users are strongly discouraged from attempting it.  In the codes the programmer intends to prevent simultaneous  execution of the protected section by the two threads. The atomic directives in the codes ensure that the accesses to shared variables  <em>a</em>  and  <em>b</em>  are atomic write and atomic read operations. Otherwise both examples would contain data races and automatically result  in unspecified behavior.</p>
+<p>The following two examples illustrate the ordering properties of  the  <em>flush</em>  operation. The  <em>flush</em>  operations are strong flushes  that are applied to the specified flush lists.  However, use of a <strong>flush</strong> construct with a list is extremely error  prone and users are strongly discouraged from attempting it.  In the codes the programmer intends to prevent simultaneous  execution of the protected section by the two threads. The atomic directives in the codes ensure that the accesses to shared variables  <em>a</em>  and  <em>b</em>  are atomic write and atomic read operations. Otherwise both examples would contain data races and automatically result  in unspecified behavior.</p>
 <p>In the following incorrect code example, operations on variables  <em>a</em>  and  <em>b</em>  are not ordered with respect to each other. For instance, nothing prevents the compiler from moving the flush of  <em>b</em>  on thread 0 or the flush of  <em>a</em>  on thread 1 to a position completely after the protected section (assuming that the protected section on thread 0 does not reference  <em>b</em>  and the protected section on thread 1 does not reference  <em>a</em> ). If either re-ordering happens, both threads can simultaneously execute the protected section. Any shared data accessed in the protected section is not guaranteed to  be current or consistent during or after the protected section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name: mem_model.4a
-* type: C
-* version: omp_3.1
-*/
-#include &lt;omp.h&gt;
+<span class="cm">/*</span>
+<span class="cm">* name: mem_model.4a</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_3.1</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
 
-void flush_incorrect()
-{
-  int a, b;
-  a = b = 0;
-  #pragma omp parallel num_threads(2)
-  {
-    int myid = omp_get_thread_num();
-    int tmp;
+<span class="kt">void</span><span class="w"> </span><span class="nf">flush_incorrect</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma omp parallel num_threads(2)</span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">myid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span><span class="w"></span>
 
-    if ( myid == 0 ) {        // thread 0
-      #pragma omp atomic write
-        b = 1;
-      #pragma omp flush(b)    // flushes are not ordered
-      #pragma omp flush(a)    // compiler may move them around
-      #pragma omp atomic read
-        tmp = a;
-    }
-    else {                    // thread 1
-      #pragma omp atomic write
-        a = 1;
-      #pragma omp flush(a)    // flushes are not ordered
-      #pragma omp flush(b)    // compiler may move them around
-      #pragma omp atomic read
-        tmp = b;
-    }
-    if ( tmp == 0 ) {         // exclusive access not guaranteed
-      /* protected section */
-    }
-  }
-}
-
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">myid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">        </span><span class="c1">// thread 0</span>
+<span class="w">      </span><span class="cp">#pragma omp atomic write</span>
+<span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="cp">#pragma omp flush(b)    </span><span class="c1">// flushes are not ordered</span>
+<span class="w">      </span><span class="cp">#pragma omp flush(a)    </span><span class="c1">// compiler may move them around</span>
+<span class="w">      </span><span class="cp">#pragma omp atomic read</span>
+<span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">                    </span><span class="c1">// thread 1</span>
+<span class="w">      </span><span class="cp">#pragma omp atomic write</span>
+<span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="cp">#pragma omp flush(a)    </span><span class="c1">// flushes are not ordered</span>
+<span class="w">      </span><span class="cp">#pragma omp flush(b)    </span><span class="c1">// compiler may move them around</span>
+<span class="w">      </span><span class="cp">#pragma omp atomic read</span>
+<span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">         </span><span class="c1">// exclusive access not guaranteed</span>
+<span class="w">      </span><span class="cm">/* protected section */</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
-! name: mem_model.4a
-! type: F-free
-! version: omp_3.1
-subroutine flush_incorrect
-  use omp_lib
-  implicit none
-  integer a, b, tmp
-  integer myid
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-  a = 0; b = 0
-  !$omp parallel private(myid,tmp) num_threads(2)
-    myid = omp_get_thread_num()
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">mem_model</span><span class="mf">.4</span><span class="n">a</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_3</span><span class="mf">.1</span><span class="w"></span>
+<span class="n">subroutine</span><span class="w"> </span><span class="n">flush_incorrect</span><span class="w"></span>
+<span class="w">  </span><span class="n">use</span><span class="w"> </span><span class="n">omp_lib</span><span class="w"></span>
+<span class="w">  </span><span class="n">implicit</span><span class="w"> </span><span class="n">none</span><span class="w"></span>
+<span class="w">  </span><span class="n">integer</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">tmp</span><span class="w"></span>
+<span class="w">  </span><span class="n">integer</span><span class="w"> </span><span class="n">myid</span><span class="w"></span>
 
-    if ( myid == 0 ) then     ! thread 0
-      !$omp atomic write
-        b = 1
-      !$omp flush(b)          ! flushes are not ordered
-      !$omp flush(a)          ! compiler may move them around
-      !$omp atomic read
-        tmp = a
-    else                      ! thread 1
-      !$omp atomic write
-        a = 1
-      !$omp flush(a)          ! flushes are not ordered
-      !$omp flush(b)          ! compiler may move them around
-      !$omp atomic read
-        tmp = b
-    endif
-    if ( tmp == 0 ) then      ! exclusive access not guaranteed
-      !! protected section
-    endif
-  !$omp end parallel
-end subroutine
+<span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">private</span><span class="p">(</span><span class="n">myid</span><span class="p">,</span><span class="n">tmp</span><span class="p">)</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">myid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"></span>
 
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">myid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">then</span><span class="w">     </span><span class="o">!</span><span class="w"> </span><span class="kr">thread</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">atomic</span><span class="w"> </span><span class="n">write</span><span class="w"></span>
+<span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">flush</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w">          </span><span class="o">!</span><span class="w"> </span><span class="n">flushes</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">ordered</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">flush</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w">          </span><span class="o">!</span><span class="w"> </span><span class="n">compiler</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="n">around</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">atomic</span><span class="w"> </span><span class="n">read</span><span class="w"></span>
+<span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w">                      </span><span class="o">!</span><span class="w"> </span><span class="kr">thread</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">atomic</span><span class="w"> </span><span class="n">write</span><span class="w"></span>
+<span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">flush</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w">          </span><span class="o">!</span><span class="w"> </span><span class="n">flushes</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">ordered</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">flush</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w">          </span><span class="o">!</span><span class="w"> </span><span class="n">compiler</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="n">around</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">atomic</span><span class="w"> </span><span class="n">read</span><span class="w"></span>
+<span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
+<span class="w">    </span><span class="n">endif</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">then</span><span class="w">      </span><span class="o">!</span><span class="w"> </span><span class="n">exclusive</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">guaranteed</span><span class="w"></span>
+<span class="w">      </span><span class="o">!!</span><span class="w"> </span><span class="n">protected</span><span class="w"> </span><span class="n">section</span><span class="w"></span>
+<span class="w">    </span><span class="n">endif</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="n">end</span><span class="w"> </span><span class="n">subroutine</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The following code example correctly ensures that the protected section is executed by only one thread at a time. Execution of the protected section by neither thread is considered correct in this example. This occurs if both flushes complete prior to either thread executing its <code class="docutils literal notranslate"><span class="pre">if</span></code> statement for the protected section. The compiler is prohibited from moving the flush at all for either thread, ensuring that the respective assignment is complete and the data is flushed before the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is executed.</p>
+<p>The following code example correctly ensures that the protected section is executed by only one thread at a time. Execution of the protected section by neither thread is considered correct in this example. This occurs if both flushes complete prior to either thread executing its <strong>if</strong> statement for the protected section. The compiler is prohibited from moving the flush at all for either thread, ensuring that the respective assignment is complete and the data is flushed before the <strong>if</strong> statement is executed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name: mem_model.4b
-* type: C
-* version: omp_3.1
-*/
-#include &lt;omp.h&gt;
+<span class="cm">/*</span>
+<span class="cm">* name: mem_model.4b</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_3.1</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
 
-void flush_correct()
-{
-  int a, b;
-  a = b = 0;
-  #pragma omp parallel num_threads(2)
-  {
-    int myid = omp_get_thread_num();
-    int tmp;
+<span class="kt">void</span><span class="w"> </span><span class="nf">flush_correct</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma omp parallel num_threads(2)</span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">myid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span><span class="w"></span>
 
-    if ( myid == 0 ) {          // thread 0
-      #pragma omp atomic write
-        b = 1;
-      #pragma omp flush(a,b)    // flushes are ordered
-      #pragma omp atomic read
-        tmp = a;
-    }
-    else {                      // thread 1
-      #pragma omp atomic write
-        a = 1;
-      #pragma omp flush(a,b)    // flushes are ordered
-      #pragma omp atomic read
-        tmp = b;
-    }
-    if ( tmp == 0 ) {           // access by single thread
-      /* protected section */
-    }
-  }
-}
-
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">myid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// thread 0</span>
+<span class="w">      </span><span class="cp">#pragma omp atomic write</span>
+<span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="cp">#pragma omp flush(a,b)    </span><span class="c1">// flushes are ordered</span>
+<span class="w">      </span><span class="cp">#pragma omp atomic read</span>
+<span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">                      </span><span class="c1">// thread 1</span>
+<span class="w">      </span><span class="cp">#pragma omp atomic write</span>
+<span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="cp">#pragma omp flush(a,b)    </span><span class="c1">// flushes are ordered</span>
+<span class="w">      </span><span class="cp">#pragma omp atomic read</span>
+<span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">           </span><span class="c1">// access by single thread</span>
+<span class="w">      </span><span class="cm">/* protected section */</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
-! name: mem_model.4b
-! type: F-free
-! version: omp_3.1
-subroutine flush_correct
-  use omp_lib
-  implicit none
-  integer a, b, tmp
-  integer myid
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-  a = 0; b = 0
-  !$omp parallel private(myid,tmp) num_threads(2)
-    myid = omp_get_thread_num()
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">mem_model</span><span class="mf">.4</span><span class="n">b</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_3</span><span class="mf">.1</span><span class="w"></span>
+<span class="n">subroutine</span><span class="w"> </span><span class="n">flush_correct</span><span class="w"></span>
+<span class="w">  </span><span class="n">use</span><span class="w"> </span><span class="n">omp_lib</span><span class="w"></span>
+<span class="w">  </span><span class="n">implicit</span><span class="w"> </span><span class="n">none</span><span class="w"></span>
+<span class="w">  </span><span class="n">integer</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">tmp</span><span class="w"></span>
+<span class="w">  </span><span class="n">integer</span><span class="w"> </span><span class="n">myid</span><span class="w"></span>
 
-    if ( myid == 0 ) then     ! thread 0
-      !$omp atomic write
-        b = 1
-      !$omp flush(a,b)        ! flushes are ordered
-      !$omp atomic read
-        tmp = a
-    else                      ! thread 1
-      !$omp atomic write
-        a = 1
-      !$omp flush(a,b)        ! flushes are ordered
-      !$omp atomic read
-        tmp = b
-    endif
-    if ( tmp == 0 ) then      ! access by single thread
-      !! protected section
-    endif
-  !$omp end parallel
-end subroutine
+<span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">private</span><span class="p">(</span><span class="n">myid</span><span class="p">,</span><span class="n">tmp</span><span class="p">)</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">myid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"></span>
 
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">myid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">then</span><span class="w">     </span><span class="o">!</span><span class="w"> </span><span class="kr">thread</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">atomic</span><span class="w"> </span><span class="n">write</span><span class="w"></span>
+<span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">flush</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="w">        </span><span class="o">!</span><span class="w"> </span><span class="n">flushes</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">ordered</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">atomic</span><span class="w"> </span><span class="n">read</span><span class="w"></span>
+<span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w">                      </span><span class="o">!</span><span class="w"> </span><span class="kr">thread</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">atomic</span><span class="w"> </span><span class="n">write</span><span class="w"></span>
+<span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">flush</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="w">        </span><span class="o">!</span><span class="w"> </span><span class="n">flushes</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">ordered</span><span class="w"></span>
+<span class="w">      </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">atomic</span><span class="w"> </span><span class="n">read</span><span class="w"></span>
+<span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
+<span class="w">    </span><span class="n">endif</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">then</span><span class="w">      </span><span class="o">!</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="kr">thread</span><span class="w"></span>
+<span class="w">      </span><span class="o">!!</span><span class="w"> </span><span class="n">protected</span><span class="w"> </span><span class="n">section</span><span class="w"></span>
+<span class="w">    </span><span class="n">endif</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="n">end</span><span class="w"> </span><span class="n">subroutine</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../memory_model/mem_model.tex</p>
 </section>
 <section id="memory-allocators">
 <h2><span class="section-number">11.2. </span>Memory Allocators<a class="headerlink" href="#memory-allocators" title="Permalink to this headline">#</a></h2>
-<p><strong>memory allocators!allocator traits</strong> <strong>memory allocators!memory space</strong> <strong>memory allocators!omp_alloc routine <code class="docutils literal notranslate"><span class="pre">omp_alloc</span></code> routine</strong> <strong>memory allocators!allocators directive <code class="docutils literal notranslate"><span class="pre">allocators</span></code> directive</strong></p>
-<p><strong>omp_alloc routine <code class="docutils literal notranslate"><span class="pre">omp_alloc</span></code> routine</strong> <strong>routines!omp_alloc <code class="docutils literal notranslate"><span class="pre">omp_alloc</span></code></strong></p>
-<p><strong>directives!allocators <code class="docutils literal notranslate"><span class="pre">allocators</span></code></strong> <strong>allocators directive <code class="docutils literal notranslate"><span class="pre">allocators</span></code> directive</strong> <strong>allocators directive <code class="docutils literal notranslate"><span class="pre">allocators</span></code> directive!allocator clause <code class="docutils literal notranslate"><span class="pre">allocator</span></code> clause</strong></p>
-<p><strong>clauses!allocator <code class="docutils literal notranslate"><span class="pre">allocator</span></code></strong> <strong>allocator clause <code class="docutils literal notranslate"><span class="pre">allocator</span></code> clause</strong> <strong>omp_init_allocator routine <code class="docutils literal notranslate"><span class="pre">omp_init_allocator</span></code> routine</strong> <strong>routines!omp_init_allocator <code class="docutils literal notranslate"><span class="pre">omp_init_allocator</span></code></strong></p>
-<p>OpenMP memory allocators can be used to allocate memory with specific allocator traits.  In the following example an OpenMP allocator is used to specify an alignment for arrays  <em>x</em>  and  <em>y</em> . The general approach for attributing traits to variables allocated by OpenMP is to create or specify a pre-defined  <em>memory space</em> , create an array of  <em>traits</em> , and then form an  <em>allocator</em>  from the memory space and trait. The allocator is then specified in an OpenMP allocation (using an API  <em>omp_alloc()</em>  function for C/C++ code and an <code class="docutils literal notranslate"><span class="pre">allocators</span></code> directive for Fortran code in the  <em>allocators.1</em>  example).</p>
+<p>OpenMP memory allocators can be used to allocate memory with specific allocator traits.  In the following example an OpenMP allocator is used to specify an alignment for arrays  <em>x</em>  and  <em>y</em> . The general approach for attributing traits to variables allocated by OpenMP is to create or specify a pre-defined  <em>memory space</em> , create an array of  <em>traits</em> , and then form an  <em>allocator</em>  from the memory space and trait. The allocator is then specified in an OpenMP allocation (using an API  <em>omp_alloc()</em>  function for C/C++ code and an <strong>allocators</strong> directive for Fortran code in the  <em>allocators.1</em>  example).</p>
 <p>In the example below the  <em>xy_memspace</em>  variable is declared and assigned the default memory space ( <em>omp_default_mem_space</em> ). Next, an array for  <em>traits</em>  is created. Since only one trait will be used, the array size is  <em>1</em> . A trait is a structure in C/C++ and a derived type in Fortran, containing 2 components: a key and a corresponding value (key-value pair). The trait key used here is  <em>omp_atk_alignment</em>  (an enum for C/C++ and a parameter for Fortran) and the trait value of 64 is specified in the  <em>xy_traits</em>  declaration. These declarations are followed by a call to the  <em>omp_init_allocator()</em>  function to combine the memory space ( <em>xy_memspace</em> ) and the traits ( <em>xy_traits</em> ) to form an allocator ( <em>xy_alloc</em> ).</p>
-<p>In the C/C++ code the API   <em>omp_allocate()</em>  function is used to allocate space, similar to  <em>malloc</em> , except that the allocator is specified as the second argument. In Fortran an <code class="docutils literal notranslate"><span class="pre">allocators</span></code> directive is used to specify an allocator for the following Fortran  <em>allocate</em>  statement. A variable list in the <code class="docutils literal notranslate"><span class="pre">allocate</span></code> clause may be supplied if the allocator is to be applied to a subset of variables in the Fortran allocate statement. Here, the  <em>xy_alloc</em>  allocator is specified in the modifier of the <code class="docutils literal notranslate"><span class="pre">allocator</span></code> clause, and the set of all variables used in the  <em>allocate</em>  statement is specified in the list.</p>
+<p>In the C/C++ code the API   <em>omp_allocate()</em>  function is used to allocate space, similar to  <em>malloc</em> , except that the allocator is specified as the second argument. In Fortran an <strong>allocators</strong> directive is used to specify an allocator for the following Fortran  <em>allocate</em>  statement. A variable list in the <strong>allocate</strong> clause may be supplied if the allocator is to be applied to a subset of variables in the Fortran allocate statement. Here, the  <em>xy_alloc</em>  allocator is specified in the modifier of the <strong>allocator</strong> clause, and the set of all variables used in the  <em>allocate</em>  statement is specified in the list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name: allocators.1
-* type: C
-* version: omp_5.0
-*/
-#include    &lt;omp.h&gt;
-#include  &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;stdint.h&gt;
-#define N 1000
+<span class="cm">/*</span>
+<span class="cm">* name: allocators.1</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_5.0</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w">    </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w">  </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span><span class="cp"></span>
+<span class="cp">#define N 1000</span>
 
-int main()
-{
-   float  *x, *y;
-   float s=2.0;
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kt">float</span><span class="w">  </span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">float</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="mf">2.0</span><span class="p">;</span><span class="w"></span>
 
-   omp_memspace_handle_t  xy_memspace = omp_default_mem_space;
-   omp_alloctrait_t       xy_traits[1]= {omp_atk_alignment, 64};
-   omp_allocator_handle_t xy_alloc    =
-                           omp_init_allocator(xy_memspace,1,xy_traits);
+<span class="w">   </span><span class="n">omp_memspace_handle_t</span><span class="w">  </span><span class="n">xy_memspace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">omp_default_mem_space</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">omp_alloctrait_t</span><span class="w">       </span><span class="n">xy_traits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">omp_atk_alignment</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">};</span><span class="w"></span>
+<span class="w">   </span><span class="n">omp_allocator_handle_t</span><span class="w"> </span><span class="n">xy_alloc</span><span class="w">    </span><span class="o">=</span><span class="w"></span>
+<span class="w">                           </span><span class="n">omp_init_allocator</span><span class="p">(</span><span class="n">xy_memspace</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">xy_traits</span><span class="p">);</span><span class="w"></span>
 
 
-   x=(float *)omp_alloc(N*sizeof(float), xy_alloc);
-   y=(float *)omp_alloc(N*sizeof(float), xy_alloc);
+<span class="w">   </span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">omp_alloc</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">),</span><span class="w"> </span><span class="n">xy_alloc</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">omp_alloc</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">),</span><span class="w"> </span><span class="n">xy_alloc</span><span class="p">);</span><span class="w"></span>
 
-   if( ((intptr_t)(y))%64 != 0 || ((intptr_t)(x))%64 != 0 )
-   { printf(&quot;ERROR: x|y not 64-Byte aligned\n&quot;); exit(1); }
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="p">((</span><span class="kt">intptr_t</span><span class="p">)(</span><span class="n">y</span><span class="p">))</span><span class="o">%</span><span class="mi">64</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">((</span><span class="kt">intptr_t</span><span class="p">)(</span><span class="n">x</span><span class="p">))</span><span class="o">%</span><span class="mi">64</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: x|y not 64-Byte aligned</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-   #pragma omp parallel
-   {
-      #pragma omp for simd simdlen(16) aligned(x,y:64)
-      for(int i=0; i&lt;N; i++){ x[i]=i+1; y[i]=i+1; } // initialize
+<span class="w">   </span><span class="cp">#pragma omp parallel</span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="cp">#pragma omp for simd simdlen(16) aligned(x,y:64)</span>
+<span class="w">      </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// initialize</span>
 
-      #pragma omp for simd simdlen(16) aligned(x,y:64)
-      for(int i=0; i&lt;N; i++) y[i] = s*x[i] + y[i];
-    }
+<span class="w">      </span><span class="cp">#pragma omp for simd simdlen(16) aligned(x,y:64)</span>
+<span class="w">      </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-   printf(&quot;y[0],y[N-1]: %5.0f %5.0f\n&quot;,y[0],y[N-1]);
-   // output y[0],y[N-1]: 3 3000
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;y[0],y[N-1]: %5.0f %5.0f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">N</span><span class="mi">-1</span><span class="p">]);</span><span class="w"></span>
+<span class="w">   </span><span class="c1">// output y[0],y[N-1]: 3 3000</span>
 
-   omp_free(x, xy_alloc);
-   omp_free(y, xy_alloc);
-   omp_destroy_allocator(xy_alloc);
+<span class="w">   </span><span class="n">omp_free</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">xy_alloc</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">omp_free</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">xy_alloc</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">omp_destroy_allocator</span><span class="p">(</span><span class="n">xy_alloc</span><span class="p">);</span><span class="w"></span>
 
-   return 0;
-}
-
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
 ! name: allocators.1
 ! type: F-free
 ! version: omp_5.2
@@ -1087,240 +1082,237 @@ program main
    call omp_destroy_allocator(xy_alloc)
 
 end program
-
-
 </pre></div>
 </div>
 </div>
 </div>
-<p>When using the <code class="docutils literal notranslate"><span class="pre">allocators</span></code> construct with optional clauses in Fortran code,  users should be aware of the behavior of a reallocation.</p>
-<p>In the following example, the  <em>a</em>  variable is allocated with 64-byte alignment through the <code class="docutils literal notranslate"><span class="pre">align</span></code> clause of the <code class="docutils literal notranslate"><span class="pre">allocators</span></code> construct. The alignment of the newly allocated object,  <em>a</em> , in the (reallocation) assignment  <em>a = b</em>  will not be reallocated with the 64-byte alignment, but with the 32-byte alignment prescribed by the trait of the  <em>my_alloctr</em>   allocator. It is best to avoid this problem by constructing and using an allocator (not the <code class="docutils literal notranslate"><span class="pre">align</span></code> clause) with the required alignment in  the <code class="docutils literal notranslate"><span class="pre">allocators</span></code> construct. Note that in the subsequent deallocation of  <em>a</em>  the deallocation must precede the destruction of the allocator used in the allocation of  <em>a</em> .</p>
+<p>When using the <strong>allocators</strong> construct with optional clauses in Fortran code,  users should be aware of the behavior of a reallocation.</p>
+<p>In the following example, the  <em>a</em>  variable is allocated with 64-byte alignment through the <strong>align</strong> clause of the <strong>allocators</strong> construct. The alignment of the newly allocated object,  <em>a</em> , in the (reallocation) assignment  <em>a = b</em>  will not be reallocated with the 64-byte alignment, but with the 32-byte alignment prescribed by the trait of the  <em>my_alloctr</em>   allocator. It is best to avoid this problem by constructing and using an allocator (not the <strong>align</strong> clause) with the required alignment in  the <strong>allocators</strong> construct. Note that in the subsequent deallocation of  <em>a</em>  the deallocation must precede the destruction of the allocator used in the allocation of  <em>a</em> .</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
-! name: allocators.2
-! type: F-free
-! version: omp_5.2
-program main
-   use omp_lib
-   implicit none
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-   integer, parameter :: align_32=32
-   real, allocatable  :: a(:,:)
-   real               :: b(10,10)
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">allocators</span><span class="mf">.2</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_5</span><span class="mf">.2</span><span class="w"></span>
+<span class="n">program</span><span class="w"> </span><span class="n">main</span><span class="w"></span>
+<span class="w">   </span><span class="n">use</span><span class="w"> </span><span class="n">omp_lib</span><span class="w"></span>
+<span class="w">   </span><span class="n">implicit</span><span class="w"> </span><span class="n">none</span><span class="w"></span>
 
-   integer(omp_memspace_handle_kind ) :: my_memspace
-   type(   omp_alloctrait           ) :: my_traits(1)
-   integer(omp_allocator_handle_kind) :: my_alloctr
+<span class="w">   </span><span class="n">integer</span><span class="p">,</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">align_32</span><span class="o">=</span><span class="mi">32</span><span class="w"></span>
+<span class="w">   </span><span class="n">real</span><span class="p">,</span><span class="w"> </span><span class="n">allocatable</span><span class="w">  </span><span class="o">::</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="o">:</span><span class="p">,</span><span class="o">:</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="n">real</span><span class="w">               </span><span class="o">::</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"></span>
 
-   my_memspace  =  omp_default_mem_space
-   my_traits    = [omp_alloctrait(omp_atk_alignment,align_32)]
-!                                     allocator alignment ^^
-   my_alloctr   =  omp_init_allocator(my_memspace, 1, my_traits)
+<span class="w">   </span><span class="n">integer</span><span class="p">(</span><span class="n">omp_memspace_handle_kind</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">my_memspace</span><span class="w"></span>
+<span class="w">   </span><span class="n">type</span><span class="p">(</span><span class="w">   </span><span class="n">omp_alloctrait</span><span class="w">           </span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">my_traits</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="n">integer</span><span class="p">(</span><span class="n">omp_allocator_handle_kind</span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">my_alloctr</span><span class="w"></span>
 
-   !$omp allocators allocate(allocator(my_alloctr), align(64): a)
-   allocate(a(5,5)) ! 64-byte aligned by clause &lt;---------^^
+<span class="w">   </span><span class="n">my_memspace</span><span class="w">  </span><span class="o">=</span><span class="w">  </span><span class="n">omp_default_mem_space</span><span class="w"></span>
+<span class="w">   </span><span class="n">my_traits</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">omp_alloctrait</span><span class="p">(</span><span class="n">omp_atk_alignment</span><span class="p">,</span><span class="n">align_32</span><span class="p">)]</span><span class="w"></span>
+<span class="o">!</span><span class="w">                                     </span><span class="n">allocator</span><span class="w"> </span><span class="n">alignment</span><span class="w"> </span><span class="o">^^</span><span class="w"></span>
+<span class="w">   </span><span class="n">my_alloctr</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="n">omp_init_allocator</span><span class="p">(</span><span class="n">my_memspace</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">my_traits</span><span class="p">)</span><span class="w"></span>
 
-   a = b  ! reallocation occurs with 32-byte alignment
-          ! uses just my_alloctr (32-byte align from allocator)
+<span class="w">   </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">allocators</span><span class="w"> </span><span class="n">allocate</span><span class="p">(</span><span class="n">allocator</span><span class="p">(</span><span class="n">my_alloctr</span><span class="p">),</span><span class="w"> </span><span class="n">align</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="n">allocate</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="mi">64</span><span class="o">-</span><span class="n">byte</span><span class="w"> </span><span class="n">aligned</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">clause</span><span class="w"> </span><span class="o">&lt;---------^^</span><span class="w"></span>
 
-   deallocate(a)  ! Uses my_alloctr in deallocation.
-   call omp_destroy_allocator(my_alloctr)
+<span class="w">   </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="n">reallocation</span><span class="w"> </span><span class="n">occurs</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="mi">32</span><span class="o">-</span><span class="n">byte</span><span class="w"> </span><span class="n">alignment</span><span class="w"></span>
+<span class="w">          </span><span class="o">!</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="n">just</span><span class="w"> </span><span class="n">my_alloctr</span><span class="w"> </span><span class="p">(</span><span class="mi">32</span><span class="o">-</span><span class="n">byte</span><span class="w"> </span><span class="n">align</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">allocator</span><span class="p">)</span><span class="w"></span>
 
-end program main
+<span class="w">   </span><span class="n">deallocate</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="n">Uses</span><span class="w"> </span><span class="n">my_alloctr</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">deallocation</span><span class="p">.</span><span class="w"></span>
+<span class="w">   </span><span class="n">call</span><span class="w"> </span><span class="n">omp_destroy_allocator</span><span class="p">(</span><span class="n">my_alloctr</span><span class="p">)</span><span class="w"></span>
 
+<span class="n">end</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">main</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>When creating and using an <code class="docutils literal notranslate"><span class="pre">allocators</span></code> construct within a Fortran procedure for allocating storage (and subsequently freeing the allocator storage with an  <code class="docutils literal notranslate"><span class="pre">omp_destroy_allocator</span></code> construct), users should be aware of the necessity of using an explicit Fortran deallocation instead of relying on auto-deallocation.</p>
-<p>In the following example, a user-defined allocator is used in the allocation of the  <em>c</em>  variable, and then the allocator is destroyed. Auto-deallocation at the end of the  <em>broken_auto_deallocation</em>  procedure will fail without the allocator, hence an explicit deallocation should be used  (before the <code class="docutils literal notranslate"><span class="pre">omp_destroy_allocator</span></code> construct). Note that an allocator may be specified directly in the <code class="docutils literal notranslate"><span class="pre">allocate</span></code> clause without using the <code class="docutils literal notranslate"><span class="pre">allocator</span></code> complex modifier, so long as no other modifier  is specified in the clause.</p>
+<p>When creating and using an <strong>allocators</strong> construct within a Fortran procedure for allocating storage (and subsequently freeing the allocator storage with an  <strong>omp_destroy_allocator</strong> construct), users should be aware of the necessity of using an explicit Fortran deallocation instead of relying on auto-deallocation.</p>
+<p>In the following example, a user-defined allocator is used in the allocation of the  <em>c</em>  variable, and then the allocator is destroyed. Auto-deallocation at the end of the  <em>broken_auto_deallocation</em>  procedure will fail without the allocator, hence an explicit deallocation should be used  (before the <strong>omp_destroy_allocator</strong> construct). Note that an allocator may be specified directly in the <strong>allocate</strong> clause without using the <strong>allocator</strong> complex modifier, so long as no other modifier  is specified in the clause.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
-! name: allocators.3
-! type: F-free
-! version: omp_5.2
-subroutine broken_auto_deallocation
-   use omp_lib
-   implicit none
-   integer, parameter :: align_32=32
-   real, allocatable  :: c(:)
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-   integer(omp_memspace_handle_kind ) :: my_memspace
-   type(   omp_alloctrait           ) :: my_traits(1)
-   integer(omp_allocator_handle_kind) :: my_alloctr
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">allocators</span><span class="mf">.3</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_5</span><span class="mf">.2</span><span class="w"></span>
+<span class="n">subroutine</span><span class="w"> </span><span class="n">broken_auto_deallocation</span><span class="w"></span>
+<span class="w">   </span><span class="n">use</span><span class="w"> </span><span class="n">omp_lib</span><span class="w"></span>
+<span class="w">   </span><span class="n">implicit</span><span class="w"> </span><span class="n">none</span><span class="w"></span>
+<span class="w">   </span><span class="n">integer</span><span class="p">,</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">align_32</span><span class="o">=</span><span class="mi">32</span><span class="w"></span>
+<span class="w">   </span><span class="n">real</span><span class="p">,</span><span class="w"> </span><span class="n">allocatable</span><span class="w">  </span><span class="o">::</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="o">:</span><span class="p">)</span><span class="w"></span>
 
-   my_memspace  =  omp_default_mem_space
-   my_traits    = [omp_alloctrait(omp_atk_alignment,align_32)]
-   my_alloctr   =  omp_init_allocator(my_memspace, 1, my_traits)
+<span class="w">   </span><span class="n">integer</span><span class="p">(</span><span class="n">omp_memspace_handle_kind</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">my_memspace</span><span class="w"></span>
+<span class="w">   </span><span class="n">type</span><span class="p">(</span><span class="w">   </span><span class="n">omp_alloctrait</span><span class="w">           </span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">my_traits</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="n">integer</span><span class="p">(</span><span class="n">omp_allocator_handle_kind</span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">my_alloctr</span><span class="w"></span>
 
-   !$omp allocators allocate(my_alloctr: c)
-   allocate(c(100))
+<span class="w">   </span><span class="n">my_memspace</span><span class="w">  </span><span class="o">=</span><span class="w">  </span><span class="n">omp_default_mem_space</span><span class="w"></span>
+<span class="w">   </span><span class="n">my_traits</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">omp_alloctrait</span><span class="p">(</span><span class="n">omp_atk_alignment</span><span class="p">,</span><span class="n">align_32</span><span class="p">)]</span><span class="w"></span>
+<span class="w">   </span><span class="n">my_alloctr</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="n">omp_init_allocator</span><span class="p">(</span><span class="n">my_memspace</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">my_traits</span><span class="p">)</span><span class="w"></span>
 
-   !...
+<span class="w">   </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">allocators</span><span class="w"> </span><span class="n">allocate</span><span class="p">(</span><span class="n">my_alloctr</span><span class="o">:</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="n">allocate</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span><span class="w"></span>
 
-   call omp_destroy_allocator(my_alloctr)
-   ! Auto-deallocation of c fails,
-   ! because my_alloctr is no longer available.
+<span class="w">   </span><span class="o">!</span><span class="p">...</span><span class="w"></span>
 
-end subroutine
+<span class="w">   </span><span class="n">call</span><span class="w"> </span><span class="n">omp_destroy_allocator</span><span class="p">(</span><span class="n">my_alloctr</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="o">!</span><span class="w"> </span><span class="n">Auto</span><span class="o">-</span><span class="n">deallocation</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="n">fails</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="o">!</span><span class="w"> </span><span class="n">because</span><span class="w"> </span><span class="n">my_alloctr</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">longer</span><span class="w"> </span><span class="n">available</span><span class="p">.</span><span class="w"></span>
 
+<span class="n">end</span><span class="w"> </span><span class="n">subroutine</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>directives!allocate <code class="docutils literal notranslate"><span class="pre">allocate</span></code></strong> <strong>allocate directive <code class="docutils literal notranslate"><span class="pre">allocate</span></code> directive</strong> <strong>allocate directive <code class="docutils literal notranslate"><span class="pre">allocate</span></code> directive!allocator clause <code class="docutils literal notranslate"><span class="pre">allocator</span></code> clause</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">allocate</span></code> directive is a convenient way to apply an OpenMP  allocator to the allocation of declared variables.</p>
+<p>The <strong>allocate</strong> directive is a convenient way to apply an OpenMP  allocator to the allocation of declared variables.</p>
 <p>This example illustrates the allocation of specific types of storage in a program  for use in libraries, privatized variables, and with offloading.</p>
-<p>Two groups of variables, { <em>v1, v2</em> } and { <em>v3, v4</em> }, are used with the <code class="docutils literal notranslate"><span class="pre">allocate</span></code>  directive, and the { <em>v5, v6</em> } pair is used with the <code class="docutils literal notranslate"><span class="pre">allocate</span></code> clause.  Here we explicitly use predefined allocators <code class="docutils literal notranslate"><span class="pre">omp_high_bw_mem_alloc</span></code> and <code class="docutils literal notranslate"><span class="pre">omp_default_mem_alloc</span></code> with the <code class="docutils literal notranslate"><span class="pre">allocate</span></code> directive in CASE 1. Similar effects are achieved for private variables of a task by using the <code class="docutils literal notranslate"><span class="pre">allocate</span></code> clause, as shown in CASE 2.</p>
-<p>Note, when the <code class="docutils literal notranslate"><span class="pre">allocate</span></code> directive does not specify an <code class="docutils literal notranslate"><span class="pre">allocator</span></code> clause, an implementation-defined default, stored in the  <em>def-allocator-var</em>  ICV, is used (not illustrated here). Users can set and get the default allocator with the <code class="docutils literal notranslate"><span class="pre">omp_set_default_allocator</span></code> and <code class="docutils literal notranslate"><span class="pre">omp_get_default_allocator</span></code> API routines.</p>
+<p>Two groups of variables, { <em>v1, v2</em> } and { <em>v3, v4</em> }, are used with the <strong>allocate</strong>  directive, and the { <em>v5, v6</em> } pair is used with the <strong>allocate</strong> clause.  Here we explicitly use predefined allocators <strong>omp_high_bw_mem_alloc</strong> and <strong>omp_default_mem_alloc</strong> with the <strong>allocate</strong> directive in CASE 1. Similar effects are achieved for private variables of a task by using the <strong>allocate</strong> clause, as shown in CASE 2.</p>
+<p>Note, when the <strong>allocate</strong> directive does not specify an <strong>allocator</strong> clause, an implementation-defined default, stored in the  <em>def-allocator-var</em>  ICV, is used (not illustrated here). Users can set and get the default allocator with the <strong>omp_set_default_allocator</strong> and <strong>omp_get_default_allocator</strong> API routines.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name: allocators.4
-* type: C
-* version: omp_5.1
-*/
-#include &lt;omp.h&gt;
-#include &lt;stdio.h&gt;
+<span class="cm">/*</span>
+<span class="cm">* name: allocators.4</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_5.1</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
-void my_init(double *,double *,int, double *,double *,int, \
-             double *,double *,int);
-void lib_saxpy(double *,double *,double,int);
-void my_gather(double *,double *,int);
+<span class="kt">void</span><span class="w"> </span><span class="nf">my_init</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span>\
+<span class="w">             </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">lib_saxpy</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="kt">double</span><span class="p">,</span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">my_gather</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
 
-#pragma omp begin declare target
-void my_gpu_vxv(double *, double *, int);
-#pragma omp end  declare target
+<span class="cp">#pragma omp begin declare target</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">my_gpu_vxv</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="cp">#pragma omp end  declare target</span>
 
-#define Nhb 1024*1024      // high bandwith
-#define Nbg 1024*1024*64   // big memory, default
-#define Nll 1024*1024      // low latency memory
+<span class="cp">#define Nhb 1024*1024      </span><span class="c1">// high bandwith</span>
+<span class="cp">#define Nbg 1024*1024*64   </span><span class="c1">// big memory, default</span>
+<span class="cp">#define Nll 1024*1024      </span><span class="c1">// low latency memory</span>
 
-void test_allocate() {
+<span class="kt">void</span><span class="w"> </span><span class="nf">test_allocate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-  double  v1[Nhb], v2[Nhb];
-  double  v3[Nbg], v4[Nbg];
-  double  v5[Nll], v6[Nll];
+<span class="w">  </span><span class="kt">double</span><span class="w">  </span><span class="n">v1</span><span class="p">[</span><span class="n">Nhb</span><span class="p">],</span><span class="w"> </span><span class="n">v2</span><span class="p">[</span><span class="n">Nhb</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w">  </span><span class="n">v3</span><span class="p">[</span><span class="n">Nbg</span><span class="p">],</span><span class="w"> </span><span class="n">v4</span><span class="p">[</span><span class="n">Nbg</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w">  </span><span class="n">v5</span><span class="p">[</span><span class="n">Nll</span><span class="p">],</span><span class="w"> </span><span class="n">v6</span><span class="p">[</span><span class="n">Nll</span><span class="p">];</span><span class="w"></span>
 
-/*** CASE 1: USING ALLOCATE DIRECTIVE ***/
-  #pragma omp allocate(v1,v2) allocator(omp_high_bw_mem_alloc)
-  #pragma omp allocate(v3,v4) allocator(omp_default_mem_alloc)
+<span class="o">/</span><span class="n">_</span><span class="o">*</span><span class="w"> </span><span class="n">CASE</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">USING</span><span class="w"> </span><span class="n">ALLOCATE</span><span class="w"> </span><span class="n">DIRECTIVE</span><span class="w"> </span><span class="n">_</span><span class="o">*/</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma omp allocate(v1,v2) allocator(omp_high_bw_mem_alloc)</span>
+<span class="w">  </span><span class="cp">#pragma omp allocate(v3,v4) allocator(omp_default_mem_alloc)</span>
 
-  my_init(v1,v2,Nhb, v3,v4,Nbg, v5,v6,Nll);
+<span class="w">  </span><span class="n">my_init</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="p">,</span><span class="n">Nhb</span><span class="p">,</span><span class="w"> </span><span class="n">v3</span><span class="p">,</span><span class="n">v4</span><span class="p">,</span><span class="n">Nbg</span><span class="p">,</span><span class="w"> </span><span class="n">v5</span><span class="p">,</span><span class="n">v6</span><span class="p">,</span><span class="n">Nll</span><span class="p">);</span><span class="w"></span>
 
-  lib_saxpy(v1,v2,5.0,Nhb);
+<span class="w">  </span><span class="n">lib_saxpy</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="n">Nhb</span><span class="p">);</span><span class="w"></span>
 
-  #pragma omp target map(to: v3[0:Nbg], v4[0:Nbg]) map(from:v3[0:Nbg])
-  my_gpu_vxv(v3,v4,Nbg);
+<span class="w">  </span><span class="cp">#pragma omp target map(to: v3[0:Nbg], v4[0:Nbg]) map(from:v3[0:Nbg])</span>
+<span class="w">  </span><span class="n">my_gpu_vxv</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span><span class="n">v4</span><span class="p">,</span><span class="n">Nbg</span><span class="p">);</span><span class="w"></span>
 
-/*** CASE 2: USING ALLOCATE CLAUSE ***/
-  #pragma omp task private(v5,v6) \
-                   allocate(allocator(omp_low_lat_mem_alloc): v5,v6)
-  {
-    my_gather(v5,v6,Nll);
-  }
+<span class="o">/</span><span class="n">_</span><span class="o">*</span><span class="w"> </span><span class="n">CASE</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="n">USING</span><span class="w"> </span><span class="n">ALLOCATE</span><span class="w"> </span><span class="n">CLAUSE</span><span class="w"> </span><span class="n">_</span><span class="o">*/</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma omp task private(v5,v6) \</span>
+<span class="cp">                   allocate(allocator(omp_low_lat_mem_alloc): v5,v6)</span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">my_gather</span><span class="p">(</span><span class="n">v5</span><span class="p">,</span><span class="n">v6</span><span class="p">,</span><span class="n">Nll</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-}
-
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
-! name: allocators.4
-! type: F-free
-! version: omp_5.1
-subroutine test_allocate
-   use omp_lib
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-   interface
-     subroutine my_gpu_vxv(va,vb,n)
-     !$omp declare target
-     integer :: n
-     double precision  :: va(n), vb(n)
-     end subroutine
-   end interface
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">allocators</span><span class="mf">.4</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_5</span><span class="mf">.1</span><span class="w"></span>
+<span class="n">subroutine</span><span class="w"> </span><span class="n">test_allocate</span><span class="w"></span>
+<span class="w">   </span><span class="n">use</span><span class="w"> </span><span class="n">omp_lib</span><span class="w"></span>
 
-   integer,parameter :: Nhb=1024*1024,   &amp; !! high bandwith
-                        Nbg=1024*1024*64,&amp; !! big memory, default
-                        Nll=1024*1024      !! low latency memory
+<span class="w">   </span><span class="n">interface</span><span class="w"></span>
+<span class="w">     </span><span class="n">subroutine</span><span class="w"> </span><span class="n">my_gpu_vxv</span><span class="p">(</span><span class="n">va</span><span class="p">,</span><span class="n">vb</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">declare</span><span class="w"> </span><span class="n">target</span><span class="w"></span>
+<span class="w">     </span><span class="n">integer</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">precision</span><span class="w">  </span><span class="o">::</span><span class="w"> </span><span class="n">va</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">vb</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="n">end</span><span class="w"> </span><span class="n">subroutine</span><span class="w"></span>
+<span class="w">   </span><span class="n">end</span><span class="w"> </span><span class="n">interface</span><span class="w"></span>
 
-   double precision  ::  v1(Nhb), v2(Nhb)
-   double precision  ::  v3(Nbg), v4(Nbg)
-   double precision  ::  v5(Nll), v6(Nll)
+<span class="w">   </span><span class="n">integer</span><span class="p">,</span><span class="n">parameter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">Nhb</span><span class="o">=</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">,</span><span class="w">   </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!!</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="n">bandwith</span><span class="w"></span>
+<span class="w">                        </span><span class="n">Nbg</span><span class="o">=</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">64</span><span class="p">,</span><span class="o">&amp;</span><span class="w"> </span><span class="o">!!</span><span class="w"> </span><span class="n">big</span><span class="w"> </span><span class="n">memory</span><span class="p">,</span><span class="w"> </span><span class="k">default</span><span class="w"></span>
+<span class="w">                        </span><span class="n">Nll</span><span class="o">=</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="w">      </span><span class="o">!!</span><span class="w"> </span><span class="n">low</span><span class="w"> </span><span class="n">latency</span><span class="w"> </span><span class="n">memory</span><span class="w"></span>
 
- !*** CASE 1: USING ALLOCATE DIRECTIVE ***!
-   !$omp allocate(v1,v2) allocator(omp_high_bw_mem_alloc)
-   !$omp allocate(v3,v4) allocator(omp_default_mem_alloc)
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">precision</span><span class="w">  </span><span class="o">::</span><span class="w">  </span><span class="n">v1</span><span class="p">(</span><span class="n">Nhb</span><span class="p">),</span><span class="w"> </span><span class="n">v2</span><span class="p">(</span><span class="n">Nhb</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">precision</span><span class="w">  </span><span class="o">::</span><span class="w">  </span><span class="n">v3</span><span class="p">(</span><span class="n">Nbg</span><span class="p">),</span><span class="w"> </span><span class="n">v4</span><span class="p">(</span><span class="n">Nbg</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">precision</span><span class="w">  </span><span class="o">::</span><span class="w">  </span><span class="n">v5</span><span class="p">(</span><span class="n">Nll</span><span class="p">),</span><span class="w"> </span><span class="n">v6</span><span class="p">(</span><span class="n">Nll</span><span class="p">)</span><span class="w"></span>
 
-   call my_init(v1,v2,Nhb, v3,v4,Nbg, v5,v6,Nll)
+<span class="w"> </span><span class="o">!</span><span class="n">_</span><span class="o">*</span><span class="w"> </span><span class="n">CASE</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">USING</span><span class="w"> </span><span class="n">ALLOCATE</span><span class="w"> </span><span class="n">DIRECTIVE</span><span class="w"> </span><span class="n">_</span><span class="o">*!</span><span class="w"></span>
+<span class="w">   </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">allocate</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="p">)</span><span class="w"> </span><span class="n">allocator</span><span class="p">(</span><span class="n">omp_high_bw_mem_alloc</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">allocate</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span><span class="n">v4</span><span class="p">)</span><span class="w"> </span><span class="n">allocator</span><span class="p">(</span><span class="n">omp_default_mem_alloc</span><span class="p">)</span><span class="w"></span>
 
-   call lib_saxpy(v1,v2,5.0,Nhb)
+<span class="w">   </span><span class="n">call</span><span class="w"> </span><span class="n">my_init</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="p">,</span><span class="n">Nhb</span><span class="p">,</span><span class="w"> </span><span class="n">v3</span><span class="p">,</span><span class="n">v4</span><span class="p">,</span><span class="n">Nbg</span><span class="p">,</span><span class="w"> </span><span class="n">v5</span><span class="p">,</span><span class="n">v6</span><span class="p">,</span><span class="n">Nll</span><span class="p">)</span><span class="w"></span>
 
-   !$omp target map(to: v3, v4) map(from:v3)
-      call my_gpu_vxv(v3,v4,Nbg)
-   !$omp end target
+<span class="w">   </span><span class="n">call</span><span class="w"> </span><span class="n">lib_saxpy</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="n">Nhb</span><span class="p">)</span><span class="w"></span>
 
- !*** CASE 2: USING ALLOCATE CLAUSE ***!
-   !$omp task private(v5,v6) &amp;
-   !$omp&amp;     allocate(allocator(omp_low_lat_mem_alloc): v5,v6)
-      call my_gather(v5,v6,Nll)
-   !$omp end task
+<span class="w">   </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">to</span><span class="o">:</span><span class="w"> </span><span class="n">v3</span><span class="p">,</span><span class="w"> </span><span class="n">v4</span><span class="p">)</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">from</span><span class="o">:</span><span class="n">v3</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">call</span><span class="w"> </span><span class="n">my_gpu_vxv</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span><span class="n">v4</span><span class="p">,</span><span class="n">Nbg</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">target</span><span class="w"></span>
 
-end subroutine test_allocate
+<span class="w"> </span><span class="o">!</span><span class="n">_</span><span class="o">*</span><span class="w"> </span><span class="n">CASE</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="n">USING</span><span class="w"> </span><span class="n">ALLOCATE</span><span class="w"> </span><span class="n">CLAUSE</span><span class="w"> </span><span class="n">_</span><span class="o">*!</span><span class="w"></span>
+<span class="w">   </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="n">private</span><span class="p">(</span><span class="n">v5</span><span class="p">,</span><span class="n">v6</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w">   </span><span class="o">!</span><span class="n">$omp</span><span class="o">&amp;</span><span class="w">     </span><span class="n">allocate</span><span class="p">(</span><span class="n">allocator</span><span class="p">(</span><span class="n">omp_low_lat_mem_alloc</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">v5</span><span class="p">,</span><span class="n">v6</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">call</span><span class="w"> </span><span class="n">my_gather</span><span class="p">(</span><span class="n">v5</span><span class="p">,</span><span class="n">v6</span><span class="p">,</span><span class="n">Nll</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">task</span><span class="w"></span>
 
+<span class="n">end</span><span class="w"> </span><span class="n">subroutine</span><span class="w"> </span><span class="n">test_allocate</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../memory_model/allocators.tex</p>
 </section>
 <section id="race-conditions-caused-by-implied-copies-of-shared-variables-in-fortran">
 <h2><span class="section-number">11.3. </span>Race Conditions Caused by Implied Copies of Shared Variables in Fortran<a class="headerlink" href="#race-conditions-caused-by-implied-copies-of-shared-variables-in-fortran" title="Permalink to this headline">#</a></h2>
-<p><strong>shared variables!race conditions</strong></p>
-<p>The following example contains a race condition, because the shared variable, which  is an array section, is passed as an actual argument to a routine that has an assumed-size  array as its dummy argument. The subroutine call passing an array section argument  may cause the compiler to copy the argument into a temporary location prior to  the call and copy from the temporary location into the original variable when the  subroutine returns. This copying would cause races in the <code class="docutils literal notranslate"><span class="pre">parallel</span></code> region.</p>
+<p>The following example contains a race condition, because the shared variable, which  is an array section, is passed as an actual argument to a routine that has an assumed-size  array as its dummy argument. The subroutine call passing an array section argument  may cause the compiler to copy the argument into a temporary location prior to  the call and copy from the temporary location into the original variable when the  subroutine returns. This copying would cause races in the <strong>parallel</strong> region.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
-! name: fort_race.1
-! type: F-free
-SUBROUTINE SHARED_RACE
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-  INCLUDE &quot;omp_lib.h&quot;      ! or USE OMP_LIB
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">fort_race</span><span class="mf">.1</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">SHARED_RACE</span><span class="w"></span>
 
-  REAL A(20)
-  INTEGER MYTHREAD
+<span class="w">  </span><span class="n">INCLUDE</span><span class="w"> </span><span class="s">&quot;omp_lib.h&quot;</span><span class="w">      </span><span class="o">!</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">USE</span><span class="w"> </span><span class="n">OMP_LIB</span><span class="w"></span>
 
-!$OMP PARALLEL SHARED(A) PRIVATE(MYTHREAD)
+<span class="w">  </span><span class="n">REAL</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">INTEGER</span><span class="w"> </span><span class="n">MYTHREAD</span><span class="w"></span>
 
-  MYTHREAD = OMP_GET_THREAD_NUM()
-  IF (MYTHREAD .EQ. 0) THEN
-     CALL SUB(A(1:10)) ! compiler may introduce writes to A(6:10)
-  ELSE
-     A(6:10) = 12
-  ENDIF
+<span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">PARALLEL</span><span class="w"> </span><span class="n">SHARED</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="n">PRIVATE</span><span class="p">(</span><span class="n">MYTHREAD</span><span class="p">)</span><span class="w"></span>
 
-!$OMP END PARALLEL
+<span class="w">  </span><span class="n">MYTHREAD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OMP_GET_THREAD_NUM</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="n">IF</span><span class="w"> </span><span class="p">(</span><span class="n">MYTHREAD</span><span class="w"> </span><span class="p">.</span><span class="n">EQ</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">THEN</span><span class="w"></span>
+<span class="w">     </span><span class="n">CALL</span><span class="w"> </span><span class="n">SUB</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">10</span><span class="p">))</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">compiler</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">introduce</span><span class="w"> </span><span class="n">writes</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="mi">6</span><span class="o">:</span><span class="mi">10</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">ELSE</span><span class="w"></span>
+<span class="w">     </span><span class="n">A</span><span class="p">(</span><span class="mi">6</span><span class="o">:</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="w"></span>
+<span class="w">  </span><span class="n">ENDIF</span><span class="w"></span>
 
-END SUBROUTINE SHARED_RACE
+<span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">END</span><span class="w"> </span><span class="n">PARALLEL</span><span class="w"></span>
 
-SUBROUTINE SUB(X)
-  REAL X(*)
-  X(1:5) = 4
-END SUBROUTINE SUB
+<span class="n">END</span><span class="w"> </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">SHARED_RACE</span><span class="w"></span>
 
+<span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">SUB</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">REAL</span><span class="w"> </span><span class="n">X</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<span class="n">END</span><span class="w"> </span><span class="n">SUBROUTINE</span><span class="w"> </span><span class="n">SUB</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>../../memory_model/fort_race.tex</p>
 </section>
 </section>
 
