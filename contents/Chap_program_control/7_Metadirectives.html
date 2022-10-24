@@ -1716,7 +1716,7 @@ end program
 </div>
 </div>
 </div>
-<p>Metadirectives can be used in conjunction with templates as shown in the C++ code below. Here the template definition generates two versions of the Fibonacci function. The  <em>tasking</em>  boolean is used in the <strong>condition</strong> selector to enable tasking. The true form implements a parallel version with <strong>task</strong> and <strong>taskwait</strong> constructs as in the  <em>tasking.4.c</em>  code in Section <a class="reference external" href="#task-and-taskwait-Constructs">5.1</a>.  The false form implements a serial version without any tasking constructs. Note that the serial version is used in the parallel function for optimally processing numbers less than 8.</p>
+<p>Metadirectives can be used in conjunction with templates as shown in the C++ code below. Here the template definition generates two versions of the Fibonacci function. The  <em>tasking</em>  boolean is used in the <strong>condition</strong> selector to enable tasking. The true form implements a parallel version with <strong>task</strong> and <strong>taskwait</strong> constructs as in the  <em>tasking.4.c</em>  code in Section <a class="reference external" href="#8212">5.1</a>.  The false form implements a serial version without any tasking constructs. Note that the serial version is used in the parallel function for optimally processing numbers less than 8.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
