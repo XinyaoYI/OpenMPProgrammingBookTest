@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1. Introduction &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>12. OMPT Interface &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
-    <link rel="next" title="1.1. Examples Organization" href="Section_Examples_Organization.html" />
-    <link rel="prev" title="Foreword" href="../Foreword_Chapt.html" />
+    <link rel="prev" title="11. Program Control" href="../Chap_program_control/Chap_program_control.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -127,18 +126,18 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_introduction/Chap_introduction.html">
    1. Introduction
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="Section_Examples_Organization.html">
+    <a class="reference internal" href="../Chap_introduction/Section_Examples_Organization.html">
      1.1. Examples Organization
     </a>
    </li>
@@ -194,8 +193,8 @@ const thebe_selector_output = ".output, .cell_output"
    11. Program Control
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    12. OMPT Interface
   </a>
  </li>
@@ -258,7 +257,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_introduction/Chap_introduction.ipynb"
+        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_ompt_interface/Chap_ompt_interface.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -318,7 +317,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Chap_introduction/Chap_introduction.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Chap_ompt_interface/Chap_ompt_interface.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -346,7 +345,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/contents/Chap_introduction/Chap_introduction.ipynb"
+        <a href="../../_sources/contents/Chap_ompt_interface/Chap_ompt_interface.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -383,23 +382,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ompt-start">
+   12.1. OMPT Start
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction</h1>
+                <h1>OMPT Interface</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ompt-start">
+   12.1. OMPT Start
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -407,16 +443,70 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
-<p>This collection of programming examples supplements the OpenMP API for Shared Memory Parallelization specifications, and is not part of the formal specifications. It assumes familiarity with the OpenMP specifications, and shares the typographical conventions used in that document.</p>
-<p>The OpenMP API specification provides a model for parallel programming that is portable across shared memory architectures from different vendors. Compilers from numerous vendors support the OpenMP API.</p>
-<p>The directives, library routines, and environment variables demonstrated in this document allow users to create and manage parallel programs while permitting portability. The directives extend the C, C++ and Fortran base languages with single program multiple data (SPMD) constructs, tasking constructs, device constructs, worksharing constructs, and synchronization constructs, and they provide support for sharing and privatizing data. The functionality to control the runtime environment is provided by library routines and environment variables. Compilers that support the OpenMP API often include a command line option to the compiler that activates and allows interpretation of all OpenMP directives.</p>
-<p>The documents and source codes for OpenMP Examples can be downloaded from <a class="reference external" href="https://github.com/OpenMP/Examples">https://github.com/OpenMP/Examples</a>. Each directory holds the contents of a chapter and has a  <em>sources</em>  subdirectory of its codes. The codes for this OpenMP 5.2 Examples document have the tag v5.2.</p>
-<p>Complete information about the OpenMP API and a list of the compilers that support the OpenMP API can be found at the <a class="reference external" href="http://OpenMP.org">OpenMP.org</a> web site</p>
-<p><code class="docutils literal notranslate"><span class="pre">https://www.openmp.org</span></code></p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="ompt-interface">
+<h1><span class="section-number">12. </span>OMPT Interface<a class="headerlink" href="#ompt-interface" title="Permalink to this headline">#</a></h1>
+<p>OMPT defines mechanisms and an API for interfacing with tools in the OpenMP program.</p>
+<p>The OMPT API provides the following functionality:</p>
+<ul class="simple">
+<li><p>examines the state associated with an OpenMP thread</p></li>
+<li><p>interprets the call stack of an OpenMP thread</p></li>
+<li><p>receives notification about OpenMP events</p></li>
+<li><p>traces activity on OpenMP target devices</p></li>
+<li><p>assesses implementation-dependent details</p></li>
+<li><p>controls a tool from an OpenMP application</p></li>
+</ul>
+<p>The following sections will illustrate basic mechanisms and operations of the OMPT API.</p>
+<section id="ompt-start">
+<h2><span class="section-number">12.1. </span>OMPT Start<a class="headerlink" href="#ompt-start" title="Permalink to this headline">#</a></h2>
+<p>There are three steps an OpenMP implementation takes to activate a tool. This section explains how the tool and an OpenMP implementation interact to accomplish tool activation.</p>
+<p>Step 1. <em>Determine Whether to Initialize</em></p>
+<p>A tool is activated by the OMPT interface when it returns a non-NULL pointer to an <strong>ompt_start_tool_result_t</strong> structure on a call to <strong>ompt_start_tool</strong> by the OpenMP implementation. There are three ways that a tool can provide a definition of <strong>ompt_start_tool</strong> to an OpenMP implementation: (1) Statically linking the tool’s definition of <strong>ompt_start_tool</strong> into an OpenMP application. (2) Introducing a dynamically linked library that includes the tool’s definition of <strong>ompt_start_tool</strong> into the application’s address space. (3) Providing the name of a dynamically linked library appropriate for the architecture and operating system used by the application in the  <em>tool-libraries-var</em>  ICV.</p>
+<p>Step 2. <em>Initializing a First-Party tool</em></p>
+<p>If a tool-provided implementation of <strong>ompt_start_tool</strong> returns a non-NULL pointer to an <strong>ompt_start_tool_result_t</strong> structure, the OpenMP implementation will invoke the tool initializer specified in this structure prior to the occurrence of any OpenMP event.</p>
+<p>Step 3. <em>Monitoring Activity on the Host</em></p>
+<p>To monitor execution of an OpenMP program on the host device, a tool’s initializer must register to receive notification of events that occur as an OpenMP program executes. A tool can register callbacks for OpenMP events using the runtime entry point known as <strong>ompt_set_callback</strong>, which has the following possible return codes: \hfill reak  <strong>ompt_set_error</strong>,  <strong>ompt_set_never</strong>,  <strong>ompt_set_impossible</strong>,  <strong>ompt_set_sometimes</strong>,  <strong>ompt_set_sometimes_paired</strong>,  <strong>ompt_set_always</strong>.</p>
+<p>If the <strong>ompt_set_callback</strong> runtime entry point is called outside a tool’s initializer, registration of supported callbacks may fail with a return code of <strong>ompt_set_error</strong>. All callbacks registered with <strong>ompt_set_callback</strong> or returned by <strong>ompt_get_callback</strong> use the dummy type signature <strong>ompt_callback_t</strong>. While this is a compromise, it is better than providing unique runtime entry points with precise type signatures to set and get the callback for each unique runtime entry point type signature.</p>
+<hr class="docutils" />
+<p>To use the OMPT interface a tool must provide a globally-visible implementation of the <strong>ompt_start_tool</strong> function. The function returns a pointer to an <strong>ompt_start_tool_result_t</strong> structure  that contains callback pointers for tool initialization and finalization as well  as a data word,  <em>tool_data</em> , that is to be passed by reference to these callbacks. A <strong>NULL</strong> return indicates the tool will not use the OMPT interface. The runtime execution of <strong>ompt_start_tool</strong> is triggered by the first OpenMP  directive or OpenMP API routine call.</p>
+<p>In the example below, the user-provided <strong>ompt_start_tool</strong> function performs a check to make sure the runtime OpenMP version that OMPT supports  (provided by the  <em>omp_version</em>  argument) is identical to the  OpenMP implementation (compile-time) version. Also, a <strong>NULL</strong> is returned to indicate that the OMPT interface is not used (no callbacks and tool data are specified).</p>
+<p><strong>Note</strong>: The  <em>omp-tools.h</em>  file is included.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
+
+<span class="cm">/*</span>
+<span class="cm">* name:       ompt_start.1</span>
+<span class="cm">* type:       C</span>
+<span class="cm">* version:    omp_5.0</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp-tools.h&gt;</span><span class="cp"></span>
+
+<span class="n">ompt_start_tool_result_t</span><span class="w"> </span><span class="o">*</span><span class="nf">ompt_start_tool</span><span class="p">(</span><span class="w"></span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">omp_version</span><span class="p">,</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">runtime_version</span><span class="w"></span>
+<span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">omp_version</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">_OPENMP</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Warning: OpenMP runtime version (%i) &quot;</span><span class="w"></span>
+<span class="w">           </span><span class="s">&quot;does not match the compile time version (%i)&quot;</span><span class="w"></span>
+<span class="w">           </span><span class="s">&quot; for runtime identifying as %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="n">omp_version</span><span class="p">,</span><span class="w"> </span><span class="n">_OPENMP</span><span class="p">,</span><span class="w"> </span><span class="n">runtime_version</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Returning NULL will disable this as an OMPT tool,</span>
+<span class="w">  </span><span class="c1">// allowing other tools to be loaded</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Running with %i threads</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">omp_get_max_threads</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
 </div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -432,7 +522,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "native",
-            path: "./contents/Chap_introduction"
+            path: "./contents/Chap_ompt_interface"
         },
         predefinedOutput: true
     }
@@ -446,19 +536,12 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../Foreword_Chapt.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../Chap_program_control/Chap_program_control.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Foreword</p>
+            <p class="prev-next-title"><span class="section-number">11. </span>Program Control</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="Section_Examples_Organization.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.1. </span>Examples Organization</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
