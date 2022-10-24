@@ -44,7 +44,16 @@ parts:
         - file: contents/Chap_affinity/2_Section_Task_Affinity.ipynb
         - file: contents/Chap_affinity/3_Section_Affinity_Display.ipynb
         - file: contents/Chap_affinity/4_Section_Affinity_Query_Func.ipynb
-      - file: contents/Chap_tasking/Chap_tasking.ipynb
+      - file: contents/Chap_tasking/0_Chap_tasking.ipynb
+        sections:
+        - file: contents/Chap_tasking/1_task_and_taskwait_Constructs.ipynb
+        - file: contents/Chap_tasking/2_Task_Priority.ipynb
+        - file: contents/Chap_tasking/3_Task_Dependences.ipynb
+        - file: contents/Chap_tasking/4_Task_Detachment.ipynb
+        - file: contents/Chap_tasking/5_taskgroup_Construct.ipynb
+        - file: contents/Chap_tasking/6_taskyield_Construct.ipynb
+        - file: contents/Chap_tasking/7_taskloop_Construct.ipynb
+        - file: contents/Chap_tasking/8_Combined_parallel_masked_and_taskloop_Constructs.ipynb
       - file: contents/Chap_devices/Chap_devices.ipynb
       - file: contents/Chap_SIMD/Chap_SIMD.ipynb
       - file: contents/Chap_loop_transformations/Chap_loop_transformations.ipynb
