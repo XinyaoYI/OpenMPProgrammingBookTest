@@ -9,17 +9,22 @@ parts:
     - file: contents/Foreword_Chapt.ipynb
   - numbered: True
     chapters:
-      - file: contents/Chap_introduction/Chap_introduction.ipynb
+      - file: contents/Chap_introduction/0_Chap_introduction.ipynb
         sections:
-        - file: contents/Chap_introduction/Section_Examples_Organization.ipynb
-      - file: contents/Chap_directives/Chap_directives.ipynb
+        - file: contents/Chap_introduction/1_Section_Examples_Organization.ipynb
+      - file: contents/Chap_directives/0_Chap_directives.ipynb
+        sections:
+        - file: 1_C_C++_Pragmas.ipynb
+        - file: 2_C++_Attributes.ipynb
+        - file: 3_Fortran_Comments_Fixed_Source_Form.ipynb
+        - file: 4_Fortran_Comments_Free_Source_Form.ipynb
       - file: contents/Chap_parallel_execution/Chap_parallel_execution.ipynb
-      - file: contents/Chap_affinity/Chap_affinity.ipynb
+      - file: contents/Chap_affinity/0_Chap_affinity.ipynb
         sections:
-        - file: contents/Chap_affinity/Section_proc_bind_Clause.ipynb
-        - file: contents/Chap_affinity/Section_Task_Affinity.ipynb
-        - file: contents/Chap_affinity/Section_Affinity_Display.ipynb
-        - file: contents/Chap_affinity/Section_Affinity_Query_Func.ipynb
+        - file: contents/Chap_affinity/1_Section_proc_bind_Clause.ipynb
+        - file: contents/Chap_affinity/2_Section_Task_Affinity.ipynb
+        - file: contents/Chap_affinity/3_Section_Affinity_Display.ipynb
+        - file: contents/Chap_affinity/4_Section_Affinity_Query_Func.ipynb
       - file: contents/Chap_tasking/Chap_tasking.ipynb
       - file: contents/Chap_devices/Chap_devices.ipynb
       - file: contents/Chap_SIMD/Chap_SIMD.ipynb
