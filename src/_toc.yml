@@ -14,10 +14,10 @@ parts:
         - file: contents/Chap_introduction/1_Section_Examples_Organization.ipynb
       - file: contents/Chap_directives/0_Chap_directives.ipynb
         sections:
-        - file: 1_C_C++_Pragmas.ipynb
-        - file: 2_C++_Attributes.ipynb
-        - file: 3_Fortran_Comments_Fixed_Source_Form.ipynb
-        - file: 4_Fortran_Comments_Free_Source_Form.ipynb
+        - file: contents/Chap_directives/1_C_C++_Pragmas.ipynb
+        - file: contents/Chap_directives/2_C++_Attributes.ipynb
+        - file: contents/Chap_directives/3_Fortran_Comments_Fixed_Source_Form.ipynb
+        - file: contents/Chap_directives/4_Fortran_Comments_Free_Source_Form.ipynb
       - file: contents/Chap_parallel_execution/0_Chap_parallel_execution.ipynb
         sections:
         - file: contents/Chap_parallel_execution/1_A_Simple_Parallel_Loop.ipynb
