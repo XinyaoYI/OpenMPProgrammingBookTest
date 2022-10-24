@@ -56,24 +56,24 @@ parts:
         - file: contents/Chap_tasking/8_Combined_parallel_masked_and_taskloop_Constructs.ipynb
       - file: contents/Chap_devices/0_Chap_devices.ipynb
         sections:
-        - file: contents/Chap_devices/touch 0_Devices.ipynb
-        - file: contents/Chap_devices/touch 1_target_Construct.ipynb
-        - file: contents/Chap_devices/touch 2_defaultmap_Clause.ipynb
-        - file: contents/Chap_devices/touch 3_Pointer_Mapping.ipynb
-        - file: contents/Chap_devices/touch 4_Structure_Mapping.ipynb
-        - file: contents/Chap_devices/touch 5_Fortran_Allocatable_Array_Mapping.ipynb
-        - file: contents/Chap_devices/touch 6_Array_Sections_in_Device_Constructs.ipynb
-        - file: contents/Chap_devices/touch 7_C++_Virtual_Functions.ipynb
-        - file: contents/Chap_devices/touch 8_Array_Shaping.ipynb
-        - file: contents/Chap_devices/touch 9_declare_mapper_Directive.ipynb
-        - file: contents/Chap_devices/touch 10_target_data_Construct.ipynb
-        - file: contents/Chap_devices/touch 11_target_enter_data_and_target_exit_data_Constructs.ipynb
-        - file: contents/Chap_devices/touch 12_target_update_Construct.ipynb
-        - file: contents/Chap_devices/touch 13_Declare_Target_Directive.ipynb
-        - file: contents/Chap_devices/touch 14_Lambda_Expressions.ipynb
-        - file: contents/Chap_devices/touch 15_teams_Construct_and_Related_Combined_Constructs.ipynb
-        - file: contents/Chap_devices/touch 16_Asynchronous_target_Execution_and_Dependences.ipynb
-        - file: contents/Chap_devices/touch 17_Device_Routines.ipynb
+        - file: contents/Chap_devices/0_Devices.ipynb
+        - file: contents/Chap_devices/1_target_Construct.ipynb
+        - file: contents/Chap_devices/2_defaultmap_Clause.ipynb
+        - file: contents/Chap_devices/3_Pointer_Mapping.ipynb
+        - file: contents/Chap_devices/4_Structure_Mapping.ipynb
+        - file: contents/Chap_devices/5_Fortran_Allocatable_Array_Mapping.ipynb
+        - file: contents/Chap_devices/6_Array_Sections_in_Device_Constructs.ipynb
+        - file: contents/Chap_devices/7_C++_Virtual_Functions.ipynb
+        - file: contents/Chap_devices/8_Array_Shaping.ipynb
+        - file: contents/Chap_devices/9_declare_mapper_Directive.ipynb
+        - file: contents/Chap_devices/10_target_data_Construct.ipynb
+        - file: contents/Chap_devices/11_target_enter_data_and_target_exit_data_Constructs.ipynb
+        - file: contents/Chap_devices/12_target_update_Construct.ipynb
+        - file: contents/Chap_devices/13_Declare_Target_Directive.ipynb
+        - file: contents/Chap_devices/14_Lambda_Expressions.ipynb
+        - file: contents/Chap_devices/15_teams_Construct_and_Related_Combined_Constructs.ipynb
+        - file: contents/Chap_devices/16_Asynchronous_target_Execution_and_Dependences.ipynb
+        - file: contents/Chap_devices/17_Device_Routines.ipynb
       - file: contents/Chap_SIMD/0_Chap_SIMD.ipynb
         sections:
         - file: contents/Chap_SIMD/1_simd_and_declare_simd_Directives.ipynb
