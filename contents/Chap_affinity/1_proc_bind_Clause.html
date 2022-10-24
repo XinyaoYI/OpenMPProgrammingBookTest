@@ -1251,49 +1251,48 @@ A machine architecture with two quad-core processors</p>
 <p><strong>OMP_PLACES= “{0:2}:8:2”</strong></p>
 <section id="spread-affinity-policy">
 <h2><span class="section-number">4.1.1. </span>Spread Affinity Policy<a class="headerlink" href="#spread-affinity-policy" title="Permalink to this headline">#</a></h2>
-<p><strong>affinity!spread policy <strong>spread</strong> policy</strong> <strong>spread policy <strong>spread</strong> policy</strong></p>
 <p>The following example shows the result of the <strong>spread</strong> affinity policy on  the partition list when the number of threads is less than or equal to the number  of places in the parent’s place partition, for the machine architecture depicted  above. Note that the threads are bound to the first place of each subpartition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight- notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name: affinity.1
-* type: C
-* version: omp_4.0
-*/
+<span class="cm">/*</span>
+<span class="cm">* name: affinity.1</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_4.0</span>
+<span class="cm">*/</span><span class="w"></span>
 
-void work();
+<span class="kt">void</span><span class="w"> </span><span class="nf">work</span><span class="p">();</span><span class="w"></span>
 
-int main()
-{
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 
-#pragma omp parallel proc_bind(spread) num_threads(4)
-   {
-      work();
-   }
+<span class="cp">#pragma omp parallel proc_bind(spread) num_threads(4)</span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">work</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
 
-   return 0;
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
-}
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight- notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
-!!%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-! name: affinity.1
-! type: F-fixed
-! version: omp_4.0
-      PROGRAM EXAMPLE
-!$OMP PARALLEL PROC_BIND(SPREAD) NUM_THREADS(4)
-      CALL WORK()
-!$OMP END PARALLEL
-      END PROGRAM EXAMPLE
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">affinity</span><span class="mf">.1</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">fixed</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_4</span><span class="mf">.0</span><span class="w"></span>
+<span class="w">      </span><span class="n">PROGRAM</span><span class="w"> </span><span class="n">EXAMPLE</span><span class="w"></span>
+<span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">PARALLEL</span><span class="w"> </span><span class="n">PROC_BIND</span><span class="p">(</span><span class="n">SPREAD</span><span class="p">)</span><span class="w"> </span><span class="n">NUM_THREADS</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">CALL</span><span class="w"> </span><span class="n">WORK</span><span class="p">()</span><span class="w"></span>
+<span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">END</span><span class="w"> </span><span class="n">PARALLEL</span><span class="w"></span>
+<span class="w">      </span><span class="n">END</span><span class="w"> </span><span class="n">PROGRAM</span><span class="w"> </span><span class="n">EXAMPLE</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1316,39 +1315,39 @@ int main()
 <p>Let  <em>T</em>  be the number of threads in the team, and  <em>P</em>  be the number of places in the  parent’s place partition. The first  <em>T/P</em>  threads of the team (including the primary thread) execute on the parent’s place. The next  <em>T/P</em>  threads execute on the next  place in the place partition, and so on, with wrap around.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight- notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name: affinity.2
-* type: C
-* version: omp_4.0
-*/
-void work();
-void foo()
-{
-  #pragma omp parallel num_threads(16) proc_bind(spread)
-  {
-    work();
-  }
-}
+<span class="cm">/*</span>
+<span class="cm">* name: affinity.2</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_4.0</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">work</span><span class="p">();</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma omp parallel num_threads(16) proc_bind(spread)</span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">work</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight- notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
-!!%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-! name: affinity.2
-! type: F-free
-! version: omp_4.0
-subroutine foo
-!$omp parallel num_threads(16) proc_bind(spread)
-      call work()
-!$omp end parallel
-end subroutine
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">affinity</span><span class="mf">.2</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_4</span><span class="mf">.0</span><span class="w"></span>
+<span class="n">subroutine</span><span class="w"> </span><span class="n">foo</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="n">proc_bind</span><span class="p">(</span><span class="n">spread</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">call</span><span class="w"> </span><span class="n">work</span><span class="p">()</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="n">end</span><span class="w"> </span><span class="n">subroutine</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1381,40 +1380,40 @@ end subroutine
 <p>The following example shows the result of the <strong>close</strong> affinity policy on  the partition list when the number of threads is less than or equal to the number  of places in parent’s place partition, for the machine architecture depicted above.  The place partition is not changed by the <strong>close</strong> policy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight- notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name: affinity.3
-* type: C
-* version: omp_4.0
-*/
-void work();
-int main()
-{
-#pragma omp parallel proc_bind(close) num_threads(4)
-   {
-      work();
-   }
-   return 0;
-}
+<span class="cm">/*</span>
+<span class="cm">* name: affinity.3</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_4.0</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">work</span><span class="p">();</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma omp parallel proc_bind(close) num_threads(4)</span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">work</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight- notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
-!!%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-! name: affinity.3
-! type: F-fixed
-! version: omp_4.0
-      PROGRAM EXAMPLE
-!$OMP PARALLEL PROC_BIND(CLOSE) NUM_THREADS(4)
-      CALL WORK()
-!$OMP END PARALLEL
-      END PROGRAM EXAMPLE
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">affinity</span><span class="mf">.3</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">fixed</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_4</span><span class="mf">.0</span><span class="w"></span>
+<span class="w">      </span><span class="n">PROGRAM</span><span class="w"> </span><span class="n">EXAMPLE</span><span class="w"></span>
+<span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">PARALLEL</span><span class="w"> </span><span class="n">PROC_BIND</span><span class="p">(</span><span class="n">CLOSE</span><span class="p">)</span><span class="w"> </span><span class="n">NUM_THREADS</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">CALL</span><span class="w"> </span><span class="n">WORK</span><span class="p">()</span><span class="w"></span>
+<span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">END</span><span class="w"> </span><span class="n">PARALLEL</span><span class="w"></span>
+<span class="w">      </span><span class="n">END</span><span class="w"> </span><span class="n">PROGRAM</span><span class="w"> </span><span class="n">EXAMPLE</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1437,39 +1436,39 @@ int main()
 <p>Let  <em>T</em>  be the number of threads in the team, and  <em>P</em>  be the number of places in the  parent’s place partition. The first  <em>T/P</em>  threads of the team (including the primary thread) execute on the parent’s place. The next  <em>T/P</em>  threads execute on the next  place in the place partition, and so on, with wrap around. The place partition  is not changed by the <strong>close</strong> policy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight- notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name: affinity.4
-* type: C
-* version: omp_4.0
-*/
-void work();
-void foo()
-{
-  #pragma omp parallel num_threads(16) proc_bind(close)
-  {
-    work();
-  }
-}
+<span class="cm">/*</span>
+<span class="cm">* name: affinity.4</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_4.0</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">work</span><span class="p">();</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cp">#pragma omp parallel num_threads(16) proc_bind(close)</span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">work</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight- notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
-!!%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-! name: affinity.4
-! type: F-free
-! version: omp_4.0
-subroutine foo
-!$omp parallel num_threads(16) proc_bind(close)
-      call work()
-!$omp end parallel
-end subroutine
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">affinity</span><span class="mf">.4</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_4</span><span class="mf">.0</span><span class="w"></span>
+<span class="n">subroutine</span><span class="w"> </span><span class="n">foo</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="n">proc_bind</span><span class="p">(</span><span class="n">close</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">call</span><span class="w"> </span><span class="n">work</span><span class="p">()</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="n">end</span><span class="w"> </span><span class="n">subroutine</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1502,40 +1501,40 @@ end subroutine
 <p>The following example shows the result of the <strong>primary</strong> affinity policy on  the partition list for the machine architecture depicted above. The place partition  is not changed by the primary policy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight- notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
 
-/*
-* name: affinity.5
-* type: C
-* version: omp_5.1
-*/
-void work();
-int main()
-{
-#pragma omp parallel proc_bind(primary) num_threads(4)
-   {
-      work();
-   }
-   return 0;
-}
+<span class="cm">/*</span>
+<span class="cm">* name: affinity.5</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_5.1</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">work</span><span class="p">();</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma omp parallel proc_bind(primary) num_threads(4)</span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">work</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight- notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
-!!%cflags: -fopenmp
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
 
-! name: affinity.5
-! type: F-fixed
-! version: omp_5.1
-      PROGRAM EXAMPLE
-!$OMP PARALLEL PROC_BIND(primary) NUM_THREADS(4)
-      CALL WORK()
-!$OMP END PARALLEL
-      END PROGRAM EXAMPLE
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">affinity</span><span class="mf">.5</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">fixed</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_5</span><span class="mf">.1</span><span class="w"></span>
+<span class="w">      </span><span class="n">PROGRAM</span><span class="w"> </span><span class="n">EXAMPLE</span><span class="w"></span>
+<span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">PARALLEL</span><span class="w"> </span><span class="n">PROC_BIND</span><span class="p">(</span><span class="n">primary</span><span class="p">)</span><span class="w"> </span><span class="n">NUM_THREADS</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">CALL</span><span class="w"> </span><span class="n">WORK</span><span class="p">()</span><span class="w"></span>
+<span class="o">!</span><span class="n">$OMP</span><span class="w"> </span><span class="n">END</span><span class="w"> </span><span class="n">PARALLEL</span><span class="w"></span>
+<span class="w">      </span><span class="n">END</span><span class="w"> </span><span class="n">PROGRAM</span><span class="w"> </span><span class="n">EXAMPLE</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -1560,16 +1559,16 @@ int main()
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: ""
+            mode: "native"
         },
         kernelOptions: {
-            kernelName: "",
+            kernelName: "native",
             path: "./contents/Chap_affinity"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = ''</script>
+    <script>kernelName = 'native'</script>
 
               </div>
               
