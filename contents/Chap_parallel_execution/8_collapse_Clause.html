@@ -1,0 +1,932 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2.8. collapse Clause &#8212; OpenMP Application Programming Interface Examples</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="2.9. linear Clause in Loop Constructs" href="9_linear_Clause_in_Loop_Constructs.html" />
+    <link rel="prev" title="2.7. nowait Clause" href="7_nowait_Clause.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">OpenMP Application Programming Interface Examples</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to OMP Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Title_Page.html">
+   Cover
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Foreword_Chapt.html">
+   Foreword
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_directives/0_Chap_directives.html">
+   1. OpenMP Directive Syntax
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="0_Chap_parallel_execution.html">
+   2. Parallel Execution
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_A_Simple_Parallel_Loop.html">
+     2.1. A Simple Parallel Loop
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_parallel_Construct.html">
+     2.2.
+     <strong>
+      parallel
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3_teams_Construct_on_Host.html">
+     2.3.
+     <strong>
+      teams
+     </strong>
+     Construct on Host
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4_Controlling_the_Number_of_Threads_on_Multiple_Nesting_Levels.html">
+     2.4. Controlling the Number of Threads on Multiple Nesting Levels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5_Interaction_Between_the_num_threads_Clause_and_omp_set_dynamic.html">
+     2.5. Interaction Between the
+     <strong>
+      num_threads
+     </strong>
+     Clause and
+     <strong>
+      omp_set_dynamic
+     </strong>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6_Fortran_Restrictions_on_the_do_Construct.html">
+     2.6. Fortran Restrictions on the
+     <strong>
+      do
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7_nowait_Clause.html">
+     2.7.
+     <strong>
+      nowait
+     </strong>
+     Clause
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.8.
+     <strong>
+      collapse
+     </strong>
+     Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9_linear_Clause_in_Loop_Constructs.html">
+     2.9.
+     <strong>
+      linear
+     </strong>
+     Clause in Loop Constructs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_parallel_sections_Construct.html">
+     2.10.
+     <strong>
+      parallel
+     </strong>
+     <strong>
+      sections
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_firstprivate_Clause_and_sections_Construct.html">
+     2.11.
+     <strong>
+      firstprivate
+     </strong>
+     Clause and
+     <strong>
+      sections
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_single_Construct.html">
+     2.12.
+     <strong>
+      single
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_workshare_Construct.html">
+     2.13.
+     <strong>
+      workshare
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14_masked_Construct.html">
+     2.14.
+     <strong>
+      masked
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="15_loop_Construct.html">
+     2.15.
+     <strong>
+      loop
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="16_Parallel_Random_Access_Iterator_Loop.html">
+     2.16. Parallel Random Access Iterator Loop
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="17_omp_set_dynamic_and_omp_set_num_threads_Routines.html">
+     2.17.
+     <strong>
+      omp_set_dynamic
+     </strong>
+     and
+     <strong>
+      omp_set_num_threads
+     </strong>
+     Routines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="18_omp_get_num_threads_Routine.html">
+     2.18.
+     <strong>
+      omp_get_num_threads
+     </strong>
+     Routine
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_tasking/Chap_tasking.html">
+   3. Tasking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_devices/Chap_devices.html">
+   4. Devices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_SIMD/Chap_SIMD.html">
+   5. SIMD
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_loop_transformations/Chap_loop_transformations.html">
+   6. Loop Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_synchronization/Chap_synchronization.html">
+   7. Synchronization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_data_environment/Chap_data_environment.html">
+   8. Data Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_memory_model/Chap_memory_model.html">
+   9. Memory Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_program_control/Chap_program_control.html">
+   10. Program Control
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
+   11. OMPT Interface
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_parallel_execution/8_collapse_Clause.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/passlab/Examples"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Chap_parallel_execution/8_collapse_Clause.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/contents/Chap_parallel_execution/8_collapse_Clause.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>collapse Clause</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="collapse-clause">
+<h1><span class="section-number">2.8. </span><strong>collapse</strong> Clause<a class="headerlink" href="#collapse-clause" title="Permalink to this headline">#</a></h1>
+<p>In the following example, the <strong>k</strong> and <strong>j</strong> loops are associated with  the loop construct. So the iterations of the <strong>k</strong> and <strong>j</strong> loops are  collapsed into one loop with a larger iteration space, and that loop is then divided  among the threads in the current team. Since the <strong>i</strong> loop is not associated  with the loop construct, it is not collapsed, and the <strong>i</strong> loop is executed  sequentially in its entirety in every iteration of the collapsed <strong>k</strong> and  <strong>j</strong> loop.</p>
+<p>The variable <strong>j</strong> can be omitted from the <strong>private</strong>  clause when the  <strong>collapse</strong> clause is used since it is implicitly private. However, if the  <strong>collapse</strong> clause is omitted then <strong>j</strong> will be shared if it is omitted  from the <strong>private</strong> clause. In either case, <strong>k</strong> is implicitly private  and could be omitted from the <strong>private</strong>  clause.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
+
+<span class="cm">/*</span>
+<span class="cm">* name: collapse.1</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_3.0</span>
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">bar</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">kl</span><span class="p">,</span><span class="w"> </span><span class="n">ku</span><span class="p">,</span><span class="w"> </span><span class="n">ks</span><span class="p">,</span><span class="w"> </span><span class="n">jl</span><span class="p">,</span><span class="w"> </span><span class="n">ju</span><span class="p">,</span><span class="w"> </span><span class="n">js</span><span class="p">,</span><span class="w"> </span><span class="n">il</span><span class="p">,</span><span class="w"> </span><span class="n">iu</span><span class="p">,</span><span class="n">is</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">sub</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="cp">#pragma omp for collapse(2) private(i, k, j)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">kl</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">&lt;=</span><span class="n">ku</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">+=</span><span class="n">ks</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">jl</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">&lt;=</span><span class="n">ju</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">+=</span><span class="n">js</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="n">il</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">iu</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">+=</span><span class="n">is</span><span class="p">)</span><span class="w"></span>
+<span class="w">             </span><span class="n">bar</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
+
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">collapse</span><span class="mf">.1</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">fixed</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_3</span><span class="mf">.0</span><span class="w"></span>
+
+<span class="w">      </span><span class="n">subroutine</span><span class="w"> </span><span class="n">sub</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">      </span><span class="n">real</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">integer</span><span class="w"> </span><span class="n">kl</span><span class="p">,</span><span class="w"> </span><span class="n">ku</span><span class="p">,</span><span class="w"> </span><span class="n">ks</span><span class="p">,</span><span class="w"> </span><span class="n">jl</span><span class="p">,</span><span class="w"> </span><span class="n">ju</span><span class="p">,</span><span class="w"> </span><span class="n">js</span><span class="p">,</span><span class="w"> </span><span class="n">il</span><span class="p">,</span><span class="w"> </span><span class="n">iu</span><span class="p">,</span><span class="w"> </span><span class="n">is</span><span class="w"></span>
+<span class="w">      </span><span class="n">common</span><span class="w"> </span><span class="o">/</span><span class="n">csub</span><span class="o">/</span><span class="w"> </span><span class="n">kl</span><span class="p">,</span><span class="w"> </span><span class="n">ku</span><span class="p">,</span><span class="w"> </span><span class="n">ks</span><span class="p">,</span><span class="w"> </span><span class="n">jl</span><span class="p">,</span><span class="w"> </span><span class="n">ju</span><span class="p">,</span><span class="w"> </span><span class="n">js</span><span class="p">,</span><span class="w"> </span><span class="n">il</span><span class="p">,</span><span class="w"> </span><span class="n">iu</span><span class="p">,</span><span class="w"> </span><span class="n">is</span><span class="w"></span>
+<span class="w">      </span><span class="n">integer</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="w"></span>
+
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">collapse</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">private</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="k">do</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kl</span><span class="p">,</span><span class="w"> </span><span class="n">ku</span><span class="p">,</span><span class="w"> </span><span class="n">ks</span><span class="w"></span>
+<span class="w">         </span><span class="k">do</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jl</span><span class="p">,</span><span class="w"> </span><span class="n">ju</span><span class="p">,</span><span class="w"> </span><span class="n">js</span><span class="w"></span>
+<span class="w">           </span><span class="k">do</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">il</span><span class="p">,</span><span class="w"> </span><span class="n">iu</span><span class="p">,</span><span class="w"> </span><span class="n">is</span><span class="w"></span>
+<span class="w">             </span><span class="n">call</span><span class="w"> </span><span class="n">bar</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="n">enddo</span><span class="w"></span>
+<span class="w">        </span><span class="n">enddo</span><span class="w"></span>
+<span class="w">      </span><span class="n">enddo</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="k">do</span><span class="w"></span>
+
+<span class="w">      </span><span class="n">end</span><span class="w"> </span><span class="n">subroutine</span><span class="w"></span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the next example, the <strong>k</strong> and <strong>j</strong> loops are associated with the  loop construct. So the iterations of the <strong>k</strong> and <strong>j</strong> loops are collapsed  into one loop with a larger iteration space, and that loop is then divided among  the threads in the current team.</p>
+<p>The sequential execution of the iterations in the <strong>k</strong> and <strong>j</strong> loops  determines the order of the iterations in the collapsed iteration space. This implies  that in the sequentially last iteration of the collapsed iteration space, <strong>k</strong>  will have the value <strong>2</strong> and <strong>j</strong> will have the value <strong>3</strong>. Since  <strong>klast</strong> and <strong>jlast</strong> are <strong>lastprivate</strong>, their values are assigned  by the sequentially last iteration of the collapsed <strong>k</strong> and <strong>j</strong> loop.  This example prints: <strong>2 3</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
+
+<span class="cm">/*</span>
+<span class="cm">* name: collapse.2</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_3.0</span>
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">jlast</span><span class="p">,</span><span class="w"> </span><span class="n">klast</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="cp">#pragma omp parallel</span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="cp">#pragma omp for collapse(2) lastprivate(jlast, klast)</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">&lt;=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">&lt;=</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">jlast</span><span class="o">=</span><span class="n">j</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">klast</span><span class="o">=</span><span class="n">k</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="cp">#pragma omp single</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">klast</span><span class="p">,</span><span class="w"> </span><span class="n">jlast</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
+
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">collapse</span><span class="mf">.2</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">fixed</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_3</span><span class="mf">.0</span><span class="w"></span>
+
+<span class="w">      </span><span class="n">program</span><span class="w"> </span><span class="n">test</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">private</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="n">collapse</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">lastprivate</span><span class="p">(</span><span class="n">jlast</span><span class="p">,</span><span class="w"> </span><span class="n">klast</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">do</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="w"></span>
+<span class="w">        </span><span class="k">do</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">          </span><span class="n">jlast</span><span class="o">=</span><span class="n">j</span><span class="w"></span>
+<span class="w">          </span><span class="n">klast</span><span class="o">=</span><span class="n">k</span><span class="w"></span>
+<span class="w">        </span><span class="n">enddo</span><span class="w"></span>
+<span class="w">      </span><span class="n">enddo</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="k">do</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">single</span><span class="w"></span>
+<span class="w">      </span><span class="n">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">klast</span><span class="p">,</span><span class="w"> </span><span class="n">jlast</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">single</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="w">      </span><span class="n">end</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">test</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The next example illustrates the interaction of the <strong>collapse</strong> and <strong>ordered</strong>   clauses.</p>
+<p>In the example, the loop construct has both a <strong>collapse</strong> clause and an <strong>ordered</strong>  clause. The <strong>collapse</strong> clause causes the iterations of the <strong>k</strong> and  <strong>j</strong> loops to be collapsed into one loop with a larger iteration space, and  that loop is divided among the threads in the current team. An <strong>ordered</strong>  clause is added to the loop construct because an ordered region binds to the loop  region arising from the loop construct.</p>
+<p>According to Section 2.12.8 of the OpenMP 4.0 specification,  a thread must not execute more than one ordered region that binds  to the same loop region. So the <strong>collapse</strong> clause is required for the example  to be conforming. With the <strong>collapse</strong> clause, the iterations of the <strong>k</strong>  and <strong>j</strong> loops are collapsed into one loop, and therefore only one ordered  region will bind to the collapsed <strong>k</strong> and <strong>j</strong> loop. Without the <strong>collapse</strong>  clause, there would be two ordered regions that bind to each iteration of the <strong>k</strong>  loop (one arising from the first iteration of the <strong>j</strong> loop, and the other  arising from the second iteration of the <strong>j</strong> loop).</p>
+<p>The code prints</p>
+<p><strong>0 1 1</strong> <br> <strong>0 1 2</strong> <br> <strong>0 2 1</strong> <br> <strong>1 2 2</strong> <br> <strong>1 3 1</strong> <br> <strong>1 3 2</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
+
+<span class="cm">/*</span>
+<span class="cm">* name: collapse.3</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_3.0</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">work</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">sub</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="cp">#pragma omp parallel num_threads(2)</span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="cp">#pragma omp for collapse(2) ordered private(j,k) schedule(static,3)</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">&lt;=</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">&lt;=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="cp">#pragma omp ordered</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">(),</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="cm">/* end ordered */</span><span class="w"></span>
+<span class="w">            </span><span class="n">work</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">);</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
+! name: collapse.3
+! type: F-fixed
+! version: omp_3.0
+      program test
+      include &#39;omp_lib.h&#39;
+!$omp parallel num_threads(2)
+!$omp do collapse(2) ordered private(j,k) schedule(static,3)
+      do k = 1,3
+        do j = 1,2
+!$omp ordered
+          print *, omp_get_thread_num(), k, j
+!$omp end ordered
+          call work(a,j,k)
+        enddo
+      enddo
+!$omp end do
+!$omp end parallel
+      end program test
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following example illustrates the collapse of a non-rectangular loop nest, a new feature in OpenMP 5.0. In a loop nest, a non-rectangular loop has a loop bound that references the iteration variable of an enclosing loop.</p>
+<p>The motivation for this feature is illustrated in the example below that creates a symmetric correlation matrix for a set of variables. Note that the initial value of the second loop depends on the index variable of the first loop for the loops to be collapsed. Here the data are represented by a 2D array, each row corresponds to a variable and each column corresponds to a sample of the variable - the last two columns are the sample mean and standard deviation (for Fortran, rows and columns are swapped).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
+
+<span class="cm">/*</span>
+<span class="cm">* name: collapse.4</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_5.0</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#define N 20</span>
+<span class="cp">#define M 10</span>
+
+<span class="c1">// routine to calculate a</span>
+<span class="c1">// For variable a[i]:</span>
+<span class="c1">// a[i][0],...,a[i][n-1]   contains the n samples</span>
+<span class="c1">// a[i][n]                 contains the sample mean</span>
+<span class="c1">// a[i][n+1]               contains the standard deviation</span>
+<span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">calc_a</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">[][</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">M</span><span class="p">][</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">M</span><span class="p">][</span><span class="n">M</span><span class="p">];</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">calc_a</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="n">a</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="cp">#pragma omp parallel for collapse(2)</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">M</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">M</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">           </span><span class="n">temp</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">N</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">N</span><span class="p">]);</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;b[0][0] = %f, b[M-1][M-1] = %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">M</span><span class="mi">-1</span><span class="p">][</span><span class="n">M</span><span class="mi">-1</span><span class="p">]);</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
+
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">collapse</span><span class="mf">.4</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="n">omp_5</span><span class="mf">.0</span><span class="w"></span>
+<span class="n">module</span><span class="w"> </span><span class="n">calc_m</span><span class="w"></span>
+<span class="w">  </span><span class="n">interface</span><span class="w"></span>
+<span class="w">  </span><span class="n">subroutine</span><span class="w"> </span><span class="n">calc_a</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">integer</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="w"></span>
+<span class="w">  </span><span class="n">real</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="n">m</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="n">routine</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">calculate</span><span class="w"> </span><span class="n">a</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="n">For</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">j</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">),...,</span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">j</span><span class="p">)</span><span class="w">  </span><span class="n">contains</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">samples</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">)</span><span class="w">           </span><span class="n">contains</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="n">mean</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="n">j</span><span class="p">)</span><span class="w">           </span><span class="n">contains</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">standard</span><span class="w"> </span><span class="n">deviation</span><span class="w"></span>
+<span class="w">  </span><span class="n">end</span><span class="w"> </span><span class="n">subroutine</span><span class="w"></span>
+<span class="w">  </span><span class="n">end</span><span class="w"> </span><span class="n">interface</span><span class="w"></span>
+<span class="n">end</span><span class="w"> </span><span class="n">module</span><span class="w"></span>
+
+<span class="n">program</span><span class="w"> </span><span class="n">main</span><span class="w"></span>
+<span class="w">  </span><span class="n">use</span><span class="w"> </span><span class="n">calc_m</span><span class="w"></span>
+<span class="w">  </span><span class="n">integer</span><span class="p">,</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">N</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="o">=</span><span class="mi">10</span><span class="w"></span>
+<span class="w">  </span><span class="n">real</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="n">M</span><span class="p">),</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">real</span><span class="w"> </span><span class="n">temp</span><span class="w"></span>
+<span class="w">  </span><span class="n">integer</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">call</span><span class="w"> </span><span class="n">calc_a</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="n">a</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">collapse</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">private</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">temp</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="w"></span>
+<span class="w">     </span><span class="k">do</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="w"></span>
+<span class="w">        </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="w"></span>
+<span class="w">        </span><span class="k">do</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="w"></span>
+<span class="w">           </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">-</span><span class="n">a</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">j</span><span class="p">)</span><span class="o">-</span><span class="n">a</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="n">end</span><span class="w"> </span><span class="k">do</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="n">b</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="n">end</span><span class="w"> </span><span class="k">do</span><span class="w"></span>
+<span class="w">  </span><span class="n">end</span><span class="w"> </span><span class="k">do</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s">&quot;b(1,1) = &quot;</span><span class="p">,</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s">&quot;, b(M,M) = &quot;</span><span class="p">,</span><span class="n">b</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="p">)</span><span class="w"></span>
+
+<span class="n">end</span><span class="w"> </span><span class="n">program</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "native"
+        },
+        kernelOptions: {
+            kernelName: "native",
+            path: "./contents/Chap_parallel_execution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'native'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="7_nowait_Clause.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2.7. </span><strong>nowait</strong> Clause</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="9_linear_Clause_in_Loop_Constructs.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.9. </span><strong>linear</strong> Clause in Loop Constructs</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The OpenMP Community<br/>
+  
+      &copy; <a href="../../copyright.html">Copyright</a> 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
