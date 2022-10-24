@@ -1602,7 +1602,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Similar to the previous example, the <strong>omp_target_is_accessible</strong> routine is used to discover if a deep copy is required for the platform.  Here, the  <em>deep_copy</em>  map, defined in the <strong>declare</strong> <strong>mapper</strong> directive, is used if the host storage referenced by   <em>s.ptr</em>  (or  <em>sptr</em>  in Fortran) is not accessible from the device.</p>
+<p>Similar to the previous example, the <strong>omp_target_is_accessible</strong> routine is used to discover if a deep copy is required for the platform.  Here, the  <em>deep_copy</em>  map, defined in the <strong>declare</strong> <strong>mapper</strong> directive, is used if the host storage referenced by   <em>s.ptr</em>  (or  <em>s%ptr</em>  in Fortran) is not accessible from the device.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
