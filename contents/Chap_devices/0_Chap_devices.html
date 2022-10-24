@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>4.2. Task Affinity &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>6. Devices &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
-    <link rel="next" title="4.3. Affinity Display" href="3_Section_Affinity_Display.html" />
-    <link rel="prev" title="4.1. proc_bind Clause" href="1_Section_proc_bind_Clause.html" />
+    <link rel="next" title="7. SIMD" href="../Chap_SIMD/0_Chap_SIMD.html" />
+    <link rel="prev" title="5.8. Combined parallel masked and taskloop Constructs" href="../Chap_tasking/8_Combined_parallel_masked_and_taskloop_Constructs.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -138,7 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_introduction/1_Section_Examples_Organization.html">
+    <a class="reference internal" href="../Chap_introduction/1_Examples_Organization.html">
      1.1. Examples Organization
     </a>
    </li>
@@ -352,18 +352,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="0_Chap_affinity.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_affinity/0_Chap_affinity.html">
    4. OpenMP Affinity
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="1_Section_proc_bind_Clause.html">
+    <a class="reference internal" href="../Chap_affinity/1_proc_bind_Clause.html">
      4.1.
      <strong>
       proc_bind
@@ -371,18 +371,18 @@ const thebe_selector_output = ".output, .cell_output"
      Clause
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/2_Task_Affinity.html">
      4.2. Task Affinity
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="3_Section_Affinity_Display.html">
+    <a class="reference internal" href="../Chap_affinity/3_Affinity_Display.html">
      4.3. Affinity Display
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="4_Section_Affinity_Query_Func.html">
+    <a class="reference internal" href="../Chap_affinity/4_Affinity_Query_Func.html">
      4.4. Affinity Query Functions
     </a>
    </li>
@@ -471,15 +471,84 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Chap_devices/Chap_devices.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    6. Devices
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Chap_SIMD/Chap_SIMD.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_SIMD/0_Chap_SIMD.html">
    7. SIMD
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_SIMD/1_simd_and_declare_simd_Directives.html">
+     7.1.
+     <strong>
+      simd
+     </strong>
+     and
+     <strong>
+      declare
+     </strong>
+     <strong>
+      simd
+     </strong>
+     Directives
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_SIMD/2_inbranch_and_notinbranch_Clauses.html">
+     7.2.
+     <strong>
+      inbranch
+     </strong>
+     and
+     <strong>
+      notinbranch
+     </strong>
+     Clauses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_SIMD/3_Loop-Carried_Lexical_Forward_Dependence.html">
+     7.3. Loop-Carried Lexical Forward Dependence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_SIMD/4_ref_val_uvalModifiers_for_linear_Clause.html">
+     7.4.
+     <strong>
+      ref
+     </strong>
+     ,
+     <strong>
+      val
+     </strong>
+     ,
+     <strong>
+      uval
+     </strong>
+     Modifiers for
+     <strong>
+      linear
+     </strong>
+     Clause
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_loop_transformations/Chap_loop_transformations.html">
@@ -570,7 +639,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_affinity/2_Section_Task_Affinity.ipynb"
+        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_devices/0_Chap_devices.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -630,7 +699,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Chap_affinity/2_Section_Task_Affinity.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Chap_devices/0_Chap_devices.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -658,7 +727,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/contents/Chap_affinity/2_Section_Task_Affinity.ipynb"
+        <a href="../../_sources/contents/Chap_devices/0_Chap_devices.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -707,7 +776,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Task Affinity</h1>
+                <h1>Devices</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -719,71 +788,16 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="task-affinity">
-<h1><span class="section-number">4.2. </span>Task Affinity<a class="headerlink" href="#task-affinity" title="Permalink to this headline">#</a></h1>
-<p>The next example illustrates the use of the <strong>affinity</strong> clause with a <strong>task</strong> construct. The variables in the <strong>affinity</strong> clause provide a hint to the runtime that the task should execute “close” to the physical storage location of the variables. For example, on a two-socket platform with a local memory component close to each processor socket, the runtime will attempt to schedule the task execution on the socket where the storage is located.</p>
-<p>Because the C/C++ code employs a pointer, an array section is used in the <strong>affinity</strong> clause. Fortran code can use an array reference to specify the storage, as shown here.</p>
-<p>Note, in the second task of the C/C++ code the  <em>B</em>  pointer is declared shared.  Otherwise, by default, it would be firstprivate since it is a local variable, and would probably be saved for the second task before being assigned a storage address by the first task.  Also, one might think it reasonable to use the <strong>affinity</strong> clause  <em>affinity(B[:N])</em>  on the second <strong>task</strong> construct. However, the storage behind  <em>B</em>  is created in the first task, and the  array section reference may not be valid when the second task is generated. The use of the  <em>A</em>  array is sufficient for this case, because one would expect the storage for  <em>A</em>  and  <em>B</em>  would be physically “close” (as provided by the hint in the first task).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
-
-/*
-* name: affinity.6
-* type: C
-* version: omp_5.0
-*/
-double * alloc_init_B(double *A, int N);
-void     compute_on_B(double *B, int N);
-
-void task_affinity(double *A, int N)
-{
-   double * B;
-   #pragma omp task depend(out:B) shared(B) affinity(A[0:N])
-   {
-     B = alloc_init_B(A,N);
-   }
-
-   #pragma omp task depend( in:B) shared(B) affinity(A[0:N])
-   {
-     compute_on_B(B,N);
-   }
-
-   #pragma omp taskwait
-}
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
-!!%cflags: -fopenmp
-
-! name:       affinity.6
-! type:       F-free
-! version: omp_5.0
-subroutine task_affinity(A, N)
-
-  external alloc_init_B
-  external compute_on_B
-  double precision, allocatable :: B(:)
-
-   !$omp task depend(out:B) shared(B) affinity(A)
-     call alloc_init_B(B,A)
-   !$omp end task
-
-   !$omp task depend(in:B) shared(B) affinity(A)
-     call compute_on_B(B)
-   !$omp end task
-
-   !$omp taskwait
-
-end subroutine
-</pre></div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="devices">
+<h1><span class="section-number">6. </span>Devices<a class="headerlink" href="#devices" title="Permalink to this headline">#</a></h1>
+<p>The <strong>target</strong> construct consists of a <strong>target</strong> directive  and an execution region. The <strong>target</strong> region is executed on the default device or the device specified in the <strong>device</strong>  clause.</p>
+<p>In OpenMP version 4.0, by default, all variables within the lexical scope of the construct are copied  <em>to</em>  and  <em>from</em>  the device, unless the device is the host, or the data exists on the device from a previously executed data-type construct that has created space on the device and possibly copied host data to the device storage.</p>
+<p>The constructs that explicitly create storage, transfer data, and free storage on the device are categorized as structured and unstructured. The <strong>target</strong> <strong>data</strong> construct is structured. It creates a data region around <strong>target</strong> constructs, and is convenient for providing persistent data throughout multiple <strong>target</strong> regions. The <strong>target</strong> <strong>enter</strong> <strong>data</strong> and  <strong>target</strong> <strong>exit</strong> <strong>data</strong> constructs are unstructured, because  they can occur anywhere and do not support a “structure”  (a region) for enclosing <strong>target</strong> constructs, as does the <strong>target</strong> <strong>data</strong> construct.</p>
+<p>The <strong>map</strong> clause is used on <strong>target</strong>  constructs and the data-type constructs to map host data. It  specifies the device storage and data movement <strong>to</strong> and <strong>from</strong> the device, and controls on the storage duration.</p>
+<p>There is an important change in the OpenMP 4.5 specification that alters the data model for scalar variables and C/C++ pointer variables. The default behavior for scalar variables and C/C++ pointer variables in a 4.5 compliant code is <strong>firstprivate</strong>. Example codes that have been updated to reflect this new behavior are annotated with a description that describes changes required for correct execution. Often it is a simple matter of mapping the variable as <strong>tofrom</strong> to obtain the intended 4.0 behavior.</p>
+<p>In OpenMP version 4.5 the mechanism for target execution is specified as occurring through a  <em>target task</em> .  When the <strong>target</strong> construct is encountered a new   <em>target task</em>  is generated. The  <em>target task</em>   completes after the <strong>target</strong> region has executed and all data  transfers have finished.</p>
+<p>This new specification does not affect the execution of  pre-4.5 code; it is a necessary element for asynchronous  execution of the <strong>target</strong> region when using the new <strong>nowait</strong>  clause introduced in OpenMP 4.5.</p>
+<div class="toctree-wrapper compound">
 </div>
 </section>
 
@@ -800,7 +814,7 @@ end subroutine
         },
         kernelOptions: {
             kernelName: "native",
-            path: "./contents/Chap_affinity"
+            path: "./contents/Chap_devices"
         },
         predefinedOutput: true
     }
@@ -814,17 +828,17 @@ end subroutine
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="1_Section_proc_bind_Clause.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../Chap_tasking/8_Combined_parallel_masked_and_taskloop_Constructs.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4.1. </span><strong>proc_bind</strong> Clause</p>
+            <p class="prev-next-title"><span class="section-number">5.8. </span>Combined <strong>parallel</strong> <strong>masked</strong> and <strong>taskloop</strong> Constructs</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="3_Section_Affinity_Display.html" title="next page">
+    <a class='right-next' id="next-link" href="../Chap_SIMD/0_Chap_SIMD.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.3. </span>Affinity Display</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>SIMD</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
