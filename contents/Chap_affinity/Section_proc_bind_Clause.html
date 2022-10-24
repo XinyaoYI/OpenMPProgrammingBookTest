@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>proc_bind Clause &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>4.1. proc_bind Clause &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="4.2. Task Affinity" href="Section_Task_Affinity.html" />
+    <link rel="prev" title="4. OpenMP Affinity" href="Chap_affinity.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,7 +126,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Chap_introduction/Chap_introduction.html">
    1. Introduction
@@ -152,49 +154,85 @@ const thebe_selector_output = ".output, .cell_output"
    3. Parallel Execution
   </a>
  </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Chap_affinity.html">
+   4. OpenMP Affinity
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.1.
+     <strong>
+      proc_bind
+     </strong>
+     Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Task_Affinity.html">
+     4.2. Task Affinity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Affinity_Display.html">
+     4.3. Affinity Display
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Affinity_Query_Func.html">
+     4.4. Affinity Query Functions
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_tasking/Chap_tasking.html">
-   4. Tasking
+   5. Tasking
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_devices/Chap_devices.html">
-   5. Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_SIMD/Chap_SIMD.html">
-   6. SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_loop_transformations/Chap_loop_transformations.html">
-   7. Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_synchronization/Chap_synchronization.html">
-   8. Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_data_environment/Chap_data_environment.html">
-   9. Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_memory_model/Chap_memory_model.html">
-   10. Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_program_control/Chap_program_control.html">
-   11. Program Control
+   12. Program Control
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
-   12. OMPT Interface
+   13. OMPT Interface
   </a>
  </li>
 </ul>
@@ -405,17 +443,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#spread-affinity-policy">
-   Spread Affinity Policy
+   4.1.1. Spread Affinity Policy
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#close-affinity-policy">
-   Close Affinity Policy
+   4.1.2. Close Affinity Policy
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#primary-affinity-policy">
-   Primary Affinity Policy
+   4.1.3. Primary Affinity Policy
   </a>
  </li>
 </ul>
@@ -439,17 +477,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#spread-affinity-policy">
-   Spread Affinity Policy
+   4.1.1. Spread Affinity Policy
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#close-affinity-policy">
-   Close Affinity Policy
+   4.1.2. Close Affinity Policy
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#primary-affinity-policy">
-   Primary Affinity Policy
+   4.1.3. Primary Affinity Policy
   </a>
  </li>
 </ul>
@@ -463,7 +501,7 @@ title="Print to PDF"
               <div>
                 
   <section id="proc-bind-clause">
-<h1><strong>proc_bind</strong> Clause<a class="headerlink" href="#proc-bind-clause" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.1. </span><strong>proc_bind</strong> Clause<a class="headerlink" href="#proc-bind-clause" title="Permalink to this headline">#</a></h1>
 <p>The following examples demonstrate how to use the <strong>proc_bind</strong> clause to  control the thread binding for a team of threads in a <strong>parallel</strong> region.  The machine architecture is depicted in Figure 4.1. It consists of two sockets,  each equipped with a quad-core processor and configured to execute two hardware threads simultaneously on each core. These examples assume a contiguous core numbering  starting from 0, such that the hardware threads 0,1 form the first physical core.</p>
 <p><img alt="FIGURE 4.1: A machine architecture with two quad-core processors" src="../../_images/proc_bind_fig.png" /></p>
 <p><strong>FIGURE 4.1:</strong>
@@ -473,7 +511,7 @@ A machine architecture with two quad-core processors</p>
 <p>or</p>
 <p><strong>OMP_PLACES= “{0:2}:8:2”</strong></p>
 <section id="spread-affinity-policy">
-<h2>Spread Affinity Policy<a class="headerlink" href="#spread-affinity-policy" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1.1. </span>Spread Affinity Policy<a class="headerlink" href="#spread-affinity-policy" title="Permalink to this headline">#</a></h2>
 <p><strong>affinity!spread policy <strong>spread</strong> policy</strong> <strong>spread policy <strong>spread</strong> policy</strong></p>
 <p>The following example shows the result of the <strong>spread</strong> affinity policy on  the partition list when the number of threads is less than or equal to the number  of places in the parent’s place partition, for the machine architecture depicted  above. Note that the threads are bound to the first place of each subpartition.</p>
 <div class="cell docutils container">
@@ -600,7 +638,7 @@ end subroutine
 </ul>
 </section>
 <section id="close-affinity-policy">
-<h2>Close Affinity Policy<a class="headerlink" href="#close-affinity-policy" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1.2. </span>Close Affinity Policy<a class="headerlink" href="#close-affinity-policy" title="Permalink to this headline">#</a></h2>
 <p>The following example shows the result of the <strong>close</strong> affinity policy on  the partition list when the number of threads is less than or equal to the number  of places in parent’s place partition, for the machine architecture depicted above.  The place partition is not changed by the <strong>close</strong> policy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -721,7 +759,7 @@ end subroutine
 </ul>
 </section>
 <section id="primary-affinity-policy">
-<h2>Primary Affinity Policy<a class="headerlink" href="#primary-affinity-policy" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1.3. </span>Primary Affinity Policy<a class="headerlink" href="#primary-affinity-policy" title="Permalink to this headline">#</a></h2>
 <p>The following example shows the result of the <strong>primary</strong> affinity policy on  the partition list for the machine architecture depicted above. The place partition  is not changed by the primary policy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -801,6 +839,20 @@ int main()
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Chap_affinity.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>OpenMP Affinity</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Section_Task_Affinity.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>Task Affinity</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>7. Loop Transformations &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>8. Loop Transformations &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
-    <link rel="next" title="8. Synchronization" href="../Chap_synchronization/Chap_synchronization.html" />
-    <link rel="prev" title="6. SIMD" href="../Chap_SIMD/Chap_SIMD.html" />
+    <link rel="next" title="9. Synchronization" href="../Chap_synchronization/Chap_synchronization.html" />
+    <link rel="prev" title="7. SIMD" href="../Chap_SIMD/Chap_SIMD.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -154,49 +154,85 @@ const thebe_selector_output = ".output, .cell_output"
    3. Parallel Execution
   </a>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_affinity/Chap_affinity.html">
+   4. OpenMP Affinity
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/Section_proc_bind_Clause.html">
+     4.1.
+     <strong>
+      proc_bind
+     </strong>
+     Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/Section_Task_Affinity.html">
+     4.2. Task Affinity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/Section_Affinity_Display.html">
+     4.3. Affinity Display
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/Section_Affinity_Query_Func.html">
+     4.4. Affinity Query Functions
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_tasking/Chap_tasking.html">
-   4. Tasking
+   5. Tasking
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_devices/Chap_devices.html">
-   5. Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_SIMD/Chap_SIMD.html">
-   6. SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   7. Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_synchronization/Chap_synchronization.html">
-   8. Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_data_environment/Chap_data_environment.html">
-   9. Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_memory_model/Chap_memory_model.html">
-   10. Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_program_control/Chap_program_control.html">
-   11. Program Control
+   12. Program Control
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
-   12. OMPT Interface
+   13. OMPT Interface
   </a>
  </li>
 </ul>
@@ -407,7 +443,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tile-construct">
-   7.1.
+   8.1.
    <strong>
     tile
    </strong>
@@ -416,7 +452,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#unroll-construct">
-   7.2.
+   8.2.
    <strong>
     unroll
    </strong>
@@ -425,7 +461,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#incomplete-tiles">
-   7.3. Incomplete Tiles
+   8.3. Incomplete Tiles
   </a>
  </li>
 </ul>
@@ -449,7 +485,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tile-construct">
-   7.1.
+   8.1.
    <strong>
     tile
    </strong>
@@ -458,7 +494,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#unroll-construct">
-   7.2.
+   8.2.
    <strong>
     unroll
    </strong>
@@ -467,7 +503,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#incomplete-tiles">
-   7.3. Incomplete Tiles
+   8.3. Incomplete Tiles
   </a>
  </li>
 </ul>
@@ -481,12 +517,12 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="loop-transformations">
-<h1><span class="section-number">7. </span>Loop Transformations<a class="headerlink" href="#loop-transformations" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">8. </span>Loop Transformations<a class="headerlink" href="#loop-transformations" title="Permalink to this headline">#</a></h1>
 <p>To obtain better performance on a platform, code may need to be restructured  relative to the way it is written (which is often for best readability). User-directed loop transformations accomplish this goal by providing a means  to separate code semantics and its optimization.</p>
 <p>A loop transformation construct states that a transformation operation is to be  performed on set of nested loops.  This directive approach can target specific loops for transformation, rather than applying more time-consuming general compiler  heuristics methods with compiler options that may not be able to discover  optimal transformations.</p>
 <p>Loop transformations can be augmented by preprocessor support or OpenMP <strong>metadirective</strong>  directives, to select optimal dimension and size parameters for specific platforms, facilitating a single code base for multiple platforms. Moreover, directive-based transformations make experimenting easier:  whereby specific hot spots can be affected by transformation directives.</p>
 <section id="tile-construct">
-<h2><span class="section-number">7.1. </span><strong>tile</strong> Construct<a class="headerlink" href="#tile-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1. </span><strong>tile</strong> Construct<a class="headerlink" href="#tile-construct" title="Permalink to this headline">#</a></h2>
 <p>In the following example a <strong>tile</strong> construct transforms two nested loops within the  <strong>func1</strong>  function into four nested loops. The tile sizes in the <strong>sizes</strong> clause are applied from outermost to innermost loops (left-to-right). The effective tiling operation is illustrated in the  <strong>func2</strong>  function.  (For easier illustration, tile sizes for all examples in this section evenly  divide the iteration counts so that there are no remainders.)</p>
 <p>In the following C/C++ code the inner loop traverses columns and the outer loop traverses the rows of a 100x128 (row x column) matrix.   The <strong>sizes(5,16)</strong> clause of the <strong>tile</strong> construct specifies a 5x16 blocking, applied to the outer (row) and inner (column) loops. The worksharing-loop construct before the <strong>tile</strong> construct is applied after the transform.</p>
 <div class="cell docutils container">
@@ -659,7 +695,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="unroll-construct">
-<h2><span class="section-number">7.2. </span><strong>unroll</strong> Construct<a class="headerlink" href="#unroll-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2. </span><strong>unroll</strong> Construct<a class="headerlink" href="#unroll-construct" title="Permalink to this headline">#</a></h2>
 <p>The <strong>unroll</strong> construct is a loop transformation that increases the  number of loop blocks in a loop, while reducing the number of iterations. The <strong>full</strong> clause specifies that the loop is to be completely unrolled.   That is, a loop block for each iteration is created, and the loop is removed. A <strong>partial</strong> clause  with a  <em>unroll-factor</em>  specifies that the number of  iterations will be reduced multiplicatively by the factor while the number of  blocks will be increased by the same factor.   Operationally, the loop is tiled by the factor, and the tiled loop is  fully expanded, resulting in a single loop with multiple blocks.</p>
 <p>Unrolling can reduce control-flow overhead and provide additional optimization opportunities for the compiler and the processor pipeline. Nevertheless, unrolling can increase the code size, and saturate the instruction cache. Hence, the trade-off may need to be assessed. Unrolling a loop does not change the code’s semantics. Also, compilers may unroll loops without explicit directives, at various optimization levels.</p>
 <p>In the example below, the <strong>unroll</strong> construct is used without any clause, and then with a <strong>full</strong> clause, in the first two functions, respectively. When no clause is used, it is up to the implementation (compiler)  to decide if and how the loop is to be unrolled.   The iteration count can have a run time value.   In the second function, the <strong>unroll</strong> construct uses a <strong>full</strong> clause to completely unroll the loop.  A compile-time constant is required for the iteration count. The statements in the third function ( <em>unroll_full_equivalent</em> ) illustrates equivalent code for the full unrolling in the second function.</p>
@@ -1127,7 +1163,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="incomplete-tiles">
-<h2><span class="section-number">7.3. </span>Incomplete Tiles<a class="headerlink" href="#incomplete-tiles" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.3. </span>Incomplete Tiles<a class="headerlink" href="#incomplete-tiles" title="Permalink to this headline">#</a></h2>
 <p>Optimal performance for tiled loops is achieved when the loop iteration count is a multiple of the tile size. When this condition does not exist, the implementation is free to execute the partial loops in a manner that optimizes performance, while preserving the specified order of iterations in the complete-tile loops.</p>
 <p>Figure 8.1a shows an example of a 2-by-2 tiling for a 5-by-5 iteration space. There are nine resulting tiles. Four are <strong>complete</strong> 2-by-2 tiles, and the remaining five tiles are  <em>partial</em>  tiles.</p>
 <table class="colwidths-auto table">
@@ -1517,13 +1553,13 @@ Tiling illustrations</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6. </span>SIMD</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>SIMD</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../Chap_synchronization/Chap_synchronization.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Synchronization</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Synchronization</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

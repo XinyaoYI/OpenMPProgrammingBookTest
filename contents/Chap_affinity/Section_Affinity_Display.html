@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Affinity Display &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>4.3. Affinity Display &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="4.4. Affinity Query Functions" href="Section_Affinity_Query_Func.html" />
+    <link rel="prev" title="4.2. Task Affinity" href="Section_Task_Affinity.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,7 +126,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Chap_introduction/Chap_introduction.html">
    1. Introduction
@@ -152,49 +154,85 @@ const thebe_selector_output = ".output, .cell_output"
    3. Parallel Execution
   </a>
  </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Chap_affinity.html">
+   4. OpenMP Affinity
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_proc_bind_Clause.html">
+     4.1.
+     <strong>
+      proc_bind
+     </strong>
+     Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Task_Affinity.html">
+     4.2. Task Affinity
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.3. Affinity Display
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Affinity_Query_Func.html">
+     4.4. Affinity Query Functions
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_tasking/Chap_tasking.html">
-   4. Tasking
+   5. Tasking
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_devices/Chap_devices.html">
-   5. Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_SIMD/Chap_SIMD.html">
-   6. SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_loop_transformations/Chap_loop_transformations.html">
-   7. Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_synchronization/Chap_synchronization.html">
-   8. Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_data_environment/Chap_data_environment.html">
-   9. Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_memory_model/Chap_memory_model.html">
-   10. Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_program_control/Chap_program_control.html">
-   11. Program Control
+   12. Program Control
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
-   12. OMPT Interface
+   13. OMPT Interface
   </a>
  </li>
 </ul>
@@ -406,7 +444,7 @@ title="Print to PDF"
               <div>
                 
   <section id="affinity-display">
-<h1>Affinity Display<a class="headerlink" href="#affinity-display" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.3. </span>Affinity Display<a class="headerlink" href="#affinity-display" title="Permalink to this headline">#</a></h1>
 <p>The following examples illustrate ways to display thread affinity. Automatic display of affinity can be invoked by setting the <strong>OMP_DISPLAY_AFFINITY</strong> environment variable to <strong>TRUE</strong>.   The format of the output can be customized by setting the  <strong>OMP_AFFINITY_FORMAT</strong> environment variable to an appropriate string.   Also, there are API calls for the user to display thread affinity  at selected locations within code.</p>
 <p>For the first example the environment variable <strong>OMP_DISPLAY_AFFINITY</strong> has been set to <strong>TRUE</strong>, and execution occurs on an 8-core system with <strong>OMP_NUM_THREADS</strong> set to 8.</p>
 <p>The affinity for the primary thread is reported through a call to the API <strong>omp_display_affinity()</strong> routine. For default affinity settings the report shows that the primary thread can execute on any of the cores.  In the following parallel region the affinity for each of the team threads is reported automatically since the <strong>OMP_DISPLAY_AFFINITY</strong> environment variable has been set to <strong>TRUE</strong>.</p>
@@ -962,6 +1000,20 @@ end program
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Section_Task_Affinity.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4.2. </span>Task Affinity</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Section_Affinity_Query_Func.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>Affinity Query Functions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

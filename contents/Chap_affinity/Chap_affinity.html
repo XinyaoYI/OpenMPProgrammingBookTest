@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>OpenMP Affinity &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>4. OpenMP Affinity &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="4.1. proc_bind Clause" href="Section_proc_bind_Clause.html" />
+    <link rel="prev" title="3. Parallel Execution" href="../Chap_parallel_execution/Chap_parallel_execution.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,7 +126,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Chap_introduction/Chap_introduction.html">
    1. Introduction
@@ -152,49 +154,85 @@ const thebe_selector_output = ".output, .cell_output"
    3. Parallel Execution
   </a>
  </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   4. OpenMP Affinity
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_proc_bind_Clause.html">
+     4.1.
+     <strong>
+      proc_bind
+     </strong>
+     Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Task_Affinity.html">
+     4.2. Task Affinity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Affinity_Display.html">
+     4.3. Affinity Display
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Affinity_Query_Func.html">
+     4.4. Affinity Query Functions
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_tasking/Chap_tasking.html">
-   4. Tasking
+   5. Tasking
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_devices/Chap_devices.html">
-   5. Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_SIMD/Chap_SIMD.html">
-   6. SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_loop_transformations/Chap_loop_transformations.html">
-   7. Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_synchronization/Chap_synchronization.html">
-   8. Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_data_environment/Chap_data_environment.html">
-   9. Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_memory_model/Chap_memory_model.html">
-   10. Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_program_control/Chap_program_control.html">
-   11. Program Control
+   12. Program Control
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
-   12. OMPT Interface
+   13. OMPT Interface
   </a>
  </li>
 </ul>
@@ -406,13 +444,15 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="openmp-affinity">
-<h1>OpenMP Affinity<a class="headerlink" href="#openmp-affinity" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4. </span>OpenMP Affinity<a class="headerlink" href="#openmp-affinity" title="Permalink to this headline">#</a></h1>
 <p>OpenMP Affinity consists of a <strong>proc_bind</strong> policy (thread affinity policy) and a specification of places ( <strong>“</strong> location units <strong>“</strong>  or  <em>processors</em>  that may be cores, hardware threads, sockets, etc.).   OpenMP Affinity enables users to bind computations on specific places. The placement will hold for the duration of the parallel region.  However, the runtime is free to migrate the OpenMP threads  to different cores (hardware threads, sockets, etc.) prescribed within a given place,  if two or more cores (hardware threads, sockets, etc.) have been assigned to a given place.</p>
 <p>Often the binding can be managed without resorting to explicitly setting places. Without the specification of places in the <strong>OMP_PLACES</strong> variable,  the OpenMP runtime will distribute and bind threads using the entire range of processors for  the OpenMP program, according to the <strong>OMP_PROC_BIND</strong> environment variable or the <strong>proc_bind</strong> clause.  When places are specified, the OMP runtime binds threads to the places according to a default distribution policy, or those specified in the <strong>OMP_PROC_BIND</strong> environment variable or the <strong>proc_bind</strong> clause.</p>
 <p>In the OpenMP Specifications document a processor refers to an execution unit that is enabled for an OpenMP thread to use.  A processor is a core when there is no SMT (Simultaneous Multi-Threading) support or SMT is disabled.  When  SMT is enabled, a processor is a hardware thread (HW-thread). (This is the usual case; but actually, the execution unit is implementation defined.) Processor numbers are numbered sequentially from 0 to the number of cores less one (without SMT), or 0 to the number HW-threads less one (with SMT). OpenMP places use the processor number to designate binding locations (unless an  <strong>“</strong> abstract name <strong>“</strong>  is used.)</p>
 <p>The processors available to a process may be a subset of the system’s processors.  This restriction may be the result of a  wrapper process controlling the execution (such as <strong>numactl</strong> on Linux systems),  compiler options, library-specific environment variables, or default kernel settings.  For instance, the execution of multiple MPI processes, launched on a single compute node, will each have a subset of processors as determined by the MPI launcher or set by MPI affinity environment  variables for the MPI library.</p>
 <p>Threads of a team are positioned onto places in a compact manner, a  scattered distribution, or onto the primary thread’s place, by setting the  <strong>OMP_PROC_BIND</strong> environment variable or the <strong>proc_bind</strong> clause  to  <strong>close</strong>, <strong>spread</strong>, or <strong>primary</strong> (<strong>master</strong> has been deprecated), respectively.  When  <strong>OMP_PROC_BIND</strong> is set to FALSE no binding is enforced; and  when the value is TRUE, the binding is implementation defined to  a set of places in the <strong>OMP_PLACES</strong> variable or to places  defined by the implementation if the <strong>OMP_PLACES</strong> variable  is not set.</p>
 <p>The <strong>OMP_PLACES</strong> variable can also be set to an abstract name  (<strong>threads</strong>, <strong>cores</strong>, <strong>sockets</strong>) to specify that a place is either a single hardware thread, a core, or a socket, respectively.  This description of the <strong>OMP_PLACES</strong> is most useful when the  number of threads is equal to the number of hardware thread, cores or sockets.  It can also be used with a <strong>close</strong> or <strong>spread</strong>  distribution policy when the equality doesn’t hold.</p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -442,6 +482,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../Chap_parallel_execution/Chap_parallel_execution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Parallel Execution</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Section_proc_bind_Clause.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.1. </span><strong>proc_bind</strong> Clause</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
