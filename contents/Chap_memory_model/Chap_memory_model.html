@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>9. Memory Model &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>11. Memory Model &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
-    <link rel="next" title="10. Program Control" href="../Chap_program_control/Chap_program_control.html" />
-    <link rel="prev" title="8. Data Environment" href="../Chap_data_environment/Chap_data_environment.html" />
+    <link rel="next" title="12. Program Control" href="../Chap_program_control/Chap_program_control.html" />
+    <link rel="prev" title="10. Data Environment" href="../Chap_data_environment/Chap_data_environment.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -128,20 +128,25 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_directives/0_Chap_directives.html">
-   1. OpenMP Directive Syntax
+  <a class="reference internal" href="../Chap_introduction/0_Chap_introduction.html">
+   1. Introduction
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_introduction/1_Section_Examples_Organization.html">
+     1.1. Examples Organization
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_parallel_execution/0_Chap_parallel_execution.html">
-   2. Parallel Execution
+  <a class="reference internal" href="../Chap_directives/0_Chap_directives.html">
+   2. OpenMP Directive Syntax
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -150,13 +155,45 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/1_C_C%2B%2B_Pragmas.html">
+     2.1. C/C++ Pragmas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/2_C%2B%2B_Attributes.html">
+     2.2. C++ Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/3_Fortran_Comments_Fixed_Source_Form.html">
+     2.3. Fortran Comments (Fixed Source Form)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/4_Fortran_Comments_Free_Source_Form.html">
+     2.4. Fortran Comments (Free Source Form)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_parallel_execution/0_Chap_parallel_execution.html">
+   3. Parallel Execution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/1_A_Simple_Parallel_Loop.html">
-     2.1. A Simple Parallel Loop
+     3.1. A Simple Parallel Loop
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/2_parallel_Construct.html">
-     2.2.
+     3.2.
      <strong>
       parallel
      </strong>
@@ -165,7 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/3_teams_Construct_on_Host.html">
-     2.3.
+     3.3.
      <strong>
       teams
      </strong>
@@ -174,12 +211,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/4_Controlling_the_Number_of_Threads_on_Multiple_Nesting_Levels.html">
-     2.4. Controlling the Number of Threads on Multiple Nesting Levels
+     3.4. Controlling the Number of Threads on Multiple Nesting Levels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/5_Interaction_Between_the_num_threads_Clause_and_omp_set_dynamic.html">
-     2.5. Interaction Between the
+     3.5. Interaction Between the
      <strong>
       num_threads
      </strong>
@@ -191,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/6_Fortran_Restrictions_on_the_do_Construct.html">
-     2.6. Fortran Restrictions on the
+     3.6. Fortran Restrictions on the
      <strong>
       do
      </strong>
@@ -200,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/7_nowait_Clause.html">
-     2.7.
+     3.7.
      <strong>
       nowait
      </strong>
@@ -209,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/8_collapse_Clause.html">
-     2.8.
+     3.8.
      <strong>
       collapse
      </strong>
@@ -218,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/9_linear_Clause_in_Loop_Constructs.html">
-     2.9.
+     3.9.
      <strong>
       linear
      </strong>
@@ -227,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/10_parallel_sections_Construct.html">
-     2.10.
+     3.10.
      <strong>
       parallel
      </strong>
@@ -239,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/11_firstprivate_Clause_and_sections_Construct.html">
-     2.11.
+     3.11.
      <strong>
       firstprivate
      </strong>
@@ -252,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/12_single_Construct.html">
-     2.12.
+     3.12.
      <strong>
       single
      </strong>
@@ -261,7 +298,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/13_workshare_Construct.html">
-     2.13.
+     3.13.
      <strong>
       workshare
      </strong>
@@ -270,7 +307,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/14_masked_Construct.html">
-     2.14.
+     3.14.
      <strong>
       masked
      </strong>
@@ -279,7 +316,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/15_loop_Construct.html">
-     2.15.
+     3.15.
      <strong>
       loop
      </strong>
@@ -288,12 +325,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/16_Parallel_Random_Access_Iterator_Loop.html">
-     2.16. Parallel Random Access Iterator Loop
+     3.16. Parallel Random Access Iterator Loop
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/17_omp_set_dynamic_and_omp_set_num_threads_Routines.html">
-     2.17.
+     3.17.
      <strong>
       omp_set_dynamic
      </strong>
@@ -306,7 +343,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/18_omp_get_num_threads_Routine.html">
-     2.18.
+     3.18.
      <strong>
       omp_get_num_threads
      </strong>
@@ -316,18 +353,54 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_tasking/0_Chap_tasking.html">
-   3. Tasking
+  <a class="reference internal" href="../Chap_affinity/0_Chap_affinity.html">
+   4. OpenMP Affinity
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/1_Section_proc_bind_Clause.html">
+     4.1.
+     <strong>
+      proc_bind
+     </strong>
+     Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/2_Section_Task_Affinity.html">
+     4.2. Task Affinity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/3_Section_Affinity_Display.html">
+     4.3. Affinity Display
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/4_Section_Affinity_Query_Func.html">
+     4.4. Affinity Query Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_tasking/0_Chap_tasking.html">
+   5. Tasking
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/1_task_and_taskwait_Constructs.html">
-     3.1.
+     5.1.
      <strong>
       task
      </strong>
@@ -340,22 +413,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/2_Task_Priority.html">
-     3.2. Task Priority
+     5.2. Task Priority
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/3_Task_Dependences.html">
-     3.3. Task Dependences
+     5.3. Task Dependences
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/4_Task_Detachment.html">
-     3.4. Task Detachment
+     5.4. Task Detachment
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/5_taskgroup_Construct.html">
-     3.5.
+     5.5.
      <strong>
       taskgroup
      </strong>
@@ -364,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/6_taskyield_Construct.html">
-     3.6.
+     5.6.
      <strong>
       taskyield
      </strong>
@@ -373,7 +446,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/7_taskloop_Construct.html">
-     3.7.
+     5.7.
      <strong>
       taskloop
      </strong>
@@ -382,7 +455,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/8_Combined_parallel_masked_and_taskloop_Constructs.html">
-     3.8. Combined
+     5.8. Combined
      <strong>
       parallel
      </strong>
@@ -400,42 +473,42 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_devices/Chap_devices.html">
-   4. Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_SIMD/Chap_SIMD.html">
-   5. SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_loop_transformations/Chap_loop_transformations.html">
-   6. Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_synchronization/Chap_synchronization.html">
-   7. Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_data_environment/Chap_data_environment.html">
-   8. Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   9. Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_program_control/Chap_program_control.html">
-   10. Program Control
+   12. Program Control
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
-   11. OMPT Interface
+   13. OMPT Interface
   </a>
  </li>
 </ul>
@@ -646,17 +719,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#openmp-memory-model">
-   9.1. OpenMP Memory Model
+   11.1. OpenMP Memory Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#memory-allocators">
-   9.2. Memory Allocators
+   11.2. Memory Allocators
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#race-conditions-caused-by-implied-copies-of-shared-variables-in-fortran">
-   9.3. Race Conditions Caused by Implied Copies of Shared Variables in Fortran
+   11.3. Race Conditions Caused by Implied Copies of Shared Variables in Fortran
   </a>
  </li>
 </ul>
@@ -680,17 +753,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#openmp-memory-model">
-   9.1. OpenMP Memory Model
+   11.1. OpenMP Memory Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#memory-allocators">
-   9.2. Memory Allocators
+   11.2. Memory Allocators
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#race-conditions-caused-by-implied-copies-of-shared-variables-in-fortran">
-   9.3. Race Conditions Caused by Implied Copies of Shared Variables in Fortran
+   11.3. Race Conditions Caused by Implied Copies of Shared Variables in Fortran
   </a>
  </li>
 </ul>
@@ -704,14 +777,14 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="memory-model">
-<h1><span class="section-number">9. </span>Memory Model<a class="headerlink" href="#memory-model" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">11. </span>Memory Model<a class="headerlink" href="#memory-model" title="Permalink to this headline">#</a></h1>
 <p>OpenMP provides a shared-memory model that allows all threads on a given device shared access to <em>memory</em>. For a given OpenMP region that may be executed by more than one thread or SIMD lane, variables in memory may be <em>shared</em> or <em>private</em> with respect to those threads or SIMD lanes. A variable’s data-sharing attribute indicates whether it is shared (the <em>shared</em> attribute) or private (the <em>private</em>, <em>firstprivate</em>, <em>lastprivate</em>, <em>linear</em>, and <em>reduction</em> attributes) in the data environment of an OpenMP region. While private variables in an OpenMP region are new copies of the original variable (with same name) that may then be concurrently accessed or modified by their respective threads or SIMD lanes, a shared variable in an OpenMP region is the same as the variable of the same name in the enclosing region. Concurrent accesses or modifications to a shared variable may therefore require synchronization to avoid data races.</p>
 <p>OpenMP’s memory model also includes a <em>temporary view</em> of memory that is associated with each thread. Two different threads may see different values for a given variable in their respective temporary views. Threads may employ flush operations for the purposes of making their temporary view of a variable consistent with the value of the variable in memory. The effect of a given flush operation is characterized by its flush properties - some combination of <em>strong</em>, <em>release</em>, and <em>acquire</em> - and, for <em>strong</em> flushes, a <em>flush-set</em>.</p>
 <p>A <em>strong</em> flush will force consistency between the temporary view and the memory for all variables in its <em>flush-set</em>.  Furthermore, all strong flushes in a program that have intersecting flush-sets will execute in some total order, and within a thread strong flushes may not be reordered with respect to other memory operations on variables in its flush-set. <em>Release</em> and <em>acquire</em> flushes operate in pairs. A release flush may “synchronize’’ with an acquire flush, and when it does so the local memory operations that precede the release flush will appear to have been completed before the local memory operations on the same variables that follow the acquire flush.</p>
 <p>Flush operations arise from explicit <strong>flush</strong> directives, implicit <strong>flush</strong> directives, and also from the execution of <strong>atomic</strong> constructs. The <strong>flush</strong> directive forces a  consistent view of local variables of the thread executing the <strong>flush</strong>.  When a list is supplied on the directive, only the items (variables) in the list are guaranteed to be flushed.  Implied flushes exist at prescribed locations of certain constructs. For the complete list of these locations and associated constructs, please refer to the  <em>flush Construct</em>  section of the OpenMP Specifications document.</p>
 <p>In this chapter, examples illustrate how race conditions may arise for accesses to variables with a  <em>shared</em>  data-sharing attribute when flush operations are not properly employed.  A race condition can exist when two or more threads are involved in accessing a variable and at least one of the accesses modifies the variable.  In particular, a data race will arise when conflicting accesses do not have a well-defined <em>completion order</em>.  The existence of data races in OpenMP programs result in undefined behavior, and so they should generally be avoided for programs to be correct.  The completion order of accesses to a shared variable is guaranteed in OpenMP through a set of memory consistency rules that are described in the  <em>OpenMP Memory Consistency</em>  section of the OpenMP Specifications document.</p>
 <section id="openmp-memory-model">
-<h2><span class="section-number">9.1. </span>OpenMP Memory Model<a class="headerlink" href="#openmp-memory-model" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.1. </span>OpenMP Memory Model<a class="headerlink" href="#openmp-memory-model" title="Permalink to this headline">#</a></h2>
 <p>The following examples illustrate two major concerns for concurrent thread execution: ordering of thread execution and memory accesses that may or may not lead to race conditions.</p>
 <p>In the following example, at Print 1, the value of <strong>xval</strong> could be either 2 or 5, depending on the timing of the threads. The <strong>atomic</strong> directives are necessary for the accesses to <strong>x</strong> by threads 1 and 2 to avoid a data race. If the atomic write completes before the atomic read, thread 1 is guaranteed to see 5 in <strong>xval</strong>. Otherwise, thread 1 is guaranteed to see 2 in <strong>xval</strong>.</p>
 <p><em>flushes!implicit</em> <em>atomic construct <strong>atomic</strong> construct</em> <em>constructs!atomic <strong>atomic</strong></em> The barrier after Print 1 contains implicit flushes on all threads, as well as a thread synchronization, so the programmer is guaranteed that the value 5 will be printed by both Print 2 and Print 3. Since neither Print 2 or Print 3 are modifying <strong>x</strong>, they may concurrently access <strong>x</strong> without requiring <strong>atomic</strong> directives to avoid a data race.</p>
@@ -1222,7 +1295,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="memory-allocators">
-<h2><span class="section-number">9.2. </span>Memory Allocators<a class="headerlink" href="#memory-allocators" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.2. </span>Memory Allocators<a class="headerlink" href="#memory-allocators" title="Permalink to this headline">#</a></h2>
 <p>OpenMP memory allocators can be used to allocate memory with specific allocator traits.  In the following example an OpenMP allocator is used to specify an alignment for arrays  <em>x</em>  and  <em>y</em> . The general approach for attributing traits to variables allocated by OpenMP is to create or specify a pre-defined  <em>memory space</em> , create an array of  <em>traits</em> , and then form an  <em>allocator</em>  from the memory space and trait. The allocator is then specified in an OpenMP allocation (using an API  <em>omp_alloc()</em>  function for C/C++ code and an <strong>allocators</strong> directive for Fortran code in the  <em>allocators.1</em>  example).</p>
 <p>In the example below the  <em>xy_memspace</em>  variable is declared and assigned the default memory space ( <em>omp_default_mem_space</em> ). Next, an array for  <em>traits</em>  is created. Since only one trait will be used, the array size is  <em>1</em> . A trait is a structure in C/C++ and a derived type in Fortran, containing 2 components: a key and a corresponding value (key-value pair). The trait key used here is  <em>omp_atk_alignment</em>  (an enum for C/C++ and a parameter for Fortran) and the trait value of 64 is specified in the  <em>xy_traits</em>  declaration. These declarations are followed by a call to the  <em>omp_init_allocator()</em>  function to combine the memory space ( <em>xy_memspace</em> ) and the traits ( <em>xy_traits</em> ) to form an allocator ( <em>xy_alloc</em> ).</p>
 <p>In the C/C++ code the API   <em>omp_allocate()</em>  function is used to allocate space, similar to  <em>malloc</em> , except that the allocator is specified as the second argument. In Fortran an <strong>allocators</strong> directive is used to specify an allocator for the following Fortran  <em>allocate</em>  statement. A variable list in the <strong>allocate</strong> clause may be supplied if the allocator is to be applied to a subset of variables in the Fortran allocate statement. Here, the  <em>xy_alloc</em>  allocator is specified in the modifier of the <strong>allocator</strong> clause, and the set of all variables used in the  <em>allocate</em>  statement is specified in the list.</p>
@@ -1527,7 +1600,7 @@ end program
 </div>
 </section>
 <section id="race-conditions-caused-by-implied-copies-of-shared-variables-in-fortran">
-<h2><span class="section-number">9.3. </span>Race Conditions Caused by Implied Copies of Shared Variables in Fortran<a class="headerlink" href="#race-conditions-caused-by-implied-copies-of-shared-variables-in-fortran" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.3. </span>Race Conditions Caused by Implied Copies of Shared Variables in Fortran<a class="headerlink" href="#race-conditions-caused-by-implied-copies-of-shared-variables-in-fortran" title="Permalink to this headline">#</a></h2>
 <p>The following example contains a race condition, because the shared variable, which  is an array section, is passed as an actual argument to a routine that has an assumed-size  array as its dummy argument. The subroutine call passing an array section argument  may cause the compiler to copy the argument into a temporary location prior to  the call and copy from the temporary location into the original variable when the  subroutine returns. This copying would cause races in the <strong>parallel</strong> region.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1598,13 +1671,13 @@ end program
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">8. </span>Data Environment</p>
+            <p class="prev-next-title"><span class="section-number">10. </span>Data Environment</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../Chap_program_control/Chap_program_control.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Program Control</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Program Control</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

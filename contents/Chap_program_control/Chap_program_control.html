@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>10. Program Control &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>12. Program Control &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
-    <link rel="next" title="11. OMPT Interface" href="../Chap_ompt_interface/Chap_ompt_interface.html" />
-    <link rel="prev" title="9. Memory Model" href="../Chap_memory_model/Chap_memory_model.html" />
+    <link rel="next" title="13. OMPT Interface" href="../Chap_ompt_interface/Chap_ompt_interface.html" />
+    <link rel="prev" title="11. Memory Model" href="../Chap_memory_model/Chap_memory_model.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -128,20 +128,25 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_directives/0_Chap_directives.html">
-   1. OpenMP Directive Syntax
+  <a class="reference internal" href="../Chap_introduction/0_Chap_introduction.html">
+   1. Introduction
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_introduction/1_Section_Examples_Organization.html">
+     1.1. Examples Organization
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_parallel_execution/0_Chap_parallel_execution.html">
-   2. Parallel Execution
+  <a class="reference internal" href="../Chap_directives/0_Chap_directives.html">
+   2. OpenMP Directive Syntax
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -150,13 +155,45 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/1_C_C%2B%2B_Pragmas.html">
+     2.1. C/C++ Pragmas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/2_C%2B%2B_Attributes.html">
+     2.2. C++ Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/3_Fortran_Comments_Fixed_Source_Form.html">
+     2.3. Fortran Comments (Fixed Source Form)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/4_Fortran_Comments_Free_Source_Form.html">
+     2.4. Fortran Comments (Free Source Form)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_parallel_execution/0_Chap_parallel_execution.html">
+   3. Parallel Execution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/1_A_Simple_Parallel_Loop.html">
-     2.1. A Simple Parallel Loop
+     3.1. A Simple Parallel Loop
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/2_parallel_Construct.html">
-     2.2.
+     3.2.
      <strong>
       parallel
      </strong>
@@ -165,7 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/3_teams_Construct_on_Host.html">
-     2.3.
+     3.3.
      <strong>
       teams
      </strong>
@@ -174,12 +211,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/4_Controlling_the_Number_of_Threads_on_Multiple_Nesting_Levels.html">
-     2.4. Controlling the Number of Threads on Multiple Nesting Levels
+     3.4. Controlling the Number of Threads on Multiple Nesting Levels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/5_Interaction_Between_the_num_threads_Clause_and_omp_set_dynamic.html">
-     2.5. Interaction Between the
+     3.5. Interaction Between the
      <strong>
       num_threads
      </strong>
@@ -191,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/6_Fortran_Restrictions_on_the_do_Construct.html">
-     2.6. Fortran Restrictions on the
+     3.6. Fortran Restrictions on the
      <strong>
       do
      </strong>
@@ -200,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/7_nowait_Clause.html">
-     2.7.
+     3.7.
      <strong>
       nowait
      </strong>
@@ -209,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/8_collapse_Clause.html">
-     2.8.
+     3.8.
      <strong>
       collapse
      </strong>
@@ -218,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/9_linear_Clause_in_Loop_Constructs.html">
-     2.9.
+     3.9.
      <strong>
       linear
      </strong>
@@ -227,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/10_parallel_sections_Construct.html">
-     2.10.
+     3.10.
      <strong>
       parallel
      </strong>
@@ -239,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/11_firstprivate_Clause_and_sections_Construct.html">
-     2.11.
+     3.11.
      <strong>
       firstprivate
      </strong>
@@ -252,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/12_single_Construct.html">
-     2.12.
+     3.12.
      <strong>
       single
      </strong>
@@ -261,7 +298,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/13_workshare_Construct.html">
-     2.13.
+     3.13.
      <strong>
       workshare
      </strong>
@@ -270,7 +307,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/14_masked_Construct.html">
-     2.14.
+     3.14.
      <strong>
       masked
      </strong>
@@ -279,7 +316,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/15_loop_Construct.html">
-     2.15.
+     3.15.
      <strong>
       loop
      </strong>
@@ -288,12 +325,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/16_Parallel_Random_Access_Iterator_Loop.html">
-     2.16. Parallel Random Access Iterator Loop
+     3.16. Parallel Random Access Iterator Loop
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/17_omp_set_dynamic_and_omp_set_num_threads_Routines.html">
-     2.17.
+     3.17.
      <strong>
       omp_set_dynamic
      </strong>
@@ -306,7 +343,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/18_omp_get_num_threads_Routine.html">
-     2.18.
+     3.18.
      <strong>
       omp_get_num_threads
      </strong>
@@ -316,18 +353,54 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_tasking/0_Chap_tasking.html">
-   3. Tasking
+  <a class="reference internal" href="../Chap_affinity/0_Chap_affinity.html">
+   4. OpenMP Affinity
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/1_Section_proc_bind_Clause.html">
+     4.1.
+     <strong>
+      proc_bind
+     </strong>
+     Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/2_Section_Task_Affinity.html">
+     4.2. Task Affinity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/3_Section_Affinity_Display.html">
+     4.3. Affinity Display
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/4_Section_Affinity_Query_Func.html">
+     4.4. Affinity Query Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_tasking/0_Chap_tasking.html">
+   5. Tasking
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/1_task_and_taskwait_Constructs.html">
-     3.1.
+     5.1.
      <strong>
       task
      </strong>
@@ -340,22 +413,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/2_Task_Priority.html">
-     3.2. Task Priority
+     5.2. Task Priority
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/3_Task_Dependences.html">
-     3.3. Task Dependences
+     5.3. Task Dependences
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/4_Task_Detachment.html">
-     3.4. Task Detachment
+     5.4. Task Detachment
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/5_taskgroup_Construct.html">
-     3.5.
+     5.5.
      <strong>
       taskgroup
      </strong>
@@ -364,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/6_taskyield_Construct.html">
-     3.6.
+     5.6.
      <strong>
       taskyield
      </strong>
@@ -373,7 +446,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/7_taskloop_Construct.html">
-     3.7.
+     5.7.
      <strong>
       taskloop
      </strong>
@@ -382,7 +455,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/8_Combined_parallel_masked_and_taskloop_Constructs.html">
-     3.8. Combined
+     5.8. Combined
      <strong>
       parallel
      </strong>
@@ -400,42 +473,42 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_devices/Chap_devices.html">
-   4. Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_SIMD/Chap_SIMD.html">
-   5. SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_loop_transformations/Chap_loop_transformations.html">
-   6. Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_synchronization/Chap_synchronization.html">
-   7. Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_data_environment/Chap_data_environment.html">
-   8. Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_memory_model/Chap_memory_model.html">
-   9. Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   10. Program Control
+   12. Program Control
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
-   11. OMPT Interface
+   13. OMPT Interface
   </a>
  </li>
 </ul>
@@ -646,17 +719,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conditional-compilation">
-   10.1. Conditional Compilation
+   12.1. Conditional Compilation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#internal-control-variables-icvs">
-   10.2. Internal Control Variables (ICVs)
+   12.2. Internal Control Variables (ICVs)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#placement-of-flush-barrier-taskwait-and-taskyield-directives">
-   10.3. Placement of
+   12.3. Placement of
    <strong>
     flush
    </strong>
@@ -677,12 +750,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cancellation-constructs">
-   10.4. Cancellation Constructs
+   12.4. Cancellation Constructs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#requires-directive">
-   10.5.
+   12.5.
    <strong>
     requires
    </strong>
@@ -691,7 +764,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#declare-variant-directive">
-   10.6.
+   12.6.
    <strong>
     declare
    </strong>
@@ -703,27 +776,27 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metadirectives">
-   10.7. Metadirectives
+   12.7. Metadirectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nested-loop-constructs">
-   10.8. Nested Loop Constructs
+   12.8. Nested Loop Constructs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#restrictions-on-nesting-of-regions">
-   10.9. Restrictions on Nesting of Regions
+   12.9. Restrictions on Nesting of Regions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-offload">
-   10.10. Target Offload
+   12.10. Target Offload
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#controlling-concurrency-and-reproducibility-with-the-order-clause">
-   10.11. Controlling Concurrency and Reproducibility with  the
+   12.11. Controlling Concurrency and Reproducibility with  the
    <strong>
     order
    </strong>
@@ -732,7 +805,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interop-construct">
-   10.12.
+   12.12.
    <strong>
     interop
    </strong>
@@ -741,22 +814,22 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#utilities">
-   10.13. Utilities
+   12.13. Utilities
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#timing-routines">
-     10.13.1. Timing Routines
+     12.13.1. Timing Routines
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#environment-display">
-     10.13.2. Environment Display
+     12.13.2. Environment Display
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#error-directive">
-     10.13.3.
+     12.13.3.
      <strong>
       error
      </strong>
@@ -786,17 +859,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conditional-compilation">
-   10.1. Conditional Compilation
+   12.1. Conditional Compilation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#internal-control-variables-icvs">
-   10.2. Internal Control Variables (ICVs)
+   12.2. Internal Control Variables (ICVs)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#placement-of-flush-barrier-taskwait-and-taskyield-directives">
-   10.3. Placement of
+   12.3. Placement of
    <strong>
     flush
    </strong>
@@ -817,12 +890,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cancellation-constructs">
-   10.4. Cancellation Constructs
+   12.4. Cancellation Constructs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#requires-directive">
-   10.5.
+   12.5.
    <strong>
     requires
    </strong>
@@ -831,7 +904,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#declare-variant-directive">
-   10.6.
+   12.6.
    <strong>
     declare
    </strong>
@@ -843,27 +916,27 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#metadirectives">
-   10.7. Metadirectives
+   12.7. Metadirectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nested-loop-constructs">
-   10.8. Nested Loop Constructs
+   12.8. Nested Loop Constructs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#restrictions-on-nesting-of-regions">
-   10.9. Restrictions on Nesting of Regions
+   12.9. Restrictions on Nesting of Regions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-offload">
-   10.10. Target Offload
+   12.10. Target Offload
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#controlling-concurrency-and-reproducibility-with-the-order-clause">
-   10.11. Controlling Concurrency and Reproducibility with  the
+   12.11. Controlling Concurrency and Reproducibility with  the
    <strong>
     order
    </strong>
@@ -872,7 +945,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interop-construct">
-   10.12.
+   12.12.
    <strong>
     interop
    </strong>
@@ -881,22 +954,22 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#utilities">
-   10.13. Utilities
+   12.13. Utilities
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#timing-routines">
-     10.13.1. Timing Routines
+     12.13.1. Timing Routines
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#environment-display">
-     10.13.2. Environment Display
+     12.13.2. Environment Display
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#error-directive">
-     10.13.3.
+     12.13.3.
      <strong>
       error
      </strong>
@@ -916,7 +989,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="program-control">
-<h1><span class="section-number">10. </span>Program Control<a class="headerlink" href="#program-control" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">12. </span>Program Control<a class="headerlink" href="#program-control" title="Permalink to this headline">#</a></h1>
 <p>Basic concepts and mechanisms for directing and controlling a program compilation and execution are provided in this introduction and illustrated in subsequent examples.</p>
 <p>CONDITIONAL COMPILATION and EXECUTION</p>
 <p>Conditional compilation can be performed with conventional #ifdef directives in C, C++, and Fortran, and additionally with OpenMP sentinel (<strong>!$</strong>) in Fortran.  The <strong>if</strong> clause on some directives can direct the runtime to ignore or alter the behavior of the construct. Of course, the base-language <strong>if</strong> statements can be used to control the execution of stand-alone directives (such as <strong>flush</strong>, <strong>barrier</strong>, <strong>taskwait</strong>,  and  <strong>taskyield</strong>). However, the directives must appear in a block structure, and not as a substatement. The <strong>metadirective</strong> and <strong>declare</strong> <strong>variant</strong> directives provide conditional  selection of directives and routines for compilation (and use), respectively. The <strong>assume</strong> and <strong>requires</strong> directives provide invariants for optimizing compilation, and essential features for compilation  and correct execution, respectively.</p>
@@ -933,7 +1006,7 @@ title="Print to PDF"
 <p>The <strong>parallel</strong> construct can be nested, as well as the <strong>task</strong> construct.   The parallel execution in the nested parallel construct(s) is controlled by the  <strong>OMP_MAX_ACTIVE_LEVELS</strong> environment variable, and the <strong>omp_set_max_active_levels</strong> routine.  Use the <strong>omp_get_max_active_levels</strong> routine to determine the maximum levels provided by an implementation. As of OpenMP 5.0, use of the <strong>OMP_NESTED</strong> environment variable and the <strong>omp_set_nested</strong> routine  has been deprecated.</p>
 <p>More details on nesting can be found in the  <em>Nesting of Regions</em>  of the  <em>Directives</em>   chapter in the OpenMP Specifications document.</p>
 <section id="conditional-compilation">
-<h2><span class="section-number">10.1. </span>Conditional Compilation<a class="headerlink" href="#conditional-compilation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.1. </span>Conditional Compilation<a class="headerlink" href="#conditional-compilation" title="Permalink to this headline">#</a></h2>
 <p>The following example illustrates the use of conditional compilation using the  OpenMP macro _<strong>OPENMP</strong>. With OpenMP compilation, the _<strong>OPENMP</strong>  macro becomes defined.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -979,7 +1052,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="internal-control-variables-icvs">
-<h2><span class="section-number">10.2. </span>Internal Control Variables (ICVs)<a class="headerlink" href="#internal-control-variables-icvs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.2. </span>Internal Control Variables (ICVs)<a class="headerlink" href="#internal-control-variables-icvs" title="Permalink to this headline">#</a></h2>
 <p>According to Section 2.3 of the OpenMP 4.0 specification, an OpenMP implementation must act as if there are ICVs that control  the behavior of the program.  This example illustrates two ICVs,  <em>nthreads-var</em>   and  <em>max-active-levels-var</em> . The  <em>nthreads-var</em>  ICV controls the  number of threads requested for encountered parallel regions; there is one copy  of this ICV per task. The  <em>max-active-levels-var</em>  ICV controls the maximum  number of nested active parallel regions; there is one copy of this ICV for the  whole program.</p>
 <p>In the following example, the  <em>nest-var</em> ,  <em>max-active-levels-var</em> ,   <em>dyn-var</em> , and  <em>nthreads-var</em>  ICVs are modified through calls to  the runtime library routines <strong>omp_set_nested</strong>, <strong>omp_set_max_active_levels</strong>, <strong>omp_set_dynamic</strong>, and <strong>omp_set_num_threads</strong> respectively. These ICVs  affect the operation of <strong>parallel</strong> regions. Each implicit task generated  by a <strong>parallel</strong> region has its own copy of the  <em>nest-var, dyn-var</em> ,  and  <em>nthreads-var</em>  ICVs.</p>
 <p>In the following example, the new value of  <em>nthreads-var</em>  applies only to  the implicit tasks that execute the call to <strong>omp_set_num_threads</strong>. There  is one copy of the  <em>max-active-levels-var</em>  ICV for the whole program and  its value is the same for all tasks. This example assumes that nested parallelism  is supported.</p>
@@ -1087,7 +1160,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="placement-of-flush-barrier-taskwait-and-taskyield-directives">
-<h2><span class="section-number">10.3. </span>Placement of <strong>flush</strong>, <strong>barrier</strong>, <strong>taskwait</strong>  and <strong>taskyield</strong> Directives<a class="headerlink" href="#placement-of-flush-barrier-taskwait-and-taskyield-directives" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.3. </span>Placement of <strong>flush</strong>, <strong>barrier</strong>, <strong>taskwait</strong>  and <strong>taskyield</strong> Directives<a class="headerlink" href="#placement-of-flush-barrier-taskwait-and-taskyield-directives" title="Permalink to this headline">#</a></h2>
 <p>The following example is non-conforming, because the <strong>flush</strong>, <strong>barrier</strong>,  <strong>taskwait</strong>, and <strong>taskyield</strong>  directives are stand-alone directives  and cannot be the immediate substatement of an <strong>if</strong> statement.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1266,7 +1339,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="cancellation-constructs">
-<h2><span class="section-number">10.4. </span>Cancellation Constructs<a class="headerlink" href="#cancellation-constructs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.4. </span>Cancellation Constructs<a class="headerlink" href="#cancellation-constructs" title="Permalink to this headline">#</a></h2>
 <p>The following example shows how the <strong>cancel</strong> directive can be used to terminate  an OpenMP region. Although the <strong>cancel</strong> construct terminates the OpenMP  worksharing region, programmers must still track the exception through the pointer  ex and issue a cancellation for the <strong>parallel</strong> region if an exception has  been raised. The primary thread checks the exception pointer to make sure that the  exception is properly handled in the sequential part. If cancellation of the <strong>parallel</strong>  region has been requested, some threads might have executed <strong>phase_1()</strong>.  However, it is guaranteed that none of the threads executed <strong>phase_2()</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1506,7 +1579,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="requires-directive">
-<h2><span class="section-number">10.5. </span><strong>requires</strong> Directive<a class="headerlink" href="#requires-directive" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.5. </span><strong>requires</strong> Directive<a class="headerlink" href="#requires-directive" title="Permalink to this headline">#</a></h2>
 <p>The declarative <strong>requires</strong> directive can be used to  specify features that an implementation must provide to compile and  execute correctly.</p>
 <p>In the following example the <strong>unified_shared_memory</strong> clause of the <strong>requires</strong> directive ensures that the host and all  devices accessible through OpenMP provide a  <em>unified address</em>  space for memory that is shared by all devices.</p>
 <p>The example illustrates the use of the <strong>requires</strong> directive specifying  <em>unified shared memory</em>  in file scope, before any device  directives or device routines. No <strong>map</strong> clause is needed for the  <em>p</em>  structure on the device (and its address  <em>&amp;p</em> , for the C++ code, is the same address on the host and device). However, scalar variables referenced within the <strong>target</strong> construct still have a default data-sharing attribute of firstprivate. The  <em>q</em>  scalar is incremented on the device, and its change is not updated on the host.</p>
@@ -1605,7 +1678,7 @@ end subroutine
 </div>
 </section>
 <section id="declare-variant-directive">
-<h2><span class="section-number">10.6. </span><strong>declare</strong> <strong>variant</strong> Directive<a class="headerlink" href="#declare-variant-directive" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.6. </span><strong>declare</strong> <strong>variant</strong> Directive<a class="headerlink" href="#declare-variant-directive" title="Permalink to this headline">#</a></h2>
 <p>A <strong>declare</strong> <strong>variant</strong> directive specifies an alternate function,   <em>function variant</em> , to be used in place of the  <em>base function</em>   when the trait within the <strong>match</strong> clause matches the OpenMP context at a given call site. The base function follows the directive in the C and C++ languages. In Fortran, either a subroutine or function may be used as the  <em>base function</em> , and the <strong>declare</strong> <strong>variant</strong> directive must be in the specification  part of a subroutine or function (unless a  <em>base-proc-name</em>  modifier is used, as in the case of a procedure declaration statement). See the OpenMP 5.0 Specification for details on the modifier.</p>
 <p>When multiple <strong>declare</strong> <strong>variant</strong> directives are used  a function variant becomes a candidate for replacing the base function if the context at the base function call matches the traits of all selectors in the <strong>match</strong> clause. If there are multiple candidates, a score is assigned with rules for each of the selector traits. The scoring algorithm can be found in the OpenMP 5.0 Specification.</p>
 <p>In the first example the  <em>vxv()</em>  function is called within a <strong>parallel</strong> region, a <strong>target</strong> region, and in a sequential part of the program.  Two function variants,  <em>p_vxv()</em>  and  <em>t_vxv()</em> , are defined for the first two regions by using  <em>parallel</em>  and  <em>target</em>  selectors (within the  <em>construct</em>  trait set) in a <strong>match</strong> clause.  The  <em>p_vxv()</em>  function variant includes a <strong>for</strong> construct (<strong>do</strong> construct for Fortran) for the <strong>parallel</strong> region,  while  <em>t_vxv()</em>  includes a <strong>distribute</strong> <strong>simd</strong> construct for the <strong>target</strong> region. The  <em>t_vxv()</em>  function is explicitly compiled for the device using a declare target directive.</p>
@@ -1885,7 +1958,7 @@ end program
 </div>
 </section>
 <section id="metadirectives">
-<h2><span class="section-number">10.7. </span>Metadirectives<a class="headerlink" href="#metadirectives" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.7. </span>Metadirectives<a class="headerlink" href="#metadirectives" title="Permalink to this headline">#</a></h2>
 <p>A <strong>metadirective</strong> directive provides a mechanism to select a directive in a <strong>when</strong> clause to be used, depending upon one or more contexts:   implementation, available devices and the present enclosing construct.  The directive in an <strong>otherwise</strong> clause is used when a directive of the  <strong>when</strong> clause is not selected.</p>
 <p>In the <strong>when</strong> clause the  <em>context selector</em>  (or just  <em>selector</em> ) defines traits that are evaluated for selection of the directive that follows the selector.  This “selectable” directive is called a  <em>directive variant</em> . Traits are grouped by  <em>construct</em> ,  <em>implementation</em>  and   <em>device</em>   <em>sets</em>  to be used by a selector of the same name.</p>
 <p>In the first example the architecture trait  <em>arch</em>  of the   <em>device</em>  selector set specifies that if an  <em>nvptx</em>  architecture is active in the OpenMP context, then the <strong>teams</strong> <strong>loop</strong>   <em>directive variant</em>  is selected as the directive; otherwise, the <strong>parallel</strong> <strong>loop</strong>  <em>directive variant</em>  of the <strong>otherwise</strong> clause is selected as the directive. That is, if a  <em>device</em>  of  <em>nvptx</em>  architecture is supported by the implementation within the enclosing <strong>target</strong> construct, its  <em>directive variant</em>  is selected. The architecture names, such as  <em>nvptx</em> , are implementation defined. Also, note that  <em>device</em>  as used in a <strong>target</strong> construct specifies a device number, while  <em>device</em> , as used in the <strong>metadirective</strong> directive as selector set, has traits of  <em>kind</em> ,  <em>isa</em>  and  <em>arch</em> .</p>
@@ -2335,7 +2408,7 @@ end program
 </div>
 </section>
 <section id="nested-loop-constructs">
-<h2><span class="section-number">10.8. </span>Nested Loop Constructs<a class="headerlink" href="#nested-loop-constructs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.8. </span>Nested Loop Constructs<a class="headerlink" href="#nested-loop-constructs" title="Permalink to this headline">#</a></h2>
 <p>The following example of loop construct nesting is conforming because the inner  and outer loop regions bind to different <strong>parallel</strong> regions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2474,7 +2547,7 @@ end program
 </div>
 </section>
 <section id="restrictions-on-nesting-of-regions">
-<h2><span class="section-number">10.9. </span>Restrictions on Nesting of Regions<a class="headerlink" href="#restrictions-on-nesting-of-regions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.9. </span>Restrictions on Nesting of Regions<a class="headerlink" href="#restrictions-on-nesting-of-regions" title="Permalink to this headline">#</a></h2>
 <p>The examples in this section illustrate the region nesting rules.</p>
 <p>The following example is non-conforming because the inner and outer loop regions  are closely nested:</p>
 <div class="cell docutils container">
@@ -2815,7 +2888,7 @@ end program
 </div>
 </section>
 <section id="target-offload">
-<h2><span class="section-number">10.10. </span>Target Offload<a class="headerlink" href="#target-offload" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.10. </span>Target Offload<a class="headerlink" href="#target-offload" title="Permalink to this headline">#</a></h2>
 <p>In the OpenMP 5.0 implementation the <strong>OMP_TARGET_OFFLOAD</strong> environment variable was defined to change  <em>default</em>  offload behavior.  By  <em>default</em>  the target code (region) is executed on the host if the target device  does not exist or the implementation does not support the target device.</p>
 <p>In an OpenMP 5.0 compliant implementation, setting the  <strong>OMP_TARGET_OFFLOAD</strong> variable to <strong>MANDATORY</strong> will  force the program to terminate execution when a <strong>target</strong>  construct is encountered and the target device is not supported or is not available. With a value <strong>DEFAULT</strong> the target region will execute on a device if the  device exists and is supported by the implementation, otherwise it will execute on the host. Support for the <strong>DISABLED</strong> value is optional; when it is supported the behavior is as if only the  host device exists (other devices are considered non-existent to the runtime),  and target regions are executed on the host.</p>
 <p>The following example reports execution behavior for different  values of the <strong>OMP_TARGET_OFFLOAD</strong> variable. A handy routine  for extracting the <strong>OMP_TARGET_OFFLOAD</strong> environment variable value is deployed here, because the OpenMP API does not have a routine  for obtaining the value.</p>
@@ -3004,7 +3077,7 @@ end program policy_test
 </div>
 </section>
 <section id="controlling-concurrency-and-reproducibility-with-the-order-clause">
-<h2><span class="section-number">10.11. </span>Controlling Concurrency and Reproducibility with  the <strong>order</strong> Clause<a class="headerlink" href="#controlling-concurrency-and-reproducibility-with-the-order-clause" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.11. </span>Controlling Concurrency and Reproducibility with  the <strong>order</strong> Clause<a class="headerlink" href="#controlling-concurrency-and-reproducibility-with-the-order-clause" title="Permalink to this headline">#</a></h2>
 <p>The <strong>order</strong> clause is used for controlling the parallel execution of  loop iterations for one or more loops that are associated with a directive.  It is specified with a clause argument and optional modifier.  The only supported argument, introduced in OpenMP 5.0, is the keyword  <strong>concurrent</strong> which indicates that the loop iterations may execute  concurrently, including iterations in the same chunk per the loop schedule.  Because of the relaxed execution permitted with an <strong>order(concurrent)</strong>  clause, codes must not assume that any cross-iteration data dependences  would be preserved or that any two iterations may execute on the same thread.</p>
 <p>The following example in this section demonstrates the use of  the <strong>order(concurrent)</strong> clause, without any modifiers, for controlling  the parallel execution of loop iterations. The <strong>order(concurrent)</strong> clause cannot be used for the second and third  <strong>parallel</strong> <strong>for</strong>/<strong>do</strong> constructs because of either having  data dependences or accessing threadprivate variables.</p>
 <div class="cell docutils container">
@@ -3246,7 +3319,7 @@ end program policy_test
 </div>
 </section>
 <section id="interop-construct">
-<h2><span class="section-number">10.12. </span><strong>interop</strong> Construct<a class="headerlink" href="#interop-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.12. </span><strong>interop</strong> Construct<a class="headerlink" href="#interop-construct" title="Permalink to this headline">#</a></h2>
 <p>The <strong>interop</strong> construct allows OpenMP to interoperate with foreign runtime environments. In the example below, asynchronous cuda memory copies and a  <em>cublasDaxpy</em>  routine are executed  in a cuda stream. Also, an asynchronous target task execution (having a <strong>nowait</strong> clause)  and two explicit tasks are executed through OpenMP directives.  Scheduling dependences (synchronization) are imposed on the foreign stream and the OpenMP tasks through <strong>depend</strong> clauses.</p>
 <p>First, an interop object,  <em>obj</em> , is initialized for synchronization by including the <strong>targetsync</strong>  <em>interop-type</em>  in the interop <strong>init</strong> clause  (<strong>init(</strong> <strong>targetsync,obj</strong> <strong>)</strong>).   The object provides access to the foreign runtime. The <strong>depend</strong> clause provides a dependence behavior for foreign tasks associated with a valid object.</p>
 <p>Next, the <strong>omp_get_interop_int</strong> routine is used to extract the foreign  runtime id (<strong>omp_ipr_fr_id</strong>), and a test in the next statement ensures  that the cuda runtime (<strong>omp_ifr_cuda</strong>) is available.</p>
@@ -3371,10 +3444,10 @@ end program policy_test
 </div>
 </section>
 <section id="utilities">
-<h2><span class="section-number">10.13. </span>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.13. </span>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">#</a></h2>
 <p>This section contains examples of utility routines and features.</p>
 <section id="timing-routines">
-<h3><span class="section-number">10.13.1. </span>Timing Routines<a class="headerlink" href="#timing-routines" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">12.13.1. </span>Timing Routines<a class="headerlink" href="#timing-routines" title="Permalink to this headline">#</a></h3>
 <p>The <strong>omp_get_wtime</strong> routine can be used to measure the elapsed wall clock time (in seconds) of code execution in a program. The routine is thread safe and can be executed by multiple threads concurrently. The precision of the timer can be obtained by a call to the <strong>omp_get_wtick</strong> routine. The following example shows a use case.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3446,7 +3519,7 @@ end program policy_test
 </div>
 </section>
 <section id="environment-display">
-<h3><span class="section-number">10.13.2. </span>Environment Display<a class="headerlink" href="#environment-display" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">12.13.2. </span>Environment Display<a class="headerlink" href="#environment-display" title="Permalink to this headline">#</a></h3>
 <p>The OpenMP version number and the values of ICVs associated with the relevant environment variables can be displayed at runtime by setting  the <strong>OMP_DISPLAY_ENV</strong> environment variable to either  <strong>TRUE</strong> or <strong>VERBOSE</strong>. The information is displayed once by the runtime.</p>
 <p>A more flexible or controllable approach is to call  the <strong>omp_display_env</strong> API routine at any desired point of a code to display the same information. This OpenMP 5.1 API routine takes a single  <em>verbose</em>  argument. A value of 0 or .false. (for C/C++ or Fortran) indicates the required OpenMP ICVs associated with environment variables be displayed, and a value of 1 or .true. (for C/C++ or Fortran) will include vendor-specific ICVs that can be modified by environment variables.</p>
 <p>The following example illustrates the conditional execution of the API <strong>omp_display_env</strong> routine.  Typically it would be invoked in various debug modes of an application.  An important use case is to have a single MPI process (e.g., rank = 0)  of a hybrid (MPI+OpenMP) code execute the routine, instead of all MPI processes, as would be done by  setting the <strong>OMP_DISPLAY_ENV</strong> to <strong>TRUE</strong> or <strong>VERBOSE</strong>.</p>
@@ -3533,7 +3606,7 @@ end program policy_test
 </div>
 </section>
 <section id="error-directive">
-<h3><span class="section-number">10.13.3. </span><strong>error</strong> Directive<a class="headerlink" href="#error-directive" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">12.13.3. </span><strong>error</strong> Directive<a class="headerlink" href="#error-directive" title="Permalink to this headline">#</a></h3>
 <p>The <strong>error</strong> directive provides a consistent method for C, C++, and Fortran to emit a  <em>fatal</em>  or  <em>warning</em>  message at  <em>compilation</em>  or  <em>execution</em>  time, as determined by a <strong>severity</strong>  or an <strong>at</strong> clause, respectively. When <strong>severity(fatal)</strong> is present, the compilation  or execution is aborted. Without any clauses the default behavior is as if <strong>at(compilation)</strong>  and <strong>severity(fatal)</strong> were specified.</p>
 <p>The C, C++, and Fortran examples below show all the cases for reporting messages.</p>
 <div class="cell docutils container">
@@ -3651,13 +3724,13 @@ end program policy_test
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9. </span>Memory Model</p>
+            <p class="prev-next-title"><span class="section-number">11. </span>Memory Model</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../Chap_ompt_interface/Chap_ompt_interface.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>OMPT Interface</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>OMPT Interface</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

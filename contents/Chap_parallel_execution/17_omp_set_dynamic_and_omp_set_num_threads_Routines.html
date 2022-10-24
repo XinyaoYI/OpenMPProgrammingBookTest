@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2.17. omp_set_dynamic and omp_set_num_threads Routines &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>3.17. omp_set_dynamic and omp_set_num_threads Routines &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
-    <link rel="next" title="2.18. omp_get_num_threads Routine" href="18_omp_get_num_threads_Routine.html" />
-    <link rel="prev" title="2.16. Parallel Random Access Iterator Loop" href="16_Parallel_Random_Access_Iterator_Loop.html" />
+    <link rel="next" title="3.18. omp_get_num_threads Routine" href="18_omp_get_num_threads_Routine.html" />
+    <link rel="prev" title="3.16. Parallel Random Access Iterator Loop" href="16_Parallel_Random_Access_Iterator_Loop.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -128,35 +128,72 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_directives/0_Chap_directives.html">
-   1. OpenMP Directive Syntax
+  <a class="reference internal" href="../Chap_introduction/0_Chap_introduction.html">
+   1. Introduction
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_introduction/1_Section_Examples_Organization.html">
+     1.1. Examples Organization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_directives/0_Chap_directives.html">
+   2. OpenMP Directive Syntax
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/1_C_C%2B%2B_Pragmas.html">
+     2.1. C/C++ Pragmas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/2_C%2B%2B_Attributes.html">
+     2.2. C++ Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/3_Fortran_Comments_Fixed_Source_Form.html">
+     2.3. Fortran Comments (Fixed Source Form)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/4_Fortran_Comments_Free_Source_Form.html">
+     2.4. Fortran Comments (Free Source Form)
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="0_Chap_parallel_execution.html">
-   2. Parallel Execution
+   3. Parallel Execution
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="1_A_Simple_Parallel_Loop.html">
-     2.1. A Simple Parallel Loop
+     3.1. A Simple Parallel Loop
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="2_parallel_Construct.html">
-     2.2.
+     3.2.
      <strong>
       parallel
      </strong>
@@ -165,7 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="3_teams_Construct_on_Host.html">
-     2.3.
+     3.3.
      <strong>
       teams
      </strong>
@@ -174,12 +211,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="4_Controlling_the_Number_of_Threads_on_Multiple_Nesting_Levels.html">
-     2.4. Controlling the Number of Threads on Multiple Nesting Levels
+     3.4. Controlling the Number of Threads on Multiple Nesting Levels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="5_Interaction_Between_the_num_threads_Clause_and_omp_set_dynamic.html">
-     2.5. Interaction Between the
+     3.5. Interaction Between the
      <strong>
       num_threads
      </strong>
@@ -191,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="6_Fortran_Restrictions_on_the_do_Construct.html">
-     2.6. Fortran Restrictions on the
+     3.6. Fortran Restrictions on the
      <strong>
       do
      </strong>
@@ -200,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7_nowait_Clause.html">
-     2.7.
+     3.7.
      <strong>
       nowait
      </strong>
@@ -209,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="8_collapse_Clause.html">
-     2.8.
+     3.8.
      <strong>
       collapse
      </strong>
@@ -218,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="9_linear_Clause_in_Loop_Constructs.html">
-     2.9.
+     3.9.
      <strong>
       linear
      </strong>
@@ -227,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="10_parallel_sections_Construct.html">
-     2.10.
+     3.10.
      <strong>
       parallel
      </strong>
@@ -239,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="11_firstprivate_Clause_and_sections_Construct.html">
-     2.11.
+     3.11.
      <strong>
       firstprivate
      </strong>
@@ -252,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="12_single_Construct.html">
-     2.12.
+     3.12.
      <strong>
       single
      </strong>
@@ -261,7 +298,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="13_workshare_Construct.html">
-     2.13.
+     3.13.
      <strong>
       workshare
      </strong>
@@ -270,7 +307,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="14_masked_Construct.html">
-     2.14.
+     3.14.
      <strong>
       masked
      </strong>
@@ -279,7 +316,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="15_loop_Construct.html">
-     2.15.
+     3.15.
      <strong>
       loop
      </strong>
@@ -288,12 +325,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="16_Parallel_Random_Access_Iterator_Loop.html">
-     2.16. Parallel Random Access Iterator Loop
+     3.16. Parallel Random Access Iterator Loop
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.17.
+     3.17.
      <strong>
       omp_set_dynamic
      </strong>
@@ -306,7 +343,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="18_omp_get_num_threads_Routine.html">
-     2.18.
+     3.18.
      <strong>
       omp_get_num_threads
      </strong>
@@ -316,18 +353,54 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_tasking/0_Chap_tasking.html">
-   3. Tasking
+  <a class="reference internal" href="../Chap_affinity/0_Chap_affinity.html">
+   4. OpenMP Affinity
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/1_Section_proc_bind_Clause.html">
+     4.1.
+     <strong>
+      proc_bind
+     </strong>
+     Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/2_Section_Task_Affinity.html">
+     4.2. Task Affinity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/3_Section_Affinity_Display.html">
+     4.3. Affinity Display
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/4_Section_Affinity_Query_Func.html">
+     4.4. Affinity Query Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_tasking/0_Chap_tasking.html">
+   5. Tasking
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/1_task_and_taskwait_Constructs.html">
-     3.1.
+     5.1.
      <strong>
       task
      </strong>
@@ -340,22 +413,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/2_Task_Priority.html">
-     3.2. Task Priority
+     5.2. Task Priority
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/3_Task_Dependences.html">
-     3.3. Task Dependences
+     5.3. Task Dependences
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/4_Task_Detachment.html">
-     3.4. Task Detachment
+     5.4. Task Detachment
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/5_taskgroup_Construct.html">
-     3.5.
+     5.5.
      <strong>
       taskgroup
      </strong>
@@ -364,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/6_taskyield_Construct.html">
-     3.6.
+     5.6.
      <strong>
       taskyield
      </strong>
@@ -373,7 +446,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/7_taskloop_Construct.html">
-     3.7.
+     5.7.
      <strong>
       taskloop
      </strong>
@@ -382,7 +455,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/8_Combined_parallel_masked_and_taskloop_Constructs.html">
-     3.8. Combined
+     5.8. Combined
      <strong>
       parallel
      </strong>
@@ -400,42 +473,42 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_devices/Chap_devices.html">
-   4. Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_SIMD/Chap_SIMD.html">
-   5. SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_loop_transformations/Chap_loop_transformations.html">
-   6. Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_synchronization/Chap_synchronization.html">
-   7. Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_data_environment/Chap_data_environment.html">
-   8. Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_memory_model/Chap_memory_model.html">
-   9. Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_program_control/Chap_program_control.html">
-   10. Program Control
+   12. Program Control
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
-   11. OMPT Interface
+   13. OMPT Interface
   </a>
  </li>
 </ul>
@@ -647,7 +720,7 @@ title="Print to PDF"
               <div>
                 
   <section id="omp-set-dynamic-and-omp-set-num-threads-routines">
-<h1><span class="section-number">2.17. </span><strong>omp_set_dynamic</strong> and  <strong>omp_set_num_threads</strong> Routines<a class="headerlink" href="#omp-set-dynamic-and-omp-set-num-threads-routines" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.17. </span><strong>omp_set_dynamic</strong> and  <strong>omp_set_num_threads</strong> Routines<a class="headerlink" href="#omp-set-dynamic-and-omp-set-num-threads-routines" title="Permalink to this headline">#</a></h1>
 <p>Some programs rely on a fixed, prespecified number of threads to execute correctly.  Because the default setting for the dynamic adjustment of the number of threads  is implementation defined, such programs can choose to turn off the dynamic threads  capability and set the number of threads explicitly to ensure portability. The  following example shows how to do this using <strong>omp_set_dynamic</strong>, and <strong>omp_set_num_threads</strong>.</p>
 <p>In this example, the program executes correctly only if it is executed by 16 threads.  If the implementation is not capable of supporting 16 threads, the behavior of  this example is implementation defined. Note that the number of threads executing  a <strong>parallel</strong> region remains constant during the region, regardless of the  dynamic threads setting. The dynamic threads mechanism determines the number of  threads to use at the start of the <strong>parallel</strong> region and keeps it constant  for the duration of the region.</p>
 <div class="cell docutils container">
@@ -759,13 +832,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2.16. </span>Parallel Random Access Iterator Loop</p>
+            <p class="prev-next-title"><span class="section-number">3.16. </span>Parallel Random Access Iterator Loop</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="18_omp_get_num_threads_Routine.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.18. </span><strong>omp_get_num_threads</strong> Routine</p>
+        <p class="prev-next-title"><span class="section-number">3.18. </span><strong>omp_get_num_threads</strong> Routine</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

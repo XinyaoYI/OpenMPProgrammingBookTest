@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>5. SIMD &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>7. SIMD &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
-    <link rel="next" title="6. Loop Transformations" href="../Chap_loop_transformations/Chap_loop_transformations.html" />
-    <link rel="prev" title="4. Devices" href="../Chap_devices/Chap_devices.html" />
+    <link rel="next" title="8. Loop Transformations" href="../Chap_loop_transformations/Chap_loop_transformations.html" />
+    <link rel="prev" title="6. Devices" href="../Chap_devices/Chap_devices.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -128,20 +128,25 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_directives/0_Chap_directives.html">
-   1. OpenMP Directive Syntax
+  <a class="reference internal" href="../Chap_introduction/0_Chap_introduction.html">
+   1. Introduction
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_introduction/1_Section_Examples_Organization.html">
+     1.1. Examples Organization
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_parallel_execution/0_Chap_parallel_execution.html">
-   2. Parallel Execution
+  <a class="reference internal" href="../Chap_directives/0_Chap_directives.html">
+   2. OpenMP Directive Syntax
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -150,13 +155,45 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/1_C_C%2B%2B_Pragmas.html">
+     2.1. C/C++ Pragmas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/2_C%2B%2B_Attributes.html">
+     2.2. C++ Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/3_Fortran_Comments_Fixed_Source_Form.html">
+     2.3. Fortran Comments (Fixed Source Form)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_directives/4_Fortran_Comments_Free_Source_Form.html">
+     2.4. Fortran Comments (Free Source Form)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_parallel_execution/0_Chap_parallel_execution.html">
+   3. Parallel Execution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/1_A_Simple_Parallel_Loop.html">
-     2.1. A Simple Parallel Loop
+     3.1. A Simple Parallel Loop
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/2_parallel_Construct.html">
-     2.2.
+     3.2.
      <strong>
       parallel
      </strong>
@@ -165,7 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/3_teams_Construct_on_Host.html">
-     2.3.
+     3.3.
      <strong>
       teams
      </strong>
@@ -174,12 +211,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/4_Controlling_the_Number_of_Threads_on_Multiple_Nesting_Levels.html">
-     2.4. Controlling the Number of Threads on Multiple Nesting Levels
+     3.4. Controlling the Number of Threads on Multiple Nesting Levels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/5_Interaction_Between_the_num_threads_Clause_and_omp_set_dynamic.html">
-     2.5. Interaction Between the
+     3.5. Interaction Between the
      <strong>
       num_threads
      </strong>
@@ -191,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/6_Fortran_Restrictions_on_the_do_Construct.html">
-     2.6. Fortran Restrictions on the
+     3.6. Fortran Restrictions on the
      <strong>
       do
      </strong>
@@ -200,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/7_nowait_Clause.html">
-     2.7.
+     3.7.
      <strong>
       nowait
      </strong>
@@ -209,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/8_collapse_Clause.html">
-     2.8.
+     3.8.
      <strong>
       collapse
      </strong>
@@ -218,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/9_linear_Clause_in_Loop_Constructs.html">
-     2.9.
+     3.9.
      <strong>
       linear
      </strong>
@@ -227,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/10_parallel_sections_Construct.html">
-     2.10.
+     3.10.
      <strong>
       parallel
      </strong>
@@ -239,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/11_firstprivate_Clause_and_sections_Construct.html">
-     2.11.
+     3.11.
      <strong>
       firstprivate
      </strong>
@@ -252,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/12_single_Construct.html">
-     2.12.
+     3.12.
      <strong>
       single
      </strong>
@@ -261,7 +298,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/13_workshare_Construct.html">
-     2.13.
+     3.13.
      <strong>
       workshare
      </strong>
@@ -270,7 +307,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/14_masked_Construct.html">
-     2.14.
+     3.14.
      <strong>
       masked
      </strong>
@@ -279,7 +316,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/15_loop_Construct.html">
-     2.15.
+     3.15.
      <strong>
       loop
      </strong>
@@ -288,12 +325,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/16_Parallel_Random_Access_Iterator_Loop.html">
-     2.16. Parallel Random Access Iterator Loop
+     3.16. Parallel Random Access Iterator Loop
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/17_omp_set_dynamic_and_omp_set_num_threads_Routines.html">
-     2.17.
+     3.17.
      <strong>
       omp_set_dynamic
      </strong>
@@ -306,7 +343,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_parallel_execution/18_omp_get_num_threads_Routine.html">
-     2.18.
+     3.18.
      <strong>
       omp_get_num_threads
      </strong>
@@ -316,18 +353,54 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_tasking/0_Chap_tasking.html">
-   3. Tasking
+  <a class="reference internal" href="../Chap_affinity/0_Chap_affinity.html">
+   4. OpenMP Affinity
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/1_Section_proc_bind_Clause.html">
+     4.1.
+     <strong>
+      proc_bind
+     </strong>
+     Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/2_Section_Task_Affinity.html">
+     4.2. Task Affinity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/3_Section_Affinity_Display.html">
+     4.3. Affinity Display
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chap_affinity/4_Section_Affinity_Query_Func.html">
+     4.4. Affinity Query Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_tasking/0_Chap_tasking.html">
+   5. Tasking
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/1_task_and_taskwait_Constructs.html">
-     3.1.
+     5.1.
      <strong>
       task
      </strong>
@@ -340,22 +413,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/2_Task_Priority.html">
-     3.2. Task Priority
+     5.2. Task Priority
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/3_Task_Dependences.html">
-     3.3. Task Dependences
+     5.3. Task Dependences
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/4_Task_Detachment.html">
-     3.4. Task Detachment
+     5.4. Task Detachment
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/5_taskgroup_Construct.html">
-     3.5.
+     5.5.
      <strong>
       taskgroup
      </strong>
@@ -364,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/6_taskyield_Construct.html">
-     3.6.
+     5.6.
      <strong>
       taskyield
      </strong>
@@ -373,7 +446,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/7_taskloop_Construct.html">
-     3.7.
+     5.7.
      <strong>
       taskloop
      </strong>
@@ -382,7 +455,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chap_tasking/8_Combined_parallel_masked_and_taskloop_Constructs.html">
-     3.8. Combined
+     5.8. Combined
      <strong>
       parallel
      </strong>
@@ -400,42 +473,42 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_devices/Chap_devices.html">
-   4. Devices
+   6. Devices
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   5. SIMD
+   7. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_loop_transformations/Chap_loop_transformations.html">
-   6. Loop Transformations
+   8. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_synchronization/Chap_synchronization.html">
-   7. Synchronization
+   9. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_data_environment/Chap_data_environment.html">
-   8. Data Environment
+   10. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_memory_model/Chap_memory_model.html">
-   9. Memory Model
+   11. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_program_control/Chap_program_control.html">
-   10. Program Control
+   12. Program Control
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
-   11. OMPT Interface
+   13. OMPT Interface
   </a>
  </li>
 </ul>
@@ -646,7 +719,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#simd-and-declare-simd-directives">
-   5.1.
+   7.1.
    <strong>
     simd
    </strong>
@@ -662,7 +735,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#inbranch-and-notinbranch-clauses">
-   5.2.
+   7.2.
    <strong>
     inbranch
    </strong>
@@ -675,12 +748,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loop-carried-lexical-forward-dependence">
-   5.3. Loop-Carried Lexical Forward Dependence
+   7.3. Loop-Carried Lexical Forward Dependence
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ref-val-uval-modifiers-for-linear-clause">
-   5.4.
+   7.4.
    <strong>
     ref
    </strong>
@@ -720,7 +793,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#simd-and-declare-simd-directives">
-   5.1.
+   7.1.
    <strong>
     simd
    </strong>
@@ -736,7 +809,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#inbranch-and-notinbranch-clauses">
-   5.2.
+   7.2.
    <strong>
     inbranch
    </strong>
@@ -749,12 +822,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loop-carried-lexical-forward-dependence">
-   5.3. Loop-Carried Lexical Forward Dependence
+   7.3. Loop-Carried Lexical Forward Dependence
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ref-val-uval-modifiers-for-linear-clause">
-   5.4.
+   7.4.
    <strong>
     ref
    </strong>
@@ -784,14 +857,14 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="simd">
-<h1><span class="section-number">5. </span>SIMD<a class="headerlink" href="#simd" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7. </span>SIMD<a class="headerlink" href="#simd" title="Permalink to this headline">#</a></h1>
 <p>Single instruction, multiple data (SIMD) is a form of parallel execution  in which the same operation is performed on multiple data elements  independently in hardware vector processing units (VPU), also called SIMD units. The addition of two vectors to form a third vector is a SIMD operation. Many processors have SIMD (vector) units that can perform simultaneously  2, 4, 8 or more executions of the same operation (by a single SIMD unit).</p>
 <p>Loops without loop-carried backward dependency (or with dependency preserved using  ordered simd) are candidates for vectorization by the compiler for  execution with SIMD units. In addition, with state-of-the-art vectorization  technology and <strong>declare simd</strong> directive extensions for function vectorization in the OpenMP 4.5 specification, loops with function calls can be vectorized as well.  The basic idea is that a scalar function call in a loop can be replaced by a vector version  of the function, and the loop can be vectorized simultaneously by combining a loop  vectorization (<strong>simd</strong> directive on the loop) and a function  vectorization (<strong>declare simd</strong> directive on the function).</p>
 <p>A <strong>simd</strong> construct states that SIMD operations be performed on the data within the loop.  A number of clauses are available to provide data-sharing attributes (<strong>private</strong>, <strong>linear</strong>, <strong>reduction</strong> and  <strong>lastprivate</strong>).  Other clauses provide vector length preference/restrictions  (<strong>simdlen</strong> / <strong>safelen</strong>), loop fusion (<strong>collapse</strong>), and data  alignment (<strong>aligned</strong>).</p>
 <p>The <strong>declare simd</strong> directive designates that a vector version of the function should also be constructed for  execution within loops that contain the function and have a <strong>simd</strong>  directive.  Clauses provide argument specifications (<strong>linear</strong>, <strong>uniform</strong>, and <strong>aligned</strong>), a requested vector length  (<strong>simdlen</strong>), and designate whether the function is always/never  called conditionally in a loop (<strong>notinbranch</strong>/<strong>inbranch</strong>).  The latter is for optimizing performance.</p>
 <p>Also, the <strong>simd</strong> construct has been combined with the worksharing loop  constructs (<strong>for simd</strong> and <strong>do simd</strong>) to enable simultaneous thread  execution in different SIMD units.</p>
 <section id="simd-and-declare-simd-directives">
-<h2><span class="section-number">5.1. </span><strong>simd</strong> and <strong>declare</strong> <strong>simd</strong> Directives<a class="headerlink" href="#simd-and-declare-simd-directives" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.1. </span><strong>simd</strong> and <strong>declare</strong> <strong>simd</strong> Directives<a class="headerlink" href="#simd-and-declare-simd-directives" title="Permalink to this headline">#</a></h2>
 <p>The following example illustrates the basic use of the <strong>simd</strong> construct  to assure the compiler that the loop can be vectorized.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1129,7 +1202,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="inbranch-and-notinbranch-clauses">
-<h2><span class="section-number">5.2. </span><strong>inbranch</strong> and <strong>notinbranch</strong> Clauses<a class="headerlink" href="#inbranch-and-notinbranch-clauses" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2. </span><strong>inbranch</strong> and <strong>notinbranch</strong> Clauses<a class="headerlink" href="#inbranch-and-notinbranch-clauses" title="Permalink to this headline">#</a></h2>
 <p>The following examples illustrate the use of the <strong>declare</strong> <strong>simd</strong>  directive with the <strong>inbranch</strong> and <strong>notinbranch</strong> clauses. The  <strong>notinbranch</strong> clause informs the compiler that the function  <em>foo</em>  is  never called conditionally in the SIMD loop of the function  <em>myaddint</em> . On  the other hand, the <strong>inbranch</strong> clause for the function goo indicates that  the function is always called conditionally in the SIMD loop inside  the function  <em>myaddfloat</em> .</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1328,7 +1401,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="loop-carried-lexical-forward-dependence">
-<h2><span class="section-number">5.3. </span>Loop-Carried Lexical Forward Dependence<a class="headerlink" href="#loop-carried-lexical-forward-dependence" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.3. </span>Loop-Carried Lexical Forward Dependence<a class="headerlink" href="#loop-carried-lexical-forward-dependence" title="Permalink to this headline">#</a></h2>
 <p>The following example tests the restriction on an SIMD loop with the loop-carried lexical forward-dependence. This dependence must be preserved for the correct execution of SIMD loops.</p>
 <p>A loop can be vectorized even though the iterations are not completely independent when it has loop-carried dependences that are forward lexical dependences, indicated in the code below by the read of  <em>A[j+1]</em>  and the write to  <em>A[j]</em>  in C/C++ code (or  <em>A(j+1)</em>  and  <em>A(j)</em>  in Fortran). That is, the read of  <em>A[j+1]</em>  (or  <em>A(j+1)</em>  in Fortran) before the write to  <em>A[j]</em>  (or  <em>A(j)</em>  in Fortran) ordering must be preserved for each iteration in  <em>j</em>  for valid SIMD code generation.</p>
 <p>This test assures that the compiler preserves the loop carried lexical forward-dependence for generating a correct SIMD code.</p>
@@ -1452,7 +1525,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="ref-val-uval-modifiers-for-linear-clause">
-<h2><span class="section-number">5.4. </span><strong>ref</strong>, <strong>val</strong>, <strong>uval</strong> Modifiers for <strong>linear</strong> Clause<a class="headerlink" href="#ref-val-uval-modifiers-for-linear-clause" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.4. </span><strong>ref</strong>, <strong>val</strong>, <strong>uval</strong> Modifiers for <strong>linear</strong> Clause<a class="headerlink" href="#ref-val-uval-modifiers-for-linear-clause" title="Permalink to this headline">#</a></h2>
 <p>When generating vector functions from <strong>declare</strong> <strong>simd</strong> directives,  it is important for a compiler to know the proper types of function arguments in order to generate efficient codes. This is especially true for C++ reference types and Fortran arguments.</p>
 <p>In the following example, the function  <em>add_one2</em>  has a C++ reference parameter (or Fortran argument)  <em>p</em> .  Variable  <em>p</em>  gets incremented by 1 in the function. The caller loop  <em>i</em>  in the main program passes  a variable  <em>k</em>  as a reference to the function  <em>add_one2</em>  call.    The <strong>ref</strong> modifier for the <strong>linear</strong> clause on the  <strong>declare</strong> <strong>simd</strong> directive specifies that the  reference-type parameter  <em>p</em>  is to match the property of the variable   <em>k</em>  in the loop.   This use of reference type is equivalent to the second call to   <em>add_one2</em>  with a direct passing of the array element  <em>a[i]</em> .   In the example, the preferred vector  length 8 is specified for both the caller loop and the callee function.</p>
 <p>When <strong>linear(p: ref)</strong> is applied to an argument passed by reference,  it tells the compiler that the addresses in its vector argument are consecutive, and so the compiler can generate a single vector load or store instead of  a gather or scatter. This allows more efficient SIMD code to be generated with  less source changes.</p>
@@ -1805,13 +1878,13 @@ end program main
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4. </span>Devices</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>Devices</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../Chap_loop_transformations/Chap_loop_transformations.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Loop Transformations</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Loop Transformations</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
