@@ -134,6 +134,6 @@ parts:
         - file: contents/Chap_program_control/11_Controlling_Concurrency_and_Reproducibility_with_the_order_Clause.ipynb
         - file: contents/Chap_program_control/12_interop_Construct.ipynb
         - file: contents/Chap_program_control/13_Utilities.ipynb
-      - file: contents/Chap_ompt_interface/Chap_ompt_interface.ipynb
+      - file: contents/Chap_ompt_interface/0_Chap_ompt_interface.ipynb
         sections:
-        - file: contents/Chap_ompt_interface/Chap_ompt_interface.ipynb
+        - file: contents/Chap_ompt_interface/1_OMPT_Start.ipynb
