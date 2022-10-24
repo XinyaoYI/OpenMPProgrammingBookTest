@@ -18,7 +18,26 @@ parts:
         - file: 2_C++_Attributes.ipynb
         - file: 3_Fortran_Comments_Fixed_Source_Form.ipynb
         - file: 4_Fortran_Comments_Free_Source_Form.ipynb
-      - file: contents/Chap_parallel_execution/Chap_parallel_execution.ipynb
+      - file: contents/Chap_parallel_execution/0_Chap_parallel_execution.ipynb
+        sections:
+        - file: contents/Chap_parallel_execution/1_A_Simple_Parallel_Loop.ipynb
+        - file: contents/Chap_parallel_execution/2_parallel_Construct.ipynb
+        - file: contents/Chap_parallel_execution/3_teams_Construct_on_Host.ipynb
+        - file: contents/Chap_parallel_execution/4_Controlling_the_Number_of_Threads_on_Multiple_Nesting_Levels.ipynb
+        - file: contents/Chap_parallel_execution/5_Interaction_Between_the_num_threads_Clause_and_omp_set_dynamic.ipynb
+        - file: contents/Chap_parallel_execution/6_Fortran_Restrictions_on_the_do_Construct.ipynb
+        - file: contents/Chap_parallel_execution/7_nowait_Clause.ipynb
+        - file: contents/Chap_parallel_execution/8_collapse_Clause.ipynb
+        - file: contents/Chap_parallel_execution/9_linear_Clause_in_Loop_Constructs.ipynb
+        - file: contents/Chap_parallel_execution/10_parallel_sections_Construct.ipynb
+        - file: contents/Chap_parallel_execution/11_firstprivate_Clause_and_sections_Construct.ipynb
+        - file: contents/Chap_parallel_execution/12_single_Construct.ipynb
+        - file: contents/Chap_parallel_execution/13_workshare_Construct.ipynb
+        - file: contents/Chap_parallel_execution/14_masked_Construct.ipynb
+        - file: contents/Chap_parallel_execution/15_loop_Construct.ipynb
+        - file: contents/Chap_parallel_execution/16_Parallel_Random_Access_Iterator_Loop.ipynb
+        - file: contents/Chap_parallel_execution/17_omp_set_dynamic_and_omp_set_num_threads_Routines.ipynb
+        - file: contents/Chap_parallel_execution/18_omp_get_num_threads_Routine.ipynb
       - file: contents/Chap_affinity/0_Chap_affinity.ipynb
         sections:
         - file: contents/Chap_affinity/1_Section_proc_bind_Clause.ipynb
