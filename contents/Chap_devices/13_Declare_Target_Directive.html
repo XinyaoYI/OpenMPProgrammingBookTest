@@ -1592,7 +1592,6 @@ title="Print to PDF"
 </div>
 </div>
 <p>Often class definitions and their function definitions are included in separate files, as shown in  <em>declare_target.2b_classes.hpp</em>  and  <em>declare_target.2b_functions.cpp</em>  below. In this case, it is necessary to specify in a declare target directive for the classes. However, as long as the  <em>2b_functions.cpp</em>  file includes the corresponding declare target classes, there is no need to specify the functions with a declare target directive. The functions are treated as if they are specified with a declare target directive. Compiling the  <em>declare_target.2b_functions.cpp</em>  and  <em>declare_target.2b_main.cpp</em>  files  separately and linking them, will create appropriate executable device functions for the target device.</p>
-<p>\srcnexample[5.1]{declare_target}{2b_classes}{hpp}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
