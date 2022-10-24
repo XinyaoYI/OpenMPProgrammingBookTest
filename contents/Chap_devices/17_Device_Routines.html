@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Device Routines &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>6.17. Device Routines &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="7. SIMD" href="../Chap_SIMD/0_Chap_SIMD.html" />
+    <link rel="prev" title="6.16. Asynchronous target Execution and Dependences" href="16_Asynchronous_target_Execution_and_Dependences.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,7 +126,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Chap_introduction/0_Chap_introduction.html">
    1. Introduction
@@ -469,16 +471,155 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="0_Chap_devices.html">
    6. Devices
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_target_Construct.html">
+     6.1.
+     <strong>
+      target
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_defaultmap_Clause.html">
+     6.2.
+     <strong>
+      defaultmap
+     </strong>
+     Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3_Pointer_Mapping.html">
+     6.3. Pointer Mapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4_Structure_Mapping.html">
+     6.4. Structure Mapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5_Fortran_Allocatable_Array_Mapping.html">
+     6.5. Fortran Allocatable Array Mapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6_Array_Sections_in_Device_Constructs.html">
+     6.6. Array Sections in Device Constructs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7_C%2B%2B_Virtual_Functions.html">
+     6.7. C++ Virtual Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="8_Array_Shaping.html">
+     6.8. Array Shaping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9_declare_mapper_Directive.html">
+     6.9.
+     <strong>
+      declare mapper
+     </strong>
+     Directive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_target_data_Construct.html">
+     6.10.
+     <strong>
+      target
+     </strong>
+     <strong>
+      data
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_target_enter_data_and_target_exit_data_Constructs.html">
+     6.11.
+     <strong>
+      target
+     </strong>
+     <strong>
+      enter
+     </strong>
+     <strong>
+      data
+     </strong>
+     and
+     <strong>
+      target
+     </strong>
+     <strong>
+      exit
+     </strong>
+     <strong>
+      data
+     </strong>
+     Constructs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_target_update_Construct.html">
+     6.12.
+     <strong>
+      target
+     </strong>
+     <strong>
+      update
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_Declare_Target_Directive.html">
+     6.13. Declare Target Directive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14_Lambda_Expressions.html">
+     6.14. Lambda Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="15_teams_Construct_and_Related_Combined_Constructs.html">
+     6.15.
+     <strong>
+      teams
+     </strong>
+     Construct and Related Combined Constructs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="16_Asynchronous_target_Execution_and_Dependences.html">
+     6.16. Asynchronous
+     <strong>
+      target
+     </strong>
+     Execution and Dependences
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.17. Device Routines
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1180,6 +1321,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#omp-is-initial-device-routine">
+   6.17.1.
    <strong>
     omp_is_initial_device
    </strong>
@@ -1188,6 +1330,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#omp-get-num-devices-routine">
+   6.17.2.
    <strong>
     omp_get_num_devices
    </strong>
@@ -1196,6 +1339,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#omp-set-default-device-and-omp-get-default-device-routines">
+   6.17.3.
    <strong>
     omp_set_default_device
    </strong>
@@ -1208,12 +1352,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#device-and-host-memory-association">
-   Device and Host Memory Association
+   6.17.4. Device and Host Memory Association
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-memory-and-device-pointers-routines">
-   Target Memory and Device Pointers Routines
+   6.17.5. Target Memory and Device Pointers Routines
   </a>
  </li>
 </ul>
@@ -1237,6 +1381,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#omp-is-initial-device-routine">
+   6.17.1.
    <strong>
     omp_is_initial_device
    </strong>
@@ -1245,6 +1390,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#omp-get-num-devices-routine">
+   6.17.2.
    <strong>
     omp_get_num_devices
    </strong>
@@ -1253,6 +1399,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#omp-set-default-device-and-omp-get-default-device-routines">
+   6.17.3.
    <strong>
     omp_set_default_device
    </strong>
@@ -1265,12 +1412,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#device-and-host-memory-association">
-   Device and Host Memory Association
+   6.17.4. Device and Host Memory Association
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#target-memory-and-device-pointers-routines">
-   Target Memory and Device Pointers Routines
+   6.17.5. Target Memory and Device Pointers Routines
   </a>
  </li>
 </ul>
@@ -1284,9 +1431,9 @@ title="Print to PDF"
               <div>
                 
   <section id="device-routines">
-<h1>Device Routines<a class="headerlink" href="#device-routines" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6.17. </span>Device Routines<a class="headerlink" href="#device-routines" title="Permalink to this headline">#</a></h1>
 <section id="omp-is-initial-device-routine">
-<h2><strong>omp_is_initial_device</strong> Routine<a class="headerlink" href="#omp-is-initial-device-routine" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.17.1. </span><strong>omp_is_initial_device</strong> Routine<a class="headerlink" href="#omp-is-initial-device-routine" title="Permalink to this headline">#</a></h2>
 <p>The following example shows how the <strong>omp_is_initial_device</strong> runtime library routine  can be used to query if a code is executing on the initial host device or on a  target device. The example then sets the number of threads in the <strong>parallel</strong>  region based on where the code is executing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1389,7 +1536,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="omp-get-num-devices-routine">
-<h2><strong>omp_get_num_devices</strong> Routine<a class="headerlink" href="#omp-get-num-devices-routine" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.17.2. </span><strong>omp_get_num_devices</strong> Routine<a class="headerlink" href="#omp-get-num-devices-routine" title="Permalink to this headline">#</a></h2>
 <p>The following example shows how the <strong>omp_get_num_devices</strong> runtime library routine  can be used to determine the number of devices.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1452,7 +1599,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="omp-set-default-device-and-omp-get-default-device-routines">
-<h2><strong>omp_set_default_device</strong> and  <strong>omp_get_default_device</strong> Routines<a class="headerlink" href="#omp-set-default-device-and-omp-get-default-device-routines" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.17.3. </span><strong>omp_set_default_device</strong> and  <strong>omp_get_default_device</strong> Routines<a class="headerlink" href="#omp-set-default-device-and-omp-get-default-device-routines" title="Permalink to this headline">#</a></h2>
 <p>The following example shows how the <strong>omp_set_default_device</strong> and <strong>omp_get_default_device</strong>  runtime library routines can be used to set the default device and determine the  default device respectively.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1502,7 +1649,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="device-and-host-memory-association">
-<h2>Device and Host Memory Association<a class="headerlink" href="#device-and-host-memory-association" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.17.4. </span>Device and Host Memory Association<a class="headerlink" href="#device-and-host-memory-association" title="Permalink to this headline">#</a></h2>
 <p>The association of device memory with host memory
 can be established by calling the <strong>omp_target_associate_ptr</strong>
 API routine as part of the mapping.
@@ -1684,7 +1831,7 @@ end
 </div>
 </section>
 <section id="target-memory-and-device-pointers-routines">
-<h2>Target Memory and Device Pointers Routines<a class="headerlink" href="#target-memory-and-device-pointers-routines" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.17.5. </span>Target Memory and Device Pointers Routines<a class="headerlink" href="#target-memory-and-device-pointers-routines" title="Permalink to this headline">#</a></h2>
 <p>The following example shows how to create space on a device, transfer data to and from that space, and free the space, using API calls. The API calls directly execute allocation, copy and free operations on the device, without invoking any mapping through a <strong>target</strong> directive. The <strong>omp_target_alloc</strong> routine allocates space and returns a device pointer for referencing the space in the <strong>omp_target_memcpy</strong> API routine on the host. The <strong>omp_target_free</strong> routine frees the space on the device.</p>
 <p>The example also illustrates how to access that space in a <strong>target</strong> region by exposing the device pointer in an <strong>is_device_ptr</strong> clause.</p>
 <p>The example creates an array of cosine values on the default device, to be used on the host device. The function fails if a default device is not available.</p>
@@ -1889,6 +2036,20 @@ end
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="16_Asynchronous_target_Execution_and_Dependences.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6.16. </span>Asynchronous <strong>target</strong> Execution and Dependences</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../Chap_SIMD/0_Chap_SIMD.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>SIMD</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

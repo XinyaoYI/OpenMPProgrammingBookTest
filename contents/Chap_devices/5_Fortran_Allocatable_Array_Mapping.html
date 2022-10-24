@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Fortran Allocatable Array Mapping &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>6.5. Fortran Allocatable Array Mapping &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="6.6. Array Sections in Device Constructs" href="6_Array_Sections_in_Device_Constructs.html" />
+    <link rel="prev" title="6.4. Structure Mapping" href="4_Structure_Mapping.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,7 +126,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Chap_introduction/0_Chap_introduction.html">
    1. Introduction
@@ -469,16 +471,155 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="0_Chap_devices.html">
    6. Devices
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_target_Construct.html">
+     6.1.
+     <strong>
+      target
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_defaultmap_Clause.html">
+     6.2.
+     <strong>
+      defaultmap
+     </strong>
+     Clause
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3_Pointer_Mapping.html">
+     6.3. Pointer Mapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4_Structure_Mapping.html">
+     6.4. Structure Mapping
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.5. Fortran Allocatable Array Mapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6_Array_Sections_in_Device_Constructs.html">
+     6.6. Array Sections in Device Constructs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7_C%2B%2B_Virtual_Functions.html">
+     6.7. C++ Virtual Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="8_Array_Shaping.html">
+     6.8. Array Shaping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9_declare_mapper_Directive.html">
+     6.9.
+     <strong>
+      declare mapper
+     </strong>
+     Directive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_target_data_Construct.html">
+     6.10.
+     <strong>
+      target
+     </strong>
+     <strong>
+      data
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_target_enter_data_and_target_exit_data_Constructs.html">
+     6.11.
+     <strong>
+      target
+     </strong>
+     <strong>
+      enter
+     </strong>
+     <strong>
+      data
+     </strong>
+     and
+     <strong>
+      target
+     </strong>
+     <strong>
+      exit
+     </strong>
+     <strong>
+      data
+     </strong>
+     Constructs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12_target_update_Construct.html">
+     6.12.
+     <strong>
+      target
+     </strong>
+     <strong>
+      update
+     </strong>
+     Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13_Declare_Target_Directive.html">
+     6.13. Declare Target Directive
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14_Lambda_Expressions.html">
+     6.14. Lambda Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="15_teams_Construct_and_Related_Combined_Constructs.html">
+     6.15.
+     <strong>
+      teams
+     </strong>
+     Construct and Related Combined Constructs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="16_Asynchronous_target_Execution_and_Dependences.html">
+     6.16. Asynchronous
+     <strong>
+      target
+     </strong>
+     Execution and Dependences
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="17_Device_Routines.html">
+     6.17. Device Routines
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1181,7 +1322,7 @@ title="Print to PDF"
               <div>
                 
   <section id="fortran-allocatable-array-mapping">
-<h1>Fortran Allocatable Array Mapping<a class="headerlink" href="#fortran-allocatable-array-mapping" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6.5. </span>Fortran Allocatable Array Mapping<a class="headerlink" href="#fortran-allocatable-array-mapping" title="Permalink to this headline">#</a></h1>
 <p>The following examples illustrate the use of Fortran allocatable arrays in <strong>target</strong> regions.</p>
 <p>In the first example,  allocatable variables (<em>a</em> and <em>b</em>) are first allocated
 on the host, and then mapped onto a device in the Target 1 and 2 sections, respectively.
@@ -1395,6 +1536,20 @@ end program
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="4_Structure_Mapping.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6.4. </span>Structure Mapping</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="6_Array_Sections_in_Device_Constructs.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.6. </span>Array Sections in Device Constructs</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
