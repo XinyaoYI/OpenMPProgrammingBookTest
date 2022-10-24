@@ -11,7 +11,7 @@ parts:
     chapters:
       - file: contents/Chap_introduction/0_Chap_introduction.ipynb
         sections:
-        - file: contents/Chap_introduction/1_Section_Examples_Organization.ipynb
+        - file: contents/Chap_introduction/1_Examples_Organization.ipynb
       - file: contents/Chap_directives/0_Chap_directives.ipynb
         sections:
         - file: contents/Chap_directives/1_C_C++_Pragmas.ipynb
@@ -40,10 +40,10 @@ parts:
         - file: contents/Chap_parallel_execution/18_omp_get_num_threads_Routine.ipynb
       - file: contents/Chap_affinity/0_Chap_affinity.ipynb
         sections:
-        - file: contents/Chap_affinity/1_Section_proc_bind_Clause.ipynb
-        - file: contents/Chap_affinity/2_Section_Task_Affinity.ipynb
-        - file: contents/Chap_affinity/3_Section_Affinity_Display.ipynb
-        - file: contents/Chap_affinity/4_Section_Affinity_Query_Func.ipynb
+        - file: contents/Chap_affinity/1_proc_bind_Clause.ipynb
+        - file: contents/Chap_affinity/2_Task_Affinity.ipynb
+        - file: contents/Chap_affinity/3_Affinity_Display.ipynb
+        - file: contents/Chap_affinity/4_Affinity_Query_Func.ipynb
       - file: contents/Chap_tasking/0_Chap_tasking.ipynb
         sections:
         - file: contents/Chap_tasking/1_task_and_taskwait_Constructs.ipynb
@@ -54,8 +54,32 @@ parts:
         - file: contents/Chap_tasking/6_taskyield_Construct.ipynb
         - file: contents/Chap_tasking/7_taskloop_Construct.ipynb
         - file: contents/Chap_tasking/8_Combined_parallel_masked_and_taskloop_Constructs.ipynb
-      - file: contents/Chap_devices/Chap_devices.ipynb
-      - file: contents/Chap_SIMD/Chap_SIMD.ipynb
+      - file: contents/Chap_devices/0_Chap_devices.ipynb
+        sections:
+        - file: contents/Chap_devices/touch 0_Devices.ipynb
+        - file: contents/Chap_devices/touch 1_target_Construct.ipynb
+        - file: contents/Chap_devices/touch 2_defaultmap_Clause.ipynb
+        - file: contents/Chap_devices/touch 3_Pointer_Mapping.ipynb
+        - file: contents/Chap_devices/touch 4_Structure_Mapping.ipynb
+        - file: contents/Chap_devices/touch 5_Fortran_Allocatable_Array_Mapping.ipynb
+        - file: contents/Chap_devices/touch 6_Array_Sections_in_Device_Constructs.ipynb
+        - file: contents/Chap_devices/touch 7_C++_Virtual_Functions.ipynb
+        - file: contents/Chap_devices/touch 8_Array_Shaping.ipynb
+        - file: contents/Chap_devices/touch 9_declare_mapper_Directive.ipynb
+        - file: contents/Chap_devices/touch 10_target_data_Construct.ipynb
+        - file: contents/Chap_devices/touch 11_target_enter_data_and_target_exit_data_Constructs.ipynb
+        - file: contents/Chap_devices/touch 12_target_update_Construct.ipynb
+        - file: contents/Chap_devices/touch 13_Declare_Target_Directive.ipynb
+        - file: contents/Chap_devices/touch 14_Lambda_Expressions.ipynb
+        - file: contents/Chap_devices/touch 15_teams_Construct_and_Related_Combined_Constructs.ipynb
+        - file: contents/Chap_devices/touch 16_Asynchronous_target_Execution_and_Dependences.ipynb
+        - file: contents/Chap_devices/touch 17_Device_Routines.ipynb
+      - file: contents/Chap_SIMD/0_Chap_SIMD.ipynb
+        sections:
+        - file: contents/Chap_SIMD/1_simd_and_declare_simd_Directives.ipynb
+        - file: contents/Chap_SIMD/2_inbranch_and_notinbranch_Clauses.ipynb
+        - file: contents/Chap_SIMD/3_Loop-Carried_Lexical_Forward_Dependence.ipynb
+        - file: contents/Chap_SIMD/4_ref_val_uvalModifiers_for_linear_Clause.ipynb
       - file: contents/Chap_loop_transformations/Chap_loop_transformations.ipynb
       - file: contents/Chap_synchronization/Chap_synchronization.ipynb
       - file: contents/Chap_data_environment/Chap_data_environment.ipynb
