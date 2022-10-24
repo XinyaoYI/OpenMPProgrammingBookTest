@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>9. Synchronization &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>7. Synchronization &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
-    <link rel="next" title="10. Data Environment" href="../Chap_data_environment/Chap_data_environment.html" />
-    <link rel="prev" title="8. Loop Transformations" href="../Chap_loop_transformations/Chap_loop_transformations.html" />
+    <link rel="next" title="8. Data Environment" href="../Chap_data_environment/Chap_data_environment.html" />
+    <link rel="prev" title="6. Loop Transformations" href="../Chap_loop_transformations/Chap_loop_transformations.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -128,111 +128,65 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_introduction/Chap_introduction.html">
-   1. Introduction
+  <a class="reference internal" href="../Chap_directives/0_Chap_directives.html">
+   1. OpenMP Directive Syntax
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_introduction/Section_Examples_Organization.html">
-     1.1. Examples Organization
-    </a>
-   </li>
+  <ul class="simple">
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Chap_directives/Chap_directives.html">
-   2. OpenMP Directive Syntax
-  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_parallel_execution/Chap_parallel_execution.html">
-   3. Parallel Execution
+   2. Parallel Execution
   </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_affinity/Chap_affinity.html">
-   4. OpenMP Affinity
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_affinity/Section_proc_bind_Clause.html">
-     4.1.
-     <strong>
-      proc_bind
-     </strong>
-     Clause
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_affinity/Section_Task_Affinity.html">
-     4.2. Task Affinity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_affinity/Section_Affinity_Display.html">
-     4.3. Affinity Display
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_affinity/Section_Affinity_Query_Func.html">
-     4.4. Affinity Query Functions
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_tasking/Chap_tasking.html">
-   5. Tasking
+   3. Tasking
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_devices/Chap_devices.html">
-   6. Devices
+   4. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_SIMD/Chap_SIMD.html">
-   7. SIMD
+   5. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_loop_transformations/Chap_loop_transformations.html">
-   8. Loop Transformations
+   6. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   9. Synchronization
+   7. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_data_environment/Chap_data_environment.html">
-   10. Data Environment
+   8. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_memory_model/Chap_memory_model.html">
-   11. Memory Model
+   9. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_program_control/Chap_program_control.html">
-   12. Program Control
+   10. Program Control
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
-   13. OMPT Interface
+   11. OMPT Interface
   </a>
  </li>
 </ul>
@@ -443,7 +397,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#critical-construct">
-   9.1.
+   7.1.
    <strong>
     critical
    </strong>
@@ -452,7 +406,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#worksharing-constructs-inside-a-critical-construct">
-   9.2. Worksharing Constructs Inside a
+   7.2. Worksharing Constructs Inside a
    <strong>
     critical
    </strong>
@@ -461,7 +415,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#binding-of-barrier-regions">
-   9.3. Binding of
+   7.3. Binding of
    <strong>
     barrier
    </strong>
@@ -470,7 +424,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#atomic-construct">
-   9.4.
+   7.4.
    <strong>
     atomic
    </strong>
@@ -479,7 +433,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#restrictions-on-the-atomic-construct">
-   9.5. Restrictions on the
+   7.5. Restrictions on the
    <strong>
     atomic
    </strong>
@@ -488,7 +442,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#flush-construct-without-a-list">
-   9.6.
+   7.6.
    <strong>
     flush
    </strong>
@@ -497,12 +451,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#synchronization-based-on-acquire-release-semantics">
-   9.7. Synchronization Based on Acquire/Release Semantics
+   7.7. Synchronization Based on Acquire/Release Semantics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ordered-clause-and-ordered-construct">
-   9.8.
+   7.8.
    <strong>
     ordered
    </strong>
@@ -515,7 +469,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#depobj-construct">
-   9.9.
+   7.9.
    <strong>
     depobj
    </strong>
@@ -524,17 +478,17 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#doacross-loop-nest">
-   9.10. Doacross Loop Nest
+   7.10. Doacross Loop Nest
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lock-routines">
-   9.11. Lock Routines
+   7.11. Lock Routines
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#omp-init-lock-routine">
-     9.11.1.
+     7.11.1.
      <strong>
       omp_init_lock
      </strong>
@@ -543,7 +497,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#omp-init-lock-with-hint-routine">
-     9.11.2.
+     7.11.2.
      <strong>
       omp_init_lock_with_hint
      </strong>
@@ -552,17 +506,17 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ownership-of-locks">
-     9.11.3. Ownership of Locks
+     7.11.3. Ownership of Locks
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#simple-lock-routines">
-     9.11.4. Simple Lock Routines
+     7.11.4. Simple Lock Routines
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#nestable-lock-routines">
-     9.11.5. Nestable Lock Routines
+     7.11.5. Nestable Lock Routines
     </a>
    </li>
   </ul>
@@ -588,7 +542,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#critical-construct">
-   9.1.
+   7.1.
    <strong>
     critical
    </strong>
@@ -597,7 +551,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#worksharing-constructs-inside-a-critical-construct">
-   9.2. Worksharing Constructs Inside a
+   7.2. Worksharing Constructs Inside a
    <strong>
     critical
    </strong>
@@ -606,7 +560,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#binding-of-barrier-regions">
-   9.3. Binding of
+   7.3. Binding of
    <strong>
     barrier
    </strong>
@@ -615,7 +569,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#atomic-construct">
-   9.4.
+   7.4.
    <strong>
     atomic
    </strong>
@@ -624,7 +578,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#restrictions-on-the-atomic-construct">
-   9.5. Restrictions on the
+   7.5. Restrictions on the
    <strong>
     atomic
    </strong>
@@ -633,7 +587,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#flush-construct-without-a-list">
-   9.6.
+   7.6.
    <strong>
     flush
    </strong>
@@ -642,12 +596,12 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#synchronization-based-on-acquire-release-semantics">
-   9.7. Synchronization Based on Acquire/Release Semantics
+   7.7. Synchronization Based on Acquire/Release Semantics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ordered-clause-and-ordered-construct">
-   9.8.
+   7.8.
    <strong>
     ordered
    </strong>
@@ -660,7 +614,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#depobj-construct">
-   9.9.
+   7.9.
    <strong>
     depobj
    </strong>
@@ -669,17 +623,17 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#doacross-loop-nest">
-   9.10. Doacross Loop Nest
+   7.10. Doacross Loop Nest
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lock-routines">
-   9.11. Lock Routines
+   7.11. Lock Routines
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#omp-init-lock-routine">
-     9.11.1.
+     7.11.1.
      <strong>
       omp_init_lock
      </strong>
@@ -688,7 +642,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#omp-init-lock-with-hint-routine">
-     9.11.2.
+     7.11.2.
      <strong>
       omp_init_lock_with_hint
      </strong>
@@ -697,17 +651,17 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ownership-of-locks">
-     9.11.3. Ownership of Locks
+     7.11.3. Ownership of Locks
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#simple-lock-routines">
-     9.11.4. Simple Lock Routines
+     7.11.4. Simple Lock Routines
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#nestable-lock-routines">
-     9.11.5. Nestable Lock Routines
+     7.11.5. Nestable Lock Routines
     </a>
    </li>
   </ul>
@@ -723,7 +677,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="synchronization">
-<h1><span class="section-number">9. </span>Synchronization<a class="headerlink" href="#synchronization" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7. </span>Synchronization<a class="headerlink" href="#synchronization" title="Permalink to this headline">#</a></h1>
 <p>The <strong>barrier</strong> construct is a stand-alone directive that requires all threads of a team (within a contention group) to execute the barrier and complete execution of all tasks within the region, before continuing past the barrier.</p>
 <p>The <strong>critical</strong> construct is a directive that contains a structured block.  The construct allows only a single thread at a time to execute the structured block (region). Multiple critical regions may exist in a parallel region, and may act cooperatively (only one thread at a time in all <strong>critical</strong> regions), or separately (only one thread at a time in each <strong>critical</strong> regions when a unique name is supplied on each <strong>critical</strong> construct). An optional (lock) <strong>hint</strong> clause may be specified on a named <strong>critical</strong>  construct to provide the OpenMP runtime guidance in selection a locking  mechanism.</p>
 <p>On a finer scale the <strong>atomic</strong> construct allows only a single thread at  a time to have atomic access to a storage location involving a single read,  write, update or capture statement, and a limited number of combinations  when specifying the <strong>capture</strong>  <em>atomic-clause</em>  clause.  The  <em>atomic-clause</em>  clause is required for some expression statements, but is not required for <strong>update</strong> statements. The  <em>memory-order</em>  clause can be used to specify the degree of memory ordering enforced by an <strong>atomic</strong> construct. From weakest to strongest, they are <strong>relaxed</strong> (the default), acquire and/or release clauses (specified with <strong>acquire</strong>, <strong>release</strong>, or <strong>acq_rel</strong>), and <strong>seq_cst</strong>.  Please see the details in the  <em>atomic Construct</em>  subsection of the  <em>Directives</em>  chapter in the OpenMP Specifications document.</p>
@@ -733,7 +687,7 @@ title="Print to PDF"
 <p>General-purpose routines provide mutual exclusion semantics through locks,  represented by lock variables.   The semantics allows a task to  <em>set</em> , and hence   <em>own</em>  a lock, until it is  <em>unset</em>  by the task that set it. A   <em>nestable</em>  lock can be set multiple times by a task, and is used when in code requires nested control of locks.  A  <em>simple lock</em>  can only be set once by the owning task. There are specific calls for the two types of locks, and the variable of a specific lock type cannot be used by the other lock type.</p>
 <p>Any explicit task will observe the synchronization prescribed in a  <strong>barrier</strong> construct and an implied barrier.  Also, additional synchronizations  are available for tasks.  All children of a task will wait at a <strong>taskwait</strong> (for  their siblings to complete).  A <strong>taskgroup</strong> construct creates a region in which the current task is suspended at the end of the region until all sibling tasks,  and their descendants, have completed.  Scheduling constraints on task execution can be prescribed by the <strong>depend</strong> clause to enforce dependence on previously generated tasks. More details on controlling task executions can be found in the  <em>Tasking</em>  Chapter in the OpenMP Specifications document.</p>
 <section id="critical-construct">
-<h2><span class="section-number">9.1. </span><strong>critical</strong> Construct<a class="headerlink" href="#critical-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.1. </span><strong>critical</strong> Construct<a class="headerlink" href="#critical-construct" title="Permalink to this headline">#</a></h2>
 <p>The following example includes several <strong>critical</strong> constructs. The example  illustrates a queuing model in which a task is dequeued and worked on. To guard  against multiple threads dequeuing the same task, the dequeuing operation must  be in a <strong>critical</strong> region. Because the two queues in this example are independent,  they are protected by <strong>critical</strong> constructs with different names,  <em>xaxis</em>   and  <em>yaxis</em> .</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -869,7 +823,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="worksharing-constructs-inside-a-critical-construct">
-<h2><span class="section-number">9.2. </span>Worksharing Constructs Inside a <strong>critical</strong> Construct<a class="headerlink" href="#worksharing-constructs-inside-a-critical-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2. </span>Worksharing Constructs Inside a <strong>critical</strong> Construct<a class="headerlink" href="#worksharing-constructs-inside-a-critical-construct" title="Permalink to this headline">#</a></h2>
 <p>The following example demonstrates using a worksharing construct inside a <strong>critical</strong>  construct. This example is conforming because the worksharing <strong>single</strong>   region is not closely nested inside the <strong>critical</strong> region. A single thread  executes the one and only section in the <strong>sections</strong> region, and executes  the <strong>critical</strong> region. The same thread encounters the nested <strong>parallel</strong>  region, creates a new team of threads, and becomes the primary thread of the new team.  One of the threads in the new team enters the <strong>single</strong> region and increments  <strong>i</strong> by <strong>1</strong>. At the end of this example <strong>i</strong> is equal to <strong>2</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -933,7 +887,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="binding-of-barrier-regions">
-<h2><span class="section-number">9.3. </span>Binding of <strong>barrier</strong> Regions<a class="headerlink" href="#binding-of-barrier-regions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.3. </span>Binding of <strong>barrier</strong> Regions<a class="headerlink" href="#binding-of-barrier-regions" title="Permalink to this headline">#</a></h2>
 <p>The binding rules call for a <strong>barrier</strong> region to bind to the closest enclosing  <strong>parallel</strong> region.</p>
 <p>In the following example, the call from the main program to  <em>sub2</em>  is conforming  because the <strong>barrier</strong> region (in  <em>sub3</em> ) binds to the <strong>parallel</strong>  region in  <em>sub2</em> . The call from the main program to  <em>sub1</em>  is conforming  because the <strong>barrier</strong> region binds to the <strong>parallel</strong> region in subroutine   <em>sub2</em> .</p>
 <p>The call from the main program to  <em>sub3</em>  is conforming because the <strong>barrier</strong>  region binds to the implicit inactive <strong>parallel</strong> region enclosing the sequential  part. Also note that the <strong>barrier</strong> region in  <em>sub3</em>  when called from   <em>sub2</em>  only synchronizes the team of threads in the enclosing <strong>parallel</strong>  region and not all the threads created in  <em>sub1</em> .</p>
@@ -1031,7 +985,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="atomic-construct">
-<h2><span class="section-number">9.4. </span><strong>atomic</strong> Construct<a class="headerlink" href="#atomic-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.4. </span><strong>atomic</strong> Construct<a class="headerlink" href="#atomic-construct" title="Permalink to this headline">#</a></h2>
 <p>The following example avoids race conditions (simultaneous updates of an element  of  <em>x</em>  by multiple threads) by using the <strong>atomic</strong> construct .</p>
 <p>The advantage of using the <strong>atomic</strong> construct in this example is that it  allows updates of two different elements of  <em>x</em>  to occur in parallel. If  a <strong>critical</strong> construct were used instead, then all updates to elements of   <em>x</em>  would be executed serially (though not in any guaranteed order).</p>
 <p>Note that the <strong>atomic</strong> directive applies only to the statement immediately  following it. As a result, elements of  <em>y</em>  are not updated atomically in  this example.</p>
@@ -1320,7 +1274,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="restrictions-on-the-atomic-construct">
-<h2><span class="section-number">9.5. </span>Restrictions on the <strong>atomic</strong> Construct<a class="headerlink" href="#restrictions-on-the-atomic-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.5. </span>Restrictions on the <strong>atomic</strong> Construct<a class="headerlink" href="#restrictions-on-the-atomic-construct" title="Permalink to this headline">#</a></h2>
 <p>The following non-conforming examples illustrate the restrictions on the <strong>atomic</strong>  construct.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1481,7 +1435,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="flush-construct-without-a-list">
-<h2><span class="section-number">9.6. </span><strong>flush</strong> Construct without a List<a class="headerlink" href="#flush-construct-without-a-list" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.6. </span><strong>flush</strong> Construct without a List<a class="headerlink" href="#flush-construct-without-a-list" title="Permalink to this headline">#</a></h2>
 <p>The following example distinguishes the shared variables affected by a <strong>flush</strong>  construct with no list from the shared objects that are not affected:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1623,7 +1577,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="synchronization-based-on-acquire-release-semantics">
-<h2><span class="section-number">9.7. </span>Synchronization Based on Acquire/Release Semantics<a class="headerlink" href="#synchronization-based-on-acquire-release-semantics" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.7. </span>Synchronization Based on Acquire/Release Semantics<a class="headerlink" href="#synchronization-based-on-acquire-release-semantics" title="Permalink to this headline">#</a></h2>
 <p>As explained in the Memory Model chapter of this document, a flush operation may be an <strong>acquire flush</strong> and/or a <strong>release flush</strong>, and OpenMP 5.0 defines acquire/release semantics in terms of these fundamental flush operations.  For any synchronization between two threads that is specified by OpenMP, a release flush logically occurs at the source of the synchronization and an acquire flush logically occurs at the sink of the synchronization. OpenMP 5.0 added memory ordering clauses - <strong>acquire</strong>, <strong>release</strong>, and <strong>acq_rel</strong> - to the <strong>flush</strong> and <strong>atomic</strong> constructs for explicitly requesting acquire/release semantics.  Furthermore, implicit flushes for all OpenMP constructs and runtime routines that synchronize OpenMP threads in some manner were redefined in terms of synchronizing release and acquire flushes to avoid the requirement of strong memory fences (see the  <em>Flush Synchronization and Happens Before</em>  and  <em>Implicit Flushes</em>  sections of the OpenMP Specifications document).</p>
 <p>The examples that follow in this section illustrate how acquire and release flushes may be employed, implicitly or explicitly, for synchronizing threads. A <strong>flush</strong> directive without a list and without any memory ordering clause can also function as both an acquire and release flush for facilitating thread synchronization.  Flushes implied on entry to, or exit from, an atomic operation (specified by an <strong>atomic</strong> construct) may function as an acquire flush or a release flush if a memory ordering clause appears on the construct. On entry to and exit from a <strong>critical</strong> construct there is now an implicit acquire flush and release flush, respectively.</p>
 <p>The first example illustrates how the release and acquire flushes implied by a <strong>critical</strong> region guarantee a value written by the first thread is visible to a read of the value on the second thread. Thread 0 writes to  <em>x</em>  and then executes a <strong>critical</strong> region in which it writes to  <em>y</em> ; the write to  <em>x</em>  happens before the execution of the <strong>critical</strong> region, consistent with the program order of the thread.  Meanwhile, thread 1 executes a <strong>critical</strong> region in a loop until it reads a non-zero value from  <em>y</em>  in the <strong>critical</strong> region, after which it prints the value of  <em>x</em> ; again, the execution of the <strong>critical</strong> regions happen before the read from  <em>x</em>  based on the program order of the thread. The <strong>critical</strong> regions executed by the two threads execute in a serial manner, with a pairwise synchronization from the exit of one <strong>critical</strong> region to the entry to the next <strong>critical</strong> region.  These pairwise synchronizations result from the implicit release flushes that occur on exit from <strong>critical</strong> regions and the implicit acquire flushes that occur on entry to <strong>critical</strong> regions; hence, the execution of each <strong>critical</strong> region in the sequence happens before the execution of the next <strong>critical</strong> region. A “happens before’’ order is therefore established between the assignment to  <em>x</em>  by thread 0 and the read from  <em>x</em>  by thread 1, and so thread 1 must see that  <em>x</em>  equals 10.</p>
@@ -1956,7 +1910,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="ordered-clause-and-ordered-construct">
-<h2><span class="section-number">9.8. </span><strong>ordered</strong> Clause and <strong>ordered</strong> Construct<a class="headerlink" href="#ordered-clause-and-ordered-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.8. </span><strong>ordered</strong> Clause and <strong>ordered</strong> Construct<a class="headerlink" href="#ordered-clause-and-ordered-construct" title="Permalink to this headline">#</a></h2>
 <p>Ordered constructs  are useful for sequentially ordering the output from work that  is done in parallel. The following program prints out the indices in sequential  order:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2157,7 +2111,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="depobj-construct">
-<h2><span class="section-number">9.9. </span><strong>depobj</strong> Construct<a class="headerlink" href="#depobj-construct" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.9. </span><strong>depobj</strong> Construct<a class="headerlink" href="#depobj-construct" title="Permalink to this headline">#</a></h2>
 <p>The stand-alone <strong>depobj</strong> construct provides a mechanism  to create a  <em>depend object</em>  that expresses a dependence to be  used subsequently in the <strong>depend</strong> clause of another construct. The dependence is created from a dependence type and a storage location, within a <strong>depend</strong> clause of an <strong>depobj</strong> construct;  and it is stored in the depend object. The depend object is represented by a variable of type <strong>omp_depend_t</strong>  in C/C++ (by a scalar variable of integer kind <strong>omp_depend_kind</strong> in Fortran).</p>
 <p>In the example below the stand-alone <strong>depobj</strong> construct uses the  <strong>depend</strong>, <strong>update</strong> and <strong>destroy</strong> clauses to   <em>initialize</em> ,  <em>update</em>  and  <em>uninitialize</em>  a depend object (<strong>obj</strong>).</p>
 <p>The first <strong>depobj</strong> construct initializes the <strong>obj</strong>  depend object with  an <strong>inout</strong> dependence type with a storage  location defined by variable <strong>a</strong>.   This dependence is passed into the  <em>driver</em>   routine via the <strong>obj</strong> depend object.</p>
@@ -2339,7 +2293,7 @@ end subroutine
 </div>
 </section>
 <section id="doacross-loop-nest">
-<h2><span class="section-number">9.10. </span>Doacross Loop Nest<a class="headerlink" href="#doacross-loop-nest" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.10. </span>Doacross Loop Nest<a class="headerlink" href="#doacross-loop-nest" title="Permalink to this headline">#</a></h2>
 <p>An <strong>ordered</strong> clause can be used on a loop construct with an integer parameter argument to define the number of associated loops within  a  <em>doacross loop nest</em>  where cross-iteration dependences exist. A <strong>doacross</strong> clause on an <strong>ordered</strong> construct within an ordered  loop describes the dependences of the  <em>doacross</em>  loops.</p>
 <p>In the code below, the <strong>doacross(sink:i-1)</strong> clause defines an  <em>i-1</em>   to  <em>i</em>  cross-iteration dependence that specifies a wait point for  the completion of computation from iteration  <em>i-1</em>  before proceeding  to the subsequent statements. The <strong>doacross(source:omp_cur_iteration)</strong>  or <strong>doacross(source:)</strong> clause indicates  the completion of computation from the current iteration ( <em>i</em> )  to satisfy the cross-iteration dependence that arises from the iteration. The <strong>omp_cur_iteration</strong> keyword is optional for the <strong>source</strong> dependence type. For this example the same sequential ordering could have been achieved  with an <strong>ordered</strong> clause without a parameter, on the loop directive,  and a single <strong>ordered</strong> directive without the <strong>doacross</strong> clause specified for the statement executing the  <em>bar</em>  function.</p>
 <div class="cell docutils container">
@@ -2625,10 +2579,10 @@ end subroutine
 </div>
 </section>
 <section id="lock-routines">
-<h2><span class="section-number">9.11. </span>Lock Routines<a class="headerlink" href="#lock-routines" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.11. </span>Lock Routines<a class="headerlink" href="#lock-routines" title="Permalink to this headline">#</a></h2>
 <p>This section is about the use of lock routines for synchronization.</p>
 <section id="omp-init-lock-routine">
-<h3><span class="section-number">9.11.1. </span><strong>omp_init_lock</strong> Routine<a class="headerlink" href="#omp-init-lock-routine" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.11.1. </span><strong>omp_init_lock</strong> Routine<a class="headerlink" href="#omp-init-lock-routine" title="Permalink to this headline">#</a></h3>
 <p>The following example demonstrates how to initialize an array of locks in a <strong>parallel</strong>  region by using <strong>omp_init_lock</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2680,7 +2634,7 @@ end subroutine
 </div>
 </section>
 <section id="omp-init-lock-with-hint-routine">
-<h3><span class="section-number">9.11.2. </span><strong>omp_init_lock_with_hint</strong> Routine<a class="headerlink" href="#omp-init-lock-with-hint-routine" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.11.2. </span><strong>omp_init_lock_with_hint</strong> Routine<a class="headerlink" href="#omp-init-lock-with-hint-routine" title="Permalink to this headline">#</a></h3>
 <p>The following example demonstrates how to initialize an array of locks in a <strong>parallel</strong> region by using <strong>omp_init_lock_with_hint</strong>. Note, hints are combined with an <strong>|</strong> or <strong>+</strong> operator in C/C++ and a <strong>+</strong> operator in Fortran.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2740,7 +2694,7 @@ end subroutine
 </div>
 </section>
 <section id="ownership-of-locks">
-<h3><span class="section-number">9.11.3. </span>Ownership of Locks<a class="headerlink" href="#ownership-of-locks" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.11.3. </span>Ownership of Locks<a class="headerlink" href="#ownership-of-locks" title="Permalink to this headline">#</a></h3>
 <p>Ownership of locks has changed since OpenMP 2.5. In OpenMP 2.5, locks are owned  by threads; so a lock released by the <strong>omp_unset_lock</strong> routine must be  owned by the same thread executing the routine.  Beginning with OpenMP 3.0, locks are owned  by task regions; so a lock released by the <strong>omp_unset_lock</strong> routine in  a task region must be owned by the same task region.</p>
 <p>This change in ownership requires extra care when using locks. The following program  is conforming in OpenMP 2.5 because the thread that releases the lock <strong>lck</strong>  in the parallel region is the same thread that acquired the lock in the sequential  part of the program (primary thread of parallel region and the initial thread are  the same). However, it is not conforming beginning with OpenMP 3.0, because the task  region that releases the lock <strong>lck</strong> is different from the task region that  acquires the lock.</p>
 <div class="cell docutils container">
@@ -2818,7 +2772,7 @@ end subroutine
 </div>
 </section>
 <section id="simple-lock-routines">
-<h3><span class="section-number">9.11.4. </span>Simple Lock Routines<a class="headerlink" href="#simple-lock-routines" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.11.4. </span>Simple Lock Routines<a class="headerlink" href="#simple-lock-routines" title="Permalink to this headline">#</a></h3>
 <p>In the following example, the lock routines cause the threads to be idle while  waiting for entry to the first critical section, but to do other work while waiting  for entry to the second. The <strong>omp_set_lock</strong> function blocks, but the <strong>omp_test_lock</strong>  function does not, allowing the work in <strong>skip</strong> to be done.</p>
 <p>Note that the argument to the lock routines should have type  <strong>omp_lock_t</strong> (or <strong>omp_lock_kind</strong> in Fortran),  and that there is no need to flush the lock variable ( <em>lck</em> ).</p>
 <div class="cell docutils container">
@@ -2916,7 +2870,7 @@ end subroutine
 </div>
 </section>
 <section id="nestable-lock-routines">
-<h3><span class="section-number">9.11.5. </span>Nestable Lock Routines<a class="headerlink" href="#nestable-lock-routines" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.11.5. </span>Nestable Lock Routines<a class="headerlink" href="#nestable-lock-routines" title="Permalink to this headline">#</a></h3>
 <p>The following example demonstrates how a nestable lock can be used to synchronize  updates both to a whole structure and to one of its members.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3095,13 +3049,13 @@ end subroutine
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">8. </span>Loop Transformations</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>Loop Transformations</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../Chap_data_environment/Chap_data_environment.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Data Environment</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Data Environment</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

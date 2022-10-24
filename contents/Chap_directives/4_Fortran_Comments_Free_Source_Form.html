@@ -1,0 +1,604 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Fortran Comments (Free Source Form) &#8212; OpenMP Application Programming Interface Examples</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">OpenMP Application Programming Interface Examples</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to OMP Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Title_Page.html">
+   Cover
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Foreword_Chapt.html">
+   Foreword
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="0_Chap_directives.html">
+   1. OpenMP Directive Syntax
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_parallel_execution/Chap_parallel_execution.html">
+   2. Parallel Execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_tasking/Chap_tasking.html">
+   3. Tasking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_devices/Chap_devices.html">
+   4. Devices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_SIMD/Chap_SIMD.html">
+   5. SIMD
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_loop_transformations/Chap_loop_transformations.html">
+   6. Loop Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_synchronization/Chap_synchronization.html">
+   7. Synchronization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_data_environment/Chap_data_environment.html">
+   8. Data Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_memory_model/Chap_memory_model.html">
+   9. Memory Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_program_control/Chap_program_control.html">
+   10. Program Control
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
+   11. OMPT Interface
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_directives/4_Fortran_Comments_Free_Source_Form.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/passlab/Examples"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Chap_directives/4_Fortran_Comments_Free_Source_Form.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/contents/Chap_directives/4_Fortran_Comments_Free_Source_Form.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Fortran Comments (Free Source Form)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="fortran-comments-free-source-form">
+<h1>Fortran Comments (Free Source Form)<a class="headerlink" href="#fortran-comments-free-source-form" title="Permalink to this headline">#</a></h1>
+<p>OpenMP directives in Fortran codes with free source form are specified as comments that use the
+<strong>!$omp</strong>
+sentinel, followed by the directive name, and required and optional clauses.  Lines are continued with an ending ampersand (<strong>&amp;</strong>), and the continued line begins with
+<strong>!$omp</strong>
+or
+<strong>!$omp&amp;</strong>
+. Comments may appear on the same line as the directive.  Directives are case insensitive.</p>
+<p>In the example below the first directive (DIR 1) specifies the <strong>parallel</strong> <strong>do</strong> combined directive, with a <strong>num_threads</strong> clause, and a comment. The second directive (DIR 2) shows the same directive split across two lines.  The next nested directives (DIR 3 and 4) show the previous combined directive as two separate directives.  Here, an <strong>end</strong> directive (<strong>end</strong> <strong>parallel</strong>) must be specified to demarcate the range (region) of the <strong>parallel</strong> directive.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
+! name:       directive_syntax_F_free_comment.1
+! type:       F-free
+  program main
+     use omp_lib
+     integer,parameter :: NT = 4
+
+     !$omp parallel do num_threads(NT)                !DIR 1
+     do i = 1,NT
+       write(*,&#39;(&quot;thrd no&quot;, i2)&#39;) omp_get_thread_num()
+     end do
+
+     !$omp  parallel do  &amp;     !continue line         !DIR 2
+     !$omp num_threads(NT)     !or !$omp&amp;
+     do i = 1,NT
+       write(*,&#39;(&quot;thrd no&quot;, i2)&#39;) omp_get_thread_num()
+     end do
+
+     !$omp parallel num_threads(NT)                   !DIR 3
+     !$omp do                                         !DIR 4
+     do i = 1,NT
+        write(*,&#39;(&quot;thrd no&quot;, i2)&#39;) omp_get_thread_num()
+     end do
+     !$omp end parallel
+
+  end program
+
+!     repeated 3 times, any order
+!     OUTPUT: thrd no  0
+!     OUTPUT: thrd no  1
+!     OUTPUT: thrd no  2
+!     OUTPUT: thrd no  3
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>As of OpenMP 5.1, <strong>block</strong> and <strong>end</strong> <strong>block</strong> statements can be used to designate  a structured block for an OpenMP region, and any paired OpenMP <strong>end</strong> directive becomes optional, as shown in the next example.  Note, the variables  <em>i</em>  and  <em>thrd_no</em>  are declared within the  block structure and are hence private. It was necessary to explicitly declare the  <em>i</em>  variable, due to the <strong>implicit none</strong> statement;  it could have also been declared outside the structured block.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
+! name:       directive_syntax_F_block.1
+! type:       F-free
+! version:    omp_5.1
+  program main
+
+     use omp_lib
+     implicit none
+     integer,parameter :: NT = 2, chunks=3
+
+    !$omp parallel num_threads(NT)
+     block                          ! Fortran 2008 OMP 5.1
+       integer :: thrd_no,i
+       thrd_no= omp_get_thread_num()
+        !$omp do schedule(static,chunks)
+        do i = 1,NT*chunks
+           write(*,&#39;(&quot;ndx=&quot;,i0.2,&quot; thrd_no=&quot;, i0.2)&#39;) i,thrd_no
+        end do
+     end block
+  end program
+
+! any order
+! OUTPUT: ndx=01 thrd_no=00
+! OUTPUT: ndx=02 thrd_no=00
+! OUTPUT: ndx=03 thrd_no=00
+! OUTPUT: ndx=04 thrd_no=01
+! OUTPUT: ndx=05 thrd_no=01
+! OUTPUT: ndx=06 thrd_no=01
+</pre></div>
+</div>
+</div>
+</div>
+<p>A Fortran BLOCK construct may eliminate the need for a paired <strong>end</strong> directive for an OpenMP construct,  as illustrated in the following example.</p>
+<p>The first <strong>parallel</strong> construct is specified with an OpenMP loosely structured block  (where the first executable construct is not a Fortran 2008 BLOCK construct).  A paired <strong>end</strong> directive must end the OpenMP construct. The second <strong>parallel</strong> construct is specified with an OpenMP strictly structured block  (consists only of a single Fortran BLOCK construct).  The paired <strong>end</strong> directive is optional in this case, and is not used here.</p>
+<p>The next two <strong>parallel</strong> directives form an enclosing outer <strong>parallel</strong> construct  and a nested inner <strong>parallel</strong> construct. The first <strong>end</strong> <strong>parallel</strong> directive that subsequently appears terminates the inner <strong>parallel</strong> construct,  because a paired <strong>end</strong> directive immediately following a BLOCK construct that is  a strictly structured block of an OpenMP construct is treated as the terminating end directive  of that construct.  The next <strong>end</strong> <strong>parallel</strong> directive is required to terminate the outer <strong>parallel</strong> construct.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
+
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w">       </span><span class="n">directive_syntax_F_block</span><span class="mf">.2</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w">       </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w">    </span><span class="n">omp_5</span><span class="mf">.1</span><span class="w"></span>
+<span class="n">program</span><span class="w"> </span><span class="n">main</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">use</span><span class="w"> </span><span class="n">omp_lib</span><span class="w"></span>
+<span class="w">   </span><span class="n">implicit</span><span class="w"> </span><span class="n">none</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="n">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Loosely  structured block  -- end required.&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="n">block</span><span class="w">                                </span><span class="o">!</span><span class="w"> </span><span class="n">BLOCK</span><span class="w"> </span><span class="n">Fortran</span><span class="w"> </span><span class="mi">2008</span><span class="w"></span>
+<span class="w">       </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="n">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;                           --&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="n">end</span><span class="w"> </span><span class="n">block</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="n">block</span><span class="w"></span>
+<span class="w">       </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="n">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Strictly structured block  -- end not required.&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="n">end</span><span class="w"> </span><span class="n">block</span><span class="w"></span>
+<span class="w"> </span><span class="o">!!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="o">!</span><span class="n">is</span><span class="w"> </span><span class="n">optional</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">strictly</span><span class="w"> </span><span class="n">structured</span><span class="w"> </span><span class="n">block</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Sequential part&quot;</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">                      </span><span class="o">!</span><span class="n">outer</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="n">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Outer, loosely  structured block.&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">num_threads</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">                   </span><span class="o">!</span><span class="n">inner</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="w">        </span><span class="n">block</span><span class="w"></span>
+<span class="w">          </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="n">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Inner, strictly structured block.&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="n">end</span><span class="w"> </span><span class="n">block</span><span class="w"></span>
+<span class="w">     </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">parallel</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="n">Two</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">directives</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="n">here</span><span class="p">.</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="s">&quot;!$omp end parallel&quot;</span><span class="w"> </span><span class="n">terminator</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">fail</span><span class="p">.</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="mi">1</span><span class="n">st</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">directive</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">assumed</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">inner</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">construct</span><span class="p">.</span><span class="w"></span>
+<span class="w">  </span><span class="o">!</span><span class="w"> </span><span class="mi">2</span><span class="n">nd</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">directive</span><span class="w"> </span><span class="n">applies</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">outer</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">construct</span><span class="p">.</span><span class="w"></span>
+
+<span class="n">end</span><span class="w"> </span><span class="n">program</span><span class="w"></span>
+
+<span class="o">!</span><span class="n">OUTPUT</span><span class="p">,</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">order</span><span class="o">:</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">Loosely</span><span class="w">  </span><span class="n">structured</span><span class="w"> </span><span class="n">block</span><span class="w">  </span><span class="o">--</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">required</span><span class="p">.</span><span class="w"></span>
+<span class="o">!</span><span class="w">                            </span><span class="o">--</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">Strictly</span><span class="w"> </span><span class="n">structured</span><span class="w"> </span><span class="n">block</span><span class="w">  </span><span class="o">--</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">required</span><span class="p">.</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">Sequential</span><span class="w"> </span><span class="n">part</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">Outer</span><span class="p">,</span><span class="w"> </span><span class="n">loosely</span><span class="w">  </span><span class="n">structured</span><span class="w"> </span><span class="n">block</span><span class="p">.</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">Inner</span><span class="p">,</span><span class="w"> </span><span class="n">strictly</span><span class="w"> </span><span class="n">structured</span><span class="w"> </span><span class="n">block</span><span class="p">.</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">Inner</span><span class="p">,</span><span class="w"> </span><span class="n">strictly</span><span class="w"> </span><span class="n">structured</span><span class="w"> </span><span class="n">block</span><span class="p">.</span><span class="w"></span>
+
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "native"
+        },
+        kernelOptions: {
+            kernelName: "native",
+            path: "./contents/Chap_directives"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'native'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The OpenMP Community<br/>
+  
+      &copy; <a href="../../copyright.html">Copyright</a> 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

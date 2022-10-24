@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>4.2. Task Affinity &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>1. OpenMP Directive Syntax &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
-    <link rel="next" title="4.3. Affinity Display" href="Section_Affinity_Display.html" />
-    <link rel="prev" title="4.1. proc_bind Clause" href="Section_proc_bind_Clause.html" />
+    <link rel="next" title="2. Parallel Execution" href="../Chap_parallel_execution/Chap_parallel_execution.html" />
+    <link rel="prev" title="Foreword" href="../Foreword_Chapt.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -127,112 +127,66 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_introduction/Chap_introduction.html">
-   1. Introduction
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   1. OpenMP Directive Syntax
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_introduction/Section_Examples_Organization.html">
-     1.1. Examples Organization
-    </a>
-   </li>
+  <ul class="simple">
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Chap_directives/Chap_directives.html">
-   2. OpenMP Directive Syntax
-  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_parallel_execution/Chap_parallel_execution.html">
-   3. Parallel Execution
+   2. Parallel Execution
   </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="Chap_affinity.html">
-   4. OpenMP Affinity
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_proc_bind_Clause.html">
-     4.1.
-     <strong>
-      proc_bind
-     </strong>
-     Clause
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     4.2. Task Affinity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_Affinity_Display.html">
-     4.3. Affinity Display
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_Affinity_Query_Func.html">
-     4.4. Affinity Query Functions
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_tasking/Chap_tasking.html">
-   5. Tasking
+   3. Tasking
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_devices/Chap_devices.html">
-   6. Devices
+   4. Devices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_SIMD/Chap_SIMD.html">
-   7. SIMD
+   5. SIMD
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_loop_transformations/Chap_loop_transformations.html">
-   8. Loop Transformations
+   6. Loop Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_synchronization/Chap_synchronization.html">
-   9. Synchronization
+   7. Synchronization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_data_environment/Chap_data_environment.html">
-   10. Data Environment
+   8. Data Environment
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_memory_model/Chap_memory_model.html">
-   11. Memory Model
+   9. Memory Model
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_program_control/Chap_program_control.html">
-   12. Program Control
+   10. Program Control
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Chap_ompt_interface/Chap_ompt_interface.html">
-   13. OMPT Interface
+   11. OMPT Interface
   </a>
  </li>
 </ul>
@@ -294,7 +248,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_affinity/Section_Task_Affinity.ipynb"
+        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_directives/0_Chap_directives.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -354,7 +308,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Chap_affinity/Section_Task_Affinity.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Chap_directives/0_Chap_directives.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -382,7 +336,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/contents/Chap_affinity/Section_Task_Affinity.ipynb"
+        <a href="../../_sources/contents/Chap_directives/0_Chap_directives.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -431,7 +385,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Task Affinity</h1>
+                <h1>OpenMP Directive Syntax</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -443,71 +397,31 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="task-affinity">
-<h1><span class="section-number">4.2. </span>Task Affinity<a class="headerlink" href="#task-affinity" title="Permalink to this headline">#</a></h1>
-<p>The next example illustrates the use of the <strong>affinity</strong> clause with a <strong>task</strong> construct. The variables in the <strong>affinity</strong> clause provide a hint to the runtime that the task should execute “close” to the physical storage location of the variables. For example, on a two-socket platform with a local memory component close to each processor socket, the runtime will attempt to schedule the task execution on the socket where the storage is located.</p>
-<p>Because the C/C++ code employs a pointer, an array section is used in the <strong>affinity</strong> clause. Fortran code can use an array reference to specify the storage, as shown here.</p>
-<p>Note, in the second task of the C/C++ code the  <em>B</em>  pointer is declared shared.  Otherwise, by default, it would be firstprivate since it is a local variable, and would probably be saved for the second task before being assigned a storage address by the first task.  Also, one might think it reasonable to use the <strong>affinity</strong> clause  <em>affinity(B[:N])</em>  on the second <strong>task</strong> construct. However, the storage behind  <em>B</em>  is created in the first task, and the  array section reference may not be valid when the second task is generated. The use of the  <em>A</em>  array is sufficient for this case, because one would expect the storage for  <em>A</em>  and  <em>B</em>  would be physically “close” (as provided by the hint in the first task).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>//%compiler: clang
-//%cflags: -fopenmp
-
-/*
-* name: affinity.6
-* type: C
-* version: omp_5.0
-*/
-double * alloc_init_B(double *A, int N);
-void     compute_on_B(double *B, int N);
-
-void task_affinity(double *A, int N)
-{
-   double * B;
-   #pragma omp task depend(out:B) shared(B) affinity(A[0:N])
-   {
-     B = alloc_init_B(A,N);
-   }
-
-   #pragma omp task depend( in:B) shared(B) affinity(A[0:N])
-   {
-     compute_on_B(B,N);
-   }
-
-   #pragma omp taskwait
-}
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
-!!%cflags: -fopenmp
-
-! name:       affinity.6
-! type:       F-free
-! version: omp_5.0
-subroutine task_affinity(A, N)
-
-  external alloc_init_B
-  external compute_on_B
-  double precision, allocatable :: B(:)
-
-   !$omp task depend(out:B) shared(B) affinity(A)
-     call alloc_init_B(B,A)
-   !$omp end task
-
-   !$omp task depend(in:B) shared(B) affinity(A)
-     call compute_on_B(B)
-   !$omp end task
-
-   !$omp taskwait
-
-end subroutine
-</pre></div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="openmp-directive-syntax">
+<h1><span class="section-number">1. </span>OpenMP Directive Syntax<a class="headerlink" href="#openmp-directive-syntax" title="Permalink to this headline">#</a></h1>
+<p>OpenMP <em>directives</em> use base-language mechanisms to specify OpenMP program behavior. In C code, the directives are formed exclusively with pragmas, whereas in C++ code, directives are formed from either pragmas or attributes. Fortran directives are formed with comments in free form and fixed form sources (codes). All of these mechanisms allow the compilation to ignore the OpenMP directives if OpenMP is not supported or enabled.</p>
+<p>The OpenMP directive is a combination of the base-language mechanism and a  <em>directive-specification</em> , as shown below. The  <em>directive-specification</em>  consists of the  <em>directive-name</em>  which may seldomly have arguments,  followed by optional  <em>clauses</em> . Full details of the syntax can be found in the OpenMP Specification. Illustrations of the syntax is given in the examples.</p>
+<p>The formats for combining a base-language mechanism and a  <em>directive-specification</em>  are:</p>
+<p>C/C++ pragmas</p>
+<p>    
+<strong>#pragma omp</strong>
+<em>directive-specification</em></p>
+<p>C++ attributes<br />
+    
+<strong>[[omp :: directive(</strong>
+<em>directive-specification</em>
+<strong>)]]</strong></p>
+<p>    
+<strong>[[using omp : directive(</strong>
+<em>directive-specification</em>
+<strong>)]]</strong></p>
+<p>Fortran comments<br />
+    <strong>!$omp</strong>  <em>directive-specification</em></p>
+<p>where <strong>c$omp</strong>
+and
+<strong>*$omp</strong> may be used in Fortran fixed form sources.</p>
+<p>Most OpenMP directives accept clauses that alter the semantics of the directive in some way,  and some directives also accept parenthesized arguments that follow the directive name.  A clause may just be a keyword (e.g., <strong>untied</strong>) or it may also accept argument lists  (e.g., <strong>shared(x,y,z)</strong>) and/or optional modifiers (e.g., <strong>tofrom</strong> in  <strong>map(tofrom: x,y,z)</strong>). Clause modifiers may be “simple” or “complex” – a complex modifier consists of a  keyword followed by one or more parameters, bracketed by parentheses, while a simple  modifier does not. An example of a complex modifier is the <strong>iterator</strong> modifier,  as in <strong>map(iterator(i=0:n),tofrom: p[i])</strong>, or the <strong>step</strong> modifier, as in <strong>linear(x:</strong> <strong>ref,</strong> <strong>step(4))</strong>.  In the preceding examples, <strong>tofrom</strong> and <strong>ref</strong> are simple modifiers.</p>
+<div class="toctree-wrapper compound">
 </div>
 </section>
 
@@ -524,7 +438,7 @@ end subroutine
         },
         kernelOptions: {
             kernelName: "native",
-            path: "./contents/Chap_affinity"
+            path: "./contents/Chap_directives"
         },
         predefinedOutput: true
     }
@@ -538,17 +452,17 @@ end subroutine
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Section_proc_bind_Clause.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../Foreword_Chapt.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4.1. </span><strong>proc_bind</strong> Clause</p>
+            <p class="prev-next-title">Foreword</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Section_Affinity_Display.html" title="next page">
+    <a class='right-next' id="next-link" href="../Chap_parallel_execution/Chap_parallel_execution.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.3. </span>Affinity Display</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Parallel Execution</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
