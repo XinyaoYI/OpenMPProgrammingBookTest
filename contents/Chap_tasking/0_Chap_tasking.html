@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2. Parallel Execution &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>3. Tasking &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
-    <link rel="next" title="2.1. A Simple Parallel Loop" href="1_A_Simple_Parallel_Loop.html" />
-    <link rel="prev" title="1. OpenMP Directive Syntax" href="../Chap_directives/0_Chap_directives.html" />
+    <link rel="next" title="3.1. task and taskwait Constructs" href="1_task_and_taskwait_Constructs.html" />
+    <link rel="prev" title="2.18. omp_get_num_threads Routine" href="../Chap_parallel_execution/18_omp_get_num_threads_Routine.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -139,23 +139,23 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="simple">
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chap_parallel_execution/0_Chap_parallel_execution.html">
    2. Parallel Execution
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="1_A_Simple_Parallel_Loop.html">
+    <a class="reference internal" href="../Chap_parallel_execution/1_A_Simple_Parallel_Loop.html">
      2.1. A Simple Parallel Loop
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2_parallel_Construct.html">
+    <a class="reference internal" href="../Chap_parallel_execution/2_parallel_Construct.html">
      2.2.
      <strong>
       parallel
@@ -164,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="3_teams_Construct_on_Host.html">
+    <a class="reference internal" href="../Chap_parallel_execution/3_teams_Construct_on_Host.html">
      2.3.
      <strong>
       teams
@@ -173,12 +173,12 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="4_Controlling_the_Number_of_Threads_on_Multiple_Nesting_Levels.html">
+    <a class="reference internal" href="../Chap_parallel_execution/4_Controlling_the_Number_of_Threads_on_Multiple_Nesting_Levels.html">
      2.4. Controlling the Number of Threads on Multiple Nesting Levels
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="5_Interaction_Between_the_num_threads_Clause_and_omp_set_dynamic.html">
+    <a class="reference internal" href="../Chap_parallel_execution/5_Interaction_Between_the_num_threads_Clause_and_omp_set_dynamic.html">
      2.5. Interaction Between the
      <strong>
       num_threads
@@ -190,7 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="6_Fortran_Restrictions_on_the_do_Construct.html">
+    <a class="reference internal" href="../Chap_parallel_execution/6_Fortran_Restrictions_on_the_do_Construct.html">
      2.6. Fortran Restrictions on the
      <strong>
       do
@@ -199,7 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="7_nowait_Clause.html">
+    <a class="reference internal" href="../Chap_parallel_execution/7_nowait_Clause.html">
      2.7.
      <strong>
       nowait
@@ -208,7 +208,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="8_collapse_Clause.html">
+    <a class="reference internal" href="../Chap_parallel_execution/8_collapse_Clause.html">
      2.8.
      <strong>
       collapse
@@ -217,7 +217,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="9_linear_Clause_in_Loop_Constructs.html">
+    <a class="reference internal" href="../Chap_parallel_execution/9_linear_Clause_in_Loop_Constructs.html">
      2.9.
      <strong>
       linear
@@ -226,7 +226,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="10_parallel_sections_Construct.html">
+    <a class="reference internal" href="../Chap_parallel_execution/10_parallel_sections_Construct.html">
      2.10.
      <strong>
       parallel
@@ -238,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="11_firstprivate_Clause_and_sections_Construct.html">
+    <a class="reference internal" href="../Chap_parallel_execution/11_firstprivate_Clause_and_sections_Construct.html">
      2.11.
      <strong>
       firstprivate
@@ -251,7 +251,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="12_single_Construct.html">
+    <a class="reference internal" href="../Chap_parallel_execution/12_single_Construct.html">
      2.12.
      <strong>
       single
@@ -260,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="13_workshare_Construct.html">
+    <a class="reference internal" href="../Chap_parallel_execution/13_workshare_Construct.html">
      2.13.
      <strong>
       workshare
@@ -269,7 +269,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="14_masked_Construct.html">
+    <a class="reference internal" href="../Chap_parallel_execution/14_masked_Construct.html">
      2.14.
      <strong>
       masked
@@ -278,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="15_loop_Construct.html">
+    <a class="reference internal" href="../Chap_parallel_execution/15_loop_Construct.html">
      2.15.
      <strong>
       loop
@@ -287,12 +287,12 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="16_Parallel_Random_Access_Iterator_Loop.html">
+    <a class="reference internal" href="../Chap_parallel_execution/16_Parallel_Random_Access_Iterator_Loop.html">
      2.16. Parallel Random Access Iterator Loop
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="17_omp_set_dynamic_and_omp_set_num_threads_Routines.html">
+    <a class="reference internal" href="../Chap_parallel_execution/17_omp_set_dynamic_and_omp_set_num_threads_Routines.html">
      2.17.
      <strong>
       omp_set_dynamic
@@ -305,7 +305,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="18_omp_get_num_threads_Routine.html">
+    <a class="reference internal" href="../Chap_parallel_execution/18_omp_get_num_threads_Routine.html">
      2.18.
      <strong>
       omp_get_num_threads
@@ -315,18 +315,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_tasking/0_Chap_tasking.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    3. Tasking
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/1_task_and_taskwait_Constructs.html">
+    <a class="reference internal" href="1_task_and_taskwait_Constructs.html">
      3.1.
      <strong>
       task
@@ -339,22 +339,22 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/2_Task_Priority.html">
+    <a class="reference internal" href="2_Task_Priority.html">
      3.2. Task Priority
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/3_Task_Dependences.html">
+    <a class="reference internal" href="3_Task_Dependences.html">
      3.3. Task Dependences
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/4_Task_Detachment.html">
+    <a class="reference internal" href="4_Task_Detachment.html">
      3.4. Task Detachment
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/5_taskgroup_Construct.html">
+    <a class="reference internal" href="5_taskgroup_Construct.html">
      3.5.
      <strong>
       taskgroup
@@ -363,7 +363,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/6_taskyield_Construct.html">
+    <a class="reference internal" href="6_taskyield_Construct.html">
      3.6.
      <strong>
       taskyield
@@ -372,7 +372,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/7_taskloop_Construct.html">
+    <a class="reference internal" href="7_taskloop_Construct.html">
      3.7.
      <strong>
       taskloop
@@ -381,7 +381,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/8_Combined_parallel_masked_and_taskloop_Constructs.html">
+    <a class="reference internal" href="8_Combined_parallel_masked_and_taskloop_Constructs.html">
      3.8. Combined
      <strong>
       parallel
@@ -497,7 +497,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_parallel_execution/0_Chap_parallel_execution.ipynb"
+        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_tasking/0_Chap_tasking.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -557,7 +557,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Chap_parallel_execution/0_Chap_parallel_execution.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Chap_tasking/0_Chap_tasking.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -585,7 +585,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/contents/Chap_parallel_execution/0_Chap_parallel_execution.ipynb"
+        <a href="../../_sources/contents/Chap_tasking/0_Chap_tasking.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -634,7 +634,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Parallel Execution</h1>
+                <h1>Tasking</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -646,28 +646,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="parallel-execution">
-<h1><span class="section-number">2. </span>Parallel Execution<a class="headerlink" href="#parallel-execution" title="Permalink to this headline">#</a></h1>
-<p>A single thread, the  <em>initial thread</em> , begins sequential execution of  an OpenMP enabled program, as if the whole program is in an implicit parallel region consisting of an implicit task executed by the  <em>initial thread</em> .</p>
-<p>A <strong>parallel</strong> construct encloses code,  forming a parallel region.  An  <em>initial thread</em>  encountering a <strong>parallel</strong>  region forks (creates) a team of threads at the beginning of the  <strong>parallel</strong> region, and joins them (removes from execution) at the  end of the region.  The initial thread becomes the primary thread of the team in a  <strong>parallel</strong> region with a  <em>thread</em>  number equal to zero, the other  threads are numbered from 1 to number of threads minus 1.  A team may be comprised of just a single thread.</p>
-<p>Each thread of a team is assigned an implicit task consisting of code within the  parallel region. The task that creates a parallel region is suspended while the tasks of the team are executed.  A thread is tied to its task; that is, only the thread assigned to the task can execute that task.  After completion  of the <strong>parallel</strong> region, the primary thread resumes execution of the generating task.</p>
-<p>Any task within a <strong>parallel</strong> region is allowed to encounter another <strong>parallel</strong> region to form a nested <strong>parallel</strong> region. The  parallelism of a nested <strong>parallel</strong> region (whether it forks additional  threads, or is executed serially by the encountering task) can be controlled by the <strong>OMP_NESTED</strong> environment variable or the <strong>omp_set_nested()</strong>  API routine with arguments indicating true or false.</p>
-<p>The number of threads of a <strong>parallel</strong> region can be set by the <strong>OMP_NUM_THREADS</strong> environment variable, the <strong>omp_set_num_threads()</strong> routine, or on the <strong>parallel</strong>  directive with the <strong>num_threads</strong> clause. The routine overrides the environment variable, and the clause overrides all.  Use the <strong>OMP_DYNAMIC</strong> or the <strong>omp_set_dynamic()</strong> function to specify that the OpenMP implementation dynamically adjust the number of threads for <strong>parallel</strong> regions.  The default setting for dynamic adjustment is implementation defined. When dynamic adjustment is on and the number of threads is specified, the number of threads becomes an upper limit for the number of threads to be provided by the OpenMP runtime.</p>
-<p>WORKSHARING CONSTRUCTS</p>
-<p>A worksharing construct distributes the execution of the associated region among the members of the team that encounter it.  There is an implied barrier at the end of the worksharing region (there is no barrier at the beginning). The worksharing constructs are:</p>
-<ul class="simple">
-<li><p>loop constructs: <strong>for</strong> and <strong>do</strong></p></li>
-<li><p><strong>sections</strong></p></li>
-<li><p><strong>single</strong></p></li>
-<li><p><strong>workshare</strong></p></li>
-</ul>
-<p>The <strong>for</strong> and <strong>do</strong> constructs (loop constructs) create a region  consisting of a loop.  A loop controlled by a loop construct is called  an  <em>associated</em>  loop.  Nested loops can form a single region when the  <strong>collapse</strong> clause (with an integer argument) designates the number of   <em>associated</em>  loops to be executed in parallel, by forming a  “single iteration space” for the specified number of nested loops.   The <strong>ordered</strong> clause can also control multiple associated loops.</p>
-<p>An associated loop must adhere to a “canonical form” (specified in the   <em>Canonical Loop Form</em>  of the OpenMP Specifications document) which allows the  iteration count (of all associated loops) to be computed before the  (outermost) loop is executed. Most common loops comply with the canonical form, including C++ iterators.</p>
-<p>A <strong>single</strong> construct forms a region in which only one thread (any one  of the team) executes the region.  The other threads wait at the implied  barrier at the end, unless the <strong>nowait</strong> clause is specified.</p>
-<p>The <strong>sections</strong> construct forms a region that contains one or more  structured blocks.  Each block of a <strong>sections</strong> directive is  constructed with a <strong>section</strong> construct, and executed once by  one of the threads (any one) in the team.  (If only one block is  formed in the region, the <strong>section</strong> construct, which is used to separate blocks, is not required.) The other threads wait at the implied  barrier at the end, unless the <strong>nowait</strong> clause is specified.</p>
-<p>The <strong>workshare</strong> construct is a Fortran feature that consists of a region with a single structure block (section of code). Statements in the <strong>workshare</strong> region are divided into units of work, and executed (once) by threads of the team.</p>
-<p>MASKED CONSTRUCT</p>
-<p>The <strong>masked</strong> construct is not a worksharing construct.  The <strong>masked</strong> region is executed only by the primary thread. There is no implicit barrier (and flush)  at the end of the <strong>masked</strong> region; hence the other threads of the team continue execution beyond code statements beyond the <strong>masked</strong> region. The <strong>master</strong> construct, which has been deprecated in OpenMP 5.1, has identical semantics to the <strong>masked</strong> construct with no <strong>filter</strong> clause.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="tasking">
+<h1><span class="section-number">3. </span>Tasking<a class="headerlink" href="#tasking" title="Permalink to this headline">#</a></h1>
+<p>Tasking constructs provide units of work to a thread for execution.   Worksharing constructs do this, too (e.g. <strong>for</strong>, <strong>do</strong>,  <strong>sections</strong>, and <strong>singles</strong> constructs);  but the work units are tightly controlled by an iteration limit and limited  scheduling, or a limited number of <strong>sections</strong> or <strong>single</strong> regions.  Worksharing was designed  with  <strong>“</strong> data parallel <strong>“</strong>  computing in mind.  Tasking was designed for   <strong>“</strong> task parallel <strong>“</strong>  computing and often involves non-locality or irregularity  in memory access.</p>
+<p>The <strong>task</strong> construct can be used to execute work chunks: in a while loop;  while traversing nodes in a list; at nodes in a tree graph;  or in a normal loop (with a <strong>taskloop</strong> construct).   Unlike the statically scheduled loop iterations of worksharing, a task is  often enqueued, and then dequeued for execution by any of the threads of the team within a parallel region. The generation of tasks can be from a single  generating thread (creating sibling tasks), or from multiple generators in a recursive graph tree traversals.  A <strong>taskloop</strong> construct bundles iterations of an associated loop into tasks, and provides  similar controls found in the <strong>task</strong> construct.</p>
+<p>Sibling tasks are synchronized by the <strong>taskwait</strong> construct, and tasks and their descendent tasks can be synchronized by containing them in a <strong>taskgroup</strong> region.  Ordered execution is accomplished by specifying dependences with a <strong>depend</strong> clause. Also, priorities can be specified as hints to the scheduler through a <strong>priority</strong> clause.</p>
+<p>Various clauses can be used to manage and optimize task generation, as well as reduce the overhead of execution and to relinquish  control of threads for work balance and forward progress.</p>
+<p>Once a thread starts executing a task, it is the designated thread  for executing the task to completion, even though it may leave the execution at a scheduling point and return later.  The thread is tied to the task.  Scheduling points can be introduced with the <strong>taskyield</strong> construct.  With an <strong>untied</strong> clause any other thread is allowed to continue the task.  An <strong>if</strong> clause with an expression that evaluates to  <em>false</em>   results in an <strong>undeferred</strong> task, which instructs the runtime to suspend the generating task until the undeferred task completes its execution. By including the data environment of the generating task into the generated task with the  <strong>mergeable</strong> and <strong>final</strong> clauses, task generation overhead can be reduced.</p>
+<p>A complete list of the tasking constructs and details of their clauses can be found in the  <em>Tasking Constructs</em>  chapter of the OpenMP Specifications, in the  <em>OpenMP Application Programming Interface</em>  section.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -685,7 +671,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "native",
-            path: "./contents/Chap_parallel_execution"
+            path: "./contents/Chap_tasking"
         },
         predefinedOutput: true
     }
@@ -699,17 +685,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../Chap_directives/0_Chap_directives.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../Chap_parallel_execution/18_omp_get_num_threads_Routine.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1. </span>OpenMP Directive Syntax</p>
+            <p class="prev-next-title"><span class="section-number">2.18. </span><strong>omp_get_num_threads</strong> Routine</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="1_A_Simple_Parallel_Loop.html" title="next page">
+    <a class='right-next' id="next-link" href="1_task_and_taskwait_Constructs.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>A Simple Parallel Loop</p>
+        <p class="prev-next-title"><span class="section-number">3.1. </span><strong>task</strong> and <strong>taskwait</strong> Constructs</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

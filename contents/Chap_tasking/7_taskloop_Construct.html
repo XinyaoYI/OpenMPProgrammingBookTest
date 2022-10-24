@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Examples &#8212; OpenMP Application Programming Interface Examples</title>
+    <title>3.7. taskloop Construct &#8212; OpenMP Application Programming Interface Examples</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="copyright" title="Copyright" href="../../copyright.html" />
+    <link rel="next" title="3.8. Combined parallel masked and taskloop Constructs" href="8_Combined_parallel_masked_and_taskloop_Constructs.html" />
+    <link rel="prev" title="3.6. taskyield Construct" href="6_taskyield_Construct.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,7 +126,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../Chap_directives/0_Chap_directives.html">
    1. OpenMP Directive Syntax
@@ -313,18 +315,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Chap_tasking/0_Chap_tasking.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="0_Chap_tasking.html">
    3. Tasking
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/1_task_and_taskwait_Constructs.html">
+    <a class="reference internal" href="1_task_and_taskwait_Constructs.html">
      3.1.
      <strong>
       task
@@ -337,22 +339,22 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/2_Task_Priority.html">
+    <a class="reference internal" href="2_Task_Priority.html">
      3.2. Task Priority
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/3_Task_Dependences.html">
+    <a class="reference internal" href="3_Task_Dependences.html">
      3.3. Task Dependences
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/4_Task_Detachment.html">
+    <a class="reference internal" href="4_Task_Detachment.html">
      3.4. Task Detachment
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/5_taskgroup_Construct.html">
+    <a class="reference internal" href="5_taskgroup_Construct.html">
      3.5.
      <strong>
       taskgroup
@@ -361,7 +363,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/6_taskyield_Construct.html">
+    <a class="reference internal" href="6_taskyield_Construct.html">
      3.6.
      <strong>
       taskyield
@@ -369,8 +371,8 @@ const thebe_selector_output = ".output, .cell_output"
      Construct
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/7_taskloop_Construct.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      3.7.
      <strong>
       taskloop
@@ -379,7 +381,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Chap_tasking/8_Combined_parallel_masked_and_taskloop_Constructs.html">
+    <a class="reference internal" href="8_Combined_parallel_masked_and_taskloop_Constructs.html">
      3.8. Combined
      <strong>
       parallel
@@ -495,7 +497,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/figs/Examples_Chapt.ipynb"
+        <a href="https://mybinder.org/v2/gh/passlab/Examples/main?urlpath=lab/tree/notebook/contents/Chap_tasking/7_taskloop_Construct.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -555,7 +557,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/figs/Examples_Chapt.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/passlab/Examples/issues/new?title=Issue%20on%20page%20%2Fcontents/Chap_tasking/7_taskloop_Construct.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -583,7 +585,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/contents/figs/Examples_Chapt.ipynb"
+        <a href="../../_sources/contents/Chap_tasking/7_taskloop_Construct.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -632,7 +634,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Examples</h1>
+                <h1>taskloop Construct</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -644,23 +646,162 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h1>
-<p>The following are examples of the OpenMP API directives, constructs, and routines.  A statement following a directive is compound only when necessary, and a  non-compound statement is indented with respect to a directive preceding it.</p>
-<p>Each example is labeled as  <em>ename.seqno.ext</em> , where  <em>ename</em>  is  the example name,  <em>seqno</em>  is the sequence number in a section, and   <em>ext</em>  is the source file extension to indicate the code type and  source form.   <em>ext</em>  is one of the following: [noitemsep,labelindent=5mm,widest=f90]</p>
-<ul class="simple">
-<li><p>[ <em>c</em> ] –  C code,</p></li>
-</ul>
-<ul class="simple">
-<li><p>[ <em>cpp</em> ] –  C++ code,</p></li>
-</ul>
-<ul class="simple">
-<li><p>[ <em>f</em> ] –  Fortran code in fixed form, and</p></li>
-</ul>
-<ul class="simple">
-<li><p>[ <em>f90</em> ] –  Fortran code in free form.</p></li>
-</ul>
-<p>Some of the example labels may include version information  (<code class="docutils literal notranslate"><span class="pre">omp_</span> <span class="pre">_verno_</span> </code>) to indicate features that are illustrated by an example for a specific OpenMP version, such as ” <em>scan.1.c</em>   (<code class="docutils literal notranslate"><span class="pre">omp_5.0</span></code>).’’</p>
+  <section id="taskloop-construct">
+<h1><span class="section-number">3.7. </span><strong>taskloop</strong> Construct<a class="headerlink" href="#taskloop-construct" title="Permalink to this headline">#</a></h1>
+<p>The following example illustrates how to execute a long running task concurrently with tasks created with a <strong>taskloop</strong> directive for a loop having unbalanced amounts of work for its iterations.</p>
+<p>The <strong>grainsize</strong> clause specifies that each task is to execute at least 500 iterations of the loop.</p>
+<p>The <strong>nogroup</strong> clause removes the implicit taskgroup of the <strong>taskloop</strong> construct; the explicit <strong>taskgroup</strong> construct in the example ensures that the function is not exited before the long-running task and the loops have finished execution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
+
+<span class="cm">/*</span>
+<span class="cm">* name: taskloop.1</span>
+<span class="cm">* type: C</span>
+<span class="cm">* version: omp_4.5</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">long_running_task</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop_body</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">parallel_work</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"></span>
+<span class="cp">#pragma omp taskgroup</span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="cp">#pragma omp task</span>
+<span class="w">      </span><span class="n">long_running_task</span><span class="p">();</span><span class="w"> </span><span class="c1">// can execute concurrently</span>
+
+<span class="cp">#pragma omp taskloop private(j) grainsize(500) nogroup</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// can execute concurrently</span>
+<span class="w">         </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">loop_body</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">);</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">!!%</span><span class="n">compiler</span><span class="o">:</span><span class="w"> </span><span class="n">gfortran</span><span class="w"></span>
+<span class="o">!!%</span><span class="n">cflags</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">fopenmp</span><span class="w"></span>
+
+<span class="o">!</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">taskloop</span><span class="mf">.1</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">-</span><span class="n">free</span><span class="w"></span>
+<span class="o">!</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w">    </span><span class="n">omp_4</span><span class="mf">.5</span><span class="w"></span>
+<span class="n">subroutine</span><span class="w"> </span><span class="n">parallel_work</span><span class="w"></span>
+<span class="w">   </span><span class="n">integer</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+<span class="w">   </span><span class="n">integer</span><span class="w"> </span><span class="n">j</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">taskgroup</span><span class="w"></span>
+
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">task</span><span class="w"></span>
+<span class="w">   </span><span class="n">call</span><span class="w"> </span><span class="n">long_running_task</span><span class="p">()</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">task</span><span class="w"></span>
+
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">taskloop</span><span class="w"> </span><span class="n">private</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="n">grainsize</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="w"> </span><span class="n">nogroup</span><span class="w"></span>
+<span class="w">   </span><span class="k">do</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">10000</span><span class="w"></span>
+<span class="w">      </span><span class="k">do</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="w"></span>
+<span class="w">         </span><span class="n">call</span><span class="w"> </span><span class="n">loop_body</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">end</span><span class="w"> </span><span class="k">do</span><span class="w"></span>
+<span class="w">   </span><span class="n">end</span><span class="w"> </span><span class="k">do</span><span class="w"></span>
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">taskloop</span><span class="w"></span>
+
+<span class="o">!</span><span class="n">$omp</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">taskgroup</span><span class="w"></span>
+<span class="n">end</span><span class="w"> </span><span class="n">subroutine</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because a <strong>taskloop</strong> construct encloses a loop, it is often incorrectly  perceived as a worksharing construct (when it is directly nested in  a <strong>parallel</strong> region).</p>
+<p>While a worksharing construct distributes the loop iterations across all threads in a team, the entire loop of a <strong>taskloop</strong> construct is executed by every thread of the team.</p>
+<p>In the example below the first taskloop occurs closely nested within  a <strong>parallel</strong> region and the entire loop is executed by each of the  <em>T</em>  threads;  hence the reduction sum is executed  <em>T</em> * <em>N</em>  times.</p>
+<p>The loop of the second taskloop is within a <strong>single</strong> region and is executed by a single thread so that only  <em>N</em>  reduction sums occur.  (The other  <em>N</em> -1 threads of the <strong>parallel</strong> region will participate in executing the  tasks. This is the common use case for the <strong>taskloop</strong> construct.)</p>
+<p>In the example, the code thus prints <strong>x1 = 16384</strong> ( <em>T</em> * <em>N</em> ) and  <strong>x2 = 1024</strong> ( <em>N</em> ).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
+<span class="c1">//%cflags: -fopenmp</span>
+
+<span class="cm">/*</span>
+<span class="cm">* name:   taskloop.2</span>
+<span class="cm">* type:   C</span>
+<span class="cm">* version: omp_4.5</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define T 16</span>
+<span class="cp">#define N 1024</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">parallel_work</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="cp">#pragma omp parallel shared(x1,x2) num_threads(T)</span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="cp">#pragma omp taskloop</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="cp">#pragma omp atomic</span>
+<span class="w">            </span><span class="n">x1</span><span class="o">++</span><span class="p">;</span><span class="w">          </span><span class="c1">// executed T*N times</span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">        </span><span class="cp">#pragma omp single</span>
+<span class="w">        </span><span class="cp">#pragma omp taskloop</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="cp">#pragma omp atomic</span>
+<span class="w">            </span><span class="n">x2</span><span class="o">++</span><span class="p">;</span><span class="w">          </span><span class="c1">// executed N times</span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;x1 = %d, x2 = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>!!%compiler: gfortran
+!!%cflags: -fopenmp
+
+! name:   taskloop.2
+! type:   F-free
+! version: omp_4.5
+subroutine parallel_work
+    implicit none
+    integer :: x1, x2
+    integer :: i
+    integer, parameter :: T = 16
+    integer, parameter :: N = 1024
+
+    x1 = 0
+    x2 = 0
+    !$omp parallel shared(x1,x2) num_threads(T)
+    !$omp taskloop
+    do i = 1,N
+        !$omp atomic
+        x1 = x1 + 1     ! executed T*N times
+        !$omp end atomic
+    end do
+    !$omp end taskloop
+
+    !$omp single
+    !$omp taskloop
+    do i = 1,N
+        !$omp atomic
+        x2 = x2 + 1     ! executed N times
+        !$omp end atomic
+    end do
+    !$omp end taskloop
+    !$omp end single
+    !$omp end parallel
+
+    write (*,&#39;(A,I0,A,I0)&#39;) &#39;x1 = &#39;, x1, &#39;, x2 = &#39;,x2
+end subroutine
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -676,7 +817,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "native",
-            path: "./contents/figs"
+            path: "./contents/Chap_tasking"
         },
         predefinedOutput: true
     }
@@ -690,6 +831,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="6_taskyield_Construct.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3.6. </span><strong>taskyield</strong> Construct</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="8_Combined_parallel_masked_and_taskloop_Constructs.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.8. </span>Combined <strong>parallel</strong> <strong>masked</strong> and <strong>taskloop</strong> Constructs</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
