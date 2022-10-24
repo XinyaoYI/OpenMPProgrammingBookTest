@@ -12,20 +12,20 @@ parts:
       - file: contents/Chap_introduction/Chap_introduction.ipynb
         sections:
         - file: contents/Chap_introduction/Section_Examples_Organization.ipynb
-      - file: contents/Chap_directives.ipynb/Section_proc_bind_Clause.ipynb
-      - file: contents/Chap_parallel_execution.ipynb
+      - file: contents/Chap_directives/Chap_directives.ipynb
+      - file: contents/Chap_parallel_execution/Chap_parallel_execution.ipynb
       - file: contents/Chap_affinity/Chap_affinity.ipynb
         sections:
-        - file:contents/Chap_affinity/
+        - file:contents/Chap_affinity/Section_proc_bind_Clause.ipynb
         - file:contents/Chap_affinity/Section_Task_Affinity.ipynb
         - file:contents/Chap_affinity/Section_Affinity_Display.ipynb
         - file:contents/Chap_affinity/Section_Affinity_Query_Func.ipynb
-      - file: contents/Chap_tasking.ipynb
-      - file: contents/Chap_devices.ipynb
-      - file: contents/Chap_SIMD.ipynb
-      - file: contents/Chap_loop_transformations.ipynb
-      - file: contents/Chap_synchronization.ipynb
-      - file: contents/Chap_data_environment.ipynb
-      - file: contents/Chap_memory_model.ipynb
-      - file: contents/Chap_program_control.ipynb
-      - file: contents/Chap_ompt_interface.ipynb
+      - file: contents/Chap_tasking/Chap_tasking.ipynb
+      - file: contents/Chap_devices/Chap_devices.ipynb
+      - file: contents/Chap_SIMD/Chap_SIMD.ipynb
+      - file: contents/Chap_loop_transformations/Chap_loop_transformations.ipynb
+      - file: contents/Chap_synchronization/Chap_synchronization.ipynb
+      - file: contents/Chap_data_environment/Chap_data_environment.ipynb
+      - file: contents/Chap_memory_model/Chap_memory_model.ipynb
+      - file: contents/Chap_program_control/Chap_program_control.ipynb
+      - file: contents/Chap_ompt_interface/Chap_ompt_interface.ipynb
